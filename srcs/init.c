@@ -14,14 +14,28 @@
 
 void init_env(char **env, t_all *a)
 {
-	int row = 0;
+	int row;
+	int i;
 
+	row = 0;
+	i = 0;
 	while (env[row])
 		row++;
 	a->env = malloc(sizeof(char *) * row);
-	for (int i = 0; i < row; i++)
+	while (i < row)
+	{
 		a->env[i] = strdup(env[i]);
+		i++;
+	}
 }
+
+void init_export(t_all *a, char **env)
+{
+	a->ept = ft_matdup(env);
+	sort_mat(a->ept);
+}
+
+
 //
 // Created by Taekyun Kim on 11/25/20.
 //

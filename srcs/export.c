@@ -23,22 +23,43 @@ void swap_str(char **s1, char **s2)
 	*s2 = ft_strdup(temp);
 	free(temp);
 }
+//
+//void sort_mat(char ***env)
+//{
+//	int		i;
+//	int 	j;
+//
+//	i = -1;
+//	while ((*env)[++i])
+//	{
+//		j = i;
+//		while ((*env)[++j])
+//		{
+//			if (ft_strccmp((*env)[i], (*env)[j], '=') < 0)
+//				continue ;
+//			else if (ft_strccmp((*env)[i], (*env)[j], '=') > 0)
+//				swap_str(&(*env)[i], &(*env)[j]);
+//			else
+//				exit(1);
+//		}
+//	}
+//}
 
-void sort_mat(char ***env)
+void sort_mat(char **mat)
 {
 	int		i;
 	int 	j;
 
 	i = -1;
-	while ((*env)[++i])
+	while (mat[++i])
 	{
 		j = i;
-		while ((*env)[++j])
+		while (mat[++j])
 		{
-			if (ft_strccmp((*env)[i], (*env)[j], '=') < 0)
+			if (ft_strccmp(mat[i], mat[j], '=') < 0)
 				continue ;
-			else if (ft_strccmp((*env)[i], (*env)[j], '=') > 0)
-				swap_str(&(*env)[i], &(*env)[j]);
+			else if (ft_strccmp(mat[i], mat[j], '=') > 0)
+				swap_str(&mat[i], &mat[j]);
 			else
 				exit(1);
 		}
@@ -51,17 +72,11 @@ void write_export(char *str)
 
 	i = -1;
 	while (str[++i] && str[i] != '=')
-		printf("%c", str[i]);
-//		ft_write(&str[i]);
-//	ft_write("=\"");
-	printf("%s", "=\"");
+		ft_putchar_fd(str[i], 1);
+	ft_write("=\"");
 	while (str[++i])
-		printf("%c", str[i]);
-	printf("%s", "\"");
-	while (str[++i])
-	printf("\n");
-//		ft_write(&str[i]);
-//	ft_write("\"");
+		ft_putchar_fd(str[i], 1);
+	ft_write("\"\n");
 }
 
 int export(char *str, t_all *a)
@@ -69,19 +84,23 @@ int export(char *str, t_all *a)
 	int i;
 
 	i = -1;
-	if (!ft_strncmp(str, "export", 6))
+	if (ft_strlen(str) == 6 && !ft_strncmp(str, "export", 6))
 	{
-		sort_mat(&a->env);
-		while (a->env[++i])
+		while (a->ept[++i])
 		{
-			if (!ft_strncmp(a->env[i], "_=", 2))
+			if (!ft_strncmp(a->ept[i], "_=", 2))
 				continue ;
-//			ft_write("declare -x ");
-//			ft_write(a->env[i]);
-			write_export(a->env[i]);
-//			ft_write("\n");
+			ft_write("declare -x ");
+			write_export(a->ept[i]);
 		}
 	}
+	/*
+	 * export x=y
+	 * export x=y a=b
+	 * 등등 정상적인 케이스로 들어왔다고 가정k
+	 */
+//	else
+//		add_export(str, &a->env);
 	return (1);
 }
 
@@ -92,6 +111,7 @@ int main(int argc, char *argv[], char *envp[])
 	(void)argv;
 
 	init_env(envp, &a);
+	init_export(&a, a.env);
 	if (!export("export", &a))
 		puts("error\n");
 	return (0);
