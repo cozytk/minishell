@@ -23,27 +23,6 @@ void swap_str(char **s1, char **s2)
 	*s2 = ft_strdup(temp);
 	free(temp);
 }
-//
-//void sort_mat(char ***env)
-//{
-//	int		i;
-//	int 	j;
-//
-//	i = -1;
-//	while ((*env)[++i])
-//	{
-//		j = i;
-//		while ((*env)[++j])
-//		{
-//			if (ft_strccmp((*env)[i], (*env)[j], '=') < 0)
-//				continue ;
-//			else if (ft_strccmp((*env)[i], (*env)[j], '=') > 0)
-//				swap_str(&(*env)[i], &(*env)[j]);
-//			else
-//				exit(1);
-//		}
-//	}
-//}
 
 void sort_mat(char **mat)
 {
@@ -78,6 +57,93 @@ void write_export(char *str)
 		ft_putchar_fd(str[i], 1);
 	ft_write("\"\n");
 }
+/*
+ * export aaa="   aaa    " 같은 경우 quote 을 읽고나서 blank 를 -128 ~ -1 범위 사이에 문자로 처리
+ */
+
+char **ft_delete_row(char **mat, int del, int row)
+{
+	char **tmp;
+	int row;
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	row = ft_matrow(mat);
+	if (!(tmp = (char **)malloc(sizeof(char *) * row - 1)))
+		exit(1);
+	while (j < row)
+	{
+		if (i != del)
+			i++;
+		j++;
+		tmp[i] = ft_strdup(mat[j]);
+	}
+	ft_free_mat(mat);
+	return (tmp);
+}
+
+char **overwrite_env(char **mat, t_all *a)
+{
+	int i;
+	int j;
+
+	i = -1;
+	while (mat[++i])
+	{
+		j = -1;
+		while (a->env[++j])
+		{
+			if (!ft_strccmp(mat[i], a->env[i], '='))
+			{
+				free(a->env[i]);
+				a->env[i] = (void *)0;
+				a->env[i] = ft_strdup(mat[i]);
+				mat = ft_delete_row(mat, i);
+			}
+		}
+	}
+	return (mat);
+}
+
+void check_overlap(char **mat)
+{
+	int i;
+	int j;
+
+	i = -1;
+	j = -1;
+	while (mat[++i + 1])
+	{
+		j = i;
+		while (mat[++j])
+		{
+			if (!(ft_strccmp(mat[i], mat[j], '=')))
+				mat = ft_delete_row(mat, i);
+		}
+	}
+}
+
+void edit_env(char *str, t_all *a)
+{
+	char	*temp;
+	char	**mat;
+	char	**tmp_m;
+
+	if (!(temp = malloc(ft_strlen(str) + 1)))
+		exit(1);
+	ft_strlcpy(temp, str + 7, ft_strlen(str + 7) + 1);
+	mat = ft_split(temp, ' ');
+	check_overlap(mat);
+	mat = overwrite_env(mat, a);
+	for (int i = 0; mat[i] ; i++)
+		printf("%s\n", mat[i]);
+	tmp_m = ft_matjoin(mat, a->env);
+	ft_free_mat(a->env);
+	a->env = tmp_m;
+	free(temp);
+}
 
 int export(char *str, t_all *a)
 {
@@ -99,23 +165,31 @@ int export(char *str, t_all *a)
 	 * export x=y a=b
 	 * 등등 정상적인 케이스로 들어왔다고 가정k
 	 */
-//	else
-//		add_export(str, &a->env);
+	else
+	{
+		edit_env(str, a);
+		ft_free_mat(a->ept);
+		init_export(a, a->env);
+	}
 	return (1);
 }
 
 int main(int argc, char *argv[], char *envp[])
 {
 	t_all a;
+	char *line;
 	(void)argc;
 	(void)argv;
 
 	init_env(envp, &a);
 	init_export(&a, a.env);
-	if (!export("export", &a))
-		puts("error\n");
+	while (get_next_line(0, &line) > 0)
+	{
+		if (!ft_strncmp("exit", line, 4))
+			exit(0);
+		export(line, &a);
+		free(line);
+		line = (void *)0;
+	}
 	return (0);
 }
-// Created by Taekyun Kim on 11/24/20.
-//
-
