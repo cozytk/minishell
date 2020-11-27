@@ -40,7 +40,10 @@ void sort_mat(char **mat)
 			else if (ft_strccmp(mat[i], mat[j], '=') > 0)
 				swap_str(&mat[i], &mat[j]);
 			else
+			{
+				ft_write("Error: sort_mat\n");
 				exit(1);
+			}
 		}
 	}
 }
@@ -61,7 +64,7 @@ void write_export(char *str)
  * export aaa="   aaa    " 같은 경우 quote 을 읽고나서 blank 를 -128 ~ -1 범위 사이에 문자로 처리
  */
 
-char **ft_delete_row(char **mat, int del, int row)
+char **ft_delete_row(char **mat, int del)
 {
 	char **tmp;
 	int row;
@@ -71,7 +74,7 @@ char **ft_delete_row(char **mat, int del, int row)
 	i = 0;
 	j = 0;
 	row = ft_matrow(mat);
-	if (!(tmp = (char **)malloc(sizeof(char *) * row - 1)))
+	if (!(tmp = (char **)malloc(sizeof(char *) * row)))
 		exit(1);
 	while (j < row)
 	{
@@ -80,6 +83,7 @@ char **ft_delete_row(char **mat, int del, int row)
 		j++;
 		tmp[i] = ft_strdup(mat[j]);
 	}
+	tmp[row - 1] = (void *)0;
 	ft_free_mat(mat);
 	return (tmp);
 }
@@ -137,9 +141,7 @@ void edit_env(char *str, t_all *a)
 	mat = ft_split(temp, ' ');
 	check_overlap(mat);
 	mat = overwrite_env(mat, a);
-	for (int i = 0; mat[i] ; i++)
-		printf("%s\n", mat[i]);
-	tmp_m = ft_matjoin(mat, a->env);
+	tmp_m = ft_matjoin(a->env, mat);
 	ft_free_mat(a->env);
 	a->env = tmp_m;
 	free(temp);
@@ -185,11 +187,17 @@ int main(int argc, char *argv[], char *envp[])
 	init_export(&a, a.env);
 	while (get_next_line(0, &line) > 0)
 	{
+		if (*line == '\n')
+		{
+			line = (void *)0;
+			free(line);
+			continue;
+		}
 		if (!ft_strncmp("exit", line, 4))
 			exit(0);
 		export(line, &a);
-		free(line);
 		line = (void *)0;
+		free(line);
 	}
 	return (0);
 }
