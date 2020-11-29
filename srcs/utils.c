@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matdup.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 19:41:12 by taekkim           #+#    #+#             */
-/*   Updated: 2020/11/25 19:41:13 by taekkim          ###   ########.fr       */
+/*   Created: 2020/11/29 23:23:10 by taekkim           #+#    #+#             */
+/*   Updated: 2020/11/29 23:23:11 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/minishell.h"
 
-char	**ft_matdup(char **mat)
+int		keycmp(char *src, char *key)
 {
-	char	**temp;
-	int		row;
-	int		i;
+	int i;
 
 	i = 0;
-	row = 0;
-	while (mat[row])
-		row++;
-	if (!(temp = (char **)malloc(sizeof(char *) * (row + 1))))
-		exit(1);
-	while (i < row)
+	while (key[i])
 	{
-		temp[i] = ft_strdup(mat[i]);
+		if (src[i] != key[i])
+			return (1);
 		i++;
 	}
-	temp[i] = (void *)0;
-	return (temp);
+	if (src[i] == '=')
+		return (0);
+	return (1);
+}
+
+int		cmd_itself(char *cmd, char *str)
+{
+	int len_cmd;
+	int len_str;
+
+	len_cmd = ft_strlen(cmd);
+	len_str = ft_strlen(str);
+	if ((len_str == len_cmd) && !ft_strncmp(str, cmd, len_cmd))
+		return (1);
+	return (0);
 }

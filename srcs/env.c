@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matdup.c                                        :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 19:41:12 by taekkim           #+#    #+#             */
-/*   Updated: 2020/11/25 19:41:13 by taekkim          ###   ########.fr       */
+/*   Created: 2020/11/30 00:23:02 by taekkim           #+#    #+#             */
+/*   Updated: 2020/11/30 00:23:03 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/minishell.h"
 
-char	**ft_matdup(char **mat)
+void 	write_env(char **env)
 {
-	char	**temp;
-	int		row;
-	int		i;
+	int i;
 
 	i = 0;
-	row = 0;
-	while (mat[row])
-		row++;
-	if (!(temp = (char **)malloc(sizeof(char *) * (row + 1))))
-		exit(1);
-	while (i < row)
+	while (env[i])
 	{
-		temp[i] = ft_strdup(mat[i]);
+		ft_putendl_fd(env[i], 1);
 		i++;
 	}
-	temp[i] = (void *)0;
-	return (temp);
 }
+
+int 	env(char *str, t_all *a)
+{
+	if (cmd_itself("env", str))
+		write_env(a->env);
+	return (1);
+}
+//
+// Created by Taekyun Kim on 30/11/2020.
+//
+

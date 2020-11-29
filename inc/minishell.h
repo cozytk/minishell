@@ -18,6 +18,13 @@ typedef struct		s_all
 	char	**ept;
 }					t_all;
 
+int			cmd_itself(char *cmd, char *str);
+int 		pwd(char *str);
+int		 	env(char *str, t_all *a);
+int			keycmp(char *src, char *key);
+int			unset(char *str, t_all *a);
+void		check_overlap(char **mat);
+char		**ft_delete_row(char **mat, int del);
 int			get_next_line(int fd, char **line);
 char		*ft_strdup_til_enter(const char *s1);
 void		after_enter(char **str, int spot);

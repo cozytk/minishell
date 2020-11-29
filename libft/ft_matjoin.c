@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matdup.c                                        :+:      :+:    :+:   */
+/*   ft_matjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 19:41:12 by taekkim           #+#    #+#             */
-/*   Updated: 2020/11/25 19:41:13 by taekkim          ###   ########.fr       */
+/*   Created: 2020/11/29 21:04:10 by taekkim           #+#    #+#             */
+/*   Updated: 2020/11/29 21:04:10 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_matdup(char **mat)
+char	**ft_matjoin(char **m1, char **m2)
 {
-	char	**temp;
-	int		row;
+	char	**dst;
+	int		m1_row;
+	int		m2_row;
 	int		i;
 
-	i = 0;
-	row = 0;
-	while (mat[row])
-		row++;
-	if (!(temp = (char **)malloc(sizeof(char *) * (row + 1))))
+	m1_row = ft_matrow(m1);
+	m2_row = ft_matrow(m2);
+	if (!(dst = malloc(sizeof(char *) * (m1_row + m2_row + 1))))
 		exit(1);
-	while (i < row)
-	{
-		temp[i] = ft_strdup(mat[i]);
-		i++;
-	}
-	temp[i] = (void *)0;
-	return (temp);
+	i = -1;
+	while (++i < m1_row)
+		dst[i] = ft_strdup(m1[i]);
+	i = -1;
+	while (++i < m2_row)
+		dst[m1_row + i] = ft_strdup(m2[i]);
+	dst[m1_row + m2_row] = (void *)0;
+	return (dst);
 }

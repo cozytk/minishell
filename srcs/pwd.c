@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matdup.c                                        :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 19:41:12 by taekkim           #+#    #+#             */
-/*   Updated: 2020/11/25 19:41:13 by taekkim          ###   ########.fr       */
+/*   Created: 2020/11/30 00:29:26 by taekkim           #+#    #+#             */
+/*   Updated: 2020/11/30 00:29:27 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/minishell.h"
 
-char	**ft_matdup(char **mat)
+int 	pwd(char *str)
 {
-	char	**temp;
-	int		row;
-	int		i;
+	char tmp[1024];
 
-	i = 0;
-	row = 0;
-	while (mat[row])
-		row++;
-	if (!(temp = (char **)malloc(sizeof(char *) * (row + 1))))
-		exit(1);
-	while (i < row)
+	if (cmd_itself("pwd", str))
 	{
-		temp[i] = ft_strdup(mat[i]);
-		i++;
+		getcwd(tmp, 1024);
+		ft_putendl_fd(tmp, 1);
 	}
-	temp[i] = (void *)0;
-	return (temp);
+	return (1);
 }

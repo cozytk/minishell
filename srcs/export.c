@@ -48,7 +48,7 @@ void sort_mat(char **mat)
 	}
 }
 
-void write_export(char *str)
+void write_quote(char *str)
 {
 	int i;
 
@@ -71,16 +71,16 @@ char **ft_delete_row(char **mat, int del)
 	int i;
 	int j;
 
-	i = 0;
-	j = 0;
+	i = -1;
+	j = -1;
 	row = ft_matrow(mat);
 	if (!(tmp = (char **)malloc(sizeof(char *) * row)))
 		exit(1);
-	while (j < row)
+	while (++j < row)
 	{
-		if (i != del)
-			i++;
-		j++;
+		if (j == del)
+			continue ;
+		i++;
 		tmp[i] = ft_strdup(mat[j]);
 	}
 	tmp[row - 1] = (void *)0;
@@ -94,18 +94,24 @@ char **overwrite_env(char **mat, t_all *a)
 	int j;
 
 	i = -1;
+//	for (int idx = 0; a->env[idx]; idx++)
+//		printf("%s\n", a->env[idx]);
 	while (mat[++i])
 	{
 		j = -1;
 		while (a->env[++j])
 		{
-			if (!ft_strccmp(mat[i], a->env[i], '='))
+			if (!ft_strccmp(mat[i], a->env[j], '='))
 			{
-				free(a->env[i]);
-				a->env[i] = (void *)0;
-				a->env[i] = ft_strdup(mat[i]);
+				free(a->env[j]);
+				a->env[j] = (void *)0;
+				a->env[j] = ft_strdup(mat[i]);
 				mat = ft_delete_row(mat, i);
+				i = -1;
+				break ;
 			}
+			if (i == -1)
+				break ;
 		}
 	}
 	return (mat);
@@ -143,31 +149,35 @@ void edit_env(char *str, t_all *a)
 	mat = overwrite_env(mat, a);
 	tmp_m = ft_matjoin(a->env, mat);
 	ft_free_mat(a->env);
+	ft_free_mat(mat);
 	a->env = tmp_m;
 	free(temp);
 }
 
-int export(char *str, t_all *a)
+void write_export(char **ept)
 {
 	int i;
 
 	i = -1;
-	if (ft_strlen(str) == 6 && !ft_strncmp(str, "export", 6))
+	while (ept[++i])
 	{
-		while (a->ept[++i])
-		{
-			if (!ft_strncmp(a->ept[i], "_=", 2))
-				continue ;
-			ft_write("declare -x ");
-			write_export(a->ept[i]);
-		}
+		if (!ft_strncmp(ept[i], "_=", 2))
+			continue ;
+		ft_write("declare -x ");
+		write_quote(ept[i]);
 	}
+}
+
+int export(char *str, t_all *a)
+{
+	if (cmd_itself("export", str))
+		write_export(a->ept);
 	/*
 	 * export x=y
 	 * export x=y a=b
-	 * 등등 정상적인 케이스로 들어왔다고 가정k
+	 * 등등 정상적인 케이스로 들어왔다고 가정
 	 */
-	else
+	else if (!ft_strncmp(str, "export ", 7))
 	{
 		edit_env(str, a);
 		ft_free_mat(a->ept);
@@ -195,9 +205,13 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		if (!ft_strncmp("exit", line, 4))
 			exit(0);
+		pwd(line);
+		env(line, &a);
+		unset(line, &a);
 		export(line, &a);
-		line = (void *)0;
 		free(line);
+		line = (void *)0;
 	}
 	return (0);
+
 }

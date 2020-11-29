@@ -71,6 +71,7 @@ static char	**ft_split_malloc(const char *s, char c)
 		len++;
 	if (!(str = malloc(sizeof(char *) * (len + 1))))
 		return (0);
+	str[len] = (void *)0;
 	return (str);
 }
 
@@ -78,13 +79,9 @@ char		**ft_split(char const *s, char c)
 {
 	char	**str;
 	int		len;
-	int		i;
-	int		j;
 
 	if (!s)
 		return (0);
-	i = 0;
-	j = 0;
 	if (!(str = ft_split_malloc(s, c)))
 		return (0);
 	if ((len = ft_split_save(str, s, c)) == -1)
