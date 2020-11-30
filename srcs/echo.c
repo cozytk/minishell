@@ -39,8 +39,14 @@ void 	write_echo(char *str)
 int 	echo(char *str)
 {
 	if (cmd_itself("echo", str))
+	{
 		ft_putchar_fd('\n', 1);
+		return (1);
+	}
 	else if (!ft_strncmp("echo ", str, 5))
+	{
 		write_echo(str + 5);
-	return (1);
+		return (1);
+	}
+	return (0);
 }

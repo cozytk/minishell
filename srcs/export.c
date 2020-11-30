@@ -166,7 +166,10 @@ void write_export(char **ept)
 int export(char *str, t_all *a)
 {
 	if (cmd_itself("export", str))
+	{
 		write_export(a->ept);
+		return (1);
+	}
 	/*
 	 * export x=y
 	 * export x=y a=b
@@ -177,38 +180,8 @@ int export(char *str, t_all *a)
 		edit_env(str + 7, a);
 		ft_free_mat(a->ept);
 		init_export(a, a->env);
-	}
-	return (1);
-}
-
-int main(int argc, char *argv[], char *envp[])
-{
-	t_all a;
-	char *line;
-	(void)argc;
-	(void)argv;
-
-	init_env(envp, &a);
-	init_export(&a, a.env);
-	while (get_next_line(0, &line) > 0)
-	{
-		if (*line == '\n')
-		{
-			line = (void *)0;
-			free(line);
-			continue;
-		}
-		if (!ft_strncmp("exit", line, 4))
-			exit(0);
-		echo(line);
-		cd(line, &a);
-		pwd(line);
-		env(line, &a);
-		unset(line, &a);
-		export(line, &a);
-		free(line);
-		line = (void *)0;
+		return (1);
 	}
 	return (0);
-
 }
+

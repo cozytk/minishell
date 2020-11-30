@@ -12,13 +12,15 @@
 # include <sys/stat.h>
 # include <sys/errno.h>
 
+# define INIT "bash-3.2$ "
+
 typedef struct		s_all
 {
 	char	**env;
 	char	**ept;
 }					t_all;
 
-
+int			export(char *str, t_all *a);
 int 		cd(char *str, t_all *a);
 char		*get_arg(char *str);
 int			echo(char *str);

@@ -71,7 +71,14 @@ void 	parse_cd(char *str, t_all *a)
 int 	cd(char *str, t_all *a)
 {
 	if (cmd_itself("cd", str))
+	{
 		exec_cd("~", a);
+		return (1);
+	}
 	else if (!ft_strncmp(str, "cd ", 3))
+	{
 		parse_cd(str + 3, a);
+		return (1);
+	}
+	return (0);
 }

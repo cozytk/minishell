@@ -20,6 +20,7 @@ int 	pwd(char *str)
 	{
 		getcwd(tmp, 1024);
 		ft_putendl_fd(tmp, 1);
+		return (1);
 	}
-	return (1);
+	return (0);
 }

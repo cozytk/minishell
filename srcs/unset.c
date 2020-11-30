@@ -53,6 +53,7 @@ int		unset(char *str, t_all *a)
 		parse_unset(str + 6, a);
 		ft_free_mat(a->ept);
 		init_export(a, a->env);
+		return (1);
 	}
-	return (1);
+	return (0);
 }

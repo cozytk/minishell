@@ -27,8 +27,11 @@ void 	write_env(char **env)
 int 	env(char *str, t_all *a)
 {
 	if (cmd_itself("env", str))
+	{
 		write_env(a->env);
-	return (1);
+		return (1);
+	}
+	return (0);
 }
 //
 // Created by Taekyun Kim on 30/11/2020.

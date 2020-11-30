@@ -24,6 +24,7 @@ int main(void)
 	else if (pid == 0)
 	{
 		write(fd[1], "Hello\n", 6);
+		printf("fd[1] is %d\n", fd[1]);
 		usleep(10);
 		read(fd[0], buff, 20);
 		printf("%s", buff);
