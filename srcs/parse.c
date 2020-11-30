@@ -2,7 +2,7 @@
 
 int		is_sep_char(char c)
 {
-	if (c == ' ' || c == '>' || c == ';' || c == '\'' || c == '\"')
+	if (c == '>' || c == ';' || c == '\'' || c == '\"')
 		return (1);
 	return (0);
 }
@@ -36,6 +36,13 @@ void	add_argument(t_all *a, char *arg)
 	}
 }
 
+int		is_space(char c)
+{
+	if (c == ' ')
+		return (1);
+	return (0);
+}
+
 int     parsing(t_all *a, char *line)
 {
 	int		i;
@@ -48,7 +55,7 @@ int     parsing(t_all *a, char *line)
 	start = 0;
 	while (line[i])
 	{
-		if (is_sep_char(line[i]))
+		if (is_sep_char(line[i]) || is_space(line[i]))
 		{
 			//temp = ft_substr(line, start, count);
 			//printf("split : %s\n", temp);
@@ -56,9 +63,16 @@ int     parsing(t_all *a, char *line)
 				a->command = ft_substr(line, start, count);
 			else
 				add_argument(a, ft_substr(line, start, count));
+			if (is_sep_char(line[i]))
+			{
+				add_argument(a, ft_substr(line, start, 1));
+				count = 1;
+				i++;
+				start++;
+			}
 			start += count;
 			count = 0;
-			while (line[i] == ' ')
+			while (is_space(line[i]))
 			{
 				i++;
 				start++;
@@ -69,7 +83,7 @@ int     parsing(t_all *a, char *line)
 		i++;
 	}
 	temp = ft_substr(line, start, count);
-	if (temp[0] != ' ')
+	if (line[i - 1] != ' ')
 		add_argument(a, temp);
 	else
 		free(temp);
