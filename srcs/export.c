@@ -201,6 +201,7 @@ int main(int argc, char *argv[], char *envp[])
 		if (!ft_strncmp("exit", line, 4))
 			exit(0);
 		echo(line);
+		cd(line, &a);
 		pwd(line);
 		env(line, &a);
 		unset(line, &a);

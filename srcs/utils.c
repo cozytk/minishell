@@ -38,7 +38,7 @@ char	*get_arg(char *str)
 	while (str[i] && str[i] == ' ')
 		i++;
 	if (i == ft_strlen(str))
-		return ((void *)0);
+		exit(1);
 	return (str + i);
 }
 
@@ -61,3 +61,4 @@ int		cmd_itself(char *cmd, char *str)
 	}
 	return (0);
 }
+

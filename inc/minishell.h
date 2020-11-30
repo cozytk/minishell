@@ -19,6 +19,7 @@ typedef struct		s_all
 }					t_all;
 
 
+int 		cd(char *str, t_all *a);
 char		*get_arg(char *str);
 int			echo(char *str);
 int			cmd_itself(char *cmd, char *str);
