@@ -54,11 +54,10 @@ int 	func_exec(char *line, t_all *a)
 		if ((execve(path_cmd, lines, a->env) == -1) &&
 			execve(path_cmd2, lines, a->env) == -1)
 		{
-			ft_write("bash: command not found: ");
-			ft_write(cmd);
-			ft_write("\n");
-			return (0);
+			ft_putstr_fd("bash: command not found: ", 2);
+			ft_putendl_fd(cmd, 2);
 		}
+		exit(1);
 //		free(cmd);
 //		free(path_cmd);
 //		free(path_cmd2);
