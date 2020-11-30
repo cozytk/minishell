@@ -36,17 +36,12 @@ void 	delete_env(char **mat, t_all *a)
 
 void	parse_unset(char *str, t_all *a)
 {
-	char	*temp;
 	char	**mat;
 
-	if (!(temp = malloc(ft_strlen(str) + 1)))
-		exit(1);
-	ft_strlcpy(temp, str + 6, ft_strlen(str + 6) + 1);
-	mat = ft_split(temp, ' ');
+	mat = ft_split(get_arg(str), ' ');
 	check_overlap(mat);
 	delete_env(mat, a);
 	ft_free_mat(mat);
-	free(temp);
 }
 
 int		unset(char *str, t_all *a)
@@ -55,7 +50,7 @@ int		unset(char *str, t_all *a)
 		return (1);
 	else if (!ft_strncmp("unset ", str, 6))
 	{
-		parse_unset(str, a);
+		parse_unset(str + 6, a);
 		ft_free_mat(a->ept);
 		init_export(a, a->env);
 	}

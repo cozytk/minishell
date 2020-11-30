@@ -18,6 +18,9 @@ typedef struct		s_all
 	char	**ept;
 }					t_all;
 
+
+char		*get_arg(char *str);
+int			echo(char *str);
 int			cmd_itself(char *cmd, char *str);
 int 		pwd(char *str);
 int		 	env(char *str, t_all *a);

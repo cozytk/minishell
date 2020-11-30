@@ -137,21 +137,16 @@ void check_overlap(char **mat)
 
 void edit_env(char *str, t_all *a)
 {
-	char	*temp;
 	char	**mat;
 	char	**tmp_m;
 
-	if (!(temp = malloc(ft_strlen(str) + 1)))
-		exit(1);
-	ft_strlcpy(temp, str + 7, ft_strlen(str + 7) + 1);
-	mat = ft_split(temp, ' ');
+	mat = ft_split(get_arg(str), ' ');
 	check_overlap(mat);
 	mat = overwrite_env(mat, a);
 	tmp_m = ft_matjoin(a->env, mat);
 	ft_free_mat(a->env);
 	ft_free_mat(mat);
 	a->env = tmp_m;
-	free(temp);
 }
 
 void write_export(char **ept)
@@ -179,7 +174,7 @@ int export(char *str, t_all *a)
 	 */
 	else if (!ft_strncmp(str, "export ", 7))
 	{
-		edit_env(str, a);
+		edit_env(str + 7, a);
 		ft_free_mat(a->ept);
 		init_export(a, a->env);
 	}
@@ -205,6 +200,7 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		if (!ft_strncmp("exit", line, 4))
 			exit(0);
+		echo(line);
 		pwd(line);
 		env(line, &a);
 		unset(line, &a);

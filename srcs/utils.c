@@ -28,6 +28,20 @@ int		keycmp(char *src, char *key)
 	return (1);
 }
 
+char	*get_arg(char *str)
+{
+	int i;
+
+	i = 0;
+	if (!str)
+		return ((void *)0);
+	while (str[i] && str[i] == ' ')
+		i++;
+	if (i == ft_strlen(str))
+		return ((void *)0);
+	return (str + i);
+}
+
 int		cmd_itself(char *cmd, char *str)
 {
 	int len_cmd;
@@ -35,7 +49,15 @@ int		cmd_itself(char *cmd, char *str)
 
 	len_cmd = ft_strlen(cmd);
 	len_str = ft_strlen(str);
-	if ((len_str == len_cmd) && !ft_strncmp(str, cmd, len_cmd))
-		return (1);
+	if (!ft_strncmp(str, cmd, len_cmd))
+	{
+		if (len_str == len_cmd)
+			return (1);
+		str += len_cmd;
+		while (*str && *str == ' ')
+			str++;
+		if (*str == '\0')
+			return (1);
+	}
 	return (0);
 }
