@@ -18,6 +18,8 @@ typedef struct		s_all
 {
 	char	**env;
 	char	**ept;
+	char	*command;
+	char	**arguments;
 }					t_all;
 
 int			export(char *str, t_all *a);
