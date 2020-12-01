@@ -28,7 +28,11 @@ void	add_argument(t_all *a, char *arg)
 	char	**new_mat;
 
 	if (chk_only_space(arg))
+	{
+		free(arg);
 		return ;
+	}
+	printf("arg : %s\n", arg);
 	argsize = ft_matrow(a->arguments);
 	new_mat = malloc(sizeof(char *) * (argsize + 2));
 	i = 0;
@@ -86,11 +90,15 @@ int     parsing(t_all *a, char *line)
 		}
         else if (is_sep_char(line[i]))
         {
-            printf("i : %d, start : %d, count : %d\n", i, start, count);
-			if (!a->command)
-				a->command = ft_substr(line, start, count);
-			else
-				add_argument(a, ft_substr(line, start, count));
+            //printf("i : %d, start : %d, count : %d\n", i, start, count);
+			if (line[i - 1] != ' ')
+			{
+				// 그 전에 꺼 집어넣고
+				if (!a->command)
+					a->command = ft_substr(line, start, count);
+				else
+					add_argument(a, ft_substr(line, start, count));
+			}
 			start += count;
             count = 1;
 			add_argument(a, ft_substr(line, start, count));
@@ -102,16 +110,14 @@ int     parsing(t_all *a, char *line)
 		count++;
 		i++;
 	}
-	temp = ft_substr(line, start, count);
+	//temp = ft_substr(line, start, count);
 	if (line[i - 1] != ' ')
 	{
 		if (!a->command)
-			a->command = temp;
+			a->command = ft_substr(line, start, count);
 		else
-			add_argument(a, temp);
+			add_argument(a, ft_substr(line, start, count));
 	}
-	else
-		free(temp);
 	//printf("split : %s\n", temp);
 }
 
