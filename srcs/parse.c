@@ -7,12 +7,28 @@ int		is_sep_char(char c)
 	return (0);
 }
 
+int		chk_only_space(char *arg)
+{
+	int		i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if (arg[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	add_argument(t_all *a, char *arg)
 {
 	int		argsize;
 	int		i;
 	char	**new_mat;
 
+	if (chk_only_space(arg))
+		return ;
 	argsize = ft_matrow(a->arguments);
 	new_mat = malloc(sizeof(char *) * (argsize + 2));
 	i = 0;
@@ -23,17 +39,11 @@ void	add_argument(t_all *a, char *arg)
 			new_mat[i] = ft_strdup(a->arguments[i]);
 			i++;
 		}
-		new_mat[i] = arg;
-		new_mat[i + 1] = NULL;
 		ft_free_mat(a->arguments);
-		a->arguments = new_mat;
 	}
-	else
-	{
-		new_mat[0] = arg;
-		new_mat[1] = NULL;
-		a->arguments = new_mat;
-	}
+	new_mat[i] = arg;
+	new_mat[i + 1] = NULL;
+	a->arguments = new_mat;
 }
 
 int		is_space(char c)
@@ -68,7 +78,6 @@ int     parsing(t_all *a, char *line)
 				add_argument(a, ft_substr(line, start, 1));
 				count = 1;
 				i++;
-				start++;
 			}
 			start += count;
 			count = 0;
@@ -127,6 +136,8 @@ int		main(void)
 		//printf("aadsfsaf%s\n", a->command);
 		show_com(a);
 		show_arg(a);
+		free(a->command);
+		a->command = NULL;
 		free(line);
 	}
 }
