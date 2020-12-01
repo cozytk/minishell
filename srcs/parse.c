@@ -2,7 +2,7 @@
 
 int		is_sep_char(char c)
 {
-	if (c == '>' || c == ';')
+	if (c == '>' || c == ';' || c == '<')
 		return (1);
 	return (0);
 }
