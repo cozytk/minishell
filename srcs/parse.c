@@ -107,13 +107,38 @@ void	d_quote_process(t_all *a, char *line)
 	a->p.i++;
 }
 
+int		is_pipe_or_scolon(char c)
+{
+	if (c == '|' || c == ';')
+		return (1);
+	return (0);
+}
+
 int     parsing(t_all *a, char *line)
 {
 	char	*temp;
 
+	while (line[a->p.i] == ' ')
+		a->p.i++;
+	a->p.start = a->p.i;
 	while (line[a->p.i])
 	{
-		if (is_space(line[a->p.i]))
+		if (is_pipe_or_scolon(line[a->p.i]))
+		{
+			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
+			{
+				// 그 전에 꺼 집어넣고
+				if (!a->command)
+					a->command = ft_substr(line, a->p.start, a->p.count);
+				else
+					add_argument(a, ft_substr(line, a->p.start, a->p.count));
+			}
+			a->p.i++;
+			a->p.start = a->p.i;
+			a->p.count = 0;
+			return (0);
+		}
+		else if (is_space(line[a->p.i]))
 		{
 			//temp = ft_substr(line, start, count);
 			//printf("split : %s\n", temp);
@@ -184,6 +209,7 @@ int     parsing(t_all *a, char *line)
 		else
 			add_argument(a, ft_substr(line, a->p.start, a->p.count));
 	}
+	return (1);
 	//printf("split : %s\n", temp);
 	//env_interpret(a);
 }
@@ -238,7 +264,20 @@ int		main(void)
 		init_index(a);
 		get_next_line(0, &line);
 		parsing(a, line);
-		//printf("aadsfsaf%s\n", a->command);
+		show_com(a);
+		show_arg(a);
+        ft_free_mat(a->arguments);
+		if (a->arguments)
+		{
+			free(a->arguments);
+			a->arguments = NULL;
+		}
+		if (a->command)
+		{
+			free(a->command);
+			a->command = NULL;
+		}
+		parsing(a, line);
 		show_com(a);
 		show_arg(a);
         ft_free_mat(a->arguments);
