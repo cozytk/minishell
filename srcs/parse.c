@@ -67,7 +67,7 @@ int     parsing(t_all *a, char *line)
 	start = 0;
 	while (line[i])
 	{
-		if (is_sep_char(line[i]) || is_space(line[i]))
+		if (is_space(line[i]))
 		{
 			//temp = ft_substr(line, start, count);
 			//printf("split : %s\n", temp);
@@ -75,12 +75,6 @@ int     parsing(t_all *a, char *line)
 				a->command = ft_substr(line, start, count);
 			else
 				add_argument(a, ft_substr(line, start, count));
-			if (is_sep_char(line[i]))
-			{
-				add_argument(a, ft_substr(line, start, 1));
-				count = 1;
-				i++;
-			}
 			start += count;
 			count = 0;
 			while (is_space(line[i]))
@@ -90,6 +84,13 @@ int     parsing(t_all *a, char *line)
 			}
 			continue;
 		}
+        else if (is_sep_char(line[i]))
+        {
+            printf("i : %d, start : %d, count : %d\n", i, start, count);
+            add_argument(a, ft_substr(line, start, 1));
+            count = 1;
+            i++;
+        }
 		count++;
 		i++;
 	}
