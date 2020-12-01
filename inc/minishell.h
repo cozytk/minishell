@@ -14,12 +14,20 @@
 
 # define INIT "bash-3.2$ "
 
+typedef struct		s_parse
+{
+	int		i;
+	int		count;
+	int		start;
+}					t_parse;
+
 typedef struct		s_all
 {
 	char	**env;
 	char	**ept;
 	char	*command;
 	char	**arguments;
+	t_parse	p;
 }					t_all;
 
 int			export(char *str, t_all *a);

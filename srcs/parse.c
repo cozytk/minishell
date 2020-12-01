@@ -65,129 +65,122 @@ int		is_quote(char c)
 	return (0);
 }
 
-void	s_quote_process(t_all *a, char *line, int *i, int *count)
+void	s_quote_process(t_all *a, char *line)
 {
 	int		start;
 
-	(*count) = 0;
-	(*i)++;
-	start = (*i);
-	while (line[*i] != '\'')
+	a->p.count = 0;
+	a->p.i++;
+	start = a->p.i;
+	while (line[a->p.i] != '\'')
 	{
-		if (line[*i] == '\0')
+		if (line[a->p.i] == '\0')
 			exit(1);
-		(*count)++;
-		(*i)++;
+		a->p.count++;
+		a->p.i++;
 	}
 	if (!a->command)
-		a->command = ft_substr(line, start, (*count));
+		a->command = ft_substr(line, start, a->p.count);
 	else
-		add_argument(a, ft_substr(line, start, (*count)));
-	(*i)++;
+		add_argument(a, ft_substr(line, start, a->p.count));
+	a->p.i++;
 }
 
-void	d_quote_process(t_all *a, char *line, int *i, int *count)
+void	d_quote_process(t_all *a, char *line)
 {
 	int		start;
 
-	(*count) = 0;
-	(*i)++;
-	start = (*i);
-	while (line[*i] != '\"')
+	a->p.count = 0;
+	a->p.i++;
+	start = a->p.i;
+	while (line[a->p.i] != '\'')
 	{
-		if (line[*i] == '\0')
+		if (line[a->p.i] == '\0')
 			exit(1);
-		(*count)++;
-		(*i)++;
+		a->p.count++;
+		a->p.i++;
 	}
 	if (!a->command)
-		a->command = ft_substr(line, start, (*count));
+		a->command = ft_substr(line, start, a->p.count);
 	else
-		add_argument(a, ft_substr(line, start, (*count)));
-	(*i)++;
+		add_argument(a, ft_substr(line, start, a->p.count));
+	a->p.i++;
 }
 
 int     parsing(t_all *a, char *line)
 {
-	int		i;
-	int		count;
-	int		start;
 	char	*temp;
 
-	i = 0;
-	count = 0;
-	start = 0;
-	while (line[i])
+	while (line[a->p.i])
 	{
-		if (is_space(line[i]))
+		if (is_space(line[a->p.i]))
 		{
 			//temp = ft_substr(line, start, count);
 			//printf("split : %s\n", temp);
 			if (!a->command)
-				a->command = ft_substr(line, start, count);
+				a->command = ft_substr(line, a->p.start, a->p.count);
 			else
-				add_argument(a, ft_substr(line, start, count));
-			start += count;
-			count = 0;
-			while (is_space(line[i]))
+				add_argument(a, ft_substr(line, a->p.start, a->p.count));
+			a->p.start += a->p.count;
+			a->p.count = 0;
+			while (is_space(line[a->p.i]))
 			{
-				i++;
-				start++;
+				a->p.i++;
+				a->p.start++;
 			}
 			continue;
 		}
-        else if (is_sep_char(line[i]))
+        else if (is_sep_char(line[a->p.i]))
         {
-			if (line[i - 1] != ' ' && i > 1)
+			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
 			{
 				// 그 전에 꺼 집어넣고
 				if (!a->command)
-					a->command = ft_substr(line, start, count);
+					a->command = ft_substr(line, a->p.start, a->p.count);
 				else
-					add_argument(a, ft_substr(line, start, count));
+					add_argument(a, ft_substr(line, a->p.start, a->p.count));
 			}
-			start += count;
-            count = 1;
-			add_argument(a, ft_substr(line, start, count));
-            i++;
-			start++;
-			count = 0;
+			a->p.start += a->p.count;
+            a->p.count = 1;
+			add_argument(a, ft_substr(line, a->p.start, a->p.count));
+            a->p.i++;
+			a->p.start++;
+			a->p.count = 0;
 			continue ;
         }
-		else if (is_quote(line[i]))
+		else if (is_quote(line[a->p.i]))
 		{
-			if (line[i - 1] != ' ' && i > 1)
+			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
 			{
 				// 그 전에 꺼 집어넣고
 				if (!a->command)
-					a->command = ft_substr(line, start, count);
+					a->command = ft_substr(line, a->p.start, a->p.count);
 				else
-					add_argument(a, ft_substr(line, start, count));
+					add_argument(a, ft_substr(line, a->p.start, a->p.count));
 			}
-			if (line[i] == '\'')
-				s_quote_process(a, line, &i, &count);
-			else if (line[i] == '\"')
-				d_quote_process(a, line, &i, &count);
-			start = i;
-			while (is_space(line[i]))
+			if (line[a->p.i] == '\'')
+				s_quote_process(a, line);
+			else if (line[a->p.i] == '\"')
+				d_quote_process(a, line);
+			a->p.start = a->p.i;
+			while (is_space(line[a->p.i]))
 			{
-				i++;
-				start++;
+				a->p.i++;
+				a->p.start++;
 			}
-
-			count = 0;
+			a->p.count = 0;
 			continue ;
 		}
-		count++;
-		i++;
+		a->p.count++;
+		a->p.i++;
 	}
 	//temp = ft_substr(line, start, count);
-	if (line[i - 1] != ' ')
+	if (line[a->p.i - 1] != ' ')
 	{
 		if (!a->command)
-			a->command = ft_substr(line, start, count);
+			a->command = ft_substr(line, a->p.start, a->p.count);
 		else
-			add_argument(a, ft_substr(line, start, count));
+			add_argument(a, ft_substr(line, a->p.start, a->p.count));
 	}
 	//printf("split : %s\n", temp);
 	//env_interpret(a);
@@ -224,6 +217,13 @@ void    init(t_all *a)
     a->arguments = NULL;
 }
 
+void	init_index(t_all *a)
+{
+	a->p.i = 0;
+	a->p.start = 0;
+	a->p.count = 0;
+}
+
 int		main(void)
 {
 	t_all	*a;
@@ -233,6 +233,7 @@ int		main(void)
     init(a);
 	while (1)
 	{
+		init_index(a);
 		get_next_line(0, &line);
 		parsing(a, line);
 		//printf("aadsfsaf%s\n", a->command);
