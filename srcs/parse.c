@@ -76,8 +76,8 @@ void	s_quote_process(t_all *a, char *line)
 	{
 		if (line[a->p.i] == '\0')
 		{
-			printf("small quote why?\n");
-			exit(1);
+			write(1, "> ", 2);
+			while (1);
 		}
 		a->p.count++;
 		a->p.i++;
@@ -100,8 +100,8 @@ void	d_quote_process(t_all *a, char *line)
 	{
 		if (line[a->p.i] == '\0')
 		{
-			printf("why?\n");
-			exit(1);
+			write(1, "> ", 2);
+			while (1);
 		}
 		a->p.count++;
 		a->p.i++;
@@ -122,8 +122,6 @@ int		is_pipe_or_scolon(char c)
 
 int     parsing(t_all *a, char *line)
 {
-	char	*temp;
-
 	while (line[a->p.i] == ' ')
 		a->p.i++;
 	a->p.start = a->p.i;
