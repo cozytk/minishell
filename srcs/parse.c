@@ -2,7 +2,7 @@
 
 int		is_sep_char(char c)
 {
-	if (c == '>' || c == ';' || c == '\'' || c == '\"')
+	if (c == '>' || c == ';')
 		return (1);
 	return (0);
 }
@@ -32,7 +32,6 @@ void	add_argument(t_all *a, char *arg)
 		free(arg);
 		return ;
 	}
-	printf("arg : %s\n", arg);
 	argsize = ft_matrow(a->arguments);
 	new_mat = malloc(sizeof(char *) * (argsize + 2));
 	i = 0;
@@ -57,6 +56,34 @@ int		is_space(char c)
 	if (c == ' ')
 		return (1);
 	return (0);
+}
+
+int		is_quote(char c)
+{
+	if (c == '\'' || c == '\"')
+		return (1);
+	return (0);
+}
+
+void	s_quote_process(t_all *a, char *line, int *i, int *count)
+{
+	int		start;
+
+	(*count) = 0;
+	(*i)++;
+	start = (*i);
+	while (line[*i] != '\'')
+	{
+		if (line[*i] == '\0')
+			exit(1);
+		(*count)++;
+		(*i)++;
+	}
+	if (!a->command)
+		a->command = ft_substr(line, start, (*count));
+	else
+		add_argument(a, ft_substr(line, start, (*count)));
+	(*i)++;
 }
 
 int     parsing(t_all *a, char *line)
@@ -90,8 +117,7 @@ int     parsing(t_all *a, char *line)
 		}
         else if (is_sep_char(line[i]))
         {
-            //printf("i : %d, start : %d, count : %d\n", i, start, count);
-			if (line[i - 1] != ' ')
+			if (line[i - 1] != ' ' && i > 1)
 			{
 				// 그 전에 꺼 집어넣고
 				if (!a->command)
@@ -107,6 +133,30 @@ int     parsing(t_all *a, char *line)
 			count = 0;
 			continue ;
         }
+		else if (is_quote(line[i]))
+		{
+			if (line[i - 1] != ' ' && i > 1)
+			{
+				// 그 전에 꺼 집어넣고
+				if (!a->command)
+					a->command = ft_substr(line, start, count);
+				else
+					add_argument(a, ft_substr(line, start, count));
+			}
+			if (line[i] == '\'')
+				s_quote_process(a, line, &i, &count);
+			//else if (line[i] == '\"')
+				//d_quote_process(a, line, &i, &count);
+			start = i;
+			while (is_space(line[i]))
+			{
+				i++;
+				start++;
+			}
+
+			count = 0;
+			continue ;
+		}
 		count++;
 		i++;
 	}
