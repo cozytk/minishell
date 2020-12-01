@@ -153,5 +153,6 @@ int		main(void)
 		free(a->command);
 		a->command = NULL;
 		free(line);
+	system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	}
 }
