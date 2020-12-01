@@ -86,6 +86,27 @@ void	s_quote_process(t_all *a, char *line, int *i, int *count)
 	(*i)++;
 }
 
+void	d_quote_process(t_all *a, char *line, int *i, int *count)
+{
+	int		start;
+
+	(*count) = 0;
+	(*i)++;
+	start = (*i);
+	while (line[*i] != '\"')
+	{
+		if (line[*i] == '\0')
+			exit(1);
+		(*count)++;
+		(*i)++;
+	}
+	if (!a->command)
+		a->command = ft_substr(line, start, (*count));
+	else
+		add_argument(a, ft_substr(line, start, (*count)));
+	(*i)++;
+}
+
 int     parsing(t_all *a, char *line)
 {
 	int		i;
@@ -145,8 +166,8 @@ int     parsing(t_all *a, char *line)
 			}
 			if (line[i] == '\'')
 				s_quote_process(a, line, &i, &count);
-			//else if (line[i] == '\"')
-				//d_quote_process(a, line, &i, &count);
+			else if (line[i] == '\"')
+				d_quote_process(a, line, &i, &count);
 			start = i;
 			while (is_space(line[i]))
 			{
@@ -169,6 +190,7 @@ int     parsing(t_all *a, char *line)
 			add_argument(a, ft_substr(line, start, count));
 	}
 	//printf("split : %s\n", temp);
+	//env_interpret(a);
 }
 
 void	show_com(t_all *a)
