@@ -16,6 +16,8 @@ void 	ft_free_mat(char **mat)
 {
 	int i;
 
+	if (!mat)
+		return ;
 	i = 0;
 	while (mat[i])
 	{

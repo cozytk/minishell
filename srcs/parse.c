@@ -87,16 +87,29 @@ int     parsing(t_all *a, char *line)
         else if (is_sep_char(line[i]))
         {
             printf("i : %d, start : %d, count : %d\n", i, start, count);
-            add_argument(a, ft_substr(line, start, 1));
+			if (!a->command)
+				a->command = ft_substr(line, start, count);
+			else
+				add_argument(a, ft_substr(line, start, count));
+			start += count;
             count = 1;
+			add_argument(a, ft_substr(line, start, count));
             i++;
+			start++;
+			count = 0;
+			continue ;
         }
 		count++;
 		i++;
 	}
 	temp = ft_substr(line, start, count);
 	if (line[i - 1] != ' ')
-		add_argument(a, temp);
+	{
+		if (!a->command)
+			a->command = temp;
+		else
+			add_argument(a, temp);
+	}
 	else
 		free(temp);
 	//printf("split : %s\n", temp);
@@ -148,11 +161,17 @@ int		main(void)
 		show_com(a);
 		show_arg(a);
         ft_free_mat(a->arguments);
-        free(a->arguments);
-        a->arguments = NULL;
-		free(a->command);
-		a->command = NULL;
+		if (a->arguments)
+		{
+			free(a->arguments);
+			a->arguments = NULL;
+		}
+		if (a->command)
+		{
+			free(a->command);
+			a->command = NULL;
+		}
 		free(line);
-	system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
+		system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	}
 }
