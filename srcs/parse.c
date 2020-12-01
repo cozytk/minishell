@@ -140,11 +140,13 @@ int     parsing(t_all *a, char *line)
 				else
 					add_argument(a, ft_substr(line, a->p.start, a->p.count));
 			}
-			a->p.start += a->p.count;
+			a->p.start = a->p.i;
             a->p.count = 1;
+			if (line[a->p.i] == '>' && line[a->p.i + 1] == '>')
+				a->p.count++;
 			add_argument(a, ft_substr(line, a->p.start, a->p.count));
-            a->p.i++;
-			a->p.start++;
+            a->p.i += a->p.count;
+			a->p.start = a->p.i;
 			a->p.count = 0;
 			continue ;
         }
