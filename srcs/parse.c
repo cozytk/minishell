@@ -123,12 +123,19 @@ void	show_arg(t_all *a)
 	}
 }
 
+void    init(t_all *a)
+{
+    a->command = NULL;
+    a->arguments = NULL;
+}
+
 int		main(void)
 {
 	t_all	*a;
 	char	*line;
 
 	a = malloc(sizeof(t_all) * 1);
+    init(a);
 	while (1)
 	{
 		get_next_line(0, &line);
