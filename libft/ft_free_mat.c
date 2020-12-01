@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 21:00:28 by taekkim           #+#    #+#             */
-/*   Updated: 2020/11/29 21:00:31 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/01 13:38:11 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,4 @@ void 	ft_free_mat(char **mat)
 	}
 	free(mat[i]);
 	mat[i] = (void *)0;
-	free(mat);
-	mat = NULL;
 }

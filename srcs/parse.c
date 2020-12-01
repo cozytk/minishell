@@ -40,6 +40,8 @@ void	add_argument(t_all *a, char *arg)
 			i++;
 		}
 		ft_free_mat(a->arguments);
+        free(a->arguments);
+        a->arguments = NULL;
 	}
 	new_mat[i] = arg;
 	new_mat[i + 1] = NULL;
@@ -101,7 +103,7 @@ int     parsing(t_all *a, char *line)
 
 void	show_com(t_all *a)
 {
-	//printf("%s\n", a->command);
+    write(1, &"==========command==========\n", 28);
 	if (!a->command)
 		return ;
 	write(1, a->command, ft_strlen(a->command));
@@ -113,6 +115,7 @@ void	show_arg(t_all *a)
 	int		i;
 
 	i = 0;
+    write(1, &"!!!!!!!!!!argument!!!!!!!!!!\n", 29);
 	if (!a->arguments)
 		return ;
 	while (a->arguments[i])
@@ -143,6 +146,9 @@ int		main(void)
 		//printf("aadsfsaf%s\n", a->command);
 		show_com(a);
 		show_arg(a);
+        ft_free_mat(a->arguments);
+        free(a->arguments);
+        a->arguments = NULL;
 		free(a->command);
 		a->command = NULL;
 		free(line);
