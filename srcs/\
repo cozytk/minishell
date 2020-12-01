@@ -75,10 +75,7 @@ void	s_quote_process(t_all *a, char *line)
 	while (line[a->p.i] != '\'')
 	{
 		if (line[a->p.i] == '\0')
-		{
-			printf("small quote why?\n");
 			exit(1);
-		}
 		a->p.count++;
 		a->p.i++;
 	}
@@ -96,7 +93,7 @@ void	d_quote_process(t_all *a, char *line)
 	a->p.count = 0;
 	a->p.i++;
 	start = a->p.i;
-	while (line[a->p.i] != '\"')
+	while (line[a->p.i] != '\'')
 	{
 		if (line[a->p.i] == '\0')
 		{
