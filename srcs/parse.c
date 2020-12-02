@@ -256,6 +256,21 @@ void	init_index(t_all *a)
 	a->p.count = 0;
 }
 
+void	free_com_arg(t_all *a)
+{
+	ft_free_mat(a->arguments);
+	if (a->arguments)
+	{
+		free(a->arguments);
+		a->arguments = NULL;
+	}
+	if (a->command)
+	{
+		free(a->command);
+		a->command = NULL;
+	}
+}
+
 int		main(void)
 {
 	t_all	*a;
@@ -270,31 +285,11 @@ int		main(void)
 		parsing(a, line);
 		show_com(a);
 		show_arg(a);
-        ft_free_mat(a->arguments);
-		if (a->arguments)
-		{
-			free(a->arguments);
-			a->arguments = NULL;
-		}
-		if (a->command)
-		{
-			free(a->command);
-			a->command = NULL;
-		}
+		free_com_arg(a);
 		parsing(a, line);
 		show_com(a);
 		show_arg(a);
-        ft_free_mat(a->arguments);
-		if (a->arguments)
-		{
-			free(a->arguments);
-			a->arguments = NULL;
-		}
-		if (a->command)
-		{
-			free(a->command);
-			a->command = NULL;
-		}
+		free_com_arg(a);
 		free(line);
 		system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	}
