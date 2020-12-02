@@ -63,48 +63,116 @@ int		is_quote(char c)
 void	s_quote_process(t_all *a, char *line)
 {
 	int		start;
+	char	*temp;
+	char	*temp2;
+	char	*new;
+	int		end_flag;
 
 	a->p.count = 0;
 	a->p.i++;
 	start = a->p.i;
-	while (line[a->p.i] != '\'')
+	new = ft_strdup("");
+	end_flag = 0;
+	while (line[a->p.i] != '\'' || end_flag == 1)
 	{
+		if (line[a->p.i] == '\\')
+		{
+			temp = ft_strdup(new);
+			temp2 = ft_substr(line, start, a->p.count);
+			free(new);
+			new = NULL;
+			new = ft_strjoin(temp, temp2);
+			free(temp);
+			temp = NULL;
+			free(temp2);
+			temp2 = NULL;
+			a->p.count = 0;
+			a->p.i++;
+			start = a->p.i;
+			end_flag = 1;
+			continue;
+		}
 		if (line[a->p.i] == '\0')
 		{
 			write(1, "> ", 2);
 			while (1);
 		}
+		end_flag = 0;
 		a->p.count++;
 		a->p.i++;
 	}
+	temp = ft_strdup(new);
+	temp2 = ft_substr(line, start, a->p.count);
+	free(new);
+	new = NULL;
+	new = ft_strjoin(temp, temp2);
+	free(temp);
+	temp = NULL;
+	free(temp2);
+	temp2 = NULL;
 	if (!a->command)
-		a->command = ft_substr(line, start, a->p.count);
+		a->command = new;
+		//a->command = ft_substr(line, start, a->p.count);
 	else
-		add_argument(a, ft_substr(line, start, a->p.count));
+		//add_argument(a, ft_substr(line, start, a->p.count));
+		add_argument(a, new);
 	a->p.i++;
 }
 
 void	d_quote_process(t_all *a, char *line)
 {
 	int		start;
+	char	*temp;
+	char	*temp2;
+	char	*new;
+	int		end_flag;
 
 	a->p.count = 0;
 	a->p.i++;
 	start = a->p.i;
-	while (line[a->p.i] != '\"')
+	new = ft_strdup("");
+	end_flag = 0;
+	while (line[a->p.i] != '\"' || end_flag == 1)
 	{
+		if (line[a->p.i] == '\\')
+		{
+			temp = ft_strdup(new);
+			temp2 = ft_substr(line, start, a->p.count);
+			free(new);
+			new = NULL;
+			new = ft_strjoin(temp, temp2);
+			free(temp);
+			temp = NULL;
+			free(temp2);
+			temp2 = NULL;
+			a->p.count = 0;
+			a->p.i++;
+			start = a->p.i;
+			end_flag = 1;
+			continue;
+		}
 		if (line[a->p.i] == '\0')
 		{
 			write(1, "> ", 2);
 			while (1);
 		}
+		end_flag = 0;
 		a->p.count++;
 		a->p.i++;
 	}
+	temp = ft_strdup(new);
+	temp2 = ft_substr(line, start, a->p.count);
+	free(new);
+	new = NULL;
+	new = ft_strjoin(temp, temp2);
+	free(temp);
+	temp = NULL;
+	free(temp2);
+	temp2 = NULL;
 	if (!a->command)
-		a->command = ft_substr(line, start, a->p.count);
+		a->command = new;
 	else
-		add_argument(a, ft_substr(line, start, a->p.count));
+		add_argument(a, new);
 	a->p.i++;
 }
 
