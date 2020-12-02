@@ -231,9 +231,17 @@ int     parsing(t_all *a, char *line)
 	while (is_space(line[a->p.i]))
 		a->p.i++;
 	a->p.start = a->p.i;
+	a->p.back_flag = 0;
 	while (line[a->p.i])
 	{
-		if (is_pipe_or_scolon(line[a->p.i]))
+		if (line[a->p.i] == '\\')
+		{
+			a->p.i++;
+			a->p.start = a->p.i;
+			a->p.count = 0;
+			a->p.back_flag = 1;
+		}
+		if (is_pipe_or_scolon(line[a->p.i]) && a->p.back_flag == 0)
 		{
 			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
 				add_parsed(a, line);
@@ -251,7 +259,7 @@ int     parsing(t_all *a, char *line)
 			a->p.count = 0;
 			continue;
 		}
-        else if (is_sep_char(line[a->p.i]))
+        else if (is_sep_char(line[a->p.i]) && a->p.back_flag == 0)
         {
 			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
 				add_parsed(a, line);
@@ -265,7 +273,7 @@ int     parsing(t_all *a, char *line)
 			a->p.count = 0;
 			continue ;
         }
-		else if (is_quote(line[a->p.i]))
+		else if (is_quote(line[a->p.i]) && a->p.back_flag == 0)
 		{
 			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
 				add_parsed(a, line);
@@ -282,6 +290,7 @@ int     parsing(t_all *a, char *line)
 			a->p.count = 0;
 			continue ;
 		}
+		a->p.back_flag = 0;
 		a->p.count++;
 		a->p.i++;
 	}

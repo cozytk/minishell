@@ -19,6 +19,7 @@ typedef struct		s_parse
 	int		i;
 	int		count;
 	int		start;
+	int		back_flag;
 }					t_parse;
 
 typedef struct		s_all
