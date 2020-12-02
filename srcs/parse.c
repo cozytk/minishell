@@ -135,7 +135,7 @@ void	add_parsed(t_all *a, char *line)
 
 int     parsing(t_all *a, char *line)
 {
-	while (line[a->p.i] == ' ')
+	while (is_space(line[a->p.i]))
 		a->p.i++;
 	a->p.start = a->p.i;
 	while (line[a->p.i])
@@ -152,13 +152,10 @@ int     parsing(t_all *a, char *line)
 		else if (is_space(line[a->p.i]))
 		{
 			add_parsed(a, line);
-			a->p.start += a->p.count;
-			a->p.count = 0;
 			while (is_space(line[a->p.i]))
-			{
 				a->p.i++;
-				a->p.start++;
-			}
+			a->p.start = a->p.i;
+			a->p.count = 0;
 			continue;
 		}
         else if (is_sep_char(line[a->p.i]))
@@ -195,12 +192,9 @@ int     parsing(t_all *a, char *line)
 		a->p.count++;
 		a->p.i++;
 	}
-	//temp = ft_substr(line, start, count);
 	if (line[a->p.i - 1] != ' ')
 		add_parsed(a, line);
 	return (1);
-	//printf("split : %s\n", temp);
-	//env_interpret(a);
 }
 
 void	show_com(t_all *a)
