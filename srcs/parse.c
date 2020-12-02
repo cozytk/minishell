@@ -2,7 +2,7 @@
 
 int		is_sep_char(char c)
 {
-	if (c == '>' || c == ';' || c == '<')
+	if (c == '>' || c == ';' || c == '<' || c == '=')
 		return (1);
 	return (0);
 }
@@ -68,9 +68,14 @@ void	s_quote_process(t_all *a, char *line)
 	char	*new;
 	int		end_flag;
 
-	write(1, "hello\n", 6);
 	a->p.count = 0;
 	a->p.i++;
+	if (line[a->p.i] == '\'')
+	{
+		a->p.i++;
+		a->p.start = a->p.i;
+		return ;
+	}
 	start = a->p.i;
 	new = ft_strdup("");
 	end_flag = 0;
@@ -136,6 +141,12 @@ void	d_quote_process(t_all *a, char *line)
 
 	a->p.count = 0;
 	a->p.i++;
+	if (line[a->p.i] == '\"')
+	{
+		a->p.i++;
+		a->p.start = a->p.i;
+		return ;
+	}
 	start = a->p.i;
 	new = ft_strdup("");
 	end_flag = 0;
