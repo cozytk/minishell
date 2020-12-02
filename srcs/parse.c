@@ -27,11 +27,6 @@ void	add_argument(t_all *a, char *arg)
 	int		i;
 	char	**new_mat;
 
-	if (chk_only_space(arg))
-	{
-		free(arg);
-		return ;
-	}
 	argsize = ft_matrow(a->arguments);
 	new_mat = malloc(sizeof(char *) * (argsize + 2));
 	i = 0;
@@ -120,6 +115,24 @@ int		is_pipe_or_scolon(char c)
 	return (0);
 }
 
+void	add_parsed(t_all *a, char *line)
+{
+	char	*temp;
+
+	temp = ft_substr(line, a->p.start, a->p.count);
+	if (temp[0] == '\0')
+	{
+		free(temp);
+		temp = NULL;
+		return ;
+	}
+	if (!a->command)
+		a->command = temp;
+	else
+		add_argument(a, temp);
+
+}
+
 int     parsing(t_all *a, char *line)
 {
 	while (line[a->p.i] == ' ')
@@ -130,13 +143,7 @@ int     parsing(t_all *a, char *line)
 		if (is_pipe_or_scolon(line[a->p.i]))
 		{
 			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
-			{
-				// 그 전에 꺼 집어넣고
-				if (!a->command)
-					a->command = ft_substr(line, a->p.start, a->p.count);
-				else
-					add_argument(a, ft_substr(line, a->p.start, a->p.count));
-			}
+				add_parsed(a, line);
 			a->p.i++;
 			a->p.start = a->p.i;
 			a->p.count = 0;
@@ -144,12 +151,7 @@ int     parsing(t_all *a, char *line)
 		}
 		else if (is_space(line[a->p.i]))
 		{
-			//temp = ft_substr(line, start, count);
-			//printf("split : %s\n", temp);
-			if (!a->command)
-				a->command = ft_substr(line, a->p.start, a->p.count);
-			else
-				add_argument(a, ft_substr(line, a->p.start, a->p.count));
+			add_parsed(a, line);
 			a->p.start += a->p.count;
 			a->p.count = 0;
 			while (is_space(line[a->p.i]))
@@ -162,13 +164,7 @@ int     parsing(t_all *a, char *line)
         else if (is_sep_char(line[a->p.i]))
         {
 			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
-			{
-				// 그 전에 꺼 집어넣고
-				if (!a->command)
-					a->command = ft_substr(line, a->p.start, a->p.count);
-				else
-					add_argument(a, ft_substr(line, a->p.start, a->p.count));
-			}
+				add_parsed(a, line);
 			a->p.start = a->p.i;
             a->p.count = 1;
 			if (line[a->p.i] == '>' && line[a->p.i + 1] == '>')
@@ -182,13 +178,7 @@ int     parsing(t_all *a, char *line)
 		else if (is_quote(line[a->p.i]))
 		{
 			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
-			{
-				// 그 전에 꺼 집어넣고
-				if (!a->command)
-					a->command = ft_substr(line, a->p.start, a->p.count);
-				else
-					add_argument(a, ft_substr(line, a->p.start, a->p.count));
-			}
+				add_parsed(a, line);
 			if (line[a->p.i] == '\'')
 				s_quote_process(a, line);
 			else if (line[a->p.i] == '\"')
@@ -207,12 +197,7 @@ int     parsing(t_all *a, char *line)
 	}
 	//temp = ft_substr(line, start, count);
 	if (line[a->p.i - 1] != ' ')
-	{
-		if (!a->command)
-			a->command = ft_substr(line, a->p.start, a->p.count);
-		else
-			add_argument(a, ft_substr(line, a->p.start, a->p.count));
-	}
+		add_parsed(a, line);
 	return (1);
 	//printf("split : %s\n", temp);
 	//env_interpret(a);
@@ -223,7 +208,9 @@ void	show_com(t_all *a)
     write(1, &"==========command==========\n", 28);
 	if (!a->command)
 		return ;
+	//write(1, &"\'", 1);
 	write(1, a->command, ft_strlen(a->command));
+	//write(1, &"\'", 1);
 	write(1, &"\n", 1);
 }
 
@@ -237,8 +224,10 @@ void	show_arg(t_all *a)
 		return ;
 	while (a->arguments[i])
 	{
+		//write(1, &"\'", 1);
 		write(1, a->arguments[i], ft_strlen(a->arguments[i]));
-	write(1, &"\n", 1);
+		//write(1, &"\'", 1);
+		write(1, &"\n", 1);
 		i++;
 	}
 }
