@@ -68,6 +68,7 @@ void	s_quote_process(t_all *a, char *line)
 	char	*new;
 	int		end_flag;
 
+	write(1, "hello\n", 6);
 	a->p.count = 0;
 	a->p.i++;
 	start = a->p.i;
@@ -110,6 +111,12 @@ void	s_quote_process(t_all *a, char *line)
 	temp = NULL;
 	free(temp2);
 	temp2 = NULL;
+	if (new[0] == '\0')
+	{
+		free(new);
+		new = NULL;
+		return ;
+	}
 	if (!a->command)
 		a->command = new;
 		//a->command = ft_substr(line, start, a->p.count);
@@ -169,6 +176,13 @@ void	d_quote_process(t_all *a, char *line)
 	temp = NULL;
 	free(temp2);
 	temp2 = NULL;
+	if (new[0] == '\0')
+	{
+		free(new);
+		new = NULL;
+		return ;
+	}
+
 	if (!a->command)
 		a->command = new;
 	else
