@@ -265,14 +265,13 @@ int		main(void)
 	{
 		init_index(a);
 		get_next_line(0, &line);
-		parsing(a, line);
-		show_com(a);
-		show_arg(a);
-		free_com_arg(a);
-		parsing(a, line);
-		show_com(a);
-		show_arg(a);
-		free_com_arg(a);
+		while (line[a->p.i])
+		{
+			parsing(a, line);
+			show_com(a);
+			show_arg(a);
+			free_com_arg(a);
+		}
 		free(line);
 		system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	}
