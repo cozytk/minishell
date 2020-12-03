@@ -18,8 +18,11 @@ typedef struct		s_all
 {
 	char	**env;
 	char	**ept;
+	char 	**arg;
+	int		fd[2];
 }					t_all;
 
+void		bash_cmd_error(char *cmd, char *msg, int exit_code);
 int			export(char *str, t_all *a);
 int 		cd(char *str, t_all *a);
 char		*get_arg(char *str);
