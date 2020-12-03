@@ -30,6 +30,8 @@ typedef struct		s_all
 	char 	**arg;
 	int		fd[2];
 	char	*cmd;
+	int 	redirect;
+	int 	fd_tmp;
 	t_parse	p;
 }					t_all;
 

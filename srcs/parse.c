@@ -14,6 +14,7 @@
 
 void    init(t_all *a)
 {
+//	a->redirect = 0;
 	a->cmd = NULL;
 	a->arg = NULL;
 }

@@ -1,4 +1,4 @@
-#include <minishell.h>
+#include "../inc/minishell.h"
 
 void	bash_error(char *cmd, char *msg, int exit_code)
 {
@@ -30,15 +30,15 @@ int 	more_redirect(t_all *a, int i, int fd)
 int exec_redirect(t_all *a, int i, int opt, int fileno)
 {
 	int		fd;
-	char 	**tmp;
 
 	if (fileno == STDIN_FILENO && (stat(a->arg[i + 1], 0) == -1))
 		bash_error(a->arg[i + 1], " : No such file or directory", 1);
 	fd = open(a->arg[i + 1], opt, 00777);
 	if (more_redirect(a, i, fd))
 		return (0);
+	close(fd);
+//	a->fd_tmp = dup(fileno);
 	dup2(fd, fileno);
-	execve(a->cmd, a->arg, a->env);
 	return (1);
 }
 

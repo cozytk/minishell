@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 20:08:53 by taekkim           #+#    #+#             */
-/*   Updated: 2020/11/30 20:08:54 by taekkim          ###   ########.fr       */
+/*   Updated: 2k20/11/30 20:08:54 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int		cmd_builtin(t_all *a)
 {
 	if (!ft_strncmp("exit\0", a->cmd, 5))
 	{
-		if (a->arg[1])
-			exit(ft_atoi(a->arg[1]));
+		if (a->arg)
+			exit(ft_atoi(a->arg[0]));
 		exit(1);
 	}
 	if (export(a))

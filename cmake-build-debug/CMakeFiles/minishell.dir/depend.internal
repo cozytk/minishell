@@ -46,8 +46,8 @@ CMakeFiles/minishell.dir/srcs/pwd.c.o
  /Users/taekkim/minishell/libft/libft.h
  /Users/taekkim/minishell/srcs/pwd.c
 CMakeFiles/minishell.dir/srcs/redirect.c.o
- ../inc/minishell.h
- ../libft/libft.h
+ /Users/taekkim/minishell/inc/minishell.h
+ /Users/taekkim/minishell/libft/libft.h
  /Users/taekkim/minishell/srcs/redirect.c
 CMakeFiles/minishell.dir/srcs/unset.c.o
  /Users/taekkim/minishell/inc/minishell.h

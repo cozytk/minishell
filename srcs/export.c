@@ -79,6 +79,8 @@ char **ft_delete_row(char **mat, int del)
 	i = -1;
 	j = -1;
 	row = ft_matrow(mat);
+	if (row <= 1)
+		return ((void *)0);
 	if (!(tmp = (char **)malloc(sizeof(char *) * row)))
 		exit(1);
 	while (++j < row)
