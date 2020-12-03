@@ -59,10 +59,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n000cbyw0032zq/T/AppTranslocation/E2B41F6E-39E4-4956-B1E2-1E94B0234A05/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n000cbyw0032zq/T/AppTranslocation/0DF73D82-07D5-4C6F-BA5F-D6EAD9016461/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n000cbyw0032zq/T/AppTranslocation/E2B41F6E-39E4-4956-B1E2-1E94B0234A05/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n000cbyw0032zq/T/AppTranslocation/0DF73D82-07D5-4C6F-BA5F-D6EAD9016461/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -79,7 +79,7 @@ CMAKE_BINARY_DIR = /Users/taekkim/minishell/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n000cbyw0032zq/T/AppTranslocation/E2B41F6E-39E4-4956-B1E2-1E94B0234A05/d/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n000cbyw0032zq/T/AppTranslocation/0DF73D82-07D5-4C6F-BA5F-D6EAD9016461/d/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -90,7 +90,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n000cbyw0032zq/T/AppTranslocation/E2B41F6E-39E4-4956-B1E2-1E94B0234A05/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n000cbyw0032zq/T/AppTranslocation/0DF73D82-07D5-4C6F-BA5F-D6EAD9016461/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -1587,6 +1587,33 @@ srcs/env.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/env.c.s
 .PHONY : srcs/env.c.s
 
+srcs/exit.o: srcs/exit.c.o
+
+.PHONY : srcs/exit.o
+
+# target to build an object file
+srcs/exit.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/exit.c.o
+.PHONY : srcs/exit.c.o
+
+srcs/exit.i: srcs/exit.c.i
+
+.PHONY : srcs/exit.i
+
+# target to preprocess a source file
+srcs/exit.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/exit.c.i
+.PHONY : srcs/exit.c.i
+
+srcs/exit.s: srcs/exit.c.s
+
+.PHONY : srcs/exit.s
+
+# target to generate assembly for a file
+srcs/exit.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/exit.c.s
+.PHONY : srcs/exit.c.s
+
 srcs/export.o: srcs/export.c.o
 
 .PHONY : srcs/export.o
@@ -2080,6 +2107,9 @@ help:
 	@echo "... srcs/env.o"
 	@echo "... srcs/env.i"
 	@echo "... srcs/env.s"
+	@echo "... srcs/exit.o"
+	@echo "... srcs/exit.i"
+	@echo "... srcs/exit.s"
 	@echo "... srcs/export.o"
 	@echo "... srcs/export.i"
 	@echo "... srcs/export.s"

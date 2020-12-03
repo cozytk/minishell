@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell.dir/srcs/chdir.c.o"
   "CMakeFiles/minishell.dir/srcs/echo.c.o"
   "CMakeFiles/minishell.dir/srcs/env.c.o"
+  "CMakeFiles/minishell.dir/srcs/exit.c.o"
   "CMakeFiles/minishell.dir/srcs/export.c.o"
   "CMakeFiles/minishell.dir/srcs/get_next_line.c.o"
   "CMakeFiles/minishell.dir/srcs/get_next_line_utils.c.o"

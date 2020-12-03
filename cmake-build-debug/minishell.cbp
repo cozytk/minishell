@@ -298,6 +298,9 @@
 		<Unit filename="/Users/taekkim/minishell/srcs/env.c">
 			<Option target="minishell"/>
 		</Unit>
+		<Unit filename="/Users/taekkim/minishell/srcs/exit.c">
+			<Option target="minishell"/>
+		</Unit>
 		<Unit filename="/Users/taekkim/minishell/srcs/export.c">
 			<Option target="minishell"/>
 		</Unit>

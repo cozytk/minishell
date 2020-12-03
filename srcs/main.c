@@ -71,27 +71,18 @@ int 	cmd_exec(t_all *a)
 	return (1);
 }
 
-int		cmd_builtin(t_all *a)
+void		cmd_builtin(t_all *a)
 {
-	if (!ft_strncmp("exit\0", a->cmd, 5))
-	{
-		if (a->arg)
-			exit(ft_atoi(a->arg[0]));
-		exit(1);
-	}
-	if (export(a))
-		return (1);
-	else if (cd(a))
-		return (1);
-	else if (pwd(a))
-		return (1);
-	else if (env(a))
-		return (1);
-	else if (unset(a))
-		return (1);
-	else if (echo(a))
-		return (1);
-	return (0);
+	if (!(a->cmd))
+		return (0);
+	ft_exit(a);
+	export(a);
+	cd(a);
+	pwd(a);
+	env(a);
+	unset(a);
+	echo(a);
+	return (1);
 }
 
 int 	main_loop(t_all *a)
@@ -135,7 +126,6 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		parsing(&a, line);
 		main_loop(&a);
-		free_com_arg(&a);
 		free(line);
 		line = (void *)0;
 	}

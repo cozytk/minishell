@@ -23,7 +23,7 @@ add_executable(minishell
         srcs/env.c
         srcs/echo.c
         srcs/chdir.c
-        srcs/init.c)
+        srcs/init.c srcs/exit.c)
 
 add_library(ft STATIC
         libft/ft_atoi.c

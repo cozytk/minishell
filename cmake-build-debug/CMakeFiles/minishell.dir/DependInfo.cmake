@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/taekkim/minishell/srcs/chdir.c" "/Users/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/chdir.c.o"
   "/Users/taekkim/minishell/srcs/echo.c" "/Users/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/echo.c.o"
   "/Users/taekkim/minishell/srcs/env.c" "/Users/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/env.c.o"
+  "/Users/taekkim/minishell/srcs/exit.c" "/Users/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/exit.c.o"
   "/Users/taekkim/minishell/srcs/export.c" "/Users/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/export.c.o"
   "/Users/taekkim/minishell/srcs/get_next_line.c" "/Users/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/get_next_line.c.o"
   "/Users/taekkim/minishell/srcs/get_next_line_utils.c" "/Users/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/get_next_line_utils.c.o"

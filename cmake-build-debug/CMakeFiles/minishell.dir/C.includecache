@@ -38,9 +38,7 @@ unistd.h
 stdlib.h
 -
 
-/Users/taekkim/minishell/srcs/main.c
+/Users/taekkim/minishell/srcs/redirect.c
 ../inc/minishell.h
 /Users/taekkim/minishell/inc/minishell.h
-string.h
--
 
