@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/taekkim/minishell/inc/minishell.h
+../libft/libft.h
+/Users/taekkim/minishell/libft/libft.h
+fcntl.h
+-
+signal.h
+-
+dirent.h
+-
+unistd.h
+-
+stdlib.h
+-
+stdio.h
+-
+sys/wait.h
+-
+sys/stat.h
+-
+sys/errno.h
+-
+
+/Users/taekkim/minishell/libft/libft.h
+string.h
+-
+stdio.h
+-
+unistd.h
+-
+stdlib.h
+-
+
+/Users/taekkim/minishell/srcs/export.c
+../inc/minishell.h
+/Users/taekkim/minishell/inc/minishell.h
+

@@ -12,9 +12,37 @@
 
 #include "../inc/minishell.h"
 
+void    init(t_all *a)
+{
+	a->cmd = NULL;
+	a->arg = NULL;
+}
+
+void	init_index(t_all *a)
+{
+	a->p.i = 0;
+	a->p.start = 0;
+	a->p.count = 0;
+}
+
+void	free_com_arg(t_all *a)
+{
+	ft_free_mat(a->arg);
+	if (a->arg)
+	{
+		free(a->arg);
+		a->arg = NULL;
+	}
+	if (a->cmd)
+	{
+		free(a->cmd);
+		a->cmd = NULL;
+	}
+}
+
 int		is_sep_char(char c)
 {
-	if (c == '>' || c == ';' || c == '<' || c == '=')
+	if (c == '>' || c == ';' || c == '<')
 		return (1);
 	return (0);
 }
@@ -39,23 +67,23 @@ void	add_argument(t_all *a, char *arg)
 	int		i;
 	char	**new_mat;
 
-	argsize = ft_matrow(a->arguments);
+	argsize = ft_matrow(a->arg);
 	new_mat = malloc(sizeof(char *) * (argsize + 2));
 	i = 0;
-	if (a->arguments)
+	if (a->arg)
 	{
-		while (a->arguments[i])
+		while (a->arg[i])
 		{
-			new_mat[i] = ft_strdup(a->arguments[i]);
+			new_mat[i] = ft_strdup(a->arg[i]);
 			i++;
 		}
-		ft_free_mat(a->arguments);
-        free(a->arguments);
-        a->arguments = NULL;
+		ft_free_mat(a->arg);
+        free(a->arg);
+        a->arg = NULL;
 	}
 	new_mat[i] = arg;
 	new_mat[i + 1] = NULL;
-	a->arguments = new_mat;
+	a->arg = new_mat;
 }
 
 int		is_space(char c)
@@ -134,9 +162,9 @@ void	s_quote_process(t_all *a, char *line)
 		new = NULL;
 		return ;
 	}
-	if (!a->command)
-		a->command = new;
-		//a->command = ft_substr(line, start, a->p.count);
+	if (!a->cmd)
+		a->cmd = new;
+		//a->cmd = ft_substr(line, start, a->p.count);
 	else
 		//add_argument(a, ft_substr(line, start, a->p.count));
 		add_argument(a, new);
@@ -206,8 +234,8 @@ void	d_quote_process(t_all *a, char *line)
 		return ;
 	}
 
-	if (!a->command)
-		a->command = new;
+	if (!a->cmd)
+		a->cmd = new;
 	else
 		add_argument(a, new);
 	a->p.i++;
@@ -231,8 +259,8 @@ void	add_parsed(t_all *a, char *line)
 		temp = NULL;
 		return ;
 	}
-	if (!a->command)
-		a->command = temp;
+	if (!a->cmd)
+		a->cmd = temp;
 	else
 		add_argument(a, temp);
 
@@ -240,9 +268,11 @@ void	add_parsed(t_all *a, char *line)
 
 int     parsing(t_all *a, char *line)
 {
+	init(a);
+	init_index(a);
 	while (is_space(line[a->p.i]))
 		a->p.i++;
-	a->p.is_pipe = 0;
+	a->p.pipe = 0;
 	a->p.start = a->p.i;
 	a->p.back_flag = 0;
 	while (line[a->p.i])
@@ -263,7 +293,7 @@ int     parsing(t_all *a, char *line)
 			a->p.start = a->p.i;
 			a->p.count = 0;
 			if (line[a->p.i] == '|')
-				a->p.is_pipe = 1;
+				a->p.pipe = 1;
 			return (0);
 		}
 		else if (is_space(line[a->p.i]))
@@ -321,10 +351,10 @@ int     parsing(t_all *a, char *line)
 void	show_com(t_all *a)
 {
     //write(1, &"==========command==========\n", 28);
-	if (!a->command)
+	if (!a->cmd)
 		return ;
 	//write(1, &"\'", 1);
-	write(1, a->command, ft_strlen(a->command));
+	write(1, a->cmd, ft_strlen(a->cmd));
 	//write(1, &"\'", 1);
 	write(1, &"\n", 1);
 }
@@ -335,42 +365,14 @@ void	show_arg(t_all *a)
 
 	i = 0;
     //write(1, &"!!!!!!!!!!argument!!!!!!!!!!\n", 29);
-	if (!a->arguments)
+	if (!a->arg)
 		return ;
-	while (a->arguments[i])
+	while (a->arg[i])
 	{
 		//write(1, &"\'", 1);
-		write(1, a->arguments[i], ft_strlen(a->arguments[i]));
+		write(1, a->arg[i], ft_strlen(a->arg[i]));
 		//write(1, &"\'", 1);
 		write(1, &"\n", 1);
 		i++;
-	}
-}
-
-void    init(t_all *a)
-{
-    a->command = NULL;
-    a->arguments = NULL;
-}
-
-void	init_index(t_all *a)
-{
-	a->p.i = 0;
-	a->p.start = 0;
-	a->p.count = 0;
-}
-
-void	free_com_arg(t_all *a)
-{
-	ft_free_mat(a->arguments);
-	if (a->arguments)
-	{
-		free(a->arguments);
-		a->arguments = NULL;
-	}
-	if (a->command)
-	{
-		free(a->command);
-		a->command = NULL;
 	}
 }

@@ -12,21 +12,21 @@
 
 #include "../inc/minishell.h"
 
-char 	*get_path(char *str)
-{
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	str = get_arg(str);
-	tmp = malloc(ft_strlen(str) + 1);
-	while (*str && *str == ' ')
-		str++;
-	while (*str && *str != ' ')
-		tmp[i++] = *str++;
-	tmp[i] = '\0';
-	return (tmp);
-}
+//char 	*get_path(t_all *a)
+//{
+//	char	*tmp;
+//	int		i;
+//
+//	i = 0;
+//	str = get_arg(str);
+//	tmp = malloc(ft_strlen(str) + 1);
+//	while (*str && *str == ' ')
+//		str++;
+//	while (*str && *str != ' ')
+//		tmp[i++] = *str++;
+//	tmp[i] = '\0';
+//	return (tmp);
+//}
 
 int 	write_cd_error(char *str)
 {
@@ -35,12 +35,12 @@ int 	write_cd_error(char *str)
 	ft_putchar_fd('\n', 2);
 	return (0);
 }
-int 	exec_cd(char *path, t_all *a)
+int 	exec_cd(t_all *a)
 {
 	int i;
 
 	i = 0;
-	if (*path == '~' && *(path + 1) == '\0')
+	if (!ft_strncmp(a->arg[0], "~\0", 2) && !a->arg[1])
 	{
 		while (a->env[i])
 		{
@@ -54,30 +54,31 @@ int 	exec_cd(char *path, t_all *a)
 				return (0);
 		}
 	}
-	else if (chdir(path) == -1)
-		return (write_cd_error(path));
+	else if (chdir(a->arg[0]) == -1)
+		return (write_cd_error(a->arg[0]));
 	return (0);
 }
 
-void 	parse_cd(char *str, t_all *a)
-{
-	char *path;
+//void 	parse_cd(t_all *a)
+//{
+//	path = get_path(str + 3);
+//	exec_cd(a);
+//}
 
-	path = get_path(str);
-	exec_cd(path, a);
-	free(path);
-}
-
-int 	cd(char *str, t_all *a)
+int 	cd(t_all *a)
 {
-	if (cmd_itself("cd", str))
+	if (!ft_strncmp(a->cmd, "cd\0", 3))
 	{
-		exec_cd("~", a);
-		return (1);
-	}
-	else if (!ft_strncmp(str, "cd ", 3))
-	{
-		parse_cd(str + 3, a);
+		if (!a->arg)
+		{
+			a->arg = malloc(sizeof(char *) * 2);
+			a->arg[0] = ft_strdup("~");
+			a->arg[1] = (void *)0;
+			exec_cd(a);
+			ft_free_mat(a->arg);
+			return (1);
+		}
+		exec_cd(a);
 		return (1);
 	}
 	return (0);

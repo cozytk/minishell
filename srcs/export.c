@@ -55,6 +55,11 @@ void write_quote(char *str)
 	i = -1;
 	while (str[++i] && str[i] != '=')
 		ft_putchar_fd(str[i], 1);
+	if (!ft_strrchr(str, '='))
+	{
+		ft_putchar_fd('\n', 1);
+		return ;
+	}
 	ft_write("=\"");
 	while (str[++i])
 		ft_putchar_fd(str[i], 1);
@@ -123,7 +128,6 @@ void check_overlap(char **mat)
 	int j;
 
 	i = -1;
-	j = -1;
 	while (mat[++i + 1])
 	{
 		j = i;
@@ -135,17 +139,15 @@ void check_overlap(char **mat)
 	}
 }
 
-void edit_env(char *str, t_all *a)
+void edit_env(t_all *a)
 {
-	char	**mat;
 	char	**tmp_m;
 
-	mat = ft_split(get_arg(str), ' ');
-	check_overlap(mat);
-	mat = overwrite_env(mat, a);
-	tmp_m = ft_matjoin(a->env, mat);
+	check_overlap(a->arg);
+	a->arg = overwrite_env(a->arg, a);
+	tmp_m = ft_matjoin(a->env, a->arg);
 	ft_free_mat(a->env);
-	ft_free_mat(mat);
+	ft_free_mat(a->arg);
 	a->env = tmp_m;
 }
 
@@ -163,21 +165,16 @@ void write_export(char **ept)
 	}
 }
 
-int export(char *str, t_all *a)
+int export(t_all *a)
 {
-	if (cmd_itself("export", str))
+	if (!ft_strncmp(a->cmd, "export\0", 7))
 	{
-		write_export(a->ept);
-		return (1);
-	}
-	/*
-	 * export x=y
-	 * export x=y a=b
-	 * 등등 정상적인 케이스로 들어왔다고 가정
-	 */
-	else if (!ft_strncmp(str, "export ", 7))
-	{
-		edit_env(str + 7, a);
+		if (!a->arg)
+		{
+			write_export(a->ept);
+			return (1);
+		}
+		edit_env(a);
 		ft_free_mat(a->ept);
 		init_export(a, a->env);
 		return (1);

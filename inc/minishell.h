@@ -20,7 +20,7 @@ typedef struct		s_parse
 	int		count;
 	int		start;
 	int		back_flag;
-	int		is_pipe;
+	int		pipe;
 }					t_parse;
 
 typedef struct		s_all
@@ -29,23 +29,22 @@ typedef struct		s_all
 	char	**ept;
 	char 	**arg;
 	int		fd[2];
-	char	*command;
-	char	**arguments;
+	char	*cmd;
 	t_parse	p;
 }					t_all;
 
-int			cmd_exec(char *line, t_all *a);
-int			cmd_builtin(char *line, t_all *a);
+int			cmd_exec(t_all *a);
+int			cmd_builtin(t_all *a);
 void		bash_cmd_error(char *cmd, char *msg, int exit_code);
-int			export(char *str, t_all *a);
-int 		cd(char *str, t_all *a);
+int			export(t_all *a);
+int 		cd(t_all *a);
 char		*get_arg(char *str);
-int			echo(char *str);
+int			echo(t_all *a);
 int			cmd_itself(char *cmd, char *str);
-int 		pwd(char *str);
-int		 	env(char *str, t_all *a);
+int 		pwd(t_all *a);
+int		 	env(t_all *a);
 int			keycmp(char *src, char *key);
-int			unset(char *str, t_all *a);
+int			unset(t_all *a);
 void		check_overlap(char **mat);
 char		**ft_delete_row(char **mat, int del);
 int			get_next_line(int fd, char **line);
@@ -58,5 +57,7 @@ void		sort_mat(char **env);
 int     	parsing(t_all *a, char *line);
 int			ft_pipe(t_all *a);
 void		free_com_arg(t_all *a);
+int			redirect(t_all *a);
+int			main_loop(t_all *a);
 
 #endif

@@ -12,40 +12,35 @@
 
 #include "../inc/minishell.h"
 
-void 	write_echo(char *str)
+void 	write_echo(t_all *a)
 {
+	int i;
 	int enter;
 
+	i = 0;
 	enter = 1;
-	while (*str && *str == ' ')
-		str++;
-	if (!ft_strncmp(str, "-n ", 3))
+	while (!ft_strncmp(a->arg[i], "-n", 2))
 	{
 		enter = 0;
-		str += 3;
+		i++;
 	}
-	while (*str)
+	while (a->arg[i])
 	{
-		while (*str && *str == ' ')
-			str++;
-		while (*str && *str != ' ')
-			ft_putchar_fd(*str++, 1);
+		ft_putstr_fd(a->arg[i], 1);
 		ft_putchar_fd(' ', 1);
 	}
 	if (enter)
 		ft_putchar_fd('\n', 1);
 }
 
-int 	echo(char *str)
+int 	echo(t_all *a)
 {
-	if (cmd_itself("echo", str))
+	if (!ft_strncmp(a->cmd, "echo\0", 5))
 	{
-		ft_putchar_fd('\n', 1);
-		return (1);
-	}
-	else if (!ft_strncmp("echo ", str, 5))
-	{
-		write_echo(str + 5);
+		if (!a->arg)
+			ft_putchar_fd('\n', 1);
+		else
+			write_echo(a);
 		return (1);
 	}
 	return (0);

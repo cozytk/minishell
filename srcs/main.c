@@ -35,40 +35,33 @@ char	*get_cmd(char *str)
 	return (ft_strdup(""));
 }
 
-int 	cmd_exec(char *line, t_all *a)
+int 	cmd_exec(t_all *a)
 {
 	char **lines;
-	char *cmd;
 	char *path_cmd;
 	char *path_cmd2;
-	int state;
+	char **tmp;
 	pid_t pid;
 
-	cmd = get_cmd(line);
 	pid = fork();
 	if (pid == 0)
 	{
-		path_cmd = ft_strjoin("/bin/", cmd);
-		path_cmd2 = ft_strjoin("/usr/bin/", cmd);
-		lines = ft_split(line, ' ');
+		path_cmd = ft_strjoin("/bin/", a->cmd);
+		path_cmd2 = ft_strjoin("/usr/bin/", a->cmd);
+		tmp = malloc(sizeof(char *) * 2);
+		tmp[0] = ft_strdup(a->cmd);
+		tmp[1] = (void *)0;
+		lines = ft_matjoin(tmp, a->arg);
 		if ((execve(path_cmd, lines, a->env) == -1) &&
 			execve(path_cmd2, lines, a->env) == -1)
 		{
 			ft_putstr_fd("bash: command not found: ", 2);
-			ft_putendl_fd(cmd, 2);
+			ft_putendl_fd(a->cmd, 2);
 		}
-		exit(1);
-//		free(cmd);
-//		free(path_cmd);
-//		free(path_cmd2);
-//		free(lines);
-//		free(line);
-	}
-	else if (pid > 0)
-	{
-		waitpid(pid, &state, 0);
-		free(cmd);
-		free(line);
+		free(path_cmd);
+		free(path_cmd2);
+		free(lines);
+		exit(0);
 	}
 	else if (pid == -1)
 	{
@@ -78,25 +71,48 @@ int 	cmd_exec(char *line, t_all *a)
 	return (1);
 }
 
-int		cmd_builtin(char *line, t_all *a)
+int		cmd_builtin(t_all *a)
 {
-	if (!ft_strncmp("exit", line, 4))
+	if (!ft_strncmp("exit\0", a->cmd, 5))
+	{
+		if (a->arg[1])
+			exit(ft_atoi(a->arg[1]));
 		exit(1);
-	if (echo(line))
+	}
+	if (export(a))
 		return (1);
-	else if (cd(line, a))
+	else if (cd(a))
 		return (1);
-	else if (pwd(line))
+	else if (pwd(a))
 		return (1);
-	else if (env(line, a))
+	else if (env(a))
 		return (1);
-	else if (unset(line, a))
+	else if (unset(a))
 		return (1);
-	else if (export(line, a))
+	else if (echo(a))
 		return (1);
 	return (0);
 }
 
+int 	main_loop(t_all *a)
+{
+
+	// validate();
+	/*
+	 * export a | grep a
+	 * cmd export
+	 * argument[0] a
+	 * a->p.pipe = 1
+	 */
+	if (a->p.pipe)
+		ft_pipe(a);
+	redirect(a);
+	if (cmd_builtin(a))
+		return (1);
+	if (cmd_exec(a))
+		return (1);
+	return (0);
+}
 
 int main(int argc, char *argv[], char *envp[])
 {
@@ -117,14 +133,9 @@ int main(int argc, char *argv[], char *envp[])
 			free(line);
 			continue;
 		}
-		parsing(a, line);
-		// validate();
-		ft_pipe(a);
-		if (cmd_builtin(line, &a))
-			continue ;
-		if (cmd_exec(line, &a))
-			continue ;
-		free_com_arg(a);
+		parsing(&a, line);
+		main_loop(&a);
+		free_com_arg(&a);
 		free(line);
 		line = (void *)0;
 	}

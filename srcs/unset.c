@@ -12,7 +12,6 @@
 
 #include "../inc/minishell.h"
 
-
 void 	delete_env(char **mat, t_all *a)
 {
 	int i;
@@ -34,23 +33,20 @@ void 	delete_env(char **mat, t_all *a)
 	}
 }
 
-void	parse_unset(char *str, t_all *a)
+void	parse_unset(t_all *a)
 {
-	char	**mat;
-
-	mat = ft_split(get_arg(str), ' ');
-	check_overlap(mat);
-	delete_env(mat, a);
-	ft_free_mat(mat);
+	check_overlap(a->arg);
+	delete_env(a->arg, a);
+	ft_free_mat(a->arg);
 }
 
-int		unset(char *str, t_all *a)
+int		unset(t_all *a)
 {
-	if (cmd_itself("unset", str))
-		return (1);
-	else if (!ft_strncmp("unset ", str, 6))
+	if (!ft_strncmp(a->cmd, "unset\0", 6))
 	{
-		parse_unset(str + 6, a);
+		if (!a->arg)
+			return (1);
+		parse_unset(a);
 		ft_free_mat(a->ept);
 		init_export(a, a->env);
 		return (1);

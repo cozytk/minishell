@@ -15,8 +15,9 @@ int 	ft_pipe(t_all *a)
 		dup2(a->fd[1], STDOUT_FILENO);
 		close(a->fd[0]);
 		close(a->fd[1]);
-		cmd_builtin("export", a);
-		cmd_exec("export", a);
+		redirect(a);
+		cmd_builtin(a);
+		cmd_exec(a);
 		exit(0);
 	}
 	pid2 = fork();
@@ -25,22 +26,15 @@ int 	ft_pipe(t_all *a)
 	else if (pid2 == 0)
 	{
 		dup2(a->fd[1], STDIN_FILENO);
+		main_loop(a);
 		close(a->fd[0]);
 		close(a->fd[1]);
-		cmd_builtin("grep a", a);
-		cmd_exec("grep a", a);
+		redirect(a);
+		cmd_builtin(a);
+		cmd_exec(a);
 		exit(0);
 	}
 	close(a->fd[0]);
 	close(a->fd[1]);
 	return (0);
-}
-
-int main(int argc, char *argv[], char *envp[])
-{
-	t_all a;
-
-	init_env(envp, &a);
-	init_export(&a, a.env);
-	ft_pipe(&a);
 }

@@ -32,7 +32,7 @@ int exec_redirect(t_all *a, int i, int opt, int fileno)
 	int		fd;
 	char 	**tmp;
 
-	if (fileno == STDIN_FILENO && ((stat(a->arg[i + 1] == -1))))
+	if (fileno == STDIN_FILENO && (stat(a->arg[i + 1], 0) == -1))
 		bash_error(a->arg[i + 1], " : No such file or directory", 1);
 	fd = open(a->arg[i + 1], opt, 00777);
 	if (more_redirect(a, i, fd))
@@ -47,19 +47,21 @@ int redirect(t_all *a)
 	int i;
 
 	i = 0;
-	while (a->argv[i])
+	if (!a->arg)
+		return (0);
+	while (a->arg[i])
 	{
-		if (cmd_itself(">", a->argv[i]))
+		if (cmd_itself(">", a->arg[i]))
 		{
 			exec_redirect(a, i, O_WRONLY | O_CREAT | O_TRUNC, 1);
 			return (1);
 		}
-		else if (cmd_itself(">>", a->argv[i]))
+		else if (cmd_itself(">>", a->arg[i]))
 		{
 			exec_redirect(a, i, O_WRONLY | O_CREAT | O_APPEND, 1);
 			return (1);
 		}
-		else if (cmd_itself("<", a->argv[i]))
+		else if (cmd_itself("<", a->arg[i]))
 		{
 			exec_redirect(a, i, O_RDONLY, 0);
 			return (1);

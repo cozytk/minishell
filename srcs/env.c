@@ -24,9 +24,9 @@ void 	write_env(char **env)
 	}
 }
 
-int 	env(char *str, t_all *a)
+int 	env(t_all *a)
 {
-	if (cmd_itself("env", str))
+	if (!ft_strncmp(a->cmd, "env\0", 4))
 	{
 		write_env(a->env);
 		return (1);
