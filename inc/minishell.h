@@ -55,5 +55,8 @@ char		*gnl_strjoin(char *s1, char *s2);
 void		init_env(char **env, t_all *a);
 void		init_export(t_all *all, char **env);
 void		sort_mat(char **env);
+int     	parsing(t_all *a, char *line);
+int			ft_pipe(t_all *a);
+void		free_com_arg(t_all *a);
 
 #endif

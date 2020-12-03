@@ -39,7 +39,6 @@ int exec_redirect(t_all *a, int i, int opt, int fileno)
 		return (0);
 	dup2(fd, fileno);
 	execve(a->cmd, a->arg, a->env);
-	close(fd);
 	return (1);
 }
 

@@ -117,10 +117,15 @@ int main(int argc, char *argv[], char *envp[])
 			free(line);
 			continue;
 		}
+		parsing(a, line);
+		// validate();
+		ft_pipe(a);
 		if (cmd_builtin(line, &a))
 			continue ;
 		if (cmd_exec(line, &a))
 			continue ;
+		free_com_arg(a);
+		free(line);
 		line = (void *)0;
 	}
 	return (0);
