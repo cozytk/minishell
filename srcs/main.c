@@ -35,7 +35,7 @@ char	*get_cmd(char *str)
 	return (ft_strdup(""));
 }
 
-int 	func_exec(char *line, t_all *a)
+int 	cmd_exec(char *line, t_all *a)
 {
 	char **lines;
 	char *cmd;
@@ -78,7 +78,7 @@ int 	func_exec(char *line, t_all *a)
 	return (1);
 }
 
-int		func_builtin(char *line, t_all *a)
+int		cmd_builtin(char *line, t_all *a)
 {
 	if (!ft_strncmp("exit", line, 4))
 		exit(1);
@@ -117,14 +117,12 @@ int main(int argc, char *argv[], char *envp[])
 			free(line);
 			continue;
 		}
-		if (func_builtin(line, &a))
+		if (cmd_builtin(line, &a))
 			continue ;
-		if (func_exec(line, &a))
+		if (cmd_exec(line, &a))
 			continue ;
 		line = (void *)0;
 	}
 	return (0);
 }
-// Created by Taekyun Kim on 11/30/20.
-//
 

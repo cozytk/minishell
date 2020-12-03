@@ -2,26 +2,45 @@
 
 int 	ft_pipe(t_all *a)
 {
-	int fd = open("hello", O_RDWR|O_CREAT, 00777);
-	int fd1;
-	/*pid_t pid;
+	pid_t pid;
+	pid_t pid2;
 
 	if (pipe(a->fd) == -1)
 		bash_cmd_error("pipe", "pipe < 0", 1);
 	pid = fork();
 	if (pid < 0)
-		bash_cmd_error("pid", "pid < 0", 1);*/
-	fd1 = dup(STDOUT_FILENO);
-	dup2(fd, STDOUT_FILENO);
-	export("export", a);
-	dup2()
-	dup2(fd, STDIN_FILENO);
-	execve("/bin/cat", a->arg, a->env);
-	close(fd);
+		bash_cmd_error("pid", "pid < 0", 1);
+	else if (pid == 0)
+	{
+		dup2(a->fd[1], STDOUT_FILENO);
+		close(a->fd[0]);
+		close(a->fd[1]);
+		cmd_builtin("export", a);
+		cmd_exec("export", a);
+		exit(0);
+	}
+	pid2 = fork();
+	if (pid2 < 0)
+		bash_cmd_error("pid", "pid < 0", 1);
+	else if (pid2 == 0)
+	{
+		dup2(a->fd[1], STDIN_FILENO);
+		close(a->fd[0]);
+		close(a->fd[1]);
+		cmd_builtin("grep a", a);
+		cmd_exec("grep a", a);
+		exit(0);
+	}
+	close(a->fd[0]);
+	close(a->fd[1]);
 	return (0);
 }
 
 int main(int argc, char *argv[], char *envp[])
 {
 	t_all a;
+
+	init_env(envp, &a);
+	init_export(&a, a.env);
+	ft_pipe(&a);
 }

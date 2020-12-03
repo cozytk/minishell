@@ -22,6 +22,8 @@ typedef struct		s_all
 	int		fd[2];
 }					t_all;
 
+int			cmd_exec(char *line, t_all *a);
+int			cmd_builtin(char *line, t_all *a);
 void		bash_cmd_error(char *cmd, char *msg, int exit_code);
 int			export(char *str, t_all *a);
 int 		cd(char *str, t_all *a);
