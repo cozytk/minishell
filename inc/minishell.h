@@ -20,6 +20,7 @@ typedef struct		s_parse
 	int		count;
 	int		start;
 	int		back_flag;
+	int		is_pipe;
 }					t_parse;
 
 typedef struct		s_all

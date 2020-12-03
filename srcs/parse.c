@@ -230,6 +230,7 @@ int     parsing(t_all *a, char *line)
 {
 	while (is_space(line[a->p.i]))
 		a->p.i++;
+	a->p.is_pipe = 0;
 	a->p.start = a->p.i;
 	a->p.back_flag = 0;
 	while (line[a->p.i])
@@ -238,8 +239,9 @@ int     parsing(t_all *a, char *line)
 		{
 			a->p.i++;
 			a->p.start = a->p.i;
-			a->p.count = 0;
+			a->p.count = 1;
 			a->p.back_flag = 1;
+			continue;
 		}
 		if (is_pipe_or_scolon(line[a->p.i]) && a->p.back_flag == 0)
 		{
@@ -248,6 +250,8 @@ int     parsing(t_all *a, char *line)
 			a->p.i++;
 			a->p.start = a->p.i;
 			a->p.count = 0;
+			if (line[a->p.i] == '|')
+				a->p.is_pipe = 1;
 			return (0);
 		}
 		else if (is_space(line[a->p.i]))
@@ -290,6 +294,9 @@ int     parsing(t_all *a, char *line)
 			a->p.count = 0;
 			continue ;
 		}
+		else
+		{
+		}
 		a->p.back_flag = 0;
 		a->p.count++;
 		a->p.i++;
@@ -301,7 +308,7 @@ int     parsing(t_all *a, char *line)
 
 void	show_com(t_all *a)
 {
-    write(1, &"==========command==========\n", 28);
+    //write(1, &"==========command==========\n", 28);
 	if (!a->command)
 		return ;
 	//write(1, &"\'", 1);
@@ -315,7 +322,7 @@ void	show_arg(t_all *a)
 	int		i;
 
 	i = 0;
-    write(1, &"!!!!!!!!!!argument!!!!!!!!!!\n", 29);
+    //write(1, &"!!!!!!!!!!argument!!!!!!!!!!\n", 29);
 	if (!a->arguments)
 		return ;
 	while (a->arguments[i])
@@ -353,28 +360,5 @@ void	free_com_arg(t_all *a)
 	{
 		free(a->command);
 		a->command = NULL;
-	}
-}
-
-int		main(void)
-{
-	t_all	*a;
-	char	*line;
-
-	a = malloc(sizeof(t_all) * 1);
-    init(a);
-	while (1)
-	{
-		init_index(a);
-		get_next_line(0, &line);
-		while (line[a->p.i])
-		{
-			parsing(a, line);
-			show_com(a);
-			show_arg(a);
-			free_com_arg(a);
-		}
-		free(line);
-		system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	}
 }
