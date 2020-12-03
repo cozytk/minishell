@@ -17,6 +17,8 @@ int		ft_matrow(char **mat)
 	int row;
 
 	row = 0;
+	if (!mat)
+		return (0);
 	while (mat[row])
 		row++;
 	return (row);
