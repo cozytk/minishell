@@ -12,6 +12,14 @@
 
 #include "../inc/minishell.h"
 
+void	bash_cmd_error(char *cmd, char *msg, int exit_code)
+{
+	ft_putstr_fd("bash: ", 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putendl_fd(msg, 2);
+	exit(exit_code);
+}
+
 int		keycmp(char *src, char *key)
 {
 	int i;
