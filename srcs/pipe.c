@@ -1,22 +1,27 @@
-#include <minishell.h>
+#include "../inc/minishell.h"
 
 int 	ft_pipe(t_all *a)
 {
-	pid_t pid;
+	int fd = open("hello", O_RDWR|O_CREAT, 00777);
+	int fd1;
+	/*pid_t pid;
 
 	if (pipe(a->fd) == -1)
 		bash_cmd_error("pipe", "pipe < 0", 1);
 	pid = fork();
 	if (pid < 0)
-		bash_cmd_error("pid", "pid < 0", 1);
-	dup2(a->fd[1], STDOUT_FILENO);
+		bash_cmd_error("pid", "pid < 0", 1);*/
+	fd1 = dup(STDOUT_FILENO);
+	dup2(fd, STDOUT_FILENO);
+	export("export", a);
+	dup2()
+	dup2(fd, STDIN_FILENO);
+	execve("/bin/cat", a->arg, a->env);
+	close(fd);
+	return (0);
 }
 
 int main(int argc, char *argv[], char *envp[])
 {
-	t_all *a;
-
-	(void)(argv||envp);
-	pipe(a);
-	return (0);
+	t_all a;
 }
