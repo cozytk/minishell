@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:25:55 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/04 20:42:10 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:58:19 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,7 +276,6 @@ int     parsing(t_all *a)
 	a->p.start = a->p.i;
 	while (a->line[a->p.i])
 	{
-		a->p.back_flag = 0;
 		if (a->line[a->p.i] == '\\' && a->line[a->p.i - 1] != '\\')
 		{
 			add_parsed(a, a->line);
@@ -290,7 +289,7 @@ int     parsing(t_all *a)
 			a->p.start = a->p.i;
 			continue;
 		}
-		if (is_pipe_or_scolon(a->line[a->p.i]) && a->p.back_flag == 0)
+		if (is_pipe_or_scolon(a->line[a->p.i]))
 		{
 			if (a->line[a->p.i - 1] != ' ' && a->p.i > 1)
 				add_parsed(a, a->line);
@@ -301,7 +300,7 @@ int     parsing(t_all *a)
 			a->p.count = 0;
 			return (0);
 		}
-        else if (is_sep_char(a->line[a->p.i]) && a->p.back_flag == 0)
+        else if (is_sep_char(a->line[a->p.i]))
         {
 			if (a->line[a->p.i - 1] != ' ' && a->p.i > 1)
 				add_parsed(a, a->line);
@@ -315,7 +314,7 @@ int     parsing(t_all *a)
 			a->p.count = 0;
 			continue ;
         }
-		else if (is_quote(a->line[a->p.i]) && a->p.back_flag == 0)
+		else if (is_quote(a->line[a->p.i]))
 		{
 			if (a->line[a->p.i - 1] != ' ' && a->p.i > 1)
 				add_parsed(a, a->line);
@@ -335,6 +334,7 @@ int     parsing(t_all *a)
 		else if (is_space(a->line[a->p.i]))
 		{
 			add_parsed(a, a->line);
+			quote_join(a);
 			while (is_space(a->line[a->p.i]))
 				a->p.i++;
 			a->p.start = a->p.i;
