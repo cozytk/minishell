@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 20:08:53 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/04 11:49:47 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/12/04 13:58:01 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		parsing(&a, line);
 		main_loop(&a);
+        dup2(a.fd_tmp, 1);
 		free(line);
 		line = (void *)0;
 	}

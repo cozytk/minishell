@@ -17,6 +17,7 @@ void	bash_error(char *cmd, char *msg, int exit_code)
 
 int exec_redirect(t_all *a, int i, int opt, int fileno)
 {
+    struct stat st;
 	a->arg = ft_delete_row(a->arg, i);
 	if (fileno == STDIN_FILENO && (stat(a->arg[i], 0) == -1))
 		bash_error(a->arg[i], " : No such file or directory", 1);
@@ -29,6 +30,7 @@ int exec_redirect(t_all *a, int i, int opt, int fileno)
 	}
 	a->redirect = 1;
 	a->fd_redirect[COPY] = dup(a->fd_redirect[ORIG]);
+    a->fd_tmp = dup(fileno);
 	dup2(a->fd_redirect[ORIG], fileno);
 	return (1);
 }

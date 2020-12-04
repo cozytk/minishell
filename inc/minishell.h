@@ -68,4 +68,6 @@ void	 	reset_fd(t_all *a);
 int 		free_cmd_arg(t_all *a);
 int			ft_exit(t_all *a);
 
+void		show_arg(t_all *a);
+
 #endif
