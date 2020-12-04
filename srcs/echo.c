@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 01:05:27 by taekkim           #+#    #+#             */
-/*   Updated: 2020/11/30 01:05:29 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/04 11:50:30 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void 	write_echo(t_all *a)
 	{
 		ft_putstr_fd(a->arg[i], 1);
 		ft_putchar_fd(' ', 1);
+        i++;
 	}
 	if (enter)
 		ft_putchar_fd('\n', 1);

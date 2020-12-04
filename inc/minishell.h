@@ -39,7 +39,7 @@ typedef struct		s_all
 }					t_all;
 
 int			cmd_exec(t_all *a);
-void		cmd_builtin(t_all *a);
+int			cmd_builtin(t_all *a);
 void		bash_cmd_error(char *cmd, char *msg, int exit_code);
 int			export(t_all *a);
 int 		cd(t_all *a);
@@ -66,5 +66,6 @@ int			redirect(t_all *a);
 int			main_loop(t_all *a);
 void	 	reset_fd(t_all *a);
 int 		free_cmd_arg(t_all *a);
+int			ft_exit(t_all *a);
 
 #endif

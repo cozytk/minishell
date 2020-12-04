@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 20:08:53 by taekkim           #+#    #+#             */
-/*   Updated: 2k20/11/30 20:08:54 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/04 11:49:47 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,14 @@ int 	cmd_exec(t_all *a)
 	return (1);
 }
 
-void		cmd_builtin(t_all *a)
+int     cmd_builtin(t_all *a)
 {
 	if (!(a->cmd))
 		return (0);
 	ft_exit(a);
-	export(a);
-	cd(a);
-	pwd(a);
-	env(a);
-	unset(a);
-	echo(a);
-	return (1);
+    if (export(a) || cd(a) || pwd(a) || env(a) || unset(a) || echo(a))
+	    return (1);
+    return (0);
 }
 
 int 	main_loop(t_all *a)

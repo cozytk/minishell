@@ -6,7 +6,7 @@
 #    By: taekkim <taekkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/27 08:39:47 by taekkim           #+#    #+#              #
-#    Updated: 2020/04/13 20:12:58 by taekkim          ###   ########.fr        #
+#    Updated: 2020/12/04 11:42:34 by taehkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS	=	ft_atoi.c \
 			ft_bzero.c \
 			ft_calloc.c \
 			ft_free_mat.c \
+			ft_free.c \
 			ft_isalnum.c \
 			ft_isalpha.c \
 			ft_isascii.c \
