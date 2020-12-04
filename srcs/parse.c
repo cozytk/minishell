@@ -294,6 +294,7 @@ int     parsing(t_all *a)
 			a->p.i++;
 			a->p.start = a->p.i;
 			a->p.count = 0;
+			a->line += a->p.i;
 			return (0);
 		}
 		else if (is_space(a->line[a->p.i]))

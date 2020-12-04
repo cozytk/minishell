@@ -84,7 +84,7 @@ int     cmd_builtin(t_all *a)
 int 	main_loop(t_all *a)
 {
 	parsing(a);
-	printf("cmd is %s, pipe is %d\n", a->cmd, a->p.pipe);
+	printf("%s %d\n", a->cmd, a->p.pipe);
 	// validate();
 	/*
 	 * export a | grep a
