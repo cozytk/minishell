@@ -70,5 +70,6 @@ int 		free_cmd_arg(t_all *a);
 int			ft_exit(t_all *a);
 
 void		show_arg(t_all *a);
+void		show_com(t_all *a);
 
 #endif

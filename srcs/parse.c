@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:25:55 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/04 15:19:59 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:42:10 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,15 +274,20 @@ int     parsing(t_all *a)
 		a->p.i++;
 	a->p.pipe = 0;
 	a->p.start = a->p.i;
-	a->p.back_flag = 0;
 	while (a->line[a->p.i])
 	{
-		if (a->line[a->p.i] == '\\')
+		a->p.back_flag = 0;
+		if (a->line[a->p.i] == '\\' && a->line[a->p.i - 1] != '\\')
 		{
+			add_parsed(a, a->line);
 			a->p.i++;
-			a->p.start = a->p.i;
 			a->p.count = 1;
 			a->p.back_flag = 1;
+			a->p.start = a->p.i;
+			add_parsed(a, a->line);
+			a->p.count = 0;
+			a->p.i++;
+			a->p.start = a->p.i;
 			continue;
 		}
 		if (is_pipe_or_scolon(a->line[a->p.i]) && a->p.back_flag == 0)
@@ -295,15 +300,6 @@ int     parsing(t_all *a)
 			a->p.start = a->p.i;
 			a->p.count = 0;
 			return (0);
-		}
-		else if (is_space(a->line[a->p.i]))
-		{
-			add_parsed(a, a->line);
-			while (is_space(a->line[a->p.i]))
-				a->p.i++;
-			a->p.start = a->p.i;
-			a->p.count = 0;
-			continue;
 		}
         else if (is_sep_char(a->line[a->p.i]) && a->p.back_flag == 0)
         {
@@ -336,26 +332,33 @@ int     parsing(t_all *a)
 			a->p.count = 0;
 			continue ;
 		}
-		else
+		else if (is_space(a->line[a->p.i]))
 		{
+			add_parsed(a, a->line);
+			while (is_space(a->line[a->p.i]))
+				a->p.i++;
+			a->p.start = a->p.i;
+			a->p.count = 0;
+			continue;
 		}
-		a->p.back_flag = 0;
 		a->p.count++;
 		a->p.i++;
 	}
 	if (a->line[a->p.i - 1] != ' ')
 		add_parsed(a, a->line);
+	show_com(a);
+	show_arg(a);
 	return (1);
 }
 
 void	show_com(t_all *a)
 {
-    //write(1, &"==========command==========\n", 28);
+    write(1, &"==========command==========\n", 28);
 	if (!a->cmd)
 		return ;
-	//write(1, &"\'", 1);
+	write(1, &"[", 1);
 	write(1, a->cmd, ft_strlen(a->cmd));
-	//write(1, &"\'", 1);
+	write(1, &"]", 1);
 	write(1, &"\n", 1);
 }
 
@@ -364,15 +367,16 @@ void	show_arg(t_all *a)
 	int		i;
 
 	i = 0;
-    //write(1, &"!!!!!!!!!!argument!!!!!!!!!!\n", 29);
 	if (!a->arg)
 		return ;
+    write(1, &"!!!!!!!!!!argument!!!!!!!!!!\n", 29);
 	while (a->arg[i])
 	{
-		//write(1, &"\'", 1);
+		write(1, &"[", 1);
 		write(1, a->arg[i], ft_strlen(a->arg[i]));
-		//write(1, &"\'", 1);
+		write(1, &"]", 1);
 		write(1, &"\n", 1);
 		i++;
 	}
+	printf("!!!!!!!!!!!argument end!!!!!!!!!!!!\n");
 }
