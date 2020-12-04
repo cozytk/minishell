@@ -259,10 +259,22 @@ void	quote_join(t_all *a)
 	//printf("%d\n", ft_strncmp(str, "\"\0", 2));
 	if (size >= 2)
 	{
-		if (a->arg[size - 2][ft_strlen(a->arg[size - 2]) - 1] == '\"'
-			|| a->arg[size - 1][ft_strlen(a->arg[size - 1]) - 1] == '\"')
+		if (a->arg[size - 2][0] == '\\' &&
+				a->arg[size - 1][0] == '\\')
 		{
-			add_argument(a, ft_strjoin(a->arg[size - 2], a->arg[size - 1]));
+			add_argument(a, ft_strjoin(&a->arg[size - 2][1], &a->arg[size - 1][1]));
+			a->arg = ft_delete_row(a->arg, size - 1);
+			a->arg = ft_delete_row(a->arg, size - 2);
+		}
+		else if (a->arg[size - 2][0] == '\\')
+		{
+			add_argument(a, ft_strjoin(&a->arg[size - 2][1], a->arg[size - 1]));
+			a->arg = ft_delete_row(a->arg, size - 1);
+			a->arg = ft_delete_row(a->arg, size - 2);
+		}
+		else if (a->arg[size - 1][0] == '\\')
+		{
+			add_argument(a, ft_strjoin(a->arg[size - 2], &a->arg[size - 1][1]));
 			a->arg = ft_delete_row(a->arg, size - 1);
 			a->arg = ft_delete_row(a->arg, size - 2);
 		}
@@ -285,9 +297,8 @@ void	add_parsed(t_all *a, char *line)
 		a->cmd = temp;
 	else
 		add_argument(a, temp);
-	if (line[a->p.start - 1] != ' '
-		|| !(line[a->p.start - 1] == '\\' && line[a->p.start - 2] == ' '))
-		quote_join(a);
+	//if (line[a->p.start - 1] != ' ')
+		//quote_join(a);
 }
 
 
@@ -303,13 +314,11 @@ int     parsing(t_all *a)
 		if (a->line[a->p.i] == '\\' && a->line[a->p.i - 1] != '\\')
 		{
 			add_parsed(a, a->line);
-			a->p.i++;
-			a->p.count = 1;
-			a->p.back_flag = 1;
-			a->p.start = a->p.i;
+			a->p.start += a->p.count;
+			a->p.count = 2;
 			add_parsed(a, a->line);
 			a->p.count = 0;
-			a->p.i++;
+			a->p.i += 2;
 			a->p.start = a->p.i;
 			continue;
 		}
@@ -370,7 +379,7 @@ int     parsing(t_all *a)
 	if (a->line[a->p.i - 1] != ' ')
 		add_parsed(a, a->line);
 	//show_com(a);
-	//show_arg(a);
+	show_arg(a);
 	return (1);
 }
 
