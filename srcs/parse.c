@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:25:55 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/03 19:25:57 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/04 15:19:59 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,8 +274,6 @@ int     parsing(t_all *a)
 	init_index(a);
 	while (is_space(a->line[a->p.i]))
 		a->p.i++;
-	a->p.pipe = 0;
-	a->p.start = a->p.i;
 	a->p.back_flag = 0;
 	while (a->line[a->p.i])
 	{
@@ -347,6 +345,7 @@ int     parsing(t_all *a)
 	}
 	if (a->line[a->p.i - 1] != ' ')
 		add_parsed(a, a->line);
+	a->line += a->p.i;
 	return (1);
 }
 
