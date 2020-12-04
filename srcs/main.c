@@ -34,7 +34,6 @@ char	*get_cmd(char *str)
 		return (strndup(str, i));
 	return (ft_strdup(""));
 }
-
 int 	cmd_exec(t_all *a)
 {
 	char **lines;
@@ -55,8 +54,9 @@ int 	cmd_exec(t_all *a)
 		if ((execve(path_cmd, lines, a->env) == -1) &&
 			execve(path_cmd2, lines, a->env) == -1)
 		{
-			ft_putstr_fd("bash: command not found: ", 2);
-			ft_putendl_fd(a->cmd, 2);
+			ft_putstr_fd("bash: ", 2);
+			ft_putstr_fd(a->cmd, 2);
+			ft_putendl_fd(": command not found", 2);
 		}
 		free(path_cmd);
 		free(path_cmd2);

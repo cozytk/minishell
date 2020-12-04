@@ -1,11 +1,11 @@
 #include "../inc/minishell.h"
 
-void	bash_error(char *cmd, char *msg, int exit_code)
+void	bash_error(char *cmd)
 {
 	ft_putstr_fd("bash: ", 2);
 	ft_putstr_fd(cmd, 2);
-	ft_putendl_fd(msg, 2);
-	exit(exit_code);
+	ft_putchar_fd(' ', 2);
+	ft_putendl_fd(strerror(errno), 2);
 }
 
 int exec_redirect(t_all *a, int i, int opt, int fileno)
@@ -16,7 +16,10 @@ int exec_redirect(t_all *a, int i, int opt, int fileno)
     a->fileno = fileno;
 	a->arg = ft_delete_row(a->arg, i);
 	if (fileno == STDIN_FILENO && (stat(a->arg[i], &st) == -1))
-		bash_error(a->arg[i], " : No such file or directory", 1);
+	{
+		bash_error(a->arg[i]);
+		return (0);
+	}
 	file_fd = open(a->arg[i], opt, 00777);
 	a->arg = ft_delete_row(a->arg, i);
 	if (redirect(a))

@@ -44,3 +44,7 @@ stdlib.h
 string.h
 -
 
+/Users/taekkim/minishell/srcs/redirect.c
+../inc/minishell.h
+/Users/taekkim/minishell/inc/minishell.h
+
