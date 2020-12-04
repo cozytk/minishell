@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:25:55 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/04 22:04:32 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/12/04 22:06:45 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,7 +286,7 @@ void	add_parsed(t_all *a, char *line)
 	else
 		add_argument(a, temp);
 	if (line[a->p.start - 1] != ' '
-		|| (line[a->p.start - 1] == '\\' && line[a->p.start - 2] != ' '))
+		|| !(line[a->p.start - 1] == '\\' && line[a->p.start - 2] == ' '))
 		quote_join(a);
 }
 
