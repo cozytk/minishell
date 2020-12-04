@@ -68,6 +68,7 @@ int 	cmd_exec(t_all *a)
 		printf("%s\n", strerror(errno));
 		exit(1);
 	}
+	waitpid(pid, 0, 0);
 	return (1);
 }
 
@@ -116,6 +117,11 @@ int main(int argc, char *argv[], char *envp[])
 	init_export(a, a->env);
 	while (ft_write(INIT) && get_next_line(0, &(a->line)) > 0)
 	{
+		if (!a->line[0])
+		{
+			free(a->line);
+			continue ;
+		}
 		tmp = a->line;
 		init(a);
 		init_index(a);
