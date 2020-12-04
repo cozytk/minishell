@@ -17,21 +17,22 @@ void	bash_error(char *cmd, char *msg, int exit_code)
 
 int exec_redirect(t_all *a, int i, int opt, int fileno)
 {
-    struct stat st;
+    int     file_fd;
+
+    a->fileno = fileno;
 	a->arg = ft_delete_row(a->arg, i);
 	if (fileno == STDIN_FILENO && (stat(a->arg[i], 0) == -1))
 		bash_error(a->arg[i], " : No such file or directory", 1);
-	a->fd_redirect[ORIG] = open(a->arg[i], opt, 00777);
+	file_fd = open(a->arg[i], opt, 00777);
 	a->arg = ft_delete_row(a->arg, i);
 	if (redirect(a))
 	{
-		close(a->fd_redirect[ORIG]);
+		close(file_fd);
 		return (0);
 	}
 	a->redirect = 1;
-	a->fd_redirect[COPY] = dup(a->fd_redirect[ORIG]);
-    a->fd_tmp = dup(fileno);
-	dup2(a->fd_redirect[ORIG], fileno);
+    a->fd_tmp = dup(a->fileno);
+	dup2(file_fd, a->fileno);
 	return (1);
 }
 
@@ -46,17 +47,17 @@ int redirect(t_all *a)
 	{
 		if (cmd_itself(">", a->arg[i]))
 		{
-			exec_redirect(a, i, O_WRONLY | O_CREAT | O_TRUNC, 1);
+			exec_redirect(a, i, O_WRONLY | O_CREAT | O_TRUNC, STDOUT_FILENO);
 			return (1);
 		}
 		else if (cmd_itself(">>", a->arg[i]))
 		{
-			exec_redirect(a, i, O_WRONLY | O_CREAT | O_APPEND, 1);
+			exec_redirect(a, i, O_WRONLY | O_CREAT | O_APPEND, STDOUT_FILENO);
 			return (1);
 		}
 		else if (cmd_itself("<", a->arg[i]))
 		{
-			exec_redirect(a, i, O_RDONLY, 0);
+			exec_redirect(a, i, O_RDONLY, STDIN_FILENO);
 			return (1);
 		}
 		i++;

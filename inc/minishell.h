@@ -33,6 +33,7 @@ typedef struct		s_all
 	int		fd[2];
 	int		fd_redirect[2];
 	char	*cmd;
+	int		fileno;
 	int 	redirect;
 	int 	fd_tmp;
 	t_parse	p;
