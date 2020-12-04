@@ -27,9 +27,12 @@ int 	ft_pipe(t_all *a)
 		bash_cmd_error("pid", "pid < 0", 1);
 	else if (pid2 == 0)
 	{
-		dup2(a->fd[1], STDIN_FILENO);
+		dup2(a->fd[0], STDIN_FILENO);
 		close(a->fd[0]);
 		close(a->fd[1]);
+		/*
+		 * only one pipe
+		 */
 		main_loop(a);
 		exit(0);
 	}

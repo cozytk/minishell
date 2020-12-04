@@ -24,6 +24,7 @@ void	init_index(t_all *a)
 	a->p.i = 0;
 	a->p.start = 0;
 	a->p.count = 0;
+	a->p.pipe = 0;
 }
 
 void	free_com_arg(t_all *a)

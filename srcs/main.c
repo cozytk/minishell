@@ -84,6 +84,7 @@ int     cmd_builtin(t_all *a)
 int 	main_loop(t_all *a)
 {
 	parsing(a);
+	printf("cmd is %s, pipe is %d\n", a->cmd, a->p.pipe);
 	// validate();
 	/*
 	 * export a | grep a
@@ -92,7 +93,10 @@ int 	main_loop(t_all *a)
 	 * a->p.pipe = 1
 	 */
 	if (a->p.pipe)
+	{
 		ft_pipe(a);
+		return (0); //no more pipe
+	}
 	redirect(a);
 	if (cmd_builtin(a))
 		return (1);
@@ -104,6 +108,7 @@ int 	main_loop(t_all *a)
 int main(int argc, char *argv[], char *envp[])
 {
 	t_all *a;
+	char *tmp;
 	(void)argc;
 	(void)argv;
 
@@ -114,11 +119,12 @@ int main(int argc, char *argv[], char *envp[])
 	init_export(a, a->env);
 	while (ft_write(INIT) && get_next_line(0, &(a->line)) > 0)
 	{
+		tmp = a->line;
 		main_loop(a);
 		if (a->redirect)
 			dup2(a->fd_tmp, a->fileno);
-		free(a->line);
-		a->line = (void *)0;
+		free(tmp);
+		tmp = (void *)0;
 	}
 	return (0);
 }

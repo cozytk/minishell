@@ -38,7 +38,9 @@ unistd.h
 stdlib.h
 -
 
-/Users/taekkim/minishell/srcs/parse.c
+/Users/taekkim/minishell/srcs/main.c
 ../inc/minishell.h
 /Users/taekkim/minishell/inc/minishell.h
+string.h
+-
 
