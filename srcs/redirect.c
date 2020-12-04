@@ -1,12 +1,5 @@
 #include "../inc/minishell.h"
 
-void 	reset_fd(t_all *a)
-{
-	dup2(a->fd_redirect[ORIG], a->fd_redirect[COPY]);
-	close(a->fd_redirect[ORIG]);
-	close(a->fd_redirect[COPY]);
-}
-
 void	bash_error(char *cmd, char *msg, int exit_code)
 {
 	ft_putstr_fd("bash: ", 2);

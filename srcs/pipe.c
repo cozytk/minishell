@@ -16,8 +16,10 @@ int 	ft_pipe(t_all *a)
 		close(a->fd[0]);
 		close(a->fd[1]);
 		redirect(a);
-		cmd_builtin(a);
-		cmd_exec(a);
+		if (cmd_builtin(a))
+			return (1);
+		if (cmd_exec(a))
+			return (1);
 		exit(0);
 	}
 	pid2 = fork();
@@ -26,12 +28,9 @@ int 	ft_pipe(t_all *a)
 	else if (pid2 == 0)
 	{
 		dup2(a->fd[1], STDIN_FILENO);
-		main_loop(a);
 		close(a->fd[0]);
 		close(a->fd[1]);
-		redirect(a);
-		cmd_builtin(a);
-		cmd_exec(a);
+		main_loop(a);
 		exit(0);
 	}
 	close(a->fd[0]);

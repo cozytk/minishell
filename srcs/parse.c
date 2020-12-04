@@ -267,18 +267,18 @@ void	add_parsed(t_all *a, char *line)
 
 }
 
-int     parsing(t_all *a, char *line)
+int     parsing(t_all *a)
 {
 	init(a);
 	init_index(a);
-	while (is_space(line[a->p.i]))
+	while (is_space(a->line[a->p.i]))
 		a->p.i++;
 	a->p.pipe = 0;
 	a->p.start = a->p.i;
 	a->p.back_flag = 0;
-	while (line[a->p.i])
+	while (a->line[a->p.i])
 	{
-		if (line[a->p.i] == '\\')
+		if (a->line[a->p.i] == '\\')
 		{
 			a->p.i++;
 			a->p.start = a->p.i;
@@ -286,50 +286,50 @@ int     parsing(t_all *a, char *line)
 			a->p.back_flag = 1;
 			continue;
 		}
-		if (is_pipe_or_scolon(line[a->p.i]) && a->p.back_flag == 0)
+		if (is_pipe_or_scolon(a->line[a->p.i]) && a->p.back_flag == 0)
 		{
-			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
-				add_parsed(a, line);
+			if (a->line[a->p.i - 1] != ' ' && a->p.i > 1)
+				add_parsed(a, a->line);
+			if (a->line[a->p.i] == '|')
+				a->p.pipe = 1;
 			a->p.i++;
 			a->p.start = a->p.i;
 			a->p.count = 0;
-			if (line[a->p.i] == '|')
-				a->p.pipe = 1;
 			return (0);
 		}
-		else if (is_space(line[a->p.i]))
+		else if (is_space(a->line[a->p.i]))
 		{
-			add_parsed(a, line);
-			while (is_space(line[a->p.i]))
+			add_parsed(a, a->line);
+			while (is_space(a->line[a->p.i]))
 				a->p.i++;
 			a->p.start = a->p.i;
 			a->p.count = 0;
 			continue;
 		}
-        else if (is_sep_char(line[a->p.i]) && a->p.back_flag == 0)
+        else if (is_sep_char(a->line[a->p.i]) && a->p.back_flag == 0)
         {
-			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
-				add_parsed(a, line);
+			if (a->line[a->p.i - 1] != ' ' && a->p.i > 1)
+				add_parsed(a, a->line);
 			a->p.start = a->p.i;
             a->p.count = 1;
-			if (line[a->p.i] == '>' && line[a->p.i + 1] == '>')
+			if (a->line[a->p.i] == '>' && a->line[a->p.i + 1] == '>')
 				a->p.count++;
-			add_argument(a, ft_substr(line, a->p.start, a->p.count));
+			add_argument(a, ft_substr(a->line, a->p.start, a->p.count));
             a->p.i += a->p.count;
 			a->p.start = a->p.i;
 			a->p.count = 0;
 			continue ;
         }
-		else if (is_quote(line[a->p.i]) && a->p.back_flag == 0)
+		else if (is_quote(a->line[a->p.i]) && a->p.back_flag == 0)
 		{
-			if (line[a->p.i - 1] != ' ' && a->p.i > 1)
-				add_parsed(a, line);
-			if (line[a->p.i] == '\'')
-				s_quote_process(a, line);
-			else if (line[a->p.i] == '\"')
-				d_quote_process(a, line);
+			if (a->line[a->p.i - 1] != ' ' && a->p.i > 1)
+				add_parsed(a, a->line);
+			if (a->line[a->p.i] == '\'')
+				s_quote_process(a, a->line);
+			else if (a->line[a->p.i] == '\"')
+				d_quote_process(a, a->line);
 			a->p.start = a->p.i;
-			while (is_space(line[a->p.i]))
+			while (is_space(a->line[a->p.i]))
 			{
 				a->p.i++;
 				a->p.start++;
@@ -344,8 +344,8 @@ int     parsing(t_all *a, char *line)
 		a->p.count++;
 		a->p.i++;
 	}
-	if (line[a->p.i - 1] != ' ')
-		add_parsed(a, line);
+	if (a->line[a->p.i - 1] != ' ')
+		add_parsed(a, a->line);
 	return (1);
 }
 

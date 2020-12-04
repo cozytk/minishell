@@ -45,7 +45,7 @@ char	*get_arg(char *str)
 		return ((void *)0);
 	while (str[i] && str[i] == ' ')
 		i++;
-	if (i == ft_strlen(str))
+	if (i == (int)ft_strlen(str))
 		exit(1);
 	return (str + i);
 }

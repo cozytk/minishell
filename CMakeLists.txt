@@ -3,6 +3,7 @@ project(minishell)
 
 set(CMAKE_CXX_STANDARD 14)
 
+ADD_COMPILE_OPTIONS(-Wall -Wextra -Werror)
 include_directories(inc)
 include_directories(libft)
 

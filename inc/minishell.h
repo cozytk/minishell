@@ -13,8 +13,6 @@
 # include <sys/errno.h>
 
 # define INIT "bash-3.2$ "
-# define ORIG 0
-# define COPY 1
 
 typedef struct		s_parse
 {
@@ -31,8 +29,8 @@ typedef struct		s_all
 	char	**ept;
 	char 	**arg;
 	int		fd[2];
-	int		fd_redirect[2];
 	char	*cmd;
+	char 	*line;
 	int		fileno;
 	int 	redirect;
 	int 	fd_tmp;
@@ -60,7 +58,7 @@ char		*gnl_strjoin(char *s1, char *s2);
 void		init_env(char **env, t_all *a);
 void		init_export(t_all *all, char **env);
 void		sort_mat(char **env);
-int     	parsing(t_all *a, char *line);
+int     	parsing(t_all *a);
 int			ft_pipe(t_all *a);
 void		free_com_arg(t_all *a);
 int			redirect(t_all *a);

@@ -83,7 +83,7 @@ int     cmd_builtin(t_all *a)
 
 int 	main_loop(t_all *a)
 {
-
+	parsing(a);
 	// validate();
 	/*
 	 * export a | grep a
@@ -103,29 +103,44 @@ int 	main_loop(t_all *a)
 
 int main(int argc, char *argv[], char *envp[])
 {
-	t_all a;
-	char *line;
+	t_all *a;
 	(void)argc;
 	(void)argv;
 
+	a = malloc(sizeof(t_all));
 	signal(SIGINT, sig_handle);
 	signal(SIGQUIT, sig_handle);
-	init_env(envp, &a);
-	init_export(&a, a.env);
-	while (ft_write(INIT) && get_next_line(0, &line) > 0)
+	init_env(envp, a);
+	init_export(a, a->env);
+	while (ft_write(INIT) && get_next_line(0, &(a->line)) > 0)
 	{
-		if (*line == '\0')
-		{
-			line = (void *)0;
-			free(line);
-			continue;
-		}
-		parsing(&a, line);
-		main_loop(&a);
-        dup2(a.fd_tmp, a.fileno);
-		free(line);
-		line = (void *)0;
+		main_loop(a);
+		if (a->redirect)
+			dup2(a->fd_tmp, a->fileno);
+		free(a->line);
+		a->line = (void *)0;
 	}
 	return (0);
 }
-
+//
+//int main(int argc, char *argv[], char *envp[])
+//{
+//	t_all a;
+//	(void)argc;
+//	(void)argv;
+//
+//	signal(SIGINT, sig_handle);
+//	signal(SIGQUIT, sig_handle);
+//	init_env(envp, &a);
+//	init_export(&a, a.env);
+//	while (ft_write(INIT) && get_next_line(0, &a.line) > 0)
+//	{
+//		main_loop(&a);
+//		if (a.redirect)
+//       		dup2(a.fd_tmp, a.fileno);
+//		free(a.line);
+//		a.line = (void *)0;
+//	}
+//	return (0);
+//}
+//
