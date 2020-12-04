@@ -17,11 +17,12 @@ void	bash_error(char *cmd, char *msg, int exit_code)
 
 int exec_redirect(t_all *a, int i, int opt, int fileno)
 {
-    int     file_fd;
+    int			file_fd;
+    struct		stat st;
 
     a->fileno = fileno;
 	a->arg = ft_delete_row(a->arg, i);
-	if (fileno == STDIN_FILENO && (stat(a->arg[i], 0) == -1))
+	if (fileno == STDIN_FILENO && (stat(a->arg[i], &st) == -1))
 		bash_error(a->arg[i], " : No such file or directory", 1);
 	file_fd = open(a->arg[i], opt, 00777);
 	a->arg = ft_delete_row(a->arg, i);

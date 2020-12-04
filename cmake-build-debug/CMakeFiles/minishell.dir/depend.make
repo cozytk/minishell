@@ -13,6 +13,10 @@ CMakeFiles/minishell.dir/srcs/env.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/env.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/env.c.o: ../srcs/env.c
 
+CMakeFiles/minishell.dir/srcs/exit.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/exit.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/exit.c.o: ../srcs/exit.c
+
 CMakeFiles/minishell.dir/srcs/export.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/export.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/export.c.o: ../srcs/export.c
