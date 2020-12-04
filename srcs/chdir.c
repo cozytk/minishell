@@ -34,6 +34,22 @@ int 	write_cd_error(char *str)
 	ft_putchar_fd('\n', 2);
 	return (0);
 }
+
+//int 	change_env(t_all *a)
+//{
+//	if (a->arg[0][0] == '/')
+//	{
+//		;
+//	}
+//	else if (!ft_strncmp(a->arg[0], "..\0", 3))
+//		;
+//	else if (a->arg[0][0] == '.' && !a->arg[0][1])
+//		;
+//	else if (a->arg[0][0] == '~' && !a->arg[0][1])
+//		;
+//	else
+//}
+
 int 	exec_cd(t_all *a)
 {
 	int i;

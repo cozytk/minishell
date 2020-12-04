@@ -12,6 +12,42 @@
 
 #include "../inc/minishell.h"
 
+char	**add_row(char **mat, char *arg)
+{
+	int		argsize;
+	int		i;
+	char	**new_mat;
+
+	if (!mat)
+		return ((void *)0);
+	argsize = ft_matrow(mat);
+	new_mat = malloc(sizeof(char *) * (argsize + 2));
+	i = 0;
+	while (mat[i])
+	{
+		new_mat[i] = ft_strdup(mat[i]);
+		i++;
+	}
+	ft_free_mat(mat);
+	new_mat[i] = arg;
+	new_mat[i + 1] = NULL;
+	return (new_mat);
+}
+
+int 	find_row(char **mat, char *s)
+{
+	int i;
+
+	i = 0;
+	while (mat[i])
+	{
+		if (!ft_strncmp(mat[i], s, ft_strlen(s)))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	bash_cmd_error(char *cmd, char *msg, int exit_code)
 {
 	ft_putstr_fd("bash: ", 2);

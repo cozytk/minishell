@@ -31,6 +31,7 @@ typedef struct		s_all
 	int		fd[2];
 	char	*cmd;
 	char 	*line;
+	char	*homepath;
 	int		fileno;
 	int 	redirect;
 	int 	fd_tmp;
@@ -68,6 +69,9 @@ int			main_loop(t_all *a);
 void	 	reset_fd(t_all *a);
 int 		free_cmd_arg(t_all *a);
 int			ft_exit(t_all *a);
+int 		find_row(char **mat, char *s);
+void		add_argument(t_all *a, char *arg);
+char		**add_row(char **mat, char *arg);
 
 void		show_arg(t_all *a);
 void		show_com(t_all *a);
