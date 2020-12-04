@@ -84,7 +84,6 @@ int     cmd_builtin(t_all *a)
 int 	main_loop(t_all *a)
 {
 	parsing(a);
-	printf("%s %d\n", a->cmd, a->p.pipe);
 	// validate();
 	/*
 	 * export a | grep a
@@ -120,6 +119,8 @@ int main(int argc, char *argv[], char *envp[])
 	while (ft_write(INIT) && get_next_line(0, &(a->line)) > 0)
 	{
 		tmp = a->line;
+		init(a);
+		init_index(a);
 		main_loop(a);
 		if (a->redirect)
 			dup2(a->fd_tmp, a->fileno);

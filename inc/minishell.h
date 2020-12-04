@@ -37,6 +37,8 @@ typedef struct		s_all
 	t_parse	p;
 }					t_all;
 
+void		init(t_all *a);
+void		init_index(t_all *a);
 int			cmd_exec(t_all *a);
 int			cmd_builtin(t_all *a);
 void		bash_cmd_error(char *cmd, char *msg, int exit_code);

@@ -33,6 +33,7 @@ int 	ft_pipe(t_all *a)
 		/*
 		 * only one pipe
 		 */
+		free_com_arg(a);
 		main_loop(a);
 		exit(0);
 	}
