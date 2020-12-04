@@ -91,16 +91,13 @@ void 	update_pwd(t_all *a)
 	if (!a->cd)
 		return;
 	i = find_row(a->env, "OLDPWD");
-	if (i == 0)
-	{
-		a->env = add_row(a->env, ft_strdup("OLDPWD"));
-		i = find_row(a->env, "OLDPWD");
-	}
 	j = find_row(a->env, "PWD");
+	ft_free(a->env[i]);
 	a->env[i] = ft_strjoin("OLD", a->env[j]);
 	ft_free(a->env[j]);
 	getcwd(tmp, 1024);
 	a->env[j] = ft_strjoin("PWD=", tmp);
+	a->cd = 0;
 }
 
 int 	main_loop(t_all *a)

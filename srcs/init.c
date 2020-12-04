@@ -16,17 +16,15 @@ void init_env(char **env, t_all *a)
 {
 	int row;
 	int i;
-	int j;
 
 	i = 0;
-	j = 0;
 	row = ft_matrow(env);
 	a->env = malloc(sizeof(char *) * row);
 	while (i < row)
 	{
 		if (!ft_strncmp(env[i], "OLDPWD", 6))
-			j = 1;
-		a->env[i] = ft_strdup(env[i + j]);
+			a->env[i++] = ft_strdup("OLDPWD");
+		a->env[i] = ft_strdup(env[i]);
 		i++;
 	}
 	a->env[row - 1] = (void *)0;
@@ -34,14 +32,7 @@ void init_env(char **env, t_all *a)
 
 void init_export(t_all *a, char **env)
 {
-//	char **tmp;
-//
-//	tmp = ft_matdup(mat);
-//	if (find_row(env, "OLDPWD"))
-//		env = add_row(env, "OLDPWD");
 	a->ept = ft_matdup(env);
-	if (!find_row(env, "OLDPWD"))
-		a->ept = add_row(a->ept, ft_strdup("OLDPWD"));
 	sort_mat(a->ept);
 }
 

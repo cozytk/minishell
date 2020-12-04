@@ -38,7 +38,7 @@ unistd.h
 stdlib.h
 -
 
-/Users/taekkim/minishell/srcs/chdir.c
+/Users/taekkim/minishell/srcs/env.c
 ../inc/minishell.h
 /Users/taekkim/minishell/inc/minishell.h
 
