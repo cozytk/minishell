@@ -12,14 +12,23 @@
 
 #include "../inc/minishell.h"
 
-void 	write_env(char **env)
+void 	write_env(t_all *a)
 {
 	int i;
+	int oldpwd;
 
 	i = 0;
-	while (env[i])
+	oldpwd = find_row(a->env, "OLDPWD");
+	if (!ft_strncmp(a->env[oldpwd], "OLDPWD=", 7))
+		oldpwd = -1;
+	while (a->env[i])
 	{
-		ft_putendl_fd(env[i], 1);
+		if (i == oldpwd)
+		{
+			i++;
+			continue ;
+		}
+		ft_putendl_fd(a->env[i], 1);
 		i++;
 	}
 }
@@ -28,7 +37,7 @@ int 	env(t_all *a)
 {
 	if (!ft_strncmp(a->cmd, "env\0", 4))
 	{
-		write_env(a->env);
+		write_env(a);
 		return (1);
 	}
 	return (0);
