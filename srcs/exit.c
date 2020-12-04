@@ -27,7 +27,7 @@ int 	ft_exit(t_all *a)
 			}
 			exit(ft_atoi(a->arg[0]));
 		}
-		exit(1);
+		exit(127);
 	}
 	return (0);
 }

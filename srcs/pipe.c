@@ -28,9 +28,6 @@ int 	ft_pipe(t_all *a)
 		dup2(a->fd[0], STDIN_FILENO);
 		close(a->fd[0]);
 		close(a->fd[1]);
-		/*
-		 * only one pipe
-		 */
 		free_com_arg(a);
 		main_loop(a);
 		exit(0);

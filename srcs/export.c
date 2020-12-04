@@ -94,8 +94,6 @@ char **overwrite_env(char **mat, t_all *a)
 	int j;
 
 	i = -1;
-//	for (int idx = 0; a->env[idx]; idx++)
-//		printf("%s\n", a->env[idx]);
 	while (mat[++i])
 	{
 		j = -1;
