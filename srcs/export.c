@@ -35,15 +35,8 @@ void sort_mat(char **mat)
 		j = i;
 		while (mat[++j])
 		{
-			if (ft_strccmp(mat[i], mat[j], '=') < 0)
-				continue ;
-			else if (ft_strccmp(mat[i], mat[j], '=') > 0)
+			if (ft_strccmp(mat[i], mat[j], '=') > 0)
 				swap_str(&mat[i], &mat[j]);
-			else
-			{
-				ft_write("Error: sort_mat\n");
-				exit(1);
-			}
 		}
 	}
 }
