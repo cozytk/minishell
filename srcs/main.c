@@ -82,21 +82,38 @@ int     cmd_builtin(t_all *a)
     return (0);
 }
 
+void 	update_pwd(t_all *a)
+{
+	char tmp[1024];
+	int i;
+	int j;
+
+	if (!a->cd)
+		return;
+	i = find_row(a->env, "OLDPWD");
+	if (i == 0)
+	{
+		a->env = add_row(a->env, ft_strdup("OLDPWD"));
+		i = find_row(a->env, "OLDPWD");
+	}
+	j = find_row(a->env, "PWD");
+	a->env[i] = ft_strjoin("OLD", a->env[j]);
+	ft_free(a->env[j]);
+	getcwd(tmp, 1024);
+	a->env[j] = ft_strjoin("PWD=", tmp);
+}
+
 int 	main_loop(t_all *a)
 {
 	parsing(a);
 	// validate();
-	/*
-	 * export a | grep a
-	 * cmd export
-	 * argument[0] a
-	 * a->p.pipe = 1
-	 */
 	if (a->p.pipe)
 	{
 		ft_pipe(a);
 		return (0); //no more pipe
 	}
+	init_export(a, a->env);
+	update_pwd(a);
 	redirect(a);
 	if (cmd_builtin(a) || cmd_exec(a))
     {
@@ -104,6 +121,17 @@ int 	main_loop(t_all *a)
 		return (1);
     }
 	return (0);
+}
+
+void 	init_struct(t_all *a)
+{
+	a->cd = 0;
+	a->fd_tmp = 0;
+	a->redirect = 0;
+	a->fileno = 0;
+	a->cmd = 0;
+	a->line = 0;
+	a->homepath = 0;
 }
 
 int main(int argc, char *argv[], char *envp[])
@@ -116,8 +144,10 @@ int main(int argc, char *argv[], char *envp[])
 	a = malloc(sizeof(t_all));
 	signal(SIGINT, sig_handle);
 	signal(SIGQUIT, sig_handle);
+	init_struct(a);
 	init_env(envp, a);
-	init_export(a, a->env);
+//	for (int i = 0; a->ept[i]; i++)
+//		printf("%s\n", a->ept[i]);
 	while (ft_write(INIT) && get_next_line(0, &(a->line)) > 0)
 	{
 		if (!a->line[0])

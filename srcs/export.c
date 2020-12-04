@@ -58,9 +58,6 @@ void write_quote(char *str)
 		ft_putchar_fd(str[i], 1);
 	ft_write("\"\n");
 }
-/*
- * export aaa="   aaa    " 같은 경우 quote 을 읽고나서 blank 를 -128 ~ -1 범위 사이에 문자로 처리
- */
 
 char **ft_delete_row(char **mat, int del)
 {
@@ -97,8 +94,6 @@ char **overwrite_env(char **mat, t_all *a)
 	int j;
 
 	i = -1;
-//	for (int idx = 0; a->env[idx]; idx++)
-//		printf("%s\n", a->env[idx]);
 	while (mat[++i])
 	{
 		j = -1;

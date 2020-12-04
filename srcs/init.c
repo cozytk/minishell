@@ -40,7 +40,8 @@ void init_export(t_all *a, char **env)
 //	if (find_row(env, "OLDPWD"))
 //		env = add_row(env, "OLDPWD");
 	a->ept = ft_matdup(env);
-	a->ept = add_row(a->ept, ft_strdup("OLDPWD"));
+	if (!find_row(env, "OLDPWD"))
+		a->ept = add_row(a->ept, ft_strdup("OLDPWD"));
 	sort_mat(a->ept);
 }
 

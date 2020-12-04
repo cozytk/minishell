@@ -11,22 +11,6 @@
 /* ************************************************************************** */
 #include "../inc/minishell.h"
 
-//char 	*get_path(t_all *a)
-//{
-//	char	*tmp;
-//	int		i;
-//
-//	i = 0;
-//	str = get_arg(str);
-//	tmp = malloc(ft_strlen(str) + 1);
-//	while (*str && *str == ' ')
-//		str++;
-//	while (*str && *str != ' ')
-//		tmp[i++] = *str++;
-//	tmp[i] = '\0';
-//	return (tmp);
-//}
-
 int 	write_cd_error(char *str)
 {
 	ft_putstr_fd("cd: no such file or directory: ", 2);
@@ -34,21 +18,6 @@ int 	write_cd_error(char *str)
 	ft_putchar_fd('\n', 2);
 	return (0);
 }
-
-//int 	change_env(t_all *a)
-//{
-//	if (a->arg[0][0] == '/')
-//	{
-//		;
-//	}
-//	else if (!ft_strncmp(a->arg[0], "..\0", 3))
-//		;
-//	else if (a->arg[0][0] == '.' && !a->arg[0][1])
-//		;
-//	else if (a->arg[0][0] == '~' && !a->arg[0][1])
-//		;
-//	else
-//}
 
 int 	exec_cd(t_all *a)
 {
@@ -74,16 +43,11 @@ int 	exec_cd(t_all *a)
 	return (0);
 }
 
-//void 	parse_cd(t_all *a)
-//{
-//	path = get_path(str + 3);
-//	exec_cd(a);
-//}
-
 int 	cd(t_all *a)
 {
 	if (!ft_strncmp(a->cmd, "cd\0", 3))
 	{
+		a->cd = 1;
 		if (!a->arg)
 		{
 			a->arg = malloc(sizeof(char *) * 2);

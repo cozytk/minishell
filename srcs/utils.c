@@ -42,7 +42,7 @@ int 	find_row(char **mat, char *s)
 	while (mat[i])
 	{
 		if (!ft_strncmp(mat[i], s, ft_strlen(s)))
-			return (1);
+			return (i);
 		i++;
 	}
 	return (0);
