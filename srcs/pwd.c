@@ -24,3 +24,16 @@ int 	pwd(t_all *a)
 	}
 	return (0);
 }
+
+//int 	pwd(t_all *a)
+//{
+//	char tmp[1024];
+//
+//	if (!ft_strncmp(a->cmd, "pwd\0", 4))
+//	{
+//		getcwd(tmp, 1024);
+//		ft_putendl_fd(tmp, 1);
+//		return (1);
+//	}
+//	return (0);
+//}

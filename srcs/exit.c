@@ -17,7 +17,16 @@ int 	ft_exit(t_all *a)
 	if (!ft_strncmp("exit\0", a->cmd, 5))
 	{
 		if (a->arg)
+		{
+			if (a->arg[1])
+			{
+				ft_putendl_fd("exit", 2);
+				ft_putstr_fd("bash: ", 2);
+				ft_putendl_fd("exit: too many arguments", 2);
+				exit(1);
+			}
 			exit(ft_atoi(a->arg[0]));
+		}
 		exit(1);
 	}
 	return (0);
