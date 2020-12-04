@@ -97,9 +97,7 @@ int 	main_loop(t_all *a)
 		return (0); //no more pipe
 	}
 	redirect(a);
-	if (cmd_builtin(a))
-		return (1);
-	if (cmd_exec(a))
+	if (cmd_builtin(a) || cmd_exec(a))
 		return (1);
 	return (0);
 }

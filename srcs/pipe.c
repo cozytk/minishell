@@ -16,10 +16,8 @@ int 	ft_pipe(t_all *a)
 		close(a->fd[0]);
 		close(a->fd[1]);
 		redirect(a);
-		if (cmd_builtin(a))
-			return (1);
-		if (cmd_exec(a))
-			return (1);
+		if (cmd_builtin(a) || cmd_exec(a))
+			exit(0);
 		exit(0);
 	}
 	pid2 = fork();
@@ -39,5 +37,6 @@ int 	ft_pipe(t_all *a)
 	}
 	close(a->fd[0]);
 	close(a->fd[1]);
+	waitpid(pid2, 0, 0);
 	return (0);
 }
