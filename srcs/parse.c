@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:25:55 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/04 20:58:19 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/12/04 22:04:32 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,10 +249,30 @@ int		is_pipe_or_scolon(char c)
 		return (1);
 	return (0);
 }
+void	quote_join(t_all *a)
+{
+	int		size;
+	//char	*str = "\"";
+
+	size = ft_matrow(a->arg);
+	//printf("%s\n", str);
+	//printf("%d\n", ft_strncmp(str, "\"\0", 2));
+	if (size >= 2)
+	{
+		if (a->arg[size - 2][ft_strlen(a->arg[size - 2]) - 1] == '\"'
+			|| a->arg[size - 1][ft_strlen(a->arg[size - 1]) - 1] == '\"')
+		{
+			add_argument(a, ft_strjoin(a->arg[size - 2], a->arg[size - 1]));
+			a->arg = ft_delete_row(a->arg, size - 1);
+			a->arg = ft_delete_row(a->arg, size - 2);
+		}
+	}
+}
 
 void	add_parsed(t_all *a, char *line)
 {
 	char	*temp;
+
 
 	temp = ft_substr(line, a->p.start, a->p.count);
 	if (temp[0] == '\0')
@@ -265,8 +285,12 @@ void	add_parsed(t_all *a, char *line)
 		a->cmd = temp;
 	else
 		add_argument(a, temp);
-
+	if (line[a->p.start - 1] != ' '
+		|| (line[a->p.start - 1] == '\\' && line[a->p.start - 2] != ' '))
+		quote_join(a);
 }
+
+
 
 int     parsing(t_all *a)
 {
@@ -334,7 +358,6 @@ int     parsing(t_all *a)
 		else if (is_space(a->line[a->p.i]))
 		{
 			add_parsed(a, a->line);
-			quote_join(a);
 			while (is_space(a->line[a->p.i]))
 				a->p.i++;
 			a->p.start = a->p.i;
@@ -346,8 +369,8 @@ int     parsing(t_all *a)
 	}
 	if (a->line[a->p.i - 1] != ' ')
 		add_parsed(a, a->line);
-	show_com(a);
-	show_arg(a);
+	//show_com(a);
+	//show_arg(a);
 	return (1);
 }
 
