@@ -34,33 +34,49 @@ char	*get_cmd(char *str)
 		return (strndup(str, i));
 	return (ft_strdup(""));
 }
+
+void	run_execve(t_all *a, char **arg)
+{
+	int		i;
+	char	**mat;
+	char	*cmd;
+	char 	*path;
+
+	i = find_row(a->env, "PATH=");
+	mat = ft_split(a->env[i] + 5, ':');
+	cmd = ft_strjoin("/", a->cmd);
+	i = 0;
+	while (mat[i])
+	{
+		path = ft_strjoin(mat[i], cmd);
+		execve(path, arg, a->env);
+//		free(path);
+		i++;
+	}
+	ft_putstr_fd("bash: ", 2);
+	ft_putstr_fd(a->cmd, 2);
+	ft_putendl_fd(": command not found", 2);
+//	free(cmd);
+//	ft_free_mat(mat);
+	exit(1);
+}
+
 int 	cmd_exec(t_all *a)
 {
 	char **lines;
-	char *path_cmd;
-	char *path_cmd2;
 	char **tmp;
 	pid_t pid;
 
 	pid = fork();
 	if (pid == 0)
 	{
-		path_cmd = ft_strjoin("/bin/", a->cmd);
-		path_cmd2 = ft_strjoin("/usr/bin/", a->cmd);
 		tmp = malloc(sizeof(char *) * 2);
 		tmp[0] = ft_strdup(a->cmd);
 		tmp[1] = (void *)0;
 		lines = ft_matjoin(tmp, a->arg);
-		if ((execve(path_cmd, lines, a->env) == -1) &&
-			execve(path_cmd2, lines, a->env) == -1)
-		{
-			ft_putstr_fd("bash: ", 2);
-			ft_putstr_fd(a->cmd, 2);
-			ft_putendl_fd(": command not found", 2);
-		}
-		free(path_cmd);
-		free(path_cmd2);
-		free(lines);
+		run_execve(a, lines);
+		ft_free_mat(tmp);
+		ft_free_mat(lines);
 		exit(0);
 	}
 	else if (pid == -1)

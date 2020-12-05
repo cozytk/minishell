@@ -1,4 +1,4 @@
-/private/var/folders/zz/zyxvpxvq6csfxvn_n000cbyw0032zq/T/AppTranslocation/DFF682D2-0AFC-4985-9DF5-CE90A0D675AA/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/taekkim/minishell
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/taekkim/minishell
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/taekkim/minishell/cmake-build-debug
+-- Build files have been written to: /home/taekkim/minishell/cmake-build-debug
