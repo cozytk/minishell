@@ -36,6 +36,7 @@ typedef struct		s_all
 	int 	redirect;
 	int 	fd_tmp;
 	int 	cd;
+	int 	end;
 	t_parse	p;
 }					t_all;
 

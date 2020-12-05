@@ -13,10 +13,14 @@
 #include "../inc/minishell.h"
 #include <string.h>
 
-void sig_handle(int signo)
+void sig_handle(int signo, t_all *a)
 {
 	if (signo == SIGINT)
 		ft_write("\nbash-3.2$ ");
+	else if (signo == SIGQUIT)
+	{
+		a->
+	}
 }
 
 char	*get_cmd(char *str)
@@ -142,6 +146,7 @@ void 	init_struct(t_all *a)
 	a->cmd = 0;
 	a->line = 0;
 	a->homepath = 0;
+	a->end = 0;
 }
 
 int main(int argc, char *argv[], char *envp[])
@@ -152,8 +157,10 @@ int main(int argc, char *argv[], char *envp[])
 	(void)argv;
 
 	a = malloc(sizeof(t_all));
-	signal(SIGINT, sig_handle);
-	signal(SIGQUIT, sig_handle);
+	if (signal(SIGINT, sig_handle))
+		a->end = 130;
+	if (signal(SIGQUIT, sig_handle))
+		a->end = 131;
 	init_struct(a);
 	init_env(envp, a);
 //	for (int i = 0; a->ept[i]; i++)
