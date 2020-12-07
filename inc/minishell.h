@@ -76,5 +76,6 @@ void		add_argument(t_all *a, char *arg);
 char		**add_row(char **mat, char *arg);
 
 void		show_arg(t_all *a);
+void		show_com(t_all *a);
 
 #endif

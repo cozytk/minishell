@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 04:32:42 by taekkim           #+#    #+#             */
-/*   Updated: 2020/04/07 20:06:28 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/04 21:25:14 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 int					ft_matrow(char **mat);
+int					ft_matncpy(char **src, char **dest, int size);
 char				**ft_matdup(char **mat);
 char				**ft_matjoin(char **m1, char **m2);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);

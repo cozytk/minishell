@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 20:08:53 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/04 14:11:37 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:45:37 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ int main(int argc, char *argv[], char *envp[])
 		init(a);
 		init_index(a);
 		main_loop(a);
-		free_com_arg(a);
+		//free_com_arg(a);
 		if (a->redirect)
 			dup2(a->fd_tmp, a->fileno);
 		free(tmp);
