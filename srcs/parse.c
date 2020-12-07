@@ -291,13 +291,9 @@ void	process_env(t_all *a, char *arg)
 		return ;
 	//env = replace_env_result(a, arg, env);
 	int size = ft_matrow(a->arg) - 1;
+	a->arg = ft_delete_row(a->arg, size);
 	if (result)
-	{
-		a->arg = ft_delete_row(a->arg, size);
 		add_argument(a, result);
-	}
-	else
-		a->arg = ft_delete_row(a->arg, size);
 	//printf("%s\n", env);
 	//return (arg);
 	//return (env);
@@ -365,12 +361,12 @@ void	d_quote_process(t_all *a, char *line)
 		new = NULL;
 		return ;
 	}
-	process_env(a, new);
 	//new = process_env(a, new);
 	if (!a->cmd)
 		a->cmd = new;
 	else
 		add_argument(a, new);
+	process_env(a, new);
 	a->p.i++;
 }
 
@@ -380,6 +376,7 @@ int		is_pipe_or_scolon(char c)
 		return (1);
 	return (0);
 }
+
 void	quote_join(t_all *a)
 {
 	int		size;
@@ -416,7 +413,6 @@ void	add_parsed(t_all *a, char *line)
 {
 	char	*temp;
 
-
 	temp = ft_substr(line, a->p.start, a->p.count);
 	if (temp[0] == '\0')
 	{
@@ -428,8 +424,6 @@ void	add_parsed(t_all *a, char *line)
 		a->cmd = temp;
 	else
 		add_argument(a, temp);
-	//if (line[a->p.start - 1] != ' ')
-		//quote_join(a);
 }
 
 
@@ -492,6 +486,7 @@ int     parsing(t_all *a)
 				a->p.i++;
 				a->p.start++;
 			}
+			//printf("%c\n", a->line[a->p.i]);
 			a->p.count = 0;
 			continue ;
 		}
@@ -507,19 +502,18 @@ int     parsing(t_all *a)
 			a->p.count = 0;
 			continue;
 		}
+		else if (a->line[a->p.i + 1] == '\0')
+		{
+			a->p.count++;
+			add_parsed(a, a->line);
+			int size = ft_matrow(a->arg) - 1;
+			if (size >= 0)
+				process_env(a, a->arg[size]);
+			break;
+		}
 		a->p.count++;
 		a->p.i++;
 	}
-	if (a->line[a->p.i - 1] != ' ')
-	{
-		add_parsed(a, a->line);
-		//printf("%d\n", ft_matrow(a->arg));
-		int size = ft_matrow(a->arg) - 1;
-		if (size >= 0)
-			process_env(a, a->arg[size]);
-	}
-	//show_com(a);
-	//show_arg(a);
 	return (1);
 }
 
