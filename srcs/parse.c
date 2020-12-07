@@ -379,7 +379,7 @@ int     parsing(t_all *a)
 	if (a->line[a->p.i - 1] != ' ')
 		add_parsed(a, a->line);
 	//show_com(a);
-	show_arg(a);
+	//show_arg(a);
 	return (1);
 }
 

@@ -36,6 +36,10 @@ OBJS	=	$(SRCS:%.c=%.o)
 
 all		:	$(NAME)
 
+debug		:	$(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(HDR) -o $@ $(LIBFT) $(OBJS) -g3 -fsanitize=address
+
+
 $(LIBFT):
 	$(MAKE) -C libft
 
