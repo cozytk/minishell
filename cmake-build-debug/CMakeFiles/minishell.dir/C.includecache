@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/taekkim/minishell/inc/minishell.h
+/home/taekkim/minishell/inc/minishell.h
 ../libft/libft.h
-/Users/taekkim/minishell/libft/libft.h
+/home/taekkim/minishell/libft/libft.h
 fcntl.h
 -
 signal.h
@@ -28,7 +28,7 @@ sys/stat.h
 sys/errno.h
 -
 
-/Users/taekkim/minishell/libft/libft.h
+/home/taekkim/minishell/libft/libft.h
 string.h
 -
 stdio.h
@@ -38,7 +38,13 @@ unistd.h
 stdlib.h
 -
 
-/Users/taekkim/minishell/srcs/env.c
+/home/taekkim/minishell/srcs/exit.c
 ../inc/minishell.h
-/Users/taekkim/minishell/inc/minishell.h
+/home/taekkim/minishell/inc/minishell.h
+
+/home/taekkim/minishell/srcs/main.c
+../inc/minishell.h
+/home/taekkim/minishell/inc/minishell.h
+string.h
+-
 

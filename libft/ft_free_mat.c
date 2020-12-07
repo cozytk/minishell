@@ -27,4 +27,6 @@ void 	ft_free_mat(char **mat)
 	}
 	free(mat[i]);
 	mat[i] = (void *)0;
+	free(mat);
+	mat = (void *)0;
 }
