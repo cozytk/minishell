@@ -275,9 +275,10 @@ char	*replace_env_result(t_all *a, char *arg, char *env)
 }
 */
 
-char	*process_env(t_all *a, char *arg)
+void	process_env(t_all *a, char *arg)
 {
 	char	*env;
+	char	*result;
 
 	//${USER}eee
 	//"${USER}eee"
@@ -285,12 +286,18 @@ char	*process_env(t_all *a, char *arg)
 	//printf("cmd : %s\n", a->cmd);
 	env = get_env_by_arg(arg);
 	if (env)
-		env = find_env_result(a, env);
-	//env = replace_env_result(a, arg, env);
-	if (env)
-		return (env);
+		result = find_env_result(a, env);
 	else
-		return (arg);
+		return ;
+	//env = replace_env_result(a, arg, env);
+	int size = ft_matrow(a->arg) - 1;
+	if (result)
+	{
+		a->arg = ft_delete_row(a->arg, size);
+		add_argument(a, result);
+	}
+	else
+		a->arg = ft_delete_row(a->arg, size);
 	//printf("%s\n", env);
 	//return (arg);
 	//return (env);
@@ -358,8 +365,7 @@ void	d_quote_process(t_all *a, char *line)
 		new = NULL;
 		return ;
 	}
-
-	new = process_env(a, new);
+	process_env(a, new);
 	//new = process_env(a, new);
 	if (!a->cmd)
 		a->cmd = new;
@@ -492,6 +498,9 @@ int     parsing(t_all *a)
 		else if (is_space(a->line[a->p.i]))
 		{
 			add_parsed(a, a->line);
+			int size = ft_matrow(a->arg) - 1;
+			if (size >= 0)
+				process_env(a, a->arg[size]);
 			while (is_space(a->line[a->p.i]))
 				a->p.i++;
 			a->p.start = a->p.i;
@@ -507,7 +516,7 @@ int     parsing(t_all *a)
 		//printf("%d\n", ft_matrow(a->arg));
 		int size = ft_matrow(a->arg) - 1;
 		if (size >= 0)
-			a->arg[size] = process_env(a, a->arg[size]);
+			process_env(a, a->arg[size]);
 	}
 	//show_com(a);
 	//show_arg(a);
