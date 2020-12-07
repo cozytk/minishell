@@ -185,12 +185,13 @@ int main(int argc, char *argv[], char *envp[])
 		{
 			ft_free(a->line);
 			a->end = 127;
-			continue ;
+			continue;
 		}
 		tmp = a->line;
 		init(a);
 		init_index(a);
 		main_loop(a);
+		free_com_arg(a);
 		if (a->redirect)
 			dup2(a->fd_tmp, a->fileno);
 		free(tmp);
