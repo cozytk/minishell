@@ -173,6 +173,129 @@ void	s_quote_process(t_all *a, char *line)
 	a->p.i++;
 }
 
+char	*get_env_by_arg(char *arg)
+{
+	int		i;
+	int		start;
+
+	i = 0;
+	while (arg[i])
+	{
+		if (arg[i] == '$')
+		{
+			if (arg[i + 1] == '{')
+			{
+				start = i + 2;
+				while (arg[i] != '}' && arg[i])
+					i++;
+				if (!arg[i])
+					return (NULL);
+				return (ft_substr(arg, start, i - start));
+			}
+			else
+			{
+				start = i + 1;
+				while (arg[i] && arg[i] != ' ')
+					i++;
+				return (ft_substr(arg, start, i - start));
+			}
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+char	*find_env_result(t_all *a, char *env)
+{
+	int		i;
+	int		j;
+	int		start;
+	char	*temp;
+
+	i = 0;
+	while (a->env[i])
+	{
+		if (!ft_strncmp(a->env[i], env, ft_strlen(env)))
+		{
+			j = 0;
+			while (a->env[i][j] != '=')
+				j++;
+			j++;
+			start = j;
+			while (a->env[i][j])
+				j++;
+			temp = ft_substr(a->env[i], start, j - start);
+			free(env);
+			return (temp);
+		}
+		i++;
+	}
+	free(env);
+	return (NULL);
+}
+/*
+char	*replace_env_result(t_all *a, char *arg, char *env)
+{
+	char	*temp;
+	char	*replace;
+	char	*temp2;
+	int		i;
+	int		start;
+
+	i = 0;
+	while (arg[i] && arg[i] != '$')
+		i++;
+	temp = ft_substr(arg, 0, i);
+	if (!temp[0])
+	{
+		free(temp);
+		temp = NULL;
+	}
+	if (arg[++i] == '{')
+		while (arg[i] != '}')
+			i++;
+	start = i;
+	while (arg[i])
+		i++;
+	temp2 = ft_substr(arg, start, i - start);
+	if (!temp2[0])
+	{
+		free(temp2);
+		temp2 = NULL;
+	}
+	if (temp && env)
+	{
+		replace = ft_strjoin(temp, env);
+		free(temp);
+	}
+	if (temp2 && env)
+	{
+
+	}
+}
+*/
+
+char	*process_env(t_all *a, char *arg)
+{
+	char	*env;
+
+	//${USER}eee
+	//"${USER}eee"
+	//aaa$USERbbb
+	//printf("cmd : %s\n", a->cmd);
+	env = get_env_by_arg(arg);
+	if (env)
+		env = find_env_result(a, env);
+	//env = replace_env_result(a, arg, env);
+	if (env)
+		return (env);
+	else
+		return (arg);
+	//printf("%s\n", env);
+	//return (arg);
+	//return (env);
+}
+
 void	d_quote_process(t_all *a, char *line)
 {
 	int		start;
@@ -236,6 +359,8 @@ void	d_quote_process(t_all *a, char *line)
 		return ;
 	}
 
+	new = process_env(a, new);
+	//new = process_env(a, new);
 	if (!a->cmd)
 		a->cmd = new;
 	else
@@ -377,7 +502,13 @@ int     parsing(t_all *a)
 		a->p.i++;
 	}
 	if (a->line[a->p.i - 1] != ' ')
+	{
 		add_parsed(a, a->line);
+		//printf("%d\n", ft_matrow(a->arg));
+		int size = ft_matrow(a->arg) - 1;
+		if (size >= 0)
+			a->arg[size] = process_env(a, a->arg[size]);
+	}
 	//show_com(a);
 	//show_arg(a);
 	return (1);
