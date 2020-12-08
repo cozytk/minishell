@@ -19,7 +19,7 @@ void sig_handle(int signo)
 {
 	int state;
 	int res;
-	struct stat st;
+	//struct stat st;
 
 //	res = waitpid(-1, &state, WNOHANG);
 	if ((res = wait(&state)) > 0)
@@ -199,7 +199,7 @@ void 	init_struct(t_all *a)
 int main(int argc, char *argv[], char *envp[])
 {
 	t_all *a;
-	int		state;
+	//int		state;
 	char *tmp;
 	(void)argc;
 	(void)argv;

@@ -175,7 +175,7 @@ void	s_quote_process(t_all *a, char *line)
 	a->p.i++;
 }
 
-char	*get_env_by_arg(char *arg)
+char	*get_env_by_arg(char *arg, int *count)
 {
 	int		i;
 	int		start;
@@ -190,6 +190,7 @@ char	*get_env_by_arg(char *arg)
 				start = i + 2;
 				while (arg[i] != '}' && arg[i])
 					i++;
+				*count = i;
 				if (!arg[i])
 					return (NULL);
 				return (ft_substr(arg, start, i - start));
@@ -197,8 +198,9 @@ char	*get_env_by_arg(char *arg)
 			else
 			{
 				start = i + 1;
-				while (arg[i] && arg[i] != ' ')
+				while (arg[i] && arg[i] != ' ' && arg[i + 1] != '$')
 					i++;
+				*count = i;
 				return (ft_substr(arg, start, i - start));
 			}
 		}
@@ -281,24 +283,32 @@ void	process_env(t_all *a, char *arg)
 {
 	char	*env;
 	char	*result;
+	char	*temp;
+	char	*temp2;
+	int		count;
+	int		i;
 
-	//${USER}eee
-	//"${USER}eee"
-	//aaa$USERbbb
-	//printf("cmd : %s\n", a->cmd);
-	env = get_env_by_arg(arg);
-	if (env)
-		result = find_env_result(a, env);
-	else
-		return ;
-	//env = replace_env_result(a, arg, env);
-	int size = ft_matrow(a->arg) - 1;
+	result = NULL;
+	i = 0;
+	while (arg[i])
+	{
+		if (arg[i] != '$')
+			result = ft_strcjoin(result, arg[i]);
+		else
+		{
+			temp = result;
+			env = get_env_by_arg(&arg[i], &count);
+			temp2 = find_env_result(a, env);
+			result = ft_strjoin(result, temp2);
+			free(temp);
+			free(temp2);
+			i += count;
+		}
+		i++;
+	}
+	int	size = ft_matrow(a->arg) - 1;
 	a->arg = ft_delete_row(a->arg, size);
-	if (result)
-		add_argument(a, result);
-	//printf("%s\n", env);
-	//return (arg);
-	//return (env);
+	add_argument(a, result);
 }
 
 void	d_quote_process(t_all *a, char *line)
