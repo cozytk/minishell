@@ -13,17 +13,41 @@
 #include "../inc/minishell.h"
 #include <string.h>
 
+int g_end;
+
 void sig_handle(int signo)
 {
+	int state;
+	int res;
+	struct stat st;
+
+//	res = waitpid(-1, &state, WNOHANG);
+	if ((res = wait(&state)) > 0)
+	{
+		if (signo == SIGINT)
+		{
+			ft_putchar_fd('\n', 1);
+			g_end = 130;
+		}
+		else if (signo == SIGQUIT)
+		{
+			ft_putendl_fd("Quit", 1);
+			g_end = 131;
+		}
+		return;
+	}
 	if (signo == SIGINT)
 	{
-		ft_write("\nbash-3.2$ ");
-		// g_end = 130;
+		ft_putchar_fd('\n', 1);
+		ft_putstr_fd(INIT, 1);
+		g_end = 131;
 	}
-//	else if (signo == SIGQUIT)
-//	{
-//		 g_end = 131;
-//	}
+	else if (signo == SIGQUIT)
+	{
+		ft_putchar_fd(8, 1);
+		ft_putchar_fd(8, 1);
+		g_end = 130;
+	}
 }
 
 char	*get_cmd(char *str)
@@ -170,6 +194,7 @@ void 	init_struct(t_all *a)
 int main(int argc, char *argv[], char *envp[])
 {
 	t_all *a;
+	int		state;
 	char *tmp;
 	(void)argc;
 	(void)argv;
@@ -179,6 +204,8 @@ int main(int argc, char *argv[], char *envp[])
 	signal(SIGQUIT, sig_handle);
 	init_struct(a);
 	init_env(envp, a);
+	if (g_end)
+		a->end = g_end;
 	while (ft_write(INIT) && get_next_line(0, &(a->line)) > 0)
 	{
 		if (!a->line[0])
