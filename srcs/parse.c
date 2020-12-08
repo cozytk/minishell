@@ -45,7 +45,7 @@ void	free_com_arg(t_all *a)
 
 int		is_sep_char(char c)
 {
-	if (c == '>' || c == ';' || c == '<')
+	if (c == '>' || c == '<')
 		return (1);
 	return (0);
 }
@@ -462,7 +462,7 @@ int     parsing(t_all *a)
 			a->p.start = a->p.i;
 			continue;
 		}
-		if (is_pipe_or_scolon(a->line[a->p.i]))
+		if (is_pipe_or_scolon(a->line[a->p.i]) && a->cmd)
 		{
 			if (a->line[a->p.i - 1] != ' ' && a->p.i > 1)
 				add_parsed(a, a->line);
