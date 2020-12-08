@@ -25,6 +25,7 @@ void	init_index(t_all *a)
 	a->p.start = 0;
 	a->p.count = 0;
 	a->p.pipe = 0;
+	a->p.s_colon = 0;
 }
 
 void	free_com_arg(t_all *a)
@@ -434,6 +435,7 @@ int     parsing(t_all *a)
 	while (is_space(a->line[a->p.i]))
 		a->p.i++;
 	a->p.pipe = 0;
+	a->p.s_colon = 0;
 	a->p.start = a->p.i;
 	while (a->line[a->p.i])
 	{
@@ -454,6 +456,8 @@ int     parsing(t_all *a)
 				add_parsed(a, a->line);
 			if (a->line[a->p.i] == '|')
 				a->p.pipe = 1;
+			else if (a->line[a->p.i] == ';')
+				a->p.s_colon = 1;
 			a->p.i++;
 			a->p.start = a->p.i;
 			a->p.count = 0;
