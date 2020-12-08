@@ -65,7 +65,7 @@ void	parse_backslash(t_all *a)
 	a->p.i--;
 }
 
-int     parsing(t_all *a)
+int		parsing(t_all *a)
 {
 	while (is_space(a->line[a->p.i]))
 		a->p.i++;
@@ -76,7 +76,7 @@ int     parsing(t_all *a)
 			parse_backslash(a);
 		if (is_pipe_or_scolon(a->line[a->p.i]) && a->cmd)
 			return (parse_pipe_scolon(a));
-        else if (is_sep_char(a->line[a->p.i]))
+		else if (is_sep_char(a->line[a->p.i]))
 			parse_redirect(a);
 		else if (is_quote(a->line[a->p.i]))
 			parse_quote(a);
