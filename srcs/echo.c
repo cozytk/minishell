@@ -15,10 +15,12 @@
 void 	write_echo(t_all *a)
 {
 	int i;
+	int	size;
 	int enter;
 
 	i = 0;
 	enter = 1;
+	size = ft_matrow(a->arg) - 1;
 	while (!ft_strncmp(a->arg[i], "-n", 2))
 	{
 		enter = 0;
@@ -27,7 +29,8 @@ void 	write_echo(t_all *a)
 	while (a->arg[i])
 	{
 		ft_putstr_fd(a->arg[i], 1);
-		ft_putchar_fd(' ', 1);
+		if (i != size)
+			ft_putchar_fd(' ', 1);
         i++;
 	}
 	if (enter)
