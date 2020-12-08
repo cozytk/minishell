@@ -222,7 +222,7 @@ char	*find_env_result(t_all *a, char *env)
 		if (!ft_strncmp(a->env[i], env, ft_strlen(env)))
 		{
 			j = 0;
-			while (a->env[i][j] != '=')
+			while (a->env[i][j] != '=' && a->env[i][j])
 				j++;
 			j++;
 			start = j;
@@ -303,6 +303,8 @@ void	process_env(t_all *a, char *arg)
 			free(temp);
 			free(temp2);
 			i += count;
+			if (!arg[i])
+				break;
 		}
 		i++;
 	}
