@@ -13,26 +13,24 @@
 #include "../inc/minishell.h"
 #include <string.h>
 
-int g_end;
+int g_end = 1;
 
 void sig_handle(int signo)
 {
 	int state;
 	int res;
-	//struct stat st;
 
-//	res = waitpid(-1, &state, WNOHANG);
 	if ((res = wait(&state)) > 0)
 	{
 		if (signo == SIGINT)
 		{
 			ft_putchar_fd('\n', 1);
-			g_end = 130;
+//			g_end = 130;
 		}
 		else if (signo == SIGQUIT)
 		{
 			ft_putendl_fd("Quit", 1);
-			g_end = 131;
+//			g_end = 131;
 		}
 		return;
 	}
@@ -40,13 +38,13 @@ void sig_handle(int signo)
 	{
 		ft_putchar_fd('\n', 1);
 		ft_putstr_fd(INIT, 1);
-		g_end = 131;
+		g_end = 130;
 	}
 	else if (signo == SIGQUIT)
 	{
 		ft_putchar_fd(8, 1);
 		ft_putchar_fd(8, 1);
-		g_end = 130;
+		g_end = 127;
 	}
 }
 
@@ -97,7 +95,7 @@ int 	cmd_exec(t_all *a)
 	char **tmp;
 	pid_t pid;
 
-	if (a->end != 1)
+	if (g_end != 1)
 		return (1);
 	pid = fork();
 	if (pid == 0)
@@ -127,13 +125,13 @@ int     cmd_builtin(t_all *a)
 	ft_exit(a);
 	if (!ft_strncmp(a->cmd, "$?", 2))
 	{
-		ft_putnbr_fd(a->end, 2);
+		ft_putnbr_fd(g_end, 2);
 		ft_putendl_fd(": command not found", 2);
 		return (127);
 	}
     if (export(a) || cd(a) || pwd(a) || env(a) || unset(a) || echo(a))
 	{
-    	a->end = 0;
+    	g_end = 0;
 		return (0);
 	}
     return (1);
@@ -165,21 +163,21 @@ int 	main_loop(t_all *a)
 	if (a->p.pipe)
 	{
 		ft_pipe(a);
-		return (a->end); //no more pipe
+		return (g_end); //no more pipe
 	}
 	update_pwd(a);
 	redirect(a);
-	a->end = cmd_builtin(a);
-	if (a->end == 1)
-		a->end = cmd_exec(a);
-	if (a->end == 1)
-		a->end = 127;
+	g_end = cmd_builtin(a);
+	if (g_end == 1)
+		g_end = cmd_exec(a);
+	if (g_end == 1)
+		g_end = 127;
 	if (a->p.s_colon)
 	{
 		free_com_arg(a);
 		main_loop(a);
 	}
-	return (a->end);
+	return (g_end);
 }
 
 void 	init_struct(t_all *a)
@@ -191,15 +189,14 @@ void 	init_struct(t_all *a)
 	a->cmd = 0;
 	a->line = 0;
 	a->homepath = 0;
-	a->end = 1;
 	a->env = 0;
 	a->ept = 0;
+	a->init_home = 0;
 }
 
 int main(int argc, char *argv[], char *envp[])
 {
 	t_all *a;
-	//int		state;
 	char *tmp;
 	(void)argc;
 	(void)argv;
@@ -209,14 +206,12 @@ int main(int argc, char *argv[], char *envp[])
 	signal(SIGQUIT, sig_handle);
 	init_struct(a);
 	init_env(envp, a);
-	if (g_end)
-		a->end = g_end;
 	while (ft_write(INIT) && get_next_line(0, &(a->line)) > 0)
 	{
 		if (!a->line[0])
 		{
 			ft_free(a->line);
-			a->end = 127;
+			g_end = 127;
 			continue;
 		}
 		tmp = a->line;

@@ -38,6 +38,7 @@ void	parse_unset(t_all *a)
 	check_overlap(a->arg);
 	delete_env(a->arg, a);
 	ft_free_mat(a->arg);
+	a->arg = NULL;
 }
 
 int		unset(t_all *a)
@@ -48,6 +49,7 @@ int		unset(t_all *a)
 			return (1);
 		parse_unset(a);
 		ft_free_mat(a->ept);
+		a->ept = NULL;
 		init_export(a, a->env);
 		return (1);
 	}
