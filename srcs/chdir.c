@@ -59,15 +59,18 @@ int		cd_home(t_all *a, char flag)
 				return (write_cd_error(a->init_home));
 		return (1);
 	}
+	if (chdir(a->env[i] + 5) == -1)
+		return (write_cd_error(a->env[i] + 5));
 	return (0);
 }
 
 int 	cd(t_all *a)
 {
-	if (!ft_strncmp(a->cmd, "cd\0", 3))
+	if (!(ft_strncmp(a->cmd, "cd", 2)))
 	{
-		a->cd = 1;
 		if (!a->arg)
+			cd_home(a, 0);
+		else if (!ft_strncmp(a->arg, "~", 0) && (ft_strlen(a->arg) == 1))
 		{
 			a->arg = malloc(sizeof(char *) * 2);
 			a->arg[0] = ft_strdup("~");
