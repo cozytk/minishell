@@ -21,6 +21,7 @@ typedef struct		s_parse
 	int		start;
 	int		back_flag;
 	int		pipe;
+	int		s_colon;
 }					t_parse;
 
 typedef struct		s_all

@@ -174,6 +174,11 @@ int 	main_loop(t_all *a)
 		a->end = cmd_exec(a);
 	if (a->end == 1)
 		a->end = 127;
+	if (a->p.s_colon)
+	{
+		free_com_arg(a);
+		main_loop(a);
+	}
 	return (a->end);
 }
 
