@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: taehkim <taehkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:25:55 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/04 22:06:45 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/12/08 23:41:52 by taehkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	add_argument(t_all *a, char *arg)
 {
-	int		argsize;
+    int		argsize;
 	int		i;
 	char	**new_mat;
 
