@@ -25,6 +25,7 @@ SRCS	=	./srcs/chdir.c \
 			./srcs/init.c \
 			./srcs/main.c \
 			./srcs/parse.c \
+			./srcs/parse_proc.c \
 			./srcs/parse_quote.c \
 			./srcs/free.c \
 			./srcs/parse_utils.c \

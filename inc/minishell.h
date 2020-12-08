@@ -78,7 +78,9 @@ char		**add_row(char **mat, char *arg);
 /*
 **	parse functions (taehkim)
 */
+
 void		add_argument(t_all *a, char *arg);
+void		add_parsed(t_all *a, char *line);
 void		show_arg(t_all *a);
 void		show_com(t_all *a);
 void		free_com_arg(t_all *a);
@@ -95,5 +97,10 @@ void		s_quote_process(t_all *a, char *line);
 void		d_quote_process(t_all *a, char *line);
 void		quote_join(t_all *a);
 void		parse_init(t_all *a);
+int		parse_pipe_scolon(t_all *a);
+void		parse_redirect(t_all *a);
+void		parse_quote(t_all *a);
+void		parse_one(t_all *a);
+int		parse_last(t_all *a);
 
 #endif
