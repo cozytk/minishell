@@ -22,6 +22,8 @@ void init_env(char **env, t_all *a)
 	a->env = malloc(sizeof(char *) * (row + 1));
 	while (++i < row)
 	{
+		if (!ft_strncmp(env[i], "HOME", 4))
+			a->init_home = ft_strdup(ft_strchr(env[i], '/'));
 		if (!ft_strncmp(env[i], "OLDPWD", 6))
 			a->env[i++] = ft_strdup("OLDPWD");
 		a->env[i] = ft_strdup(env[i]);

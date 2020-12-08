@@ -13,9 +13,9 @@
 
 int 	write_cd_error(char *str)
 {
-	ft_putstr_fd("cd: no such file or directory: ", 2);
+	ft_putstr_fd("bash: cd: ", 2);
 	ft_putstr_fd(str, 2);
-	ft_putchar_fd('\n', 2);
+	ft_putendl_fd(": No such file or directory", 2);
 	return (0);
 }
 
@@ -31,7 +31,7 @@ int 	exec_cd(t_all *a)
 			if (!ft_strncmp(a->env[i], "HOME=", 5))
 			{
 				if (chdir(a->env[i] + 5) == -1)
-					return (write_cd_error(a->env[i]));
+					return (write_cd_error(a->env[i] + 5));
 			}
 			i++;
 			if (!a->env[i])
@@ -40,6 +40,25 @@ int 	exec_cd(t_all *a)
 	}
 	else if (chdir(a->arg[0]) == -1)
 		return (write_cd_error(a->arg[0]));
+	return (0);
+}
+
+int		cd_home(t_all *a, char flag)
+{
+	int i;
+
+	i = find_row(a->env, "HOME");
+	if (i == -1)
+	{
+		if (!flag)
+		{
+			ft_putendl_fd("bash: cd: HOME not set", 2);
+			return (0);
+		}
+		else if (flag == '~' && (chdir(a->init_home) == -1))
+				return (write_cd_error(a->init_home));
+		return (1);
+	}
 	return (0);
 }
 
@@ -55,6 +74,7 @@ int 	cd(t_all *a)
 			a->arg[1] = (void *)0;
 			exec_cd(a);
 			ft_free_mat(a->arg);
+			a->arg = NULL;
 			return (1);
 		}
 		exec_cd(a);

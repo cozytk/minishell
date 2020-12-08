@@ -33,6 +33,7 @@ typedef struct		s_all
 	char	*cmd;
 	char 	*line;
 	char	*homepath;
+	char	*init_home;
 	int		fileno;
 	int 	redirect;
 	int 	fd_tmp;
@@ -55,7 +56,7 @@ int 		pwd(t_all *a);
 int		 	env(t_all *a);
 int			keycmp(char *src, char *key);
 int			unset(t_all *a);
-void		check_overlap(char **mat);
+char		**check_overlap(char **mat);
 char		**ft_delete_row(char **mat, int del);
 int			get_next_line(int fd, char **line);
 char		*ft_strdup_til_enter(const char *s1);
