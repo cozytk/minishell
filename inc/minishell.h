@@ -65,19 +65,35 @@ char		*gnl_strjoin(char *s1, char *s2);
 void		init_env(char **env, t_all *a);
 void		init_export(t_all *all, char **env);
 void		sort_mat(char **env);
-int     	parsing(t_all *a);
 int			ft_pipe(t_all *a);
-void		free_com_arg(t_all *a);
 int			redirect(t_all *a);
 int			main_loop(t_all *a);
 void	 	reset_fd(t_all *a);
 int 		free_cmd_arg(t_all *a);
 int			ft_exit(t_all *a);
 int 		find_row(char **mat, char *s);
-void		add_argument(t_all *a, char *arg);
 char		**add_row(char **mat, char *arg);
 
+
+/*
+**	parse functions (taehkim)
+*/
+void		add_argument(t_all *a, char *arg);
 void		show_arg(t_all *a);
 void		show_com(t_all *a);
+void		free_com_arg(t_all *a);
+int     	parsing(t_all *a);
+int		is_sep_char(char c);
+int		chk_only_space(char *arg);
+int		is_space(char c);
+int		is_quote(char c);
+int		is_pipe_or_scolon(char c);
+char		*get_env_by_arg(char *arg, int *count);
+char		*find_env_result(t_all *a, char *env);
+void		process_env(t_all *a, char *arg);
+void		s_quote_process(t_all *a, char *line);
+void		d_quote_process(t_all *a, char *line);
+void		quote_join(t_all *a);
+void		parse_init(t_all *a);
 
 #endif
