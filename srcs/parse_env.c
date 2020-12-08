@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_env.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: taehkim <taehkim@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/08 23:45:09 by taehkim           #+#    #+#             */
-/*   Updated: 2020/12/08 23:45:10 by taehkim          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../inc/minishell.h"
 
 char	*get_env_by_arg(char *arg, int *count)
@@ -20,26 +8,23 @@ char	*get_env_by_arg(char *arg, int *count)
 	i = 0;
 	while (arg[i])
 	{
-		if (arg[i] == '$')
+		if (arg[i] == '$' && arg[i + 1] == '{')
 		{
-			if (arg[i + 1] == '{')
-			{
-				start = i + 2;
-				while (arg[i] != '}' && arg[i])
-					i++;
-				*count = i;
-				if (!arg[i])
-					return (NULL);
-				return (ft_substr(arg, start, i - start));
-			}
-			else
-			{
-				start = i + 1;
-				while (arg[i] && arg[i] != ' ' && arg[i + 1] != '$')
-					i++;
-				*count = i;
-				return (ft_substr(arg, start, i - start));
-			}
+			start = i + 2;
+			while (arg[i] != '}' && arg[i])
+				i++;
+			*count = i;
+			if (!arg[i])
+				return (NULL);
+			return (ft_substr(arg, start, i - start));
+		}
+		else if (arg[i] == '$')
+		{
+			start = i + 1;
+			while (arg[i] && arg[i] != ' ' && arg[i + 1] != '$')
+				i++;
+			*count = i;
+			return (ft_substr(arg, start, i - start));
 		}
 		i++;
 	}
@@ -75,13 +60,10 @@ char	*find_env_result(t_all *a, char *env)
 	return (NULL);
 }
 
-void	process_env(t_all *a, char *arg)
+char	*env_appending(t_all *a, char *arg, int count)
 {
 	char	*env;
 	char	*result;
-	char	*temp;
-	char	*temp2;
-	int		count;
 	int		i;
 
 	result = NULL;
@@ -92,18 +74,26 @@ void	process_env(t_all *a, char *arg)
 			result = ft_strcjoin(result, arg[i]);
 		else
 		{
-			temp = result;
+			a->p.tmp = result;
 			env = get_env_by_arg(&arg[i], &count);
-			temp2 = find_env_result(a, env);
-			result = ft_strjoin(result, temp2);
-			free(temp);
-			free(temp2);
+			a->p.tmp2 = find_env_result(a, env);
+			result = ft_strjoin(result, a->p.tmp2);
+			free(a->p.tmp);
+			free(a->p.tmp2);
 			i += count;
 			if (!arg[i])
 				break;
 		}
 		i++;
 	}
+	return (result);
+}
+
+void	process_env(t_all *a, char *arg)
+{
+	char	*result;
+
+	result = env_appending(a, arg, 0);
 	int	size = ft_matrow(a->arg) - 1;
 	a->arg = ft_delete_row(a->arg, size);
 	add_argument(a, result);
