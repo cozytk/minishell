@@ -16,9 +16,12 @@ int 	ft_pipe(t_all *a)
 		close(a->fd[0]);
 		close(a->fd[1]);
 		redirect(a);
-		if (cmd_builtin(a) || cmd_exec(a))
+		if (!(cmd_builtin(a) && cmd_exec(a)))
+		{
+			free_com_arg(a);
 			exit(0);
-		exit(0);
+		}
+		exit(1);
 	}
 	pid2 = fork();
 	if (pid2 < 0)
@@ -30,6 +33,7 @@ int 	ft_pipe(t_all *a)
 		close(a->fd[1]);
 		free_com_arg(a);
 		main_loop(a);
+		free_com_arg(a);
 		exit(0);
 	}
 	close(a->fd[0]);

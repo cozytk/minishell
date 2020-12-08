@@ -141,6 +141,7 @@ void edit_env(t_all *a)
 	tmp_m = ft_matjoin(a->env, a->arg);
 	ft_free_mat(a->env);
 	ft_free_mat(a->arg);
+	a->arg = NULL;
 	a->env = tmp_m;
 }
 
@@ -168,7 +169,6 @@ int export(t_all *a)
 			return (1);
 		}
 		edit_env(a);
-		ft_free_mat(a->ept);
 		init_export(a, a->env);
 		return (1);
 	}

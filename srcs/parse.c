@@ -30,16 +30,16 @@ void	init_index(t_all *a)
 void	free_com_arg(t_all *a)
 {
 	ft_free_mat(a->arg);
+	ft_free_mat(a->ept);
 	if (a->arg)
-	{
-		free(a->arg);
 		a->arg = NULL;
-	}
 	if (a->cmd)
 	{
 		free(a->cmd);
 		a->cmd = NULL;
 	}
+	if (a->ept)
+		a->ept = NULL;
 }
 
 int		is_sep_char(char c)
@@ -80,10 +80,11 @@ void	add_argument(t_all *a, char *arg)
 			i++;
 		}
 		ft_free_mat(a->arg);
-        free(a->arg);
-        a->arg = NULL;
 	}
+	a->arg = NULL;
 	new_mat[i] = arg;
+//	new_mat[i] = ft_strdup(arg);
+//	free(arg);
 	new_mat[i + 1] = NULL;
 	a->arg = new_mat;
 }

@@ -57,15 +57,13 @@ void	run_execve(t_all *a, char **arg)
 	{
 		path = ft_strjoin(mat[i], cmd);
 		execve(path, arg, a->env);
-//		free(path);
+		free(path);
 		i++;
 	}
-//	ft_putstr_fd("bash: ", 2);
 	ft_putstr_fd(a->cmd, 2);
 	ft_putendl_fd(": command not found", 2);
-//	a->end = 127;
-//	free(cmd);
-//	ft_free_mat(mat);
+	free(cmd);
+	ft_free_mat(mat);
 	exit(127);
 }
 
@@ -139,12 +137,12 @@ int 	main_loop(t_all *a)
 {
 	parsing(a);
 	// validate();
+	init_export(a, a->env);
 	if (a->p.pipe)
 	{
 		ft_pipe(a);
 		return (a->end); //no more pipe
 	}
-	init_export(a, a->env);
 	update_pwd(a);
 	redirect(a);
 	a->end = cmd_builtin(a);
@@ -165,6 +163,8 @@ void 	init_struct(t_all *a)
 	a->line = 0;
 	a->homepath = 0;
 	a->end = 1;
+	a->env = 0;
+	a->ept = 0;
 }
 
 int main(int argc, char *argv[], char *envp[])
@@ -191,7 +191,7 @@ int main(int argc, char *argv[], char *envp[])
 		init(a);
 		init_index(a);
 		main_loop(a);
-		//free_com_arg(a);
+		free_com_arg(a);
 		if (a->redirect)
 			dup2(a->fd_tmp, a->fileno);
 		free(tmp);

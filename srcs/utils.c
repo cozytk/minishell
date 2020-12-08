@@ -105,12 +105,3 @@ int		cmd_itself(char *cmd, char *str)
 	}
 	return (0);
 }
-
-int 	free_cmd_arg(t_all *a)
-{
-	if (a->cmd)
-		ft_free(a->cmd);
-	if (a->arg)
-		ft_free(a->arg);
-	return (1);
-}
