@@ -37,6 +37,7 @@ void	s_quote_process(t_all *a, char *line)
 		a->cmd = result;
 	else
 		add_argument(a, result);
+	quote_join(a);
 }
 
 void	d_quote_process(t_all *a, char *line)
@@ -63,6 +64,43 @@ void	d_quote_process(t_all *a, char *line)
 	if (!a->cmd)
 		a->cmd = result;
 	else
+	{
 		add_argument(a, result);
-	process_env(a, result);
+		process_env(a, result);
+	}
+	quote_join(a);
+}
+
+void	quote_join(t_all *a)
+{
+	//cmd 있고 arg 하나 -> 만약 붙어있다? 합치고 cmd 갱신, arg 제거 arg NULL 처리는 밖에서(안해줘도 될듯)
+	//cmd 만 있 -> return ;
+	//cmd 있고 arg 여러개
+	int		size;
+	char	*temp;
+	char	*temp2;
+	char	*temp3;
+
+	if (!a->arg)
+		return ;
+	size = ft_matrow(a->arg);
+	if (a->p.start > 0 && a->cmd)
+	{
+		if (a->line[a->p.start - 1] != ' ' && size == 1)
+		{
+			temp = a->cmd;
+			a->cmd = ft_strjoin(a->cmd, a->arg[0]);
+			free(temp);
+			a->arg = ft_delete_row(a->arg, 0);
+		}
+		else if (a->line[a->p.start - 1] != ' ' && size > 1)
+		{
+			temp = a->arg[size - 2];
+			temp2 = a->arg[size - 1];
+			temp3 = ft_strjoin(temp, temp2);
+			a->arg = ft_delete_row(a->arg, size - 2);
+			a->arg = ft_delete_row(a->arg, size - 1);
+			add_argument(a, temp3);
+		}
+	}
 }
