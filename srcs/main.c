@@ -130,7 +130,7 @@ int 	cmd_exec(t_all *a)
 	}
 	else if (pid == -1)
 	{
-		printf("%s\n", strerror(errno));
+		ft_putendl_fd(strerror(errno), 2);
 		exit(1);
 	}
 	waitpid(pid, 0, 0);
@@ -139,8 +139,6 @@ int 	cmd_exec(t_all *a)
 
 int     cmd_builtin(t_all *a)
 {
-	if (!(a->cmd))
-		return (-1);
 	ft_exit(a);
 	if (!ft_strncmp(a->cmd, "$?", 2))
 	{
@@ -177,8 +175,8 @@ void 	update_pwd(t_all *a)
 int 	main_loop(t_all *a)
 {
 	parsing(a);
-	for (int i = 0; a->arg[i]; i++)
-		printf("%s\n", a->arg[i]);
+	if (!a->cmd)
+		return (-1);
 	if (pipe_scolon_alone(a))
 		return (0);
 	// validate();
@@ -190,11 +188,9 @@ int 	main_loop(t_all *a)
 	}
 	update_pwd(a);
 	redirect(a);
-	g_end = cmd_builtin(a);
+	cmd_builtin(a);
 	if (g_end == 1)
-		g_end = cmd_exec(a);
-	if (g_end == 1)
-		g_end = 127;
+		cmd_exec(a);
 	if (a->p.s_colon)
 	{
 		free_com_arg(a);
