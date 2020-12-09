@@ -23,7 +23,9 @@ void	s_quote_process(t_all *a, char *line)
 		if (!line[a->p.i])
 		{
 			ft_putstr_fd(" > ", 1);
-			while (1);
+			while (1)
+			{
+			}
 		}
 		if (line[a->p.i] == '\\')
 			a->p.i++;
@@ -48,7 +50,9 @@ void	d_quote_process(t_all *a, char *line)
 		if (!line[a->p.i])
 		{
 			ft_putstr_fd(" > ", 1);
-			while (1);
+			while (1)
+			{
+			}
 		}
 		if (line[a->p.i] == '\\')
 			a->p.i++;
