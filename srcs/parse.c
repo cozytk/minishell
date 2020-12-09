@@ -14,7 +14,7 @@
 
 void	add_argument(t_all *a, char *arg)
 {
-    int		argsize;
+	int		argsize;
 	int		i;
 	char	**new_mat;
 
