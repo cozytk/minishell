@@ -89,6 +89,19 @@ void	run_execve(t_all *a, char **arg)
 	exit(127);
 }
 
+int		pipe_scolon_alone(t_all *a)
+{
+	if (a->cmd[0] == '|' || a->cmd[0] == ';')
+	{
+		if (a->cmd[0] == '|')
+			ft_putendl_fd("bash: syntax error near unexpected token `|'", 2);
+		else if (a->cmd[0] == ';')
+			ft_putendl_fd("bash: syntax error near unexpected token `;'", 2);
+		return (1);
+	}
+	return (0);
+}
+
 int 	cmd_exec(t_all *a)
 {
 	char **lines;
@@ -158,6 +171,8 @@ void 	update_pwd(t_all *a)
 int 	main_loop(t_all *a)
 {
 	parsing(a);
+	if (pipe_scolon_alone(a))
+		return (0);
 	// validate();
 	init_export(a, a->env);
 	if (a->p.pipe)

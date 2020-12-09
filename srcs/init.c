@@ -39,7 +39,26 @@ void init_export(t_all *a, char **env)
 	sort_mat(a->ept);
 }
 
+void	parse_init(t_all *a)
+{
+	a->p.pipe = 0;
+	a->p.s_colon = 0;
+	a->p.candidate = NULL;
+}
 
+void    init(t_all *a)
+{
+	a->redirect = 0;
+	a->cmd = NULL;
+	a->arg = NULL;
+}
+
+void	init_index(t_all *a)
+{
+	a->p.i = 0;
+	a->p.pipe = 0;
+	a->p.s_colon = 0;
+}
 //
 // Created by Taekyun Kim on 11/25/20.
 //
