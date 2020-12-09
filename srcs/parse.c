@@ -36,23 +36,6 @@ void	add_argument(t_all *a, char *arg)
 	a->arg = new_mat;
 }
 
-void	add_parsed(t_all *a, char *line)
-{
-	char	*temp;
-
-	temp = ft_substr(line, a->p.start, a->p.count);
-	if (temp[0] == '\0')
-	{
-		free(temp);
-		temp = NULL;
-		return ;
-	}
-	if (!a->cmd)
-		a->cmd = temp;
-	else
-		add_argument(a, temp);
-}
-
 void	add_candidate(t_all *a)
 {
 	if (!a->p.candidate)

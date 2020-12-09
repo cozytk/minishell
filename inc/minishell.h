@@ -17,8 +17,6 @@
 typedef struct		s_parse
 {
 	int		i;
-	int		count;
-	int		start;
 	int		back_flag;
 	int		pipe;
 	int		s_colon;
@@ -83,7 +81,6 @@ char		**add_row(char **mat, char *arg);
 */
 
 void		add_argument(t_all *a, char *arg);
-void		add_parsed(t_all *a, char *line);
 void		show_arg(t_all *a);
 void		show_com(t_all *a);
 void		free_com_arg(t_all *a);

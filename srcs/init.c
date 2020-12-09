@@ -43,7 +43,6 @@ void	parse_init(t_all *a)
 {
 	a->p.pipe = 0;
 	a->p.s_colon = 0;
-	a->p.start = a->p.i;
 	a->p.candidate = NULL;
 }
 
@@ -57,8 +56,6 @@ void    init(t_all *a)
 void	init_index(t_all *a)
 {
 	a->p.i = 0;
-	a->p.start = 0;
-	a->p.count = 0;
 	a->p.pipe = 0;
 	a->p.s_colon = 0;
 }
