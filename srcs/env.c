@@ -42,7 +42,3 @@ int 	env(t_all *a)
 	}
 	return (0);
 }
-//
-// Created by Taekyun Kim on 30/11/2020.
-//
-

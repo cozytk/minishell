@@ -13,8 +13,6 @@
 #include "../inc/minishell.h"
 #include <string.h>
 
-int g_end = 1;
-
 void sig_handle(int signo)
 {
 	int state;
@@ -25,12 +23,12 @@ void sig_handle(int signo)
 		if (signo == SIGINT)
 		{
 			ft_putchar_fd('\n', 1);
-//			g_end = 130;
+//			a->end = 130;
 		}
 		else if (signo == SIGQUIT)
 		{
 			ft_putendl_fd("Quit", 1);
-//			g_end = 131;
+//			a->end = 131;
 		}
 		return;
 	}
@@ -38,7 +36,7 @@ void sig_handle(int signo)
 	{
 		ft_putchar_fd('\n', 1);
 		ft_putstr_fd(INIT, 1);
-		g_end = 130;
+//		a->end = 130;
 	}
 	else if (signo == SIGQUIT)
 	{
@@ -50,7 +48,7 @@ void sig_handle(int signo)
 		ft_putchar_fd(8, 1);
 		//ft_putchar_fd('\n', 1);
 		//ft_putstr_fd(INIT, 1);
-		g_end = 127;
+//		a->end = 127;
 	}
 }
 
@@ -114,7 +112,7 @@ int 	cmd_exec(t_all *a)
 	char **tmp;
 	pid_t pid;
 
-	if (g_end != 1)
+	if (a->end != -1)
 		return (1);
 	pid = fork();
 	if (pid == 0)
@@ -142,16 +140,18 @@ int     cmd_builtin(t_all *a)
 	ft_exit(a);
 	if (!ft_strncmp(a->cmd, "$?", 2))
 	{
-		ft_putnbr_fd(g_end, 2);
+		ft_putnbr_fd(a->end, 2);
 		ft_putendl_fd(": command not found", 2);
-		return (127);
+		a->end = 127;
+		return (1);
 	}
     if (export(a) || cd(a) || pwd(a) || env(a) || unset(a) || echo(a))
 	{
-    	g_end = 0;
-		return (0);
+    	if (a->end == -1)
+    		a->end = 0;
+		return (1);
 	}
-    return (1);
+    return (0);
 }
 
 void 	update_pwd(t_all *a)
@@ -179,35 +179,33 @@ int 	main_loop(t_all *a)
 		return (-1);
 	if (pipe_scolon_alone(a))
 		return (0);
-	// validate();
 	init_export(a, a->env);
 	if (a->p.pipe)
 	{
 		ft_pipe(a);
-		return (g_end); //no more pipe
+		return (a->end);
 	}
 	update_pwd(a);
 	redirect(a);
 	cmd_builtin(a);
-	if (g_end == 1)
-		cmd_exec(a);
+	cmd_exec(a);
 	if (a->p.s_colon)
 	{
 		free_com_arg(a);
 		main_loop(a);
 	}
-	return (g_end);
+	return (a->end);
 }
 
 void 	init_struct(t_all *a)
 {
+	a->end = -1;
 	a->cd = 0;
 	a->fd_tmp = 0;
 	a->redirect = 0;
 	a->fileno = 0;
 	a->cmd = 0;
 	a->line = 0;
-	a->homepath = 0;
 	a->env = 0;
 	a->ept = 0;
 	a->init_home = 0;
@@ -230,7 +228,7 @@ int main(int argc, char *argv[], char *envp[])
 		if (!a->line[0])
 		{
 			ft_free(a->line);
-			g_end = 127;
+			a->end = 127;
 			continue;
 		}
 		tmp = a->line;

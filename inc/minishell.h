@@ -33,16 +33,16 @@ typedef struct		s_all
 	int		fd[2];
 	char	*cmd;
 	char 	*line;
-	char	*homepath;
 	char	*init_home;
 	int		fileno;
 	int 	redirect;
 	int 	fd_tmp;
 	int 	cd;
-	int 	end;
+	int		end;
 	t_parse	p;
 }					t_all;
 
+int			write_cd_error(char *str, t_all *a);
 void		init(t_all *a);
 void		init_index(t_all *a);
 int			cmd_exec(t_all *a);
@@ -69,11 +69,8 @@ void		sort_mat(char **env);
 int			ft_pipe(t_all *a);
 int			redirect(t_all *a);
 int			main_loop(t_all *a);
-void	 	reset_fd(t_all *a);
-int 		free_cmd_arg(t_all *a);
 int			ft_exit(t_all *a);
 int 		find_row(char **mat, char *s);
-char		**add_row(char **mat, char *arg);
 
 
 /*

@@ -46,7 +46,10 @@ int		unset(t_all *a)
 	if (!ft_strncmp(a->cmd, "unset\0", 6))
 	{
 		if (!a->arg)
+		{
+			a->end = 0;
 			return (1);
+		}
 		parse_unset(a);
 		ft_free_mat(a->ept);
 		a->ept = NULL;
