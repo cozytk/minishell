@@ -177,6 +177,8 @@ void 	update_pwd(t_all *a)
 int 	main_loop(t_all *a)
 {
 	parsing(a);
+	for (int i = 0; a->arg[i]; i++)
+		printf("%s\n", a->arg[i]);
 	if (pipe_scolon_alone(a))
 		return (0);
 	// validate();

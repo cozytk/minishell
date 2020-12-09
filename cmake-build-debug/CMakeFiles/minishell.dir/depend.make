@@ -21,6 +21,10 @@ CMakeFiles/minishell.dir/srcs/export.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/export.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/export.c.o: ../srcs/export.c
 
+CMakeFiles/minishell.dir/srcs/free.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/free.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/free.c.o: ../srcs/free.c
+
 CMakeFiles/minishell.dir/srcs/get_next_line.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/get_next_line.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/get_next_line.c.o: ../srcs/get_next_line.c
@@ -40,6 +44,26 @@ CMakeFiles/minishell.dir/srcs/main.c.o: ../srcs/main.c
 CMakeFiles/minishell.dir/srcs/parse.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/parse.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/parse.c.o: ../srcs/parse.c
+
+CMakeFiles/minishell.dir/srcs/parse_env.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/parse_env.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/parse_env.c.o: ../srcs/parse_env.c
+
+CMakeFiles/minishell.dir/srcs/parse_env2.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/parse_env2.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/parse_env2.c.o: ../srcs/parse_env2.c
+
+CMakeFiles/minishell.dir/srcs/parse_proc.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/parse_proc.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/parse_proc.c.o: ../srcs/parse_proc.c
+
+CMakeFiles/minishell.dir/srcs/parse_quote.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/parse_quote.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/parse_quote.c.o: ../srcs/parse_quote.c
+
+CMakeFiles/minishell.dir/srcs/parse_utils.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/parse_utils.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/parse_utils.c.o: ../srcs/parse_utils.c
 
 CMakeFiles/minishell.dir/srcs/pipe.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/pipe.c.o: ../libft/libft.h

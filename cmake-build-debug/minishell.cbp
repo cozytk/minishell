@@ -248,6 +248,9 @@
 		<Unit filename="/home/taekkim/minishell/libft/ft_strchr.c">
 			<Option target="ft"/>
 		</Unit>
+		<Unit filename="/home/taekkim/minishell/libft/ft_strcjoin.c">
+			<Option target="ft"/>
+		</Unit>
 		<Unit filename="/home/taekkim/minishell/libft/ft_strdup.c">
 			<Option target="ft"/>
 		</Unit>
@@ -308,6 +311,9 @@
 		<Unit filename="/home/taekkim/minishell/srcs/export.c">
 			<Option target="minishell"/>
 		</Unit>
+		<Unit filename="/home/taekkim/minishell/srcs/free.c">
+			<Option target="minishell"/>
+		</Unit>
 		<Unit filename="/home/taekkim/minishell/srcs/get_next_line.c">
 			<Option target="minishell"/>
 		</Unit>
@@ -321,6 +327,21 @@
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/home/taekkim/minishell/srcs/parse.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/taekkim/minishell/srcs/parse_env.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/taekkim/minishell/srcs/parse_env2.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/taekkim/minishell/srcs/parse_proc.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/taekkim/minishell/srcs/parse_quote.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/taekkim/minishell/srcs/parse_utils.c">
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/home/taekkim/minishell/srcs/pipe.c">

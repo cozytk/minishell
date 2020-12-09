@@ -45,7 +45,7 @@ int 	find_row(char **mat, char *s)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 void	bash_cmd_error(char *cmd, char *msg, int exit_code)

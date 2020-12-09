@@ -10,6 +10,12 @@ include_directories(libft)
 add_executable(minishell
     inc/minishell.h
    libft/Makefile
+        srcs/free.c
+        srcs/parse_env.c
+        srcs/parse_proc.c
+        srcs/parse_quote.c
+        srcs/parse_utils.c
+        srcs/parse_env2.c
         srcs/main.c
         srcs/export.c
         srcs/utils.c
@@ -63,6 +69,7 @@ add_library(ft STATIC
         libft/ft_split.c
         libft/ft_strccmp.c
         libft/ft_strchr.c
+        libft/ft_strcjoin.c
         libft/ft_strdup.c
         libft/ft_strjoin.c
         libft/ft_strlcat.c
