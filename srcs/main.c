@@ -177,6 +177,12 @@ void 	update_pwd(t_all *a)
 int 	main_loop(t_all *a)
 {
 	parsing(a);
+	if (!ft_strncmp(a->cmd, "export\0", 7))
+	{
+		printf("%s\n", a->arg[0]);
+		printf("%p\n", a->arg[1]);
+		printf("%p\n", a->arg[2]);
+	}
 	if (pipe_scolon_alone(a))
 		return (0);
 	// validate();
