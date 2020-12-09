@@ -70,7 +70,7 @@ int 	cd(t_all *a)
 	{
 		if (!a->arg)
 			cd_home(a, 0);
-		else if (!ft_strncmp(a->arg, "~", 0) && (ft_strlen(a->arg) == 1))
+		else if (!ft_strncmp(a->arg[0], "~", 0) && (ft_strlen(a->arg[0]) == 1))
 		{
 			a->arg = malloc(sizeof(char *) * 2);
 			a->arg[0] = ft_strdup("~");
