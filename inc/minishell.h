@@ -17,9 +17,11 @@
 typedef struct		s_parse
 {
 	int		i;
+	int		start;
 	int		back_flag;
 	int		pipe;
 	int		s_colon;
+	int		parsing;
 	char		*candidate;
 	char		*tmp;
 	char		*tmp2;	

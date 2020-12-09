@@ -41,6 +41,7 @@ void	parse_quote(t_all *a)
 {
 	if (a->p.candidate)
 		add_candidate(a);
+	a->p.start = a->p.i;
 	if (a->line[a->p.i] == '\'')
 		s_quote_process(a, a->line);
 	else if (a->line[a->p.i] == '\"')

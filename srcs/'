@@ -78,6 +78,7 @@ int		parsing(t_all *a)
 		{
 			if (a->p.parsing == 0)
 			{
+				printf("[%s]\n", &a->line[a->p.i]);
 				a->p.parsing = 1;
 				a->p.start = a->p.i;
 			}
