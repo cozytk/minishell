@@ -36,6 +36,10 @@ void sig_handle(int signo)
 	}
 	if (signo == SIGINT)
 	{
+		ft_putchar_fd(8, 1);
+		ft_putchar_fd(8, 1);
+		ft_putchar_fd(' ', 1);
+		ft_putchar_fd(' ', 1);
 		ft_putchar_fd('\n', 1);
 		ft_putstr_fd(INIT, 1);
 		g_end = 130;
@@ -44,6 +48,12 @@ void sig_handle(int signo)
 	{
 		ft_putchar_fd(8, 1);
 		ft_putchar_fd(8, 1);
+		ft_putchar_fd(' ', 1);
+		ft_putchar_fd(' ', 1);
+		ft_putchar_fd(8, 1);
+		ft_putchar_fd(8, 1);
+		//ft_putchar_fd('\n', 1);
+		//ft_putstr_fd(INIT, 1);
 		g_end = 127;
 	}
 }
