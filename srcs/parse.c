@@ -59,10 +59,9 @@ void	parse_backslash(t_all *a)
 	a->p.start += a->p.count;
 	a->p.count = 2;
 	add_parsed(a, a->line);
-	a->p.count = -1;
+	a->p.count = 0;
 	a->p.i += 2;
 	a->p.start = a->p.i;
-	a->p.i--;
 }
 
 int		parsing(t_all *a)
