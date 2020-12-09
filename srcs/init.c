@@ -44,6 +44,7 @@ void	parse_init(t_all *a)
 	a->p.pipe = 0;
 	a->p.s_colon = 0;
 	a->p.start = a->p.i;
+	a->p.candidate = NULL;
 }
 
 void    init(t_all *a)

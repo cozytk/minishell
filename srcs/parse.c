@@ -53,15 +53,27 @@ void	add_parsed(t_all *a, char *line)
 		add_argument(a, temp);
 }
 
+void	add_candidate(t_all *a)
+{
+	if (!a->p.candidate)
+		return ;
+	if (a->p.candidate[0] == '\0')
+	{
+		free(a->p.candidate);
+		a->p.candidate = NULL;
+		return ;
+	}
+	if (!a->cmd)
+		a->cmd = a->p.candidate;
+	else
+		add_argument(a, a->p.candidate);
+	a->p.candidate = NULL;
+}
+
 void	parse_backslash(t_all *a)
 {
-	add_parsed(a, a->line);
-	a->p.start += a->p.count;
-	a->p.count = 2;
-	add_parsed(a, a->line);
-	a->p.count = 0;
-	a->p.i += 2;
-	a->p.start = a->p.i;
+	a->p.i++;
+	a->p.candidate = ft_strcjoin(a->p.candidate, a->line[a->p.i]);
 }
 
 int		parsing(t_all *a)
@@ -71,19 +83,23 @@ int		parsing(t_all *a)
 	parse_init(a);
 	while (a->line[a->p.i])
 	{
-		if (a->line[a->p.i] == '\\' && a->line[a->p.i - 1] != '\\')
-			parse_backslash(a);
 		if (is_pipe_or_scolon(a->line[a->p.i]) && a->cmd)
 			return (parse_pipe_scolon(a));
+		if (a->line[a->p.i] != ' ' && a->line[a->p.i] != '\\'
+				&& !is_quote(a->line[a->p.i]) && !is_sep_char(a->line[a->p.i]))
+			a->p.candidate = ft_strcjoin(a->p.candidate, a->line[a->p.i]);
+		if (a->line[a->p.i] == '\\')
+			parse_backslash(a);
 		else if (is_sep_char(a->line[a->p.i]))
 			parse_redirect(a);
 		else if (is_quote(a->line[a->p.i]))
 			parse_quote(a);
-		else if (is_space(a->line[a->p.i]))
+		else if (is_space(a->line[a->p.i])
+				|| is_pipe_or_scolon(a->line[a->p.i + 1])
+				|| is_sep_char(a->line[a->p.i + 1]))
 			parse_one(a);
-		else if (a->line[a->p.i + 1] == '\0')
+		if (a->line[a->p.i + 1] == '\0')
 			return (parse_last(a));
-		a->p.count++;
 		a->p.i++;
 	}
 	return (1);

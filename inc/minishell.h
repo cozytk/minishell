@@ -22,8 +22,9 @@ typedef struct		s_parse
 	int		back_flag;
 	int		pipe;
 	int		s_colon;
-	char	*tmp;
-	char	*tmp2;
+	char		*candidate;
+	char		*tmp;
+	char		*tmp2;	
 }					t_parse;
 
 typedef struct		s_all
@@ -104,5 +105,6 @@ void		parse_redirect(t_all *a);
 void		parse_quote(t_all *a);
 void		parse_one(t_all *a);
 int		parse_last(t_all *a);
+void		add_candidate(t_all *a);
 
 #endif
