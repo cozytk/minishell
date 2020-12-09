@@ -21,6 +21,10 @@ CMakeFiles/minishell.dir/srcs/export.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
  /home/taekkim/minishell/srcs/export.c
+CMakeFiles/minishell.dir/srcs/free.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/free.c
 CMakeFiles/minishell.dir/srcs/get_next_line.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
@@ -41,6 +45,22 @@ CMakeFiles/minishell.dir/srcs/parse.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
  /home/taekkim/minishell/srcs/parse.c
+CMakeFiles/minishell.dir/srcs/parse_env.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/parse_env.c
+CMakeFiles/minishell.dir/srcs/parse_proc.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/parse_proc.c
+CMakeFiles/minishell.dir/srcs/parse_quote.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/parse_quote.c
+CMakeFiles/minishell.dir/srcs/parse_utils.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/parse_utils.c
 CMakeFiles/minishell.dir/srcs/pipe.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h

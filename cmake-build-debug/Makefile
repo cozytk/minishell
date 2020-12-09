@@ -1108,6 +1108,33 @@ libft/ft_strchr.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strchr.c.s
 .PHONY : libft/ft_strchr.c.s
 
+libft/ft_strcjoin.o: libft/ft_strcjoin.c.o
+
+.PHONY : libft/ft_strcjoin.o
+
+# target to build an object file
+libft/ft_strcjoin.c.o:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strcjoin.c.o
+.PHONY : libft/ft_strcjoin.c.o
+
+libft/ft_strcjoin.i: libft/ft_strcjoin.c.i
+
+.PHONY : libft/ft_strcjoin.i
+
+# target to preprocess a source file
+libft/ft_strcjoin.c.i:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strcjoin.c.i
+.PHONY : libft/ft_strcjoin.c.i
+
+libft/ft_strcjoin.s: libft/ft_strcjoin.c.s
+
+.PHONY : libft/ft_strcjoin.s
+
+# target to generate assembly for a file
+libft/ft_strcjoin.c.s:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_strcjoin.c.s
+.PHONY : libft/ft_strcjoin.c.s
+
 libft/ft_strdup.o: libft/ft_strdup.c.o
 
 .PHONY : libft/ft_strdup.o
@@ -1621,6 +1648,33 @@ srcs/export.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/export.c.s
 .PHONY : srcs/export.c.s
 
+srcs/free.o: srcs/free.c.o
+
+.PHONY : srcs/free.o
+
+# target to build an object file
+srcs/free.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/free.c.o
+.PHONY : srcs/free.c.o
+
+srcs/free.i: srcs/free.c.i
+
+.PHONY : srcs/free.i
+
+# target to preprocess a source file
+srcs/free.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/free.c.i
+.PHONY : srcs/free.c.i
+
+srcs/free.s: srcs/free.c.s
+
+.PHONY : srcs/free.s
+
+# target to generate assembly for a file
+srcs/free.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/free.c.s
+.PHONY : srcs/free.c.s
+
 srcs/get_next_line.o: srcs/get_next_line.c.o
 
 .PHONY : srcs/get_next_line.o
@@ -1755,6 +1809,114 @@ srcs/parse.s: srcs/parse.c.s
 srcs/parse.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse.c.s
 .PHONY : srcs/parse.c.s
+
+srcs/parse_env.o: srcs/parse_env.c.o
+
+.PHONY : srcs/parse_env.o
+
+# target to build an object file
+srcs/parse_env.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_env.c.o
+.PHONY : srcs/parse_env.c.o
+
+srcs/parse_env.i: srcs/parse_env.c.i
+
+.PHONY : srcs/parse_env.i
+
+# target to preprocess a source file
+srcs/parse_env.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_env.c.i
+.PHONY : srcs/parse_env.c.i
+
+srcs/parse_env.s: srcs/parse_env.c.s
+
+.PHONY : srcs/parse_env.s
+
+# target to generate assembly for a file
+srcs/parse_env.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_env.c.s
+.PHONY : srcs/parse_env.c.s
+
+srcs/parse_proc.o: srcs/parse_proc.c.o
+
+.PHONY : srcs/parse_proc.o
+
+# target to build an object file
+srcs/parse_proc.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_proc.c.o
+.PHONY : srcs/parse_proc.c.o
+
+srcs/parse_proc.i: srcs/parse_proc.c.i
+
+.PHONY : srcs/parse_proc.i
+
+# target to preprocess a source file
+srcs/parse_proc.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_proc.c.i
+.PHONY : srcs/parse_proc.c.i
+
+srcs/parse_proc.s: srcs/parse_proc.c.s
+
+.PHONY : srcs/parse_proc.s
+
+# target to generate assembly for a file
+srcs/parse_proc.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_proc.c.s
+.PHONY : srcs/parse_proc.c.s
+
+srcs/parse_quote.o: srcs/parse_quote.c.o
+
+.PHONY : srcs/parse_quote.o
+
+# target to build an object file
+srcs/parse_quote.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_quote.c.o
+.PHONY : srcs/parse_quote.c.o
+
+srcs/parse_quote.i: srcs/parse_quote.c.i
+
+.PHONY : srcs/parse_quote.i
+
+# target to preprocess a source file
+srcs/parse_quote.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_quote.c.i
+.PHONY : srcs/parse_quote.c.i
+
+srcs/parse_quote.s: srcs/parse_quote.c.s
+
+.PHONY : srcs/parse_quote.s
+
+# target to generate assembly for a file
+srcs/parse_quote.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_quote.c.s
+.PHONY : srcs/parse_quote.c.s
+
+srcs/parse_utils.o: srcs/parse_utils.c.o
+
+.PHONY : srcs/parse_utils.o
+
+# target to build an object file
+srcs/parse_utils.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_utils.c.o
+.PHONY : srcs/parse_utils.c.o
+
+srcs/parse_utils.i: srcs/parse_utils.c.i
+
+.PHONY : srcs/parse_utils.i
+
+# target to preprocess a source file
+srcs/parse_utils.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_utils.c.i
+.PHONY : srcs/parse_utils.c.i
+
+srcs/parse_utils.s: srcs/parse_utils.c.s
+
+.PHONY : srcs/parse_utils.s
+
+# target to generate assembly for a file
+srcs/parse_utils.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_utils.c.s
+.PHONY : srcs/parse_utils.c.s
 
 srcs/pipe.o: srcs/pipe.c.o
 
@@ -2036,6 +2198,9 @@ help:
 	@echo "... libft/ft_strchr.o"
 	@echo "... libft/ft_strchr.i"
 	@echo "... libft/ft_strchr.s"
+	@echo "... libft/ft_strcjoin.o"
+	@echo "... libft/ft_strcjoin.i"
+	@echo "... libft/ft_strcjoin.s"
 	@echo "... libft/ft_strdup.o"
 	@echo "... libft/ft_strdup.i"
 	@echo "... libft/ft_strdup.s"
@@ -2093,6 +2258,9 @@ help:
 	@echo "... srcs/export.o"
 	@echo "... srcs/export.i"
 	@echo "... srcs/export.s"
+	@echo "... srcs/free.o"
+	@echo "... srcs/free.i"
+	@echo "... srcs/free.s"
 	@echo "... srcs/get_next_line.o"
 	@echo "... srcs/get_next_line.i"
 	@echo "... srcs/get_next_line.s"
@@ -2108,6 +2276,18 @@ help:
 	@echo "... srcs/parse.o"
 	@echo "... srcs/parse.i"
 	@echo "... srcs/parse.s"
+	@echo "... srcs/parse_env.o"
+	@echo "... srcs/parse_env.i"
+	@echo "... srcs/parse_env.s"
+	@echo "... srcs/parse_proc.o"
+	@echo "... srcs/parse_proc.i"
+	@echo "... srcs/parse_proc.s"
+	@echo "... srcs/parse_quote.o"
+	@echo "... srcs/parse_quote.i"
+	@echo "... srcs/parse_quote.s"
+	@echo "... srcs/parse_utils.o"
+	@echo "... srcs/parse_utils.i"
+	@echo "... srcs/parse_utils.s"
 	@echo "... srcs/pipe.o"
 	@echo "... srcs/pipe.i"
 	@echo "... srcs/pipe.s"

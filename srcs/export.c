@@ -88,25 +88,25 @@ char **ft_delete_row(char **mat, int del)
 	return (tmp);
 }
 
-char **overwrite_env(char **mat, t_all *a)
+char **overwrite_env(t_all *a)
 {
 	int i;
 	int j;
 
 	i = -1;
-	if (!mat)
+	if (!a->arg)
 		return ((void *)0);
-	while (mat[++i])
+	while (a->arg[++i])
 	{
 		j = -1;
 		while (a->env[++j])
 		{
-			if (!ft_strccmp(mat[i], a->env[j], '='))
+			if (!ft_strccmp(a->arg[i], a->env[j], '='))
 			{
 				free(a->env[j]);
 				a->env[j] = (void *)0;
-				a->env[j] = ft_strdup(mat[i]);
-				mat = ft_delete_row(mat, i);
+				a->env[j] = ft_strdup(a->arg[i]);
+				a->arg = ft_delete_row(a->arg, i);
 				i = -1;
 				break ;
 			}
@@ -114,7 +114,7 @@ char **overwrite_env(char **mat, t_all *a)
 				break ;
 		}
 	}
-	return (mat);
+	return (a->arg);
 }
 
 char **check_overlap(char **mat)
@@ -123,7 +123,7 @@ char **check_overlap(char **mat)
 	int j;
 
 	i = -1;
-	while (mat[++i + 1])
+	while (mat[++i])
 	{
 		j = i;
 		while (mat[++j])
@@ -132,7 +132,7 @@ char **check_overlap(char **mat)
 				return (ft_delete_row(mat, i));
 		}
 	}
-	return ((void *)0);
+	return (mat);
 }
 
 void edit_env(t_all *a)
@@ -140,7 +140,7 @@ void edit_env(t_all *a)
 	char	**tmp_m;
 
 	a->arg = check_overlap(a->arg);
-	a->arg = overwrite_env(a->arg, a);
+	a->arg = overwrite_env(a);
 	tmp_m = ft_matjoin(a->env, a->arg);
 	ft_free_mat(a->env);
 	ft_free_mat(a->arg);
