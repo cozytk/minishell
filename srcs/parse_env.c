@@ -29,10 +29,10 @@ char	*get_env_by_arg2(char *arg, int *count, int i)
 	else if (arg[i] == '$')
 	{
 		start = i + 1;
-		while (arg[i] && arg[i] != ' ' && arg[i + 1] != '$')
+		while (arg[i] && arg[i] != ' ' && ft_isalnum(arg[i + 1]))
 			i++;
 		*count = i;
-		return (ft_substr(arg, start, i - start));
+		return (ft_substr(arg, start, i - start + 1));
 	}
 	return (NULL);
 }
