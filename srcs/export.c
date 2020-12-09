@@ -85,6 +85,7 @@ char **ft_delete_row(char **mat, int del)
 	}
 	tmp[row - 1] = (void *)0;
 	ft_free_mat(mat);
+	mat = (void *)0;
 	return (tmp);
 }
 
@@ -96,7 +97,7 @@ char **overwrite_env(char **mat, t_all *a)
 	i = -1;
 	if (!mat)
 		return ((void *)0);
-	while (mat[++i])
+	while (mat && mat[++i])
 	{
 		j = -1;
 		while (a->env[++j])
@@ -132,7 +133,7 @@ char **check_overlap(char **mat)
 				return (ft_delete_row(mat, i));
 		}
 	}
-	return ((void *)0);
+	return (mat);
 }
 
 void edit_env(t_all *a)
