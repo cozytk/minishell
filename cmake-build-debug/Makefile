@@ -1837,6 +1837,33 @@ srcs/parse_env.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_env.c.s
 .PHONY : srcs/parse_env.c.s
 
+srcs/parse_env2.o: srcs/parse_env2.c.o
+
+.PHONY : srcs/parse_env2.o
+
+# target to build an object file
+srcs/parse_env2.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_env2.c.o
+.PHONY : srcs/parse_env2.c.o
+
+srcs/parse_env2.i: srcs/parse_env2.c.i
+
+.PHONY : srcs/parse_env2.i
+
+# target to preprocess a source file
+srcs/parse_env2.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_env2.c.i
+.PHONY : srcs/parse_env2.c.i
+
+srcs/parse_env2.s: srcs/parse_env2.c.s
+
+.PHONY : srcs/parse_env2.s
+
+# target to generate assembly for a file
+srcs/parse_env2.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parse_env2.c.s
+.PHONY : srcs/parse_env2.c.s
+
 srcs/parse_proc.o: srcs/parse_proc.c.o
 
 .PHONY : srcs/parse_proc.o
@@ -2279,6 +2306,9 @@ help:
 	@echo "... srcs/parse_env.o"
 	@echo "... srcs/parse_env.i"
 	@echo "... srcs/parse_env.s"
+	@echo "... srcs/parse_env2.o"
+	@echo "... srcs/parse_env2.i"
+	@echo "... srcs/parse_env2.s"
 	@echo "... srcs/parse_proc.o"
 	@echo "... srcs/parse_proc.i"
 	@echo "... srcs/parse_proc.s"

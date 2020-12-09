@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/taekkim/minishell/srcs/main.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/main.c.o"
   "/home/taekkim/minishell/srcs/parse.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parse.c.o"
   "/home/taekkim/minishell/srcs/parse_env.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parse_env.c.o"
+  "/home/taekkim/minishell/srcs/parse_env2.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parse_env2.c.o"
   "/home/taekkim/minishell/srcs/parse_proc.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parse_proc.c.o"
   "/home/taekkim/minishell/srcs/parse_quote.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parse_quote.c.o"
   "/home/taekkim/minishell/srcs/parse_utils.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parse_utils.c.o"

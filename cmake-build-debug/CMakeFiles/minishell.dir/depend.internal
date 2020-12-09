@@ -49,6 +49,10 @@ CMakeFiles/minishell.dir/srcs/parse_env.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
  /home/taekkim/minishell/srcs/parse_env.c
+CMakeFiles/minishell.dir/srcs/parse_env2.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/parse_env2.c
 CMakeFiles/minishell.dir/srcs/parse_proc.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h

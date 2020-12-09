@@ -332,6 +332,9 @@
 		<Unit filename="/home/taekkim/minishell/srcs/parse_env.c">
 			<Option target="minishell"/>
 		</Unit>
+		<Unit filename="/home/taekkim/minishell/srcs/parse_env2.c">
+			<Option target="minishell"/>
+		</Unit>
 		<Unit filename="/home/taekkim/minishell/srcs/parse_proc.c">
 			<Option target="minishell"/>
 		</Unit>

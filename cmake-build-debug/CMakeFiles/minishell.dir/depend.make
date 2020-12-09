@@ -49,6 +49,10 @@ CMakeFiles/minishell.dir/srcs/parse_env.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/parse_env.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/parse_env.c.o: ../srcs/parse_env.c
 
+CMakeFiles/minishell.dir/srcs/parse_env2.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/parse_env2.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/parse_env2.c.o: ../srcs/parse_env2.c
+
 CMakeFiles/minishell.dir/srcs/parse_proc.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/parse_proc.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/parse_proc.c.o: ../srcs/parse_proc.c

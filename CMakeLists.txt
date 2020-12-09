@@ -15,6 +15,7 @@ add_executable(minishell
         srcs/parse_proc.c
         srcs/parse_quote.c
         srcs/parse_utils.c
+        srcs/parse_env2.c
         srcs/main.c
         srcs/export.c
         srcs/utils.c
