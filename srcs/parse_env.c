@@ -12,55 +12,13 @@
 
 #include "../inc/minishell.h"
 
-char	*get_env_by_arg2(char *arg, int *count, int i)
+char	*find_env_result(t_all *a, char *env, int i, int j)
 {
-	int		start;
-
-	if (arg[i] == '$' && arg[i + 1] == '{')
-	{
-		start = i + 2;
-		while (arg[i] != '}' && arg[i])
-			i++;
-		*count = i;
-		if (!arg[i])
-			return (NULL);
-		return (ft_substr(arg, start, i - start));
-	}
-	else if (arg[i] == '$')
-	{
-		start = i + 1;
-		while (arg[i] && arg[i] != ' ' && ft_isalnum(arg[i + 1]))
-			i++;
-		*count = i;
-		return (ft_substr(arg, start, i - start + 1));
-	}
-	return (NULL);
-}
-
-char	*get_env_by_arg(char *arg, int *count)
-{
-	int		i;
-	char	*env;
-
-	i = 0;
-	while (arg[i])
-	{
-		env = get_env_by_arg2(arg, count, i);
-		if (env)
-			return (env);
-		i++;
-	}
-	return (NULL);
-}
-
-char	*find_env_result(t_all *a, char *env)
-{
-	int		i;
-	int		j;
 	int		start;
 	char	*temp;
 
-	i = 0;
+	if (!ft_strncmp(env, "$\0", 2) || ft_isdigit(env[0]))
+		return (env);
 	while (a->env[i])
 	{
 		if (!ft_strncmp(a->env[i], env, ft_strlen(env)))
@@ -98,7 +56,7 @@ char	*env_appending(t_all *a, char *arg, int count)
 		{
 			a->p.tmp = result;
 			env = get_env_by_arg(&arg[i], &count);
-			a->p.tmp2 = find_env_result(a, env);
+			a->p.tmp2 = find_env_result(a, env, 0, 0);
 			result = ft_strjoin(result, a->p.tmp2);
 			free(a->p.tmp);
 			free(a->p.tmp2);
