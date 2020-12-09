@@ -42,9 +42,3 @@ stdlib.h
 ../inc/minishell.h
 /home/taekkim/minishell/inc/minishell.h
 
-/home/taekkim/minishell/srcs/main.c
-../inc/minishell.h
-/home/taekkim/minishell/inc/minishell.h
-string.h
--
-

@@ -2,7 +2,11 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/42TESTERS-MINISHELL" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/gnl" vcs="" />
     <mapping directory="$PROJECT_DIR$/libft" vcs="" />
+    <mapping directory="$PROJECT_DIR$/minishell-tester" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/minishell_test" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/minishell_tests" vcs="Git" />
   </component>
 </project>

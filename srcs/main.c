@@ -13,6 +13,19 @@
 #include "../inc/minishell.h"
 #include <string.h>
 
+int		update_end(t_all *a)
+{
+	if (!ft_strncmp(a->cmd, "$?", 2))
+	{
+		ft_putnbr_fd(a->end, 2);
+		ft_putendl_fd(": command not found", 2);
+		a->end = 127;
+		return (0);
+	}
+	a->end = -1;
+	return (1);
+}
+
 void sig_handle(int signo)
 {
 	int state;
@@ -138,18 +151,13 @@ int 	cmd_exec(t_all *a)
 int     cmd_builtin(t_all *a)
 {
 	ft_exit(a);
-	if (!ft_strncmp(a->cmd, "$?", 2))
-	{
-		ft_putnbr_fd(a->end, 2);
-		ft_putendl_fd(": command not found", 2);
-		a->end = 127;
-		return (1);
-	}
     if (export(a) || cd(a) || pwd(a) || env(a) || unset(a) || echo(a))
 	{
     	if (a->end == -1)
-    		a->end = 0;
-		return (1);
+		{
+			a->end = 0;
+			return (1);
+		}
 	}
     return (0);
 }
@@ -175,6 +183,8 @@ void 	update_pwd(t_all *a)
 int 	main_loop(t_all *a)
 {
 	parsing(a);
+	if (!update_end(a))
+		return (0);
 	if (!a->cmd)
 		return (-1);
 	if (pipe_scolon_alone(a))

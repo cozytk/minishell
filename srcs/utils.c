@@ -12,6 +12,33 @@
 
 #include "../inc/minishell.h"
 
+int same_key(char *s1, char *s2)
+{
+	int		i;
+	int		ret;
+	char	*tmp1;
+	char	*tmp2;
+
+	ret = 0;
+	if (!((tmp1 = malloc(ft_strlen(s1 + 1))) && (tmp2 = malloc(ft_strlen(s2 + 1)))))
+		exit(1);
+	i = -1;
+	while (s1[++i])
+		if (s1[i] == '=')
+			break ;
+	ft_strlcpy(tmp1, s1, i + 1);
+	i = -1;
+	while (s2[++i])
+		if (s2[i] == '=')
+			break ;
+	ft_strlcpy(tmp2, s2, i + 1);
+	if (((int)ft_strlen(tmp1) == i) && !ft_strncmp(tmp1, tmp2, i))
+		ret = 1;
+	free(tmp1);
+	free(tmp2);
+	return (ret);
+}
+
 char	**add_row(char **mat, char *arg)
 {
 	int		argsize;

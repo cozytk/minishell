@@ -129,7 +129,7 @@ char **check_overlap(char **mat)
 		j = i;
 		while (mat[++j])
 		{
-			if (!(ft_strccmp(mat[i], mat[j], '=')))
+			if (same_key(mat[i], mat[j]))
 				return (ft_delete_row(mat, i));
 		}
 	}
