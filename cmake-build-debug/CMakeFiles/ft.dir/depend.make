@@ -108,6 +108,9 @@ CMakeFiles/ft.dir/libft/ft_strccmp.c.o: ../libft/libft.h
 CMakeFiles/ft.dir/libft/ft_strchr.c.o: ../libft/ft_strchr.c
 CMakeFiles/ft.dir/libft/ft_strchr.c.o: ../libft/libft.h
 
+CMakeFiles/ft.dir/libft/ft_strcjoin.c.o: ../libft/ft_strcjoin.c
+CMakeFiles/ft.dir/libft/ft_strcjoin.c.o: ../libft/libft.h
+
 CMakeFiles/ft.dir/libft/ft_strdup.c.o: ../libft/ft_strdup.c
 CMakeFiles/ft.dir/libft/ft_strdup.c.o: ../libft/libft.h
 

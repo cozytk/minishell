@@ -35,7 +35,7 @@ void 	delete_env(char **mat, t_all *a)
 
 void	parse_unset(t_all *a)
 {
-	check_overlap(a->arg);
+	a->arg = check_overlap(a->arg);
 	delete_env(a->arg, a);
 	ft_free_mat(a->arg);
 	a->arg = NULL;
@@ -46,7 +46,10 @@ int		unset(t_all *a)
 	if (!ft_strncmp(a->cmd, "unset\0", 6))
 	{
 		if (!a->arg)
+		{
+			a->end = 0;
 			return (1);
+		}
 		parse_unset(a);
 		ft_free_mat(a->ept);
 		a->ept = NULL;

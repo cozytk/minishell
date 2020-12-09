@@ -35,6 +35,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ft.dir/libft/ft_split.c.o"
   "CMakeFiles/ft.dir/libft/ft_strccmp.c.o"
   "CMakeFiles/ft.dir/libft/ft_strchr.c.o"
+  "CMakeFiles/ft.dir/libft/ft_strcjoin.c.o"
   "CMakeFiles/ft.dir/libft/ft_strdup.c.o"
   "CMakeFiles/ft.dir/libft/ft_strjoin.c.o"
   "CMakeFiles/ft.dir/libft/ft_strlcat.c.o"
