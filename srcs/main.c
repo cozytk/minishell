@@ -110,19 +110,6 @@ void	run_execve(t_all *a, char **arg)
 	exit(127);
 }
 
-int		pipe_scolon_alone(t_all *a)
-{
-	if (a->cmd[0] == '|' || a->cmd[0] == ';')
-	{
-		if (a->cmd[0] == '|')
-			ft_putendl_fd("bash: syntax error near unexpected token `|'", 2);
-		else if (a->cmd[0] == ';')
-			ft_putendl_fd("bash: syntax error near unexpected token `;'", 2);
-		return (1);
-	}
-	return (0);
-}
-
 int 	cmd_exec(t_all *a)
 {
 	char	**lines;
@@ -197,8 +184,6 @@ int 	main_loop(t_all *a)
 		return (0);
 	if (!a->cmd)
 		return (-1);
-	if (pipe_scolon_alone(a))
-		return (0);
 	update_pwd(a);
 	init_export(a, a->env);
 	if (a->p.pipe)
@@ -260,7 +245,7 @@ int main(int argc, char *argv[], char *envp[])
 			dup2(a->fd_tmp, a->fileno);
 		free(tmp);
 		tmp = (void *)0;
-		system("leaks minishell > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
+		//system("leaks minishell > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	}
 	ft_putendl_fd("exit", 2);
 	return (0);
