@@ -12,62 +12,52 @@
 
 #include "../inc/minishell.h"
 
-void	s_quote_process(t_all *a, char *line)
+void	s_quote_process(t_all *a)
 {
-	char	*result;
-
 	a->p.i++;
-	result = NULL;
-	while (line[a->p.i] != '\'')
+	while (a->line[a->p.i] != '\'')
 	{
-		if (!line[a->p.i])
+		if (!a->line[a->p.i])
 		{
 			ft_putstr_fd(" > ", 1);
 			while (1)
 			{
 			}
 		}
-		if (line[a->p.i] == '\\')
+		if (a->line[a->p.i] == '\\')
 			a->p.i++;
-		result = ft_strcjoin(result, line[a->p.i]);
+		a->p.candidate = ft_strcjoin(a->p.candidate, a->line[a->p.i]);
 		a->p.i++;
 	}
 	a->p.i++;
-	if (!a->cmd)
-		a->cmd = result;
-	else
-		add_argument(a, result);
+	add_candidate(a);
 	quote_join(a);
 }
 
-void	d_quote_process(t_all *a, char *line)
+void	d_quote_process(t_all *a)
 {
-	char	*result;
+	int	size;
 
 	a->p.i++;
-	result = NULL;
-	while (line[a->p.i] != '\"')
+	while (a->line[a->p.i] != '\"')
 	{
-		if (!line[a->p.i])
+		if (!a->line[a->p.i])
 		{
 			ft_putstr_fd(" > ", 1);
 			while (1)
 			{
 			}
 		}
-		if (line[a->p.i] == '\\')
+		if (a->line[a->p.i] == '\\')
 			a->p.i++;
-		result = ft_strcjoin(result, line[a->p.i]);
+		a->p.candidate = ft_strcjoin(a->p.candidate, a->line[a->p.i]);
 		a->p.i++;
 	}
 	a->p.i++;
-	if (!a->cmd)
-		a->cmd = result;
-	else
-	{
-		add_argument(a, result);
-		process_env(a, result);
-	}
+	add_candidate(a);
+	size = ft_matrow(a->arg) - 1;
+	if (size >= 0)
+		process_env(a, a->arg[size]);
 	quote_join(a);
 }
 
