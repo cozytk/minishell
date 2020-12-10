@@ -253,5 +253,6 @@ int main(int argc, char *argv[], char *envp[])
 		free(tmp);
 		tmp = (void *)0;
 	}
+	ft_putendl_fd("exit", 2);
 	return (0);
 }
