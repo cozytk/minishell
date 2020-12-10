@@ -191,6 +191,8 @@ void 	update_pwd(t_all *a)
 int 	main_loop(t_all *a)
 {
 	parsing(a);
+	if (!validate(a))
+		return (g_end);
 	if (!update_end(a))
 		return (0);
 	if (!a->cmd)
