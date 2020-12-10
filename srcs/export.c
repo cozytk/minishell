@@ -19,11 +19,10 @@ char	**check_identifier(char **mat)
 	i = -1;
 	while (mat && mat[++i])
 	{
-		if (is_identifier(mat[i]))
+		if (has_identifier(mat[i]))
 		{
-			if (((ft_strchr(mat[i], '=') || ft_strchr(mat[i], '$')) && \
-				!(mat[i][0] == '=' || mat[i][0] == '$')) || \
-				(!ft_atoi(mat[i]) && mat[i][0] != '0'))
+			if ((ft_strchr(mat[i], '=') || ft_strchr(mat[i], '$')) && \
+				!(mat[i][0] == '=' || mat[i][0] == '$'))
 				continue ;
 			write_error("export", mat[i], ": not a valid identifier", 1);
 			mat = ft_delete_row(mat, i);

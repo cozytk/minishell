@@ -24,18 +24,35 @@ int 	write_error(char *cmd, char *str, char *err, int exit)
 	return (g_end);
 }
 
-int		is_identifier(char *str)
+int		has_digit(char *str)
 {
 	int i;
 
 	i = 0;
 	while (str[i])
 	{
+		if (ft_isdigit(str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int		has_identifier(char *str)
+{
+	int i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	if (ft_isdigit(*str))
+		return (1);
+	while (str[i])
+	{
 		if ((str[i] > 21 && str[i] < 48) || \
 			(str[i] > 57 && str[i] < 65) || \
 			(str[i] > 90 && str[i] < 97) || \
-			(str[i] > 122 && str[i] < 127) || \
-			ft_isdigit(str[i]))
+			(str[i] > 122 && str[i] < 127))
 			return (1);
 		i++;
 	}

@@ -1,0 +1,16 @@
+total 156
+drwxr-xr-x 10 taekkim taekkim   4096 Dec 10 23:00 .
+drwxr-xr-x 20 taekkim taekkim   4096 Dec 10 22:59 ..
+drwxr-xr-x  8 taekkim taekkim   4096 Dec 10 22:59 .git
+-rw-r--r--  1 taekkim taekkim      0 Dec  5 17:56 .gitignore
+drwxr-xr-x  3 taekkim taekkim   4096 Dec 10 00:08 .gradle
+drwxr-xr-x  2 taekkim taekkim   4096 Dec 10 22:59 .idea
+-rw-r--r--  1 taekkim taekkim   2202 Dec 10 21:35 CMakeLists.txt
+-rw-r--r--  1 taekkim taekkim   1957 Dec 10 21:40 Makefile
+-rwxr-xr-x  1 taekkim taekkim 107768 Dec 10 22:59 a.out
+drwxr-xr-x  4 taekkim taekkim   4096 Dec 10 21:35 cmake-build-debug
+drwxr-xr-x  2 taekkim taekkim   4096 Dec  5 17:56 drawio
+-rw-r--r--  1 taekkim taekkim      0 Dec 10 23:00 hello
+drwxr-xr-x  2 taekkim taekkim   4096 Dec 10 22:24 inc
+drwxr-xr-x  2 taekkim taekkim   4096 Dec 10 22:26 libft
+drwxr-xr-x  2 taekkim taekkim   4096 Dec 10 22:24 srcs

@@ -29,7 +29,7 @@ void 	delete_env(char **mat, t_all *a)
 				break ;
 			}
 		}
-		if (!a->env[j] && is_identifier(mat[i]))
+		if (!a->env[j] && has_identifier(mat[i]))
 			write_error("unset", mat[i], ": not a valid identifier", 1);
 	}
 }
