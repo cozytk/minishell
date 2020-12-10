@@ -31,7 +31,6 @@ int		cd_home(t_all *a, char flag)
 		if (!flag)
 		{
 			write_cd_error("HOME", " not set", a, 1);
-//			ft_putendl_fd("bash: cd: HOME not set", 2);
 			g_end = 1;
 			return (1);
 		}
@@ -51,6 +50,12 @@ int		cd_oldpwd(t_all *a)
 	int i;
 
 	i = find_row(a->env, "OLDPWD=");
+	if (i == -1)
+	{
+		write_cd_error("OLDPWD", " not set", a, 1);
+		g_end = 1;
+		return (1);
+	}
 	if (chdir(a->env[i] + 7) == -1)
 		return (write_cd_error(a->env[i] + 7, ": No such file or direcotry", a, 127));
 	return (1);
