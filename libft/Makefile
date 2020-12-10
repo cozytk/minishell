@@ -21,6 +21,7 @@ SRCS	=	ft_atoi.c \
 			ft_isascii.c \
 			ft_isdigit.c \
 			ft_isprint.c \
+			ft_iswhite.c \
 			ft_itoa.c \
 			ft_matrow.c \
 			ft_matdup.c \

@@ -80,7 +80,7 @@ int		parsing(t_all *a)
 	{
 		if (is_pipe_or_scolon(a->line[a->p.i]) && a->cmd)
 			return (parse_pipe_scolon(a));
-		if (a->line[a->p.i] != ' ' && a->line[a->p.i] != '\\'
+		if (!ft_iswhite(a->line[a->p.i]) && a->line[a->p.i] != '\\'
 				&& !is_quote(a->line[a->p.i]) && !is_sep_char(a->line[a->p.i]))
 		{
 			if (a->p.parsing == 0)
@@ -96,7 +96,7 @@ int		parsing(t_all *a)
 			parse_redirect(a);
 		else if (is_quote(a->line[a->p.i]))
 			parse_quote(a);
-		else if (is_space(a->line[a->p.i])
+		else if (ft_iswhite(a->line[a->p.i])
 				|| is_pipe_or_scolon(a->line[a->p.i + 1])
 				|| is_sep_char(a->line[a->p.i + 1]))
 			parse_one(a);

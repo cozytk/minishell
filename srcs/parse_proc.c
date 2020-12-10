@@ -66,7 +66,7 @@ void	parse_one(t_all *a)
 	if (size >= 0)
 		process_env(a, a->arg[size]);
 	a->p.i += 1;
-	while (is_space(a->line[a->p.i]))
+	while (ft_iswhite(a->line[a->p.i]))
 		a->p.i++;
 	a->p.i--;
 }
