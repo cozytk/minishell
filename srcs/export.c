@@ -12,6 +12,26 @@
 
 #include "../inc/minishell.h"
 
+char	**check_identifier(char **mat)
+{
+	int i;
+
+	i = -1;
+	while (mat && mat[++i])
+	{
+		if (is_identifier(mat[i]))
+		{
+			if ((ft_strchr(mat[i], '=') || ft_strchr(mat[i], '$')) && \
+				!(mat[i][0] == '=' || mat[i][0] == '$'))
+				continue ;
+			write_error("export", mat[i], ": not a valid identifier", 1);
+			mat = ft_delete_row(mat, i);
+			i = -1;
+		}
+	}
+	return (mat);
+}
+
 void swap_str(char **s1, char **s2)
 {
 	char *temp;
@@ -123,7 +143,7 @@ char **check_overlap(char **mat)
 	int j;
 
 	i = -1;
-	while (mat[++i + 1])
+	while (mat && mat[++i + 1])
 	{
 		j = i;
 		while (mat[++j])
@@ -139,6 +159,7 @@ void edit_env(t_all *a)
 {
 	char	**tmp_m;
 
+	a->arg = check_identifier(a->arg);
 	a->arg = check_overlap(a->arg);
 	a->arg = overwrite_env(a->arg, a);
 	tmp_m = ft_matjoin(a->env, a->arg);

@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ft.dir/libft/ft_isascii.c.o"
   "CMakeFiles/ft.dir/libft/ft_isdigit.c.o"
   "CMakeFiles/ft.dir/libft/ft_isprint.c.o"
+  "CMakeFiles/ft.dir/libft/ft_iswhite.c.o"
   "CMakeFiles/ft.dir/libft/ft_itoa.c.o"
   "CMakeFiles/ft.dir/libft/ft_lstadd_back.c.o"
   "CMakeFiles/ft.dir/libft/ft_lstadd_front.c.o"

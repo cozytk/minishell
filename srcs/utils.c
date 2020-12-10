@@ -12,6 +12,35 @@
 
 #include "../inc/minishell.h"
 
+int 	write_error(char *cmd, char *str, char *err, int exit)
+{
+	ft_putstr_fd("bash: ", 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd(": `", 2);
+	ft_putstr_fd(str, 2);
+	ft_putchar_fd('\'', 2);
+	ft_putendl_fd(err, 2);
+	g_end = exit;
+	return (g_end);
+}
+
+int		is_identifier(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if ((str[i] > 21 && str[i] < 48) || \
+			(str[i] > 57 && str[i] < 65) || \
+			(str[i] > 90 && str[i] < 97) || \
+			(str[i] > 122 && str[i] < 127))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int same_key(char *s1, char *s2)
 {
 	int		i;

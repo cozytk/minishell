@@ -46,7 +46,8 @@ typedef struct		s_all
 
 int		g_end;
 
-int			write_cd_error(char *str, char *err, t_all *a, int exit);
+int			is_identifier(char *str);
+int			write_error(char *cmd, char *str, char *err, int exit);
 void		init(t_all *a);
 void		init_index(t_all *a);
 int			cmd_exec(t_all *a);

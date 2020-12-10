@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/taekkim/minishell/libft/ft_isascii.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_isascii.c.o"
   "/home/taekkim/minishell/libft/ft_isdigit.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_isdigit.c.o"
   "/home/taekkim/minishell/libft/ft_isprint.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_isprint.c.o"
+  "/home/taekkim/minishell/libft/ft_iswhite.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_iswhite.c.o"
   "/home/taekkim/minishell/libft/ft_itoa.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_itoa.c.o"
   "/home/taekkim/minishell/libft/ft_lstadd_back.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_lstadd_back.c.o"
   "/home/taekkim/minishell/libft/ft_lstadd_front.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/ft.dir/libft/ft_lstadd_front.c.o"

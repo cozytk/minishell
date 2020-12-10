@@ -81,10 +81,6 @@ CMakeFiles/minishell.dir/srcs/unset.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/unset.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/unset.c.o: ../srcs/unset.c
 
-CMakeFiles/minishell.dir/srcs/update.c.o: ../inc/minishell.h
-CMakeFiles/minishell.dir/srcs/update.c.o: ../libft/libft.h
-CMakeFiles/minishell.dir/srcs/update.c.o: ../srcs/update.c
-
 CMakeFiles/minishell.dir/srcs/utils.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/utils.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/utils.c.o: ../srcs/utils.c

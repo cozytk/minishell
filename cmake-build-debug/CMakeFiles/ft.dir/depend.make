@@ -30,6 +30,9 @@ CMakeFiles/ft.dir/libft/ft_isdigit.c.o: ../libft/ft_isdigit.c
 CMakeFiles/ft.dir/libft/ft_isprint.c.o: ../libft/ft_isprint.c
 CMakeFiles/ft.dir/libft/ft_isprint.c.o: ../libft/libft.h
 
+CMakeFiles/ft.dir/libft/ft_iswhite.c.o: ../libft/ft_iswhite.c
+CMakeFiles/ft.dir/libft/ft_iswhite.c.o: ../libft/libft.h
+
 CMakeFiles/ft.dir/libft/ft_itoa.c.o: ../libft/ft_itoa.c
 CMakeFiles/ft.dir/libft/ft_itoa.c.o: ../libft/libft.h
 

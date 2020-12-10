@@ -81,10 +81,6 @@ CMakeFiles/minishell.dir/srcs/unset.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
  /home/taekkim/minishell/srcs/unset.c
-CMakeFiles/minishell.dir/srcs/update.c.o
- /home/taekkim/minishell/inc/minishell.h
- /home/taekkim/minishell/libft/libft.h
- /home/taekkim/minishell/srcs/update.c
 CMakeFiles/minishell.dir/srcs/utils.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h

@@ -59,6 +59,7 @@ add_library(ft STATIC
         libft/ft_memchr.c
         libft/ft_memcmp.c
         libft/ft_memcpy.c
+        libft/ft_iswhite.c
         libft/ft_memmove.c
         libft/ft_memset.c
         libft/ft_putchar_fd.c

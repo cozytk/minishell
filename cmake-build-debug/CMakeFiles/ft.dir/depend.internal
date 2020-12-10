@@ -30,6 +30,9 @@ CMakeFiles/ft.dir/libft/ft_isdigit.c.o
 CMakeFiles/ft.dir/libft/ft_isprint.c.o
  /home/taekkim/minishell/libft/ft_isprint.c
  /home/taekkim/minishell/libft/libft.h
+CMakeFiles/ft.dir/libft/ft_iswhite.c.o
+ /home/taekkim/minishell/libft/ft_iswhite.c
+ /home/taekkim/minishell/libft/libft.h
 CMakeFiles/ft.dir/libft/ft_itoa.c.o
  /home/taekkim/minishell/libft/ft_itoa.c
  /home/taekkim/minishell/libft/libft.h

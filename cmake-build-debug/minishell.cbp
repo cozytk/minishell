@@ -170,6 +170,9 @@
 		<Unit filename="/home/taekkim/minishell/libft/ft_isprint.c">
 			<Option target="ft"/>
 		</Unit>
+		<Unit filename="/home/taekkim/minishell/libft/ft_iswhite.c">
+			<Option target="ft"/>
+		</Unit>
 		<Unit filename="/home/taekkim/minishell/libft/ft_itoa.c">
 			<Option target="ft"/>
 		</Unit>
@@ -354,9 +357,6 @@
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/home/taekkim/minishell/srcs/unset.c">
-			<Option target="minishell"/>
-		</Unit>
-		<Unit filename="/home/taekkim/minishell/srcs/update.c">
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/home/taekkim/minishell/srcs/utils.c">

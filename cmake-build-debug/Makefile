@@ -406,6 +406,33 @@ libft/ft_isprint.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_isprint.c.s
 .PHONY : libft/ft_isprint.c.s
 
+libft/ft_iswhite.o: libft/ft_iswhite.c.o
+
+.PHONY : libft/ft_iswhite.o
+
+# target to build an object file
+libft/ft_iswhite.c.o:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_iswhite.c.o
+.PHONY : libft/ft_iswhite.c.o
+
+libft/ft_iswhite.i: libft/ft_iswhite.c.i
+
+.PHONY : libft/ft_iswhite.i
+
+# target to preprocess a source file
+libft/ft_iswhite.c.i:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_iswhite.c.i
+.PHONY : libft/ft_iswhite.c.i
+
+libft/ft_iswhite.s: libft/ft_iswhite.c.s
+
+.PHONY : libft/ft_iswhite.s
+
+# target to generate assembly for a file
+libft/ft_iswhite.c.s:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_iswhite.c.s
+.PHONY : libft/ft_iswhite.c.s
+
 libft/ft_itoa.o: libft/ft_itoa.c.o
 
 .PHONY : libft/ft_itoa.o
@@ -2053,33 +2080,6 @@ srcs/unset.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/unset.c.s
 .PHONY : srcs/unset.c.s
 
-srcs/update.o: srcs/update.c.o
-
-.PHONY : srcs/update.o
-
-# target to build an object file
-srcs/update.c.o:
-	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/update.c.o
-.PHONY : srcs/update.c.o
-
-srcs/update.i: srcs/update.c.i
-
-.PHONY : srcs/update.i
-
-# target to preprocess a source file
-srcs/update.c.i:
-	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/update.c.i
-.PHONY : srcs/update.c.i
-
-srcs/update.s: srcs/update.c.s
-
-.PHONY : srcs/update.s
-
-# target to generate assembly for a file
-srcs/update.c.s:
-	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/update.c.s
-.PHONY : srcs/update.c.s
-
 srcs/utils.o: srcs/utils.c.o
 
 .PHONY : srcs/utils.o
@@ -2147,6 +2147,9 @@ help:
 	@echo "... libft/ft_isprint.o"
 	@echo "... libft/ft_isprint.i"
 	@echo "... libft/ft_isprint.s"
+	@echo "... libft/ft_iswhite.o"
+	@echo "... libft/ft_iswhite.i"
+	@echo "... libft/ft_iswhite.s"
 	@echo "... libft/ft_itoa.o"
 	@echo "... libft/ft_itoa.i"
 	@echo "... libft/ft_itoa.s"
@@ -2330,9 +2333,6 @@ help:
 	@echo "... srcs/unset.o"
 	@echo "... srcs/unset.i"
 	@echo "... srcs/unset.s"
-	@echo "... srcs/update.o"
-	@echo "... srcs/update.i"
-	@echo "... srcs/update.s"
 	@echo "... srcs/utils.o"
 	@echo "... srcs/utils.i"
 	@echo "... srcs/utils.s"

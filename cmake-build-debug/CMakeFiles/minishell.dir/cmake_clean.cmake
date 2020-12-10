@@ -19,7 +19,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell.dir/srcs/pwd.c.o"
   "CMakeFiles/minishell.dir/srcs/redirect.c.o"
   "CMakeFiles/minishell.dir/srcs/unset.c.o"
-  "CMakeFiles/minishell.dir/srcs/update.c.o"
   "CMakeFiles/minishell.dir/srcs/utils.c.o"
   "minishell"
   "minishell.pdb"
