@@ -24,6 +24,11 @@ char	*get_env_by_arg3(char *arg, int *count, int i)
 		*count = 1;
 		return (ft_strdup("12345"));
 	}
+	else if (arg[i] == '$' && arg[i + 1] == '?')
+	{
+		*count = 1;
+		return (ft_itoa(g_end));
+	}
 	return (NULL);
 }
 
