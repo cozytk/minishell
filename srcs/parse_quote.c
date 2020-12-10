@@ -14,6 +14,8 @@
 
 void	s_quote_process(t_all *a)
 {
+	//printf("[%c]\n", a->line[a->p.i]);
+	//printf("%s\n", a->p.candidate);
 	a->p.i++;
 	while (a->line[a->p.i] != '\'')
 	{
@@ -35,7 +37,7 @@ void	s_quote_process(t_all *a)
 
 void	d_quote_process(t_all *a)
 {
-	int	size;
+	char	*env_processed;
 
 	a->p.i++;
 	while (a->line[a->p.i] != '\"')
@@ -53,10 +55,11 @@ void	d_quote_process(t_all *a)
 		a->p.i++;
 	}
 	a->p.i++;
+	env_processed = process_env(a, a->p.candidate);
+	if (a->p.candidate)
+		free(a->p.candidate);
+	a->p.candidate = env_processed;
 	add_candidate(a);
-	size = ft_matrow(a->arg) - 1;
-	if (size >= 0)
-		process_env(a, a->arg[size]);
 }
 
 void	quote_join(t_all *a)
