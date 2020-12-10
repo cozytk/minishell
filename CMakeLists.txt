@@ -21,7 +21,6 @@ add_executable(minishell
         srcs/utils.c
         srcs/pipe.c
         srcs/parse.c
-        srcs/update.c
         srcs/unset.c
         srcs/redirect.c
         srcs/pwd.c

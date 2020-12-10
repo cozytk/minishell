@@ -36,7 +36,6 @@ SRCS	=	./srcs/chdir.c \
 			./srcs/pwd.c \
 			./srcs/redirect.c \
 			./srcs/unset.c \
-			./srcs/update.c \
 			./srcs/utils.c \
 
 OBJS	=	$(SRCS:%.c=%.o)
