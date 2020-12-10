@@ -38,7 +38,7 @@ unistd.h
 stdlib.h
 -
 
-/home/taekkim/minishell/srcs/export.c
+/home/taekkim/minishell/srcs/validate.c
 ../inc/minishell.h
 /home/taekkim/minishell/inc/minishell.h
 

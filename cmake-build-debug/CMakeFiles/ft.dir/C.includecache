@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/taekkim/minishell/libft/ft_iswhite.c
+/home/taekkim/minishell/libft/ft_atoi.c
 libft.h
 /home/taekkim/minishell/libft/libft.h
 
