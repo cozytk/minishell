@@ -260,7 +260,7 @@ int main(int argc, char *argv[], char *envp[])
 			dup2(a->fd_tmp, a->fileno);
 		free(tmp);
 		tmp = (void *)0;
-		system("leaks minishell > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
+		//system("leaks minishell > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	}
 	ft_putendl_fd("exit", 2);
 	return (0);
