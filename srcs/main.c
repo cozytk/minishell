@@ -191,13 +191,13 @@ int 	main_loop(t_all *a)
 		return (-1);
 	if (pipe_scolon_alone(a))
 		return (0);
+	update_pwd(a);
 	init_export(a, a->env);
 	if (a->p.pipe)
 	{
 		ft_pipe(a);
 		return (g_end);
 	}
-	update_pwd(a);
 	redirect(a);
 	cmd_builtin(a);
 	cmd_exec(a);

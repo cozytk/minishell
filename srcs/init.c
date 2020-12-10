@@ -24,8 +24,8 @@ void init_env(char **env, t_all *a)
 	{
 		if (!ft_strncmp(env[i], "HOME", 4))
 			a->init_home = ft_strdup(ft_strchr(env[i], '/'));
-		if (!ft_strncmp(env[i], "OLDPWD", 6))
-			a->env[i++] = ft_strdup("OLDPWD");
+//		if (!ft_strncmp(env[i], "OLDPWD", 6))
+//			a->env[i++] = ft_strdup("OLDPWD");
 		a->env[i] = ft_strdup(env[i]);
 	}
 	a->env[row] = (void *)0;
