@@ -34,7 +34,8 @@ int		is_identifier(char *str)
 		if ((str[i] > 21 && str[i] < 48) || \
 			(str[i] > 57 && str[i] < 65) || \
 			(str[i] > 90 && str[i] < 97) || \
-			(str[i] > 122 && str[i] < 127))
+			(str[i] > 122 && str[i] < 127) || \
+			ft_isdigit(str[i]))
 			return (1);
 		i++;
 	}
