@@ -96,7 +96,7 @@ char		*get_env_by_arg(char *arg, int *count);
 char		*get_env_by_arg2(char *arg, int *count, int i);
 char		*get_env_by_arg3(char *arg, int *count, int i);
 char		*find_env_result(t_all *a, char *env, int i, int j);
-void		process_env(t_all *a, char *arg);
+char		*process_env(t_all *a, char *arg);
 void		s_quote_process(t_all *a);
 void		d_quote_process(t_all *a);
 void		quote_join(t_all *a);

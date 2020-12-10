@@ -61,12 +61,14 @@ void	parse_quote(t_all *a)
 
 void	parse_one(t_all *a)
 {
-	int		size;
+	char	*env_processed;
 
+	if (!a->p.candidate)
+		return ;
+	env_processed = process_env(a, a->p.candidate);
+	free(a->p.candidate);
+	a->p.candidate = env_processed;
 	add_candidate(a);
-	size = ft_matrow(a->arg) - 1;
-	if (size >= 0)
-		process_env(a, a->arg[size]);
 	a->p.i += 1;
 	while (ft_iswhite(a->line[a->p.i]))
 		a->p.i++;
@@ -75,13 +77,13 @@ void	parse_one(t_all *a)
 
 int		parse_last(t_all *a)
 {
-	int		size;
+	char	*env_processed;
 
 	if (!a->p.candidate)
 		return (1);
+	env_processed = process_env(a, a->p.candidate);
+	free(a->p.candidate);
+	a->p.candidate = env_processed;
 	add_candidate(a);
-	size = ft_matrow(a->arg) - 1;
-	if (size >= 0)
-		process_env(a, a->arg[size]);
 	return (1);
 }

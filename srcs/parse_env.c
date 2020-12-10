@@ -69,15 +69,17 @@ char	*env_appending(t_all *a, char *arg, int count)
 	return (result);
 }
 
-void	process_env(t_all *a, char *arg)
+char	*process_env(t_all *a, char *arg)
 {
 	char	*result;
-	int		size;
 
 	if (!arg)
-		return ;
+		return NULL;
 	result = env_appending(a, arg, 0);
+	return (result);
+	/*
 	size = ft_matrow(a->arg) - 1;
 	a->arg = ft_delete_row(a->arg, size);
 	add_argument(a, result);
+	*/
 }
