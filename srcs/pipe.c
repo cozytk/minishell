@@ -16,7 +16,7 @@ int 	ft_pipe(t_all *a)
 		close(a->fd[0]);
 		close(a->fd[1]);
 		redirect(a);
-		if (!(cmd_builtin(a) && cmd_exec(a)))
+		if (!(cmd_builtin(a) || cmd_exec(a)))
 		{
 			free_com_arg(a);
 			exit(0);
