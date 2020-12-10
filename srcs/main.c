@@ -115,7 +115,6 @@ void	run_execve(t_all *a, char **arg)
 		ft_putstr_fd(a->cmd, 2);
 		ft_putendl_fd(": No such file or directory", 2);
 	}
-	exit(127);
 }
 
 int 	cmd_exec(t_all *a)
@@ -208,7 +207,8 @@ int 	main_loop(t_all *a)
 		ft_pipe(a);
 		return (g_end);
 	}
-	redirect(a);
+	if (redirect(a))
+		return (g_end);
 	cmd_builtin(a);
 	cmd_exec(a);
 	if (a->p.s_colon)

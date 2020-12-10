@@ -356,6 +356,9 @@
 		<Unit filename="/home/taekkim/minishell/srcs/redirect.c">
 			<Option target="minishell"/>
 		</Unit>
+		<Unit filename="/home/taekkim/minishell/srcs/show.c">
+			<Option target="minishell"/>
+		</Unit>
 		<Unit filename="/home/taekkim/minishell/srcs/unset.c">
 			<Option target="minishell"/>
 		</Unit>

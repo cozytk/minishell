@@ -4,7 +4,7 @@ void	bash_error(char *cmd)
 {
 	ft_putstr_fd("bash: ", 2);
 	ft_putstr_fd(cmd, 2);
-	ft_putchar_fd(' ', 2);
+	ft_putstr_fd(": ", 2);
 	ft_putendl_fd(strerror(errno), 2);
 }
 

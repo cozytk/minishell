@@ -77,6 +77,10 @@ CMakeFiles/minishell.dir/srcs/redirect.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
  /home/taekkim/minishell/srcs/redirect.c
+CMakeFiles/minishell.dir/srcs/show.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/show.c
 CMakeFiles/minishell.dir/srcs/unset.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h

@@ -77,6 +77,10 @@ CMakeFiles/minishell.dir/srcs/redirect.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/redirect.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/redirect.c.o: ../srcs/redirect.c
 
+CMakeFiles/minishell.dir/srcs/show.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/show.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/show.c.o: ../srcs/show.c
+
 CMakeFiles/minishell.dir/srcs/unset.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/unset.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/unset.c.o: ../srcs/unset.c

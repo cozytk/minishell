@@ -23,6 +23,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/taekkim/minishell/srcs/pipe.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/pipe.c.o"
   "/home/taekkim/minishell/srcs/pwd.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/pwd.c.o"
   "/home/taekkim/minishell/srcs/redirect.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/redirect.c.o"
+  "/home/taekkim/minishell/srcs/show.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/show.c.o"
   "/home/taekkim/minishell/srcs/unset.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/unset.c.o"
   "/home/taekkim/minishell/srcs/utils.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/utils.c.o"
   "/home/taekkim/minishell/srcs/validate.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/validate.c.o"

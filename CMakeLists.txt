@@ -10,6 +10,7 @@ include_directories(libft)
 add_executable(minishell
     inc/minishell.h
    libft/Makefile
+        srcs/show.c
         srcs/validate.c
         srcs/free.c
         srcs/parse_env.c

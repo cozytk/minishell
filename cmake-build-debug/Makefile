@@ -2053,6 +2053,33 @@ srcs/redirect.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/redirect.c.s
 .PHONY : srcs/redirect.c.s
 
+srcs/show.o: srcs/show.c.o
+
+.PHONY : srcs/show.o
+
+# target to build an object file
+srcs/show.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/show.c.o
+.PHONY : srcs/show.c.o
+
+srcs/show.i: srcs/show.c.i
+
+.PHONY : srcs/show.i
+
+# target to preprocess a source file
+srcs/show.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/show.c.i
+.PHONY : srcs/show.c.i
+
+srcs/show.s: srcs/show.c.s
+
+.PHONY : srcs/show.s
+
+# target to generate assembly for a file
+srcs/show.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/show.c.s
+.PHONY : srcs/show.c.s
+
 srcs/unset.o: srcs/unset.c.o
 
 .PHONY : srcs/unset.o
@@ -2357,6 +2384,9 @@ help:
 	@echo "... srcs/redirect.o"
 	@echo "... srcs/redirect.i"
 	@echo "... srcs/redirect.s"
+	@echo "... srcs/show.o"
+	@echo "... srcs/show.i"
+	@echo "... srcs/show.s"
 	@echo "... srcs/unset.o"
 	@echo "... srcs/unset.i"
 	@echo "... srcs/unset.s"
