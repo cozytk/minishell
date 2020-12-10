@@ -92,21 +92,23 @@ void	run_execve(t_all *a, char **arg)
 
 	if (a->cmd[0] == '/')
 		execve(a->cmd, arg, a->env);
-	i = find_row(a->env, "PATH=");
-	mat = ft_split(a->env[i] + 5, ':');
-	cmd = ft_strjoin("/", a->cmd);
-	i = 0;
-	while (mat[i])
+	else if ((i = find_row(a->env, "PATH=")) != -1)
 	{
-		path = ft_strjoin(mat[i], cmd);
-		execve(path, arg, a->env);
-		free(path);
-		i++;
+		mat = ft_split(a->env[i] + 5, ':');
+		cmd = ft_strjoin("/", a->cmd);
+		i = 0;
+		while (mat[i])
+		{
+			path = ft_strjoin(mat[i], cmd);
+			execve(path, arg, a->env);
+			free(path);
+			i++;
+		}
+		free(cmd);
+		ft_free_mat(mat);
 	}
 	ft_putstr_fd(a->cmd, 2);
 	ft_putendl_fd(": command not found", 2);
-	free(cmd);
-	ft_free_mat(mat);
 	exit(127);
 }
 
@@ -172,14 +174,22 @@ int     cmd_builtin(t_all *a)
 
 void 	update_pwd(t_all *a)
 {
-	char tmp[1024];
-	int i;
-	int j;
+	char		tmp[1024];
+	int			i;
+	int			j;
 
 	if (!a->cd)
 		return;
 	i = find_row(a->env, "OLDPWD");
-	j = find_row(a->env, "PWD");
+	if ((j = find_row(a->env, "PWD")) == -1)
+	{
+		if (!ft_strncmp(a->env[i], "OLDPWD", 6) && (ft_strlen(a->env[i]) == 6))
+		{
+			free(a->env[i]);
+			a->env[i] = ft_strdup("OLDPWD");
+		}
+		return;
+	}
 	ft_free(a->env[i]);
 	a->env[i] = ft_strjoin("OLD", a->env[j]);
 	ft_free(a->env[j]);
