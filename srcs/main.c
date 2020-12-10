@@ -17,12 +17,12 @@ int		update_end(t_all *a)
 {
 	if (!ft_strncmp(a->cmd, "$?", 2))
 	{
-		ft_putnbr_fd(a->end, 2);
+		ft_putnbr_fd(g_end, 2);
 		ft_putendl_fd(": command not found", 2);
-		a->end = 127;
+		g_end = 127;
 		return (0);
 	}
-	a->end = -1;
+	g_end = -1;
 	return (1);
 }
 
@@ -36,12 +36,12 @@ void sig_handle(int signo)
 		if (signo == SIGINT)
 		{
 			ft_putchar_fd('\n', 1);
-//			a->end = 130;
+			g_end = 130;
 		}
 		else if (signo == SIGQUIT)
 		{
 			ft_putendl_fd("Quit", 1);
-//			a->end = 131;
+			g_end = 131;
 		}
 		return;
 	}
@@ -49,7 +49,7 @@ void sig_handle(int signo)
 	{
 		ft_putchar_fd('\n', 1);
 		ft_putstr_fd(INIT, 1);
-//		a->end = 130;
+		g_end = 130;
 	}
 	else if (signo == SIGQUIT)
 	{
@@ -61,7 +61,7 @@ void sig_handle(int signo)
 		ft_putchar_fd(8, 1);
 		//ft_putchar_fd('\n', 1);
 		//ft_putstr_fd(INIT, 1);
-//		a->end = 127;
+		g_end = 127;
 	}
 }
 
@@ -125,7 +125,7 @@ int 	cmd_exec(t_all *a)
 	char **tmp;
 	pid_t pid;
 
-	if (a->end != -1)
+	if (g_end != -1)
 		return (1);
 	pid = fork();
 	if (pid == 0)
@@ -153,9 +153,9 @@ int     cmd_builtin(t_all *a)
 	ft_exit(a);
     if (export(a) || cd(a) || pwd(a) || env(a) || unset(a) || echo(a))
 	{
-    	if (a->end == -1)
+    	if (g_end == -1)
 		{
-			a->end = 0;
+			g_end = 0;
 			return (1);
 		}
 	}
@@ -194,7 +194,7 @@ int 	main_loop(t_all *a)
 	if (a->p.pipe)
 	{
 		ft_pipe(a);
-		return (a->end);
+		return (g_end);
 	}
 	redirect(a);
 	cmd_builtin(a);
@@ -204,12 +204,12 @@ int 	main_loop(t_all *a)
 		free_com_arg(a);
 		main_loop(a);
 	}
-	return (a->end);
+	return (g_end);
 }
 
 void 	init_struct(t_all *a)
 {
-	a->end = -1;
+	g_end = 0;
 	a->cd = 0;
 	a->fd_tmp = 0;
 	a->redirect = 0;
@@ -238,7 +238,7 @@ int main(int argc, char *argv[], char *envp[])
 		if (!a->line[0])
 		{
 			ft_free(a->line);
-			a->end = 127;
+			g_end = 127;
 			continue;
 		}
 		tmp = a->line;

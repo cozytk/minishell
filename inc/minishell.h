@@ -44,6 +44,8 @@ typedef struct		s_all
 	t_parse	p;
 }					t_all;
 
+int		g_end;
+
 int			write_cd_error(char *str, char *err, t_all *a, int exit);
 void		init(t_all *a);
 void		init_index(t_all *a);

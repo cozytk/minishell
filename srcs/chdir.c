@@ -16,9 +16,9 @@ int 	write_cd_error(char *str, char *err, t_all *a, int exit)
 	ft_putstr_fd("bash: cd: ", 2);
 	ft_putstr_fd(str, 2);
 	ft_putendl_fd(err, 2);
-	a->end = exit;
+	g_end = exit;
 	a->cd = 0;
-	return (a->end);
+	return (g_end);
 }
 
 int		cd_home(t_all *a, char flag)
@@ -32,7 +32,7 @@ int		cd_home(t_all *a, char flag)
 		{
 			write_cd_error("HOME", " not set", a, 1);
 //			ft_putendl_fd("bash: cd: HOME not set", 2);
-//			a->end = 1;
+			g_end = 1;
 			return (1);
 		}
 		else if (flag == '~' && (chdir(a->init_home) == -1))
@@ -42,7 +42,7 @@ int		cd_home(t_all *a, char flag)
 	if (chdir(a->env[i] + 5) == -1)
 		return (write_cd_error(a->env[i] + 5, ": No such file or directory", a, 127));
 	else
-		a->end = 0;
+		g_end = 0;
 	return (0);
 }
 
