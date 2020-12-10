@@ -31,5 +31,6 @@ int		validate(t_all *a)
 	message = ft_strcjoin(message, '\'');
 	ft_putendl_fd(message, 1);
 	free(message);
+	g_end = 258;
 	return (0);
 }
