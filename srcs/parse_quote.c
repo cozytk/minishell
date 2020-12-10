@@ -83,6 +83,9 @@ void	quote_join(t_all *a)
 
 	if (!a->arg)
 		return ;
+	if (!(is_quote(a->line[a->p.start - 1])
+				|| is_quote(a->line[a->p.start])))
+		return ;
 	size = ft_matrow(a->arg);
 	if (a->p.start > 0 && a->cmd)
 	{
