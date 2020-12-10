@@ -93,6 +93,12 @@ void	run_execve(t_all *a, char **arg)
 	if (a->cmd[0] == '/')
 		execve(a->cmd, arg, a->env);
 	i = find_row(a->env, "PATH=");
+	if (i == -1)
+	{
+		ft_putstr_fd(a->cmd, 2);
+		ft_putendl_fd(": command not found", 2);
+		exit(127);
+	}
 	mat = ft_split(a->env[i] + 5, ':');
 	cmd = ft_strjoin("/", a->cmd);
 	i = 0;
