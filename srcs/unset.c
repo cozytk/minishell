@@ -47,7 +47,7 @@ int		unset(t_all *a)
 	{
 		if (!a->arg)
 		{
-			a->end = 0;
+			g_end = 0;
 			return (1);
 		}
 		parse_unset(a);

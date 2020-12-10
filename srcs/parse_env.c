@@ -12,6 +12,12 @@
 
 #include "../inc/minishell.h"
 
+char	*env_g_end(char *env)
+{
+	free(env);
+	return (ft_itoa(g_end));
+}
+
 char	*find_env_result(t_all *a, char *env, int i, int j)
 {
 	int		start;
