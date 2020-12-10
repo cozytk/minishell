@@ -29,3 +29,21 @@ void	show_arg(t_all *a)
 	}
 	printf("!!!!!!!!!!!argument end!!!!!!!!!!!!\n");
 }
+
+int		show_prompt(void)
+{
+    char    *prompt;
+    char    *temp;
+	char	pwd[1024];
+
+	getcwd(pwd, 1024);
+    temp = ft_strjoin(PT_COLOR_LEFT, pwd);
+    prompt = ft_strjoin(temp, PT_COLOR_RIGHT);
+    free(temp);
+    temp = NULL;
+    write(1, prompt, ft_strlen(prompt));
+    write(1, PROMPT_MSG, ft_strlen(PROMPT_MSG));
+    free(prompt);
+    prompt = NULL;
+	return (1);
+}

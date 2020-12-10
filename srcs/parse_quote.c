@@ -14,8 +14,6 @@
 
 void	s_quote_process(t_all *a)
 {
-	//printf("[%c]\n", a->line[a->p.i]);
-	//printf("%s\n", a->p.candidate);
 	a->p.i++;
 	while (a->line[a->p.i] != '\'')
 	{

@@ -11,6 +11,10 @@
 # include <sys/wait.h>
 # include <sys/stat.h>
 # include <sys/errno.h>
+#define PROMPT_MSG " 👉 "
+#define WELCOME_MSG " 환영합니다. :\n       __  ____       _      __         ____\n      /  |/  (_)___  (_)____/ /_  ___  / / /        ___ ___\n     / /|_/ / / __ \\/ / ___/ __ \\/ _ \\/ / /        | | |_  |\n    / /  / / / / / / (__  ) / / /  __/ / /         |_  |  _|\n   /_/  /_/_/_/ /_/_/____/_/ /_/\\___/_/_/            |_|___|.kr\n\n"
+#define PT_COLOR_LEFT "\e[42;1;37m"
+#define PT_COLOR_RIGHT "\e[0m"
 
 # define INIT "bash-3.2$ "
 
@@ -109,6 +113,7 @@ void		parse_one(t_all *a);
 int		parse_last(t_all *a);
 void		add_candidate(t_all *a);
 int		validate(t_all *a);
+int		show_prompt(void);
 int			same_key(char *s1, char *s2);
 
 #endif
