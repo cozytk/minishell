@@ -48,7 +48,6 @@ void	add_candidate(t_all *a)
 	}
 	if (!a->cmd && ft_strchr(a->p.candidate, '='))
 	{
-		printf("hello\n");
 		equal_process(a);
 		a->p.parsing = 0;
 		a->p.candidate = NULL;

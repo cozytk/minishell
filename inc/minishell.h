@@ -116,6 +116,7 @@ void		add_candidate(t_all *a);
 int		validate(t_all *a);
 int		show_prompt(void);
 void		equal_process(t_all *a);
+char		**add_row(char **mat, char *arg);
 int			same_key(char *s1, char *s2);
 
 #endif

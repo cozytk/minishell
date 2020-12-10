@@ -92,17 +92,18 @@ char	**add_row(char **mat, char *arg)
 	int		i;
 	char	**new_mat;
 
-	if (!mat)
-		return ((void *)0);
 	argsize = ft_matrow(mat);
 	new_mat = malloc(sizeof(char *) * (argsize + 2));
 	i = 0;
-	while (mat[i])
+	if (mat)
 	{
-		new_mat[i] = ft_strdup(mat[i]);
-		i++;
+		while (mat[i])
+		{
+			new_mat[i] = ft_strdup(mat[i]);
+			i++;
+		}
+		ft_free_mat(mat);
 	}
-	ft_free_mat(mat);
 	new_mat[i] = arg;
 	new_mat[i + 1] = NULL;
 	return (new_mat);
