@@ -90,6 +90,8 @@ void	run_execve(t_all *a, char **arg)
 	char	*cmd;
 	char 	*path;
 
+	if (a->cmd[0] == '/')
+		execve(a->cmd, arg, a->env);
 	i = find_row(a->env, "PATH=");
 	mat = ft_split(a->env[i] + 5, ':');
 	cmd = ft_strjoin("/", a->cmd);
