@@ -33,12 +33,14 @@ void	parse_redirect(t_all *a)
 		a->p.candidate = ft_strcjoin(a->p.candidate, a->line[a->p.i]);
 		a->p.i++;
 	}
+	/*
 	if (!a->cmd && (a->p.candidate[0] == '>' || a->p.candidate[0] == '<'))
 	{
 		free(a->p.candidate);
 		a->p.candidate = NULL;
 		ft_putendl_fd("bash: syntax error near unexpected token `newline'", 2);
 	}
+	*/
 	add_candidate(a);
 	a->p.i--;
 }

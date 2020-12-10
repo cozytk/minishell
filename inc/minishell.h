@@ -107,6 +107,7 @@ void		parse_quote(t_all *a);
 void		parse_one(t_all *a);
 int		parse_last(t_all *a);
 void		add_candidate(t_all *a);
+int		validate(t_all *a);
 int			same_key(char *s1, char *s2);
 
 #endif
