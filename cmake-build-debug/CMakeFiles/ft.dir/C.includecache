@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/taekkim/minishell/libft/ft_atoi.c
+/home/taekkim/minishell/libft/ft_free.c
 libft.h
 /home/taekkim/minishell/libft/libft.h
 
