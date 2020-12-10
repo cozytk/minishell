@@ -29,6 +29,7 @@ void init_env(char **env, t_all *a)
 		a->env[i] = ft_strdup(env[i]);
 	}
 	a->env[row] = (void *)0;
+	write(1, WELCOME_MSG, ft_strlen(WELCOME_MSG));
 }
 
 void init_export(t_all *a, char **env)

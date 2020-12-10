@@ -23,10 +23,13 @@ int 	ft_exit(t_all *a)
 				ft_putendl_fd("exit", 2);
 				ft_putstr_fd("bash: ", 2);
 				ft_putendl_fd("exit: too many arguments", 2);
-				exit(1);
+				return (1);
+				//exit(1);
 			}
+			ft_putendl_fd("exit", 2);
 			exit(ft_atoi(a->arg[0]));
 		}
+		ft_putendl_fd("exit", 2);
 		exit(0);
 	}
 	return (0);

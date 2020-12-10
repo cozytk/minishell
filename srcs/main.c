@@ -145,7 +145,8 @@ int 	cmd_exec(t_all *a)
 
 int     cmd_builtin(t_all *a)
 {
-	ft_exit(a);
+	if (ft_exit(a))
+		return (1);
     if (export(a) || cd(a) || pwd(a) || env(a) || unset(a) || echo(a))
 	{
     	if (g_end == -1)
@@ -228,7 +229,7 @@ int main(int argc, char *argv[], char *envp[])
 	signal(SIGQUIT, sig_handle);
 	init_struct(a);
 	init_env(envp, a);
-	while (ft_write(INIT) && get_next_line(0, &(a->line)) > 0)
+	while (show_prompt() && get_next_line(0, &(a->line)) > 0)
 	{
 		if (!a->line[0])
 		{
