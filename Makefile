@@ -33,6 +33,7 @@ SRCS	=	./srcs/chdir.c \
 			./srcs/parse_env.c \
 			./srcs/parse_env2.c \
 			./srcs/validate.c \
+			./srcs/equal.c \
 			./srcs/pipe.c \
 			./srcs/pwd.c \
 			./srcs/redirect.c \

@@ -36,6 +36,7 @@ typedef struct		s_all
 	char	**env;
 	char	**ept;
 	char 	**arg;
+	char	**sub_env;
 	int		fd[2];
 	char	*cmd;
 	char 	*line;
@@ -114,6 +115,7 @@ int		parse_last(t_all *a);
 void		add_candidate(t_all *a);
 int		validate(t_all *a);
 int		show_prompt(void);
+void		equal_process(t_all *a);
 int			same_key(char *s1, char *s2);
 
 #endif

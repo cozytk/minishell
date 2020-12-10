@@ -230,6 +230,7 @@ void 	init_struct(t_all *a)
 	a->line = 0;
 	a->env = 0;
 	a->ept = 0;
+	a->sub_env = 0;
 	a->init_home = 0;
 }
 
