@@ -25,6 +25,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/taekkim/minishell/srcs/redirect.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/redirect.c.o"
   "/home/taekkim/minishell/srcs/unset.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/unset.c.o"
   "/home/taekkim/minishell/srcs/utils.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/utils.c.o"
+  "/home/taekkim/minishell/srcs/validate.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/validate.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

@@ -2107,6 +2107,33 @@ srcs/utils.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/utils.c.s
 .PHONY : srcs/utils.c.s
 
+srcs/validate.o: srcs/validate.c.o
+
+.PHONY : srcs/validate.o
+
+# target to build an object file
+srcs/validate.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/validate.c.o
+.PHONY : srcs/validate.c.o
+
+srcs/validate.i: srcs/validate.c.i
+
+.PHONY : srcs/validate.i
+
+# target to preprocess a source file
+srcs/validate.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/validate.c.i
+.PHONY : srcs/validate.c.i
+
+srcs/validate.s: srcs/validate.c.s
+
+.PHONY : srcs/validate.s
+
+# target to generate assembly for a file
+srcs/validate.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/validate.c.s
+.PHONY : srcs/validate.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2336,6 +2363,9 @@ help:
 	@echo "... srcs/utils.o"
 	@echo "... srcs/utils.i"
 	@echo "... srcs/utils.s"
+	@echo "... srcs/validate.o"
+	@echo "... srcs/validate.i"
+	@echo "... srcs/validate.s"
 .PHONY : help
 
 

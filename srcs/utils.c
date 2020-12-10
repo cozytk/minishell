@@ -67,7 +67,7 @@ int same_key(char *s1, char *s2)
 	char	*tmp2;
 
 	ret = 0;
-	if (!((tmp1 = malloc(ft_strlen(s1 + 1))) && (tmp2 = malloc(ft_strlen(s2 + 1)))))
+	if (!((tmp1 = malloc(ft_strlen(s1) + 1)) && (tmp2 = malloc(ft_strlen(s2) + 1))))
 		exit(1);
 	i = -1;
 	while (s1[++i])

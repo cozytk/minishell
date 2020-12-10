@@ -85,3 +85,7 @@ CMakeFiles/minishell.dir/srcs/utils.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
  /home/taekkim/minishell/srcs/utils.c
+CMakeFiles/minishell.dir/srcs/validate.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/validate.c
