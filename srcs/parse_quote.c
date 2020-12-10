@@ -31,7 +31,6 @@ void	s_quote_process(t_all *a)
 	}
 	a->p.i++;
 	add_candidate(a);
-	quote_join(a);
 }
 
 void	d_quote_process(t_all *a)
@@ -58,7 +57,6 @@ void	d_quote_process(t_all *a)
 	size = ft_matrow(a->arg) - 1;
 	if (size >= 0)
 		process_env(a, a->arg[size]);
-	quote_join(a);
 }
 
 void	quote_join(t_all *a)
