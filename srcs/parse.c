@@ -46,6 +46,13 @@ void	add_candidate(t_all *a)
 		a->p.candidate = NULL;
 		return ;
 	}
+	if (!a->cmd && ft_strchr(a->p.candidate, '='))
+	{
+		free(a->p.candidate);
+		a->p.candidate = NULL;
+		a->p.parsing = 0;
+		return ;
+	}
 	if (!a->cmd)
 		a->cmd = a->p.candidate;
 	else
