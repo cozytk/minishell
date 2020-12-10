@@ -15,19 +15,10 @@
 void 	write_env(t_all *a)
 {
 	int i;
-//	int oldpwd;
 
 	i = 0;
-//	oldpwd = find_row(a->env, "OLDPWD");
-//	if (!ft_strncmp(a->env[oldpwd], "OLDPWD=", 7))
-//		oldpwd = -1;
 	while (a->env[i])
 	{
-//		if (i == oldpwd)
-//		{
-//			i++;
-//			continue ;
-//		}
 		ft_putendl_fd(a->env[i], 1);
 		i++;
 	}

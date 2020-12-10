@@ -80,8 +80,7 @@ char **ft_delete_row(char **mat, int del)
 	{
 		if (j == del)
 			continue ;
-		i++;
-		tmp[i] = ft_strdup(mat[j]);
+		tmp[++i] = ft_strdup(mat[j]);
 	}
 	tmp[row - 1] = (void *)0;
 	ft_free_mat(mat);

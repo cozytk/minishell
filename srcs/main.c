@@ -125,9 +125,10 @@ int		pipe_scolon_alone(t_all *a)
 
 int 	cmd_exec(t_all *a)
 {
-	char **lines;
-	char **tmp;
-	pid_t pid;
+	char	**lines;
+	char	**tmp;
+	int		state;
+	pid_t	pid;
 
 	if (g_end != -1)
 		return (1);
@@ -141,14 +142,17 @@ int 	cmd_exec(t_all *a)
 		run_execve(a, lines);
 		ft_free_mat(tmp);
 		ft_free_mat(lines);
-		exit(127);
 	}
 	else if (pid == -1)
 	{
 		ft_putendl_fd(strerror(errno), 2);
 		exit(1);
 	}
-	waitpid(pid, 0, 0);
+	wait(&state);
+	if (state > 0)
+		g_end = 127;
+	if (pid == 0)
+		exit(0);
 	return (0);
 }
 
