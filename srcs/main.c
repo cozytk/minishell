@@ -100,8 +100,11 @@ int 	main_loop(t_all *a)
 		ft_pipe(a);
 		return (g_end);
 	}
+	redirect(a);
+	/*
 	if (redirect(a))
 		return (g_end);
+		*/
 	cmd_builtin(a);
 	cmd_exec(a);
 	if (a->p.s_colon)
@@ -115,7 +118,7 @@ int 	main_loop(t_all *a)
 int main(int argc, char *argv[], char *envp[])
 {
 	t_all *a;
-	char *tmp;
+	//char *tmp;
 
 	a = malloc(sizeof(t_all));
 	signal(SIGINT, sig_handle);
