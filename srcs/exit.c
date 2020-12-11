@@ -24,7 +24,7 @@ void	write_exit_error(t_all *a, int flag)
 	ft_putendl_fd("exit: too many arguments", 2);
 }
 
-int 	is_num_arg(char *s)
+int		is_num_arg(char *s)
 {
 	int i;
 
