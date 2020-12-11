@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redirect.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehkim <taehkim@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/11 20:39:27 by taehkim           #+#    #+#             */
+/*   Updated: 2020/12/11 20:39:28 by taehkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/minishell.h"
 
 void	bash_error(char *cmd)
@@ -8,10 +20,10 @@ void	bash_error(char *cmd)
 	ft_putendl_fd(strerror(errno), 2);
 }
 
-int exec_redirect(t_all *a, int i, int opt, int fileno)
+int		exec_redirect(t_all *a, int i, int opt, int fileno)
 {
     int			file_fd;
-    struct		stat st;
+    struct stat st;
 
     a->fileno = fileno;
 	a->arg = ft_delete_row(a->arg, i);
@@ -34,9 +46,9 @@ int exec_redirect(t_all *a, int i, int opt, int fileno)
 	return (1);
 }
 
-int redirect(t_all *a)
+int		redirect(t_all *a)
 {
-	int i;
+	int			i;
 
 	i = 0;
 	if (!a->arg)
