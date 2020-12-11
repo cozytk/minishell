@@ -47,6 +47,7 @@ char	*find_env_result(t_all *a, char *env, int i, int j)
 
 	if (!ft_strncmp(env, "$\0", 2) || ft_isdigit(env[0]))
 		return (env);
+	env = ft_strcjoin(env, '=');
 	while (a->env[i])
 	{
 		if (!ft_strncmp(a->env[i], env, ft_strlen(env)))
@@ -81,7 +82,6 @@ char	*env_appending(t_all *a, char *arg, int count, int i)
 		{
 			a->p.tmp = result;
 			env = get_env_by_arg(&arg[i], &count);
-			env = ft_strcjoin(env, '=');
 			a->p.tmp2 = find_env_result(a, env, 0, 0);
 			result = ft_strjoin(result, a->p.tmp2);
 			free(a->p.tmp);
