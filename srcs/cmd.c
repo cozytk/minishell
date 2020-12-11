@@ -57,7 +57,7 @@ int		cmd_exec(t_all *a)
 	int		state;
 	pid_t	pid;
 
-	if (g_end != -1)
+	if (g_end != -1 || !a->cmd)
 		return (1);
 	pid = fork();
 	if (pid == 0)
@@ -76,6 +76,7 @@ int		cmd_exec(t_all *a)
 	}
 	if (pid == 0)
 		exit(0);
+	waitpid(pid, 0, 0);
 	return (0);
 }
 
