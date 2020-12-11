@@ -12,6 +12,34 @@
 
 #include "../inc/minishell.h"
 
+char	*find_env_result2(t_all *a, char *env, int i, int j)
+{
+	int		start;
+	char	*temp;
+
+	if (!a->sub_env)
+		return (NULL);
+	while (a->sub_env[i])
+	{
+		if (!ft_strncmp(a->sub_env[i], env, ft_strlen(env)))
+		{
+			j = 0;
+			while (a->sub_env[i][j] != '=' && a->sub_env[i][j])
+				j++;
+			j++;
+			start = j;
+			while (a->sub_env[i][j])
+				j++;
+			temp = ft_substr(a->sub_env[i], start, j - start);
+			free(env);
+			return (temp);
+		}
+		i++;
+	}
+	free(env);
+	return (NULL);
+}
+
 char	*find_env_result(t_all *a, char *env, int i, int j)
 {
 	int		start;
@@ -36,8 +64,7 @@ char	*find_env_result(t_all *a, char *env, int i, int j)
 		}
 		i++;
 	}
-	free(env);
-	return (NULL);
+	return (find_env_result2(a, env, 0, 0));
 }
 
 char	*env_appending(t_all *a, char *arg, int count)

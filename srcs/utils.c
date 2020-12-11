@@ -113,6 +113,8 @@ int 	find_row(char **mat, char *s)
 {
 	int i;
 
+	if (!mat)
+		return (-1);
 	i = 0;
 	while (mat[i])
 	{

@@ -1,5 +1,15 @@
 #include "../inc/minishell.h"
 
+void	equal_process2(t_all *a, char *env)
+{
+	int		i;
+
+	i = 0;
+	if ((i = find_row(a->sub_env, env)) != -1)
+		a->sub_env = ft_delete_row(a->sub_env, i);
+	a->sub_env = add_row(a->sub_env, a->p.candidate);
+}
+
 void	equal_process(t_all *a)
 {
 	char	*env;
@@ -7,7 +17,6 @@ void	equal_process(t_all *a)
 
 	env = NULL;
 	i = 0;
-	//a->p.tmp = NULL;
 	while (a->p.candidate[i] != '=')
 	{
 		env = ft_strcjoin(env, a->p.candidate[i]);
@@ -25,7 +34,7 @@ void	equal_process(t_all *a)
 		a->arg = NULL;
 	}
 	else
-		a->sub_env = add_row(a->sub_env, a->p.candidate);
+		equal_process2(a, env);
 	if (env)
 		free(env);
 }
