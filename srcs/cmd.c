@@ -71,8 +71,10 @@ int		cmd_exec(t_all *a)
 	if (pid > 0)
 	{
 		waitpid(pid, &state, 0);
-		printf("WIFEXITED %d\n WEXITATUS %d\n WCOREDUMP %d\n WIFCONTINUED %d\n WIFSIGNALED %d\n WIFSTOPPED %d\n WSTOPSIG %d\n WTERMSIG %d\n", WIFEXITED(state), WEXITSTATUS(state), WCOREDUMP(state), WIFCONTINUED(state), WIFSIGNALED(state),
-		 WIFSTOPPED(state), WSTOPSIG(state), WTERMSIG(state));
+		if (!WIFSIGNALED(state))
+			g_end = WEXITSTATUS(state);
+//		printf("WIFEXITED %d\n WEXITATUS %d\n WCOREDUMP %d\n WIFCONTINUED %d\n WIFSIGNALED %d\n WIFSTOPPED %d\n WSTOPSIG %d\n WTERMSIG %d\n", WIFEXITED(state), WEXITSTATUS(state), WCOREDUMP(state), WIFCONTINUED(state), WIFSIGNALED(state),
+//		 WIFSTOPPED(state), WSTOPSIG(state), WTERMSIG(state));
 	}
 	return (0);
 }
