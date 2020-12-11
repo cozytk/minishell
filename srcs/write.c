@@ -1,6 +1,6 @@
 #include "../inc/minishell.h"
 
-void write_quote(char *str)
+void	write_quote(char *str)
 {
 	int i;
 
@@ -17,7 +17,7 @@ void write_quote(char *str)
 		ft_putchar_fd(str[i], 1);
 	ft_write("\"\n");
 }
-int 	write_error(char *cmd, char *str, char *err, int exit)
+int		write_error(char *cmd, char *str, char *err, int exit)
 {
 	ft_putstr_fd("bash: ", 2);
 	ft_putstr_fd(cmd, 2);
