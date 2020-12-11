@@ -12,7 +12,7 @@
 
 #include "../inc/minishell.h"
 
-int		write_exit_error(t_all *a, int flag)
+void	write_exit_error(t_all *a, int flag)
 {
 	ft_putendl_fd("exit", 2);
 	ft_putstr_fd("bash: ", 2);
