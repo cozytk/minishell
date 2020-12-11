@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   show.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehkim <taehkim@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/11 18:08:22 by taehkim           #+#    #+#             */
+/*   Updated: 2020/12/11 18:08:24 by taehkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/minishell.h"
 
 void	show_com(t_all *a)
@@ -32,8 +44,8 @@ void	show_arg(t_all *a)
 
 int		show_prompt(void)
 {
-	char    *prompt;
-	char    *temp;
+	char	*prompt;
+	char	*temp;
 	char	pwd[1024];
 
 	getcwd(pwd, 1024);
