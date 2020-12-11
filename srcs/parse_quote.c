@@ -60,12 +60,33 @@ void	d_quote_process(t_all *a)
 	add_candidate(a);
 }
 
-void	quote_join(t_all *a)
+void	quote_join2(t_all *a, int size)
 {
-	int		size;
 	char	*temp;
 	char	*temp2;
 	char	*temp3;
+
+	if (a->line[a->p.start - 1] != ' ' && size == 1)
+	{
+		temp = a->cmd;
+		a->cmd = ft_strjoin(a->cmd, a->arg[0]);
+		free(temp);
+		a->arg = ft_delete_row(a->arg, 0);
+	}
+	else if (a->line[a->p.start - 1] != ' ' && size > 1)
+	{
+		temp = a->arg[size - 2];
+		temp2 = a->arg[size - 1];
+		temp3 = ft_strjoin(temp, temp2);
+		a->arg = ft_delete_row(a->arg, size - 2);
+		a->arg = ft_delete_row(a->arg, size - 1);
+		add_argument(a, temp3);
+	}
+}
+
+void	quote_join(t_all *a)
+{
+	int		size;
 
 	if (!a->arg)
 		return ;
@@ -74,22 +95,5 @@ void	quote_join(t_all *a)
 		return ;
 	size = ft_matrow(a->arg);
 	if (a->p.start > 0 && a->cmd)
-	{
-		if (a->line[a->p.start - 1] != ' ' && size == 1)
-		{
-			temp = a->cmd;
-			a->cmd = ft_strjoin(a->cmd, a->arg[0]);
-			free(temp);
-			a->arg = ft_delete_row(a->arg, 0);
-		}
-		else if (a->line[a->p.start - 1] != ' ' && size > 1)
-		{
-			temp = a->arg[size - 2];
-			temp2 = a->arg[size - 1];
-			temp3 = ft_strjoin(temp, temp2);
-			a->arg = ft_delete_row(a->arg, size - 2);
-			a->arg = ft_delete_row(a->arg, size - 1);
-			add_argument(a, temp3);
-		}
-	}
+		quote_join2(a, size);
 }
