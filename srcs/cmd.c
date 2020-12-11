@@ -6,7 +6,7 @@
 /*   By: taekkim <taekkim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 20:32:59 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/11 23:24:06 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/12 04:10:07 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		cmd_exec(t_all *a)
 	{
 		waitpid(pid, &state, 0);
 		if (!WIFSIGNALED(state))
-			g_end = WEXITSTATUS(state);
+			g_end = 127;
 	}
 	return (0);
 }
