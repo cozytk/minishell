@@ -12,6 +12,17 @@
 
 #include "../inc/minishell.h"
 
+void	write_exec_err(t_all *a, int flag)
+{
+	if (flag)
+		ft_putstr_fd("bash: ", 2);
+	ft_putstr_fd(a->cmd, 2);
+	if (!flag)
+		ft_putendl_fd(": command not found", 2);
+	else
+		ft_putendl_fd(": No such file or directory", 2);
+}
+
 void	run_execve(t_all *a, char **arg)
 {
 	int		i;
@@ -25,25 +36,19 @@ void	run_execve(t_all *a, char **arg)
 	{
 		mat = ft_split(a->env[i] + 5, ':');
 		cmd = ft_strjoin("/", a->cmd);
-		i = 0;
-		while (mat[i])
+		i = -1;
+		while (mat[++i])
 		{
 			path = ft_strjoin(mat[i], cmd);
 			execve(path, arg, a->env);
 			free(path);
-			i++;
 		}
 		free(cmd);
 		ft_free_mat(mat);
-		ft_putstr_fd(a->cmd, 2);
-		ft_putendl_fd(": command not found", 2);
+		write_exec_err(a, 0);
 	}
 	else if (i == -1)
-	{
-		ft_putstr_fd("bash: ", 2);
-		ft_putstr_fd(a->cmd, 2);
-		ft_putendl_fd(": No such file or directory", 2);
-	}
+		write_exec_err(a, 1);
 }
 
 int		cmd_exec(t_all *a)
