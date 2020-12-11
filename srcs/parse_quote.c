@@ -62,9 +62,6 @@ void	d_quote_process(t_all *a)
 
 void	quote_join(t_all *a)
 {
-	//cmd 있고 arg 하나 -> 만약 붙어있다? 합치고 cmd 갱신, arg 제거 arg NULL 처리는 밖에서(안해줘도 될듯)
-	//cmd 만 있 -> return ;
-	//cmd 있고 arg 여러개
 	int		size;
 	char	*temp;
 	char	*temp2;
