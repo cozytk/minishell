@@ -51,7 +51,7 @@ int		find_exact_row(char **mat, char *s)
 	return (-1);
 }
 
-int 	find_row(char **mat, char *s)
+int		find_row(char **mat, char *s)
 {
 	int		i;
 
@@ -66,7 +66,8 @@ int 	find_row(char **mat, char *s)
 	}
 	return (-1);
 }
-char	**ft_delete_row(char **mat, int del)
+
+char	*ft_delete_row(char **mat, int del)
 {
 	char	**tmp;
 	int		row;
