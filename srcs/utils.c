@@ -125,6 +125,22 @@ int 	find_row(char **mat, char *s)
 	return (-1);
 }
 
+int		find_exact_row(char **mat, char *s)
+{
+	int i;
+
+	if (!mat)
+		return (-1);
+	i = 0;
+	while (mat[i])
+	{
+		if (!ft_strncmp(mat[i], s, ft_strlen(s) + 1))
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 void	bash_cmd_error(char *cmd, char *msg, int exit_code)
 {
 	ft_putstr_fd("bash: ", 2);

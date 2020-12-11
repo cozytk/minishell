@@ -82,6 +82,7 @@ int			redirect(t_all *a);
 int			main_loop(t_all *a);
 int			ft_exit(t_all *a);
 int 		find_row(char **mat, char *s);
+int 		find_exact_row(char **mat, char *s);
 
 
 /*

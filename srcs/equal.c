@@ -22,8 +22,9 @@ void	equal_process(t_all *a)
 		env = ft_strcjoin(env, a->p.candidate[i]);
 		i++;
 	}
-	env = ft_strcjoin(env, a->p.candidate[i]);
-	if ((i = find_row(a->env, env)) != -1)
+	if (((i = find_exact_row(a->env, env)) != -1) ||
+			((env = ft_strcjoin(env, a->p.candidate[i]))
+				&& (i = find_row(a->env, env) != -1)))
 	{
 		a->cmd = ft_strdup("export");
 		add_argument(a, a->p.candidate);
