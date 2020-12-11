@@ -23,9 +23,9 @@ void	bash_error(char *cmd)
 int		exec_redirect(t_all *a, int i, int opt, int fileno)
 {
     int			file_fd;
-    struct stat st;
+    struct stat	st;
 
-    a->fileno = fileno;
+	a->fileno = fileno;
 	a->arg = ft_delete_row(a->arg, i);
 	if (fileno == STDIN_FILENO && (stat(a->arg[i], &st) == -1))
 	{
@@ -41,7 +41,7 @@ int		exec_redirect(t_all *a, int i, int opt, int fileno)
 		return (0);
 	}
 	a->redirect = 1;
-    a->fd_tmp = dup(a->fileno);
+	a->fd_tmp = dup(a->fileno);
 	dup2(file_fd, a->fileno);
 	return (1);
 }
