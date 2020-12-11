@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 20:08:53 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/11 20:50:25 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/11 23:22:01 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,32 +136,3 @@ int		main(int argc, char *argv[], char *envp[])
 	ft_putendl_fd("exit", 2);
 	return ((int)(argc || argv));
 }
-//
-//int		main(int argc, char *argv[], char *envp[])
-//{
-//	t_all	*a;
-//
-//	a = malloc(sizeof(t_all));
-//	signal(SIGINT, sig_handle);
-//	signal(SIGQUIT, sig_handle);
-//	init_struct(a);
-//	init_env(envp, a);
-//	while (show_prompt() && get_next_line(0, &(a->line)) > 0)
-//	{
-//		if (!a->line[0])
-//		{
-//			ft_free(a->line);
-//			g_end = 127;
-//			continue;
-//		}
-//		init(a);
-//		main_loop(a);
-//		free_com_arg(a);
-//		if (a->redirect)
-//			dup2(a->fd_tmp, a->fileno);
-//		ft_free(a->line);
-//	}
-//	free_all(a);
-//	ft_putendl_fd("exit", 2);
-//	return ((int)(argc || argv));
-//}
