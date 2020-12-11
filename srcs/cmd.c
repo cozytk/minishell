@@ -6,7 +6,7 @@
 /*   By: taekkim <taekkim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 20:32:59 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/12 04:10:07 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/12 04:31:23 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 void	write_exec_err(t_all *a, int flag)
 {
-	if (flag)
-		ft_putstr_fd("bash: ", 2);
+	ft_putstr_fd("bash: ", 2);
 	ft_putstr_fd(a->cmd, 2);
 	if (!flag)
 		ft_putendl_fd(": command not found", 2);
 	else
 		ft_putendl_fd(": No such file or directory", 2);
-	exit(1);
+	exit(127);
 }
 
 void	run_execve(t_all *a, char **arg)
@@ -72,7 +71,7 @@ int		cmd_exec(t_all *a)
 	{
 		waitpid(pid, &state, 0);
 		if (!WIFSIGNALED(state))
-			g_end = 127;
+			g_end = WEXITSTATUS(state);
 	}
 	return (0);
 }

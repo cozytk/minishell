@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 20:08:53 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/11 23:22:01 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/12 04:23:06 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,17 @@ void	sig_handle(int signo)
 		}
 		else if (signo == SIGQUIT)
 		{
-			ft_putendl_fd("Quit", 1);
+			ft_putendl_fd("Quit :3", 1);
 			g_end = 131;
 		}
 		return ;
 	}
 	if (signo == SIGINT)
 	{
-		ft_putchar_fd('\n', 2);
+		ft_erase();
+		ft_putchar_fd('\n', 1);
 		show_prompt();
-		g_end = 130;
+		g_end = 1;
 	}
 	else if (signo == SIGQUIT)
 		ft_erase();
