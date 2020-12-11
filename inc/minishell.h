@@ -23,7 +23,7 @@
 # include <sys/wait.h>
 # include <sys/stat.h>
 # include <sys/errno.h>
-# define PROMPT_MSG " > "
+# define PROMPT_MSG " $"
 # define WELCOME_MSG " welcome.\n"
 # define PT_COLOR_LEFT "\e[42;1;37m"
 # define PT_COLOR_RIGHT "\e[0m"
