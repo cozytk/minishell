@@ -12,7 +12,7 @@
 
 #include "../inc/minishell.h"
 
-char 	**ft_matadd_front(t_all *a)
+char	**ft_matadd_front(t_all *a)
 {
 	char	**dst;
 	char	**tmp;
@@ -25,9 +25,9 @@ char 	**ft_matadd_front(t_all *a)
 	return (dst);
 }
 
-void swap_str(char **s1, char **s2)
+void	swap_str(char **s1, char **s2)
 {
-	char *temp;
+	char	*temp;
 
 	temp = ft_strdup(*s1);
 	free(*s1);
@@ -37,10 +37,10 @@ void swap_str(char **s1, char **s2)
 	free(temp);
 }
 
-void sort_mat(char **mat)
+void	sort_mat(char **mat)
 {
 	int		i;
-	int 	j;
+	int		j;
 
 	i = -1;
 	while (mat[++i])
@@ -54,7 +54,7 @@ void sort_mat(char **mat)
 	}
 }
 
-int same_key(char *s1, char *s2)
+int		same_key(char *s1, char *s2)
 {
 	int		i;
 	int		ret;
@@ -62,7 +62,8 @@ int same_key(char *s1, char *s2)
 	char	*tmp2;
 
 	ret = 0;
-	if (!((tmp1 = malloc(ft_strlen(s1) + 1)) && (tmp2 = malloc(ft_strlen(s2) + 1))))
+	if (!((tmp1 = malloc(ft_strlen(s1) + 1))
+				&& (tmp2 = malloc(ft_strlen(s2) + 1))))
 		exit(1);
 	i = -1;
 	while (s1[++i])
