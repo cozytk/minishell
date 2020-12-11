@@ -12,10 +12,10 @@
 
 #include "../inc/minishell.h"
 
-char **overwrite_env(char **mat, t_all *a)
+char	**overwrite_env(char **mat, t_all *a)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	i = -1;
 	if (!mat)
@@ -41,10 +41,10 @@ char **overwrite_env(char **mat, t_all *a)
 	return (mat);
 }
 
-char **check_overlap(char **mat)
+char	**check_overlap(char **mat)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	i = -1;
 	while (mat && mat[++i + 1])
@@ -59,7 +59,7 @@ char **check_overlap(char **mat)
 	return (mat);
 }
 
-void edit_env(t_all *a)
+void	edit_env(t_all *a)
 {
 	char	**tmp_m;
 
@@ -73,7 +73,7 @@ void edit_env(t_all *a)
 	a->env = tmp_m;
 }
 
-void write_export(char **ept)
+void	write_export(char **ept)
 {
 	int i;
 
@@ -87,7 +87,7 @@ void write_export(char **ept)
 	}
 }
 
-int export(t_all *a)
+int		export(t_all *a)
 {
 	if (!ft_strncmp(a->cmd, "export\0", 7))
 	{
