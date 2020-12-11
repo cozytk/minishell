@@ -434,22 +434,9 @@ CMakeFiles/ft.dir/libft/ft_memmove.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft.dir/libft/ft_memmove.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/taekkim/minishell/libft/ft_memmove.c -o CMakeFiles/ft.dir/libft/ft_memmove.c.s
 
-CMakeFiles/ft.dir/libft/ft_matadd_front.c.o: CMakeFiles/ft.dir/flags.make
-CMakeFiles/ft.dir/libft/ft_matadd_front.c.o: ../libft/ft_matadd_front.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ft.dir/libft/ft_matadd_front.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_matadd_front.c.o   -c /home/taekkim/minishell/libft/ft_matadd_front.c
-
-CMakeFiles/ft.dir/libft/ft_matadd_front.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft.dir/libft/ft_matadd_front.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/taekkim/minishell/libft/ft_matadd_front.c > CMakeFiles/ft.dir/libft/ft_matadd_front.c.i
-
-CMakeFiles/ft.dir/libft/ft_matadd_front.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft.dir/libft/ft_matadd_front.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/taekkim/minishell/libft/ft_matadd_front.c -o CMakeFiles/ft.dir/libft/ft_matadd_front.c.s
-
 CMakeFiles/ft.dir/libft/ft_memset.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_memset.c.o: ../libft/ft_memset.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ft.dir/libft/ft_memset.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ft.dir/libft/ft_memset.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_memset.c.o   -c /home/taekkim/minishell/libft/ft_memset.c
 
 CMakeFiles/ft.dir/libft/ft_memset.c.i: cmake_force
@@ -462,7 +449,7 @@ CMakeFiles/ft.dir/libft/ft_memset.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_putchar_fd.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_putchar_fd.c.o: ../libft/ft_putchar_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ft.dir/libft/ft_putchar_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ft.dir/libft/ft_putchar_fd.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_putchar_fd.c.o   -c /home/taekkim/minishell/libft/ft_putchar_fd.c
 
 CMakeFiles/ft.dir/libft/ft_putchar_fd.c.i: cmake_force
@@ -475,7 +462,7 @@ CMakeFiles/ft.dir/libft/ft_putchar_fd.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_putendl_fd.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_putendl_fd.c.o: ../libft/ft_putendl_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ft.dir/libft/ft_putendl_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ft.dir/libft/ft_putendl_fd.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_putendl_fd.c.o   -c /home/taekkim/minishell/libft/ft_putendl_fd.c
 
 CMakeFiles/ft.dir/libft/ft_putendl_fd.c.i: cmake_force
@@ -488,7 +475,7 @@ CMakeFiles/ft.dir/libft/ft_putendl_fd.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_putnbr_fd.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_putnbr_fd.c.o: ../libft/ft_putnbr_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ft.dir/libft/ft_putnbr_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ft.dir/libft/ft_putnbr_fd.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_putnbr_fd.c.o   -c /home/taekkim/minishell/libft/ft_putnbr_fd.c
 
 CMakeFiles/ft.dir/libft/ft_putnbr_fd.c.i: cmake_force
@@ -501,7 +488,7 @@ CMakeFiles/ft.dir/libft/ft_putnbr_fd.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_putstr_fd.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_putstr_fd.c.o: ../libft/ft_putstr_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/ft.dir/libft/ft_putstr_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ft.dir/libft/ft_putstr_fd.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_putstr_fd.c.o   -c /home/taekkim/minishell/libft/ft_putstr_fd.c
 
 CMakeFiles/ft.dir/libft/ft_putstr_fd.c.i: cmake_force
@@ -514,7 +501,7 @@ CMakeFiles/ft.dir/libft/ft_putstr_fd.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_split.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_split.c.o: ../libft/ft_split.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/ft.dir/libft/ft_split.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/ft.dir/libft/ft_split.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_split.c.o   -c /home/taekkim/minishell/libft/ft_split.c
 
 CMakeFiles/ft.dir/libft/ft_split.c.i: cmake_force
@@ -527,7 +514,7 @@ CMakeFiles/ft.dir/libft/ft_split.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strccmp.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strccmp.c.o: ../libft/ft_strccmp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/ft.dir/libft/ft_strccmp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/ft.dir/libft/ft_strccmp.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strccmp.c.o   -c /home/taekkim/minishell/libft/ft_strccmp.c
 
 CMakeFiles/ft.dir/libft/ft_strccmp.c.i: cmake_force
@@ -540,7 +527,7 @@ CMakeFiles/ft.dir/libft/ft_strccmp.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strchr.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strchr.c.o: ../libft/ft_strchr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/ft.dir/libft/ft_strchr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/ft.dir/libft/ft_strchr.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strchr.c.o   -c /home/taekkim/minishell/libft/ft_strchr.c
 
 CMakeFiles/ft.dir/libft/ft_strchr.c.i: cmake_force
@@ -553,7 +540,7 @@ CMakeFiles/ft.dir/libft/ft_strchr.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strcjoin.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strcjoin.c.o: ../libft/ft_strcjoin.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/ft.dir/libft/ft_strcjoin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/ft.dir/libft/ft_strcjoin.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strcjoin.c.o   -c /home/taekkim/minishell/libft/ft_strcjoin.c
 
 CMakeFiles/ft.dir/libft/ft_strcjoin.c.i: cmake_force
@@ -566,7 +553,7 @@ CMakeFiles/ft.dir/libft/ft_strcjoin.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strdup.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strdup.c.o: ../libft/ft_strdup.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/ft.dir/libft/ft_strdup.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/ft.dir/libft/ft_strdup.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strdup.c.o   -c /home/taekkim/minishell/libft/ft_strdup.c
 
 CMakeFiles/ft.dir/libft/ft_strdup.c.i: cmake_force
@@ -579,7 +566,7 @@ CMakeFiles/ft.dir/libft/ft_strdup.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strjoin.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strjoin.c.o: ../libft/ft_strjoin.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/ft.dir/libft/ft_strjoin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/ft.dir/libft/ft_strjoin.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strjoin.c.o   -c /home/taekkim/minishell/libft/ft_strjoin.c
 
 CMakeFiles/ft.dir/libft/ft_strjoin.c.i: cmake_force
@@ -592,7 +579,7 @@ CMakeFiles/ft.dir/libft/ft_strjoin.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strlcat.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strlcat.c.o: ../libft/ft_strlcat.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/ft.dir/libft/ft_strlcat.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/ft.dir/libft/ft_strlcat.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strlcat.c.o   -c /home/taekkim/minishell/libft/ft_strlcat.c
 
 CMakeFiles/ft.dir/libft/ft_strlcat.c.i: cmake_force
@@ -605,7 +592,7 @@ CMakeFiles/ft.dir/libft/ft_strlcat.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strlcpy.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strlcpy.c.o: ../libft/ft_strlcpy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/ft.dir/libft/ft_strlcpy.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/ft.dir/libft/ft_strlcpy.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strlcpy.c.o   -c /home/taekkim/minishell/libft/ft_strlcpy.c
 
 CMakeFiles/ft.dir/libft/ft_strlcpy.c.i: cmake_force
@@ -618,7 +605,7 @@ CMakeFiles/ft.dir/libft/ft_strlcpy.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strlen.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strlen.c.o: ../libft/ft_strlen.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/ft.dir/libft/ft_strlen.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/ft.dir/libft/ft_strlen.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strlen.c.o   -c /home/taekkim/minishell/libft/ft_strlen.c
 
 CMakeFiles/ft.dir/libft/ft_strlen.c.i: cmake_force
@@ -631,7 +618,7 @@ CMakeFiles/ft.dir/libft/ft_strlen.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strmapi.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strmapi.c.o: ../libft/ft_strmapi.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/ft.dir/libft/ft_strmapi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/ft.dir/libft/ft_strmapi.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strmapi.c.o   -c /home/taekkim/minishell/libft/ft_strmapi.c
 
 CMakeFiles/ft.dir/libft/ft_strmapi.c.i: cmake_force
@@ -644,7 +631,7 @@ CMakeFiles/ft.dir/libft/ft_strmapi.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strncmp.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strncmp.c.o: ../libft/ft_strncmp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/ft.dir/libft/ft_strncmp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/ft.dir/libft/ft_strncmp.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strncmp.c.o   -c /home/taekkim/minishell/libft/ft_strncmp.c
 
 CMakeFiles/ft.dir/libft/ft_strncmp.c.i: cmake_force
@@ -657,7 +644,7 @@ CMakeFiles/ft.dir/libft/ft_strncmp.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strnstr.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strnstr.c.o: ../libft/ft_strnstr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/ft.dir/libft/ft_strnstr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/ft.dir/libft/ft_strnstr.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strnstr.c.o   -c /home/taekkim/minishell/libft/ft_strnstr.c
 
 CMakeFiles/ft.dir/libft/ft_strnstr.c.i: cmake_force
@@ -670,7 +657,7 @@ CMakeFiles/ft.dir/libft/ft_strnstr.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strrchr.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strrchr.c.o: ../libft/ft_strrchr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/ft.dir/libft/ft_strrchr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/ft.dir/libft/ft_strrchr.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strrchr.c.o   -c /home/taekkim/minishell/libft/ft_strrchr.c
 
 CMakeFiles/ft.dir/libft/ft_strrchr.c.i: cmake_force
@@ -683,7 +670,7 @@ CMakeFiles/ft.dir/libft/ft_strrchr.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_strtrim.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_strtrim.c.o: ../libft/ft_strtrim.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/ft.dir/libft/ft_strtrim.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/ft.dir/libft/ft_strtrim.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_strtrim.c.o   -c /home/taekkim/minishell/libft/ft_strtrim.c
 
 CMakeFiles/ft.dir/libft/ft_strtrim.c.i: cmake_force
@@ -696,7 +683,7 @@ CMakeFiles/ft.dir/libft/ft_strtrim.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_substr.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_substr.c.o: ../libft/ft_substr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/ft.dir/libft/ft_substr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/ft.dir/libft/ft_substr.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_substr.c.o   -c /home/taekkim/minishell/libft/ft_substr.c
 
 CMakeFiles/ft.dir/libft/ft_substr.c.i: cmake_force
@@ -709,7 +696,7 @@ CMakeFiles/ft.dir/libft/ft_substr.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_tolower.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_tolower.c.o: ../libft/ft_tolower.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/ft.dir/libft/ft_tolower.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/ft.dir/libft/ft_tolower.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_tolower.c.o   -c /home/taekkim/minishell/libft/ft_tolower.c
 
 CMakeFiles/ft.dir/libft/ft_tolower.c.i: cmake_force
@@ -722,7 +709,7 @@ CMakeFiles/ft.dir/libft/ft_tolower.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_toupper.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_toupper.c.o: ../libft/ft_toupper.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/ft.dir/libft/ft_toupper.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/ft.dir/libft/ft_toupper.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_toupper.c.o   -c /home/taekkim/minishell/libft/ft_toupper.c
 
 CMakeFiles/ft.dir/libft/ft_toupper.c.i: cmake_force
@@ -735,7 +722,7 @@ CMakeFiles/ft.dir/libft/ft_toupper.c.s: cmake_force
 
 CMakeFiles/ft.dir/libft/ft_write.c.o: CMakeFiles/ft.dir/flags.make
 CMakeFiles/ft.dir/libft/ft_write.c.o: ../libft/ft_write.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/ft.dir/libft/ft_write.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/ft.dir/libft/ft_write.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft.dir/libft/ft_write.c.o   -c /home/taekkim/minishell/libft/ft_write.c
 
 CMakeFiles/ft.dir/libft/ft_write.c.i: cmake_force
@@ -777,7 +764,6 @@ ft_OBJECTS = \
 "CMakeFiles/ft.dir/libft/ft_memcpy.c.o" \
 "CMakeFiles/ft.dir/libft/ft_iswhite.c.o" \
 "CMakeFiles/ft.dir/libft/ft_memmove.c.o" \
-"CMakeFiles/ft.dir/libft/ft_matadd_front.c.o" \
 "CMakeFiles/ft.dir/libft/ft_memset.c.o" \
 "CMakeFiles/ft.dir/libft/ft_putchar_fd.c.o" \
 "CMakeFiles/ft.dir/libft/ft_putendl_fd.c.o" \
@@ -834,7 +820,6 @@ libft.a: CMakeFiles/ft.dir/libft/ft_memcmp.c.o
 libft.a: CMakeFiles/ft.dir/libft/ft_memcpy.c.o
 libft.a: CMakeFiles/ft.dir/libft/ft_iswhite.c.o
 libft.a: CMakeFiles/ft.dir/libft/ft_memmove.c.o
-libft.a: CMakeFiles/ft.dir/libft/ft_matadd_front.c.o
 libft.a: CMakeFiles/ft.dir/libft/ft_memset.c.o
 libft.a: CMakeFiles/ft.dir/libft/ft_putchar_fd.c.o
 libft.a: CMakeFiles/ft.dir/libft/ft_putendl_fd.c.o
@@ -860,7 +845,7 @@ libft.a: CMakeFiles/ft.dir/libft/ft_toupper.c.o
 libft.a: CMakeFiles/ft.dir/libft/ft_write.c.o
 libft.a: CMakeFiles/ft.dir/build.make
 libft.a: CMakeFiles/ft.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Linking C static library libft.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/taekkim/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Linking C static library libft.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/ft.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ft.dir/link.txt --verbose=$(VERBOSE)
 

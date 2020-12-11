@@ -3,7 +3,6 @@ project(minishell)
 
 set(CMAKE_CXX_STANDARD 14)
 
-ADD_COMPILE_OPTIONS(-Wall -Wextra -Werror)
 include_directories(inc)
 include_directories(libft)
 
@@ -27,13 +26,14 @@ add_executable(minishell
         srcs/redirect.c
         srcs/cmd.c
         srcs/pwd.c
+        srcs/equal.c
         srcs/get_next_line.c
         srcs/get_next_line_utils.c
         srcs/env.c
         srcs/echo.c
         srcs/chdir.c
-        srcs/row.c
-        srcs/write.c
+        srcs/rows.c
+        srcs/write2.c
         srcs/init.c srcs/exit.c)
 
 add_library(ft STATIC
@@ -66,7 +66,6 @@ add_library(ft STATIC
         libft/ft_memcpy.c
         libft/ft_iswhite.c
         libft/ft_memmove.c
-        libft/ft_matadd_front.c
         libft/ft_memset.c
         libft/ft_putchar_fd.c
         libft/ft_putendl_fd.c

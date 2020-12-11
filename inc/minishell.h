@@ -52,7 +52,7 @@ typedef struct	s_all
 	int		fd[2];
 	char	*cmd;
 	char	*line;
-	char	*init_home;
+	char	init_home[1024];
 	int		fileno;
 	int		redirect;
 	int		fd_tmp;
@@ -62,6 +62,7 @@ typedef struct	s_all
 
 int				g_end;
 
+void			free_all(t_all *a);
 char			**check_identifier(char **mat);
 void			ft_erase(void);
 int				cmd_itself(char *cmd, char *str);

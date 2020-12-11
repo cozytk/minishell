@@ -703,33 +703,6 @@ libft/ft_lstsize.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_lstsize.c.s
 .PHONY : libft/ft_lstsize.c.s
 
-libft/ft_matadd_front.o: libft/ft_matadd_front.c.o
-
-.PHONY : libft/ft_matadd_front.o
-
-# target to build an object file
-libft/ft_matadd_front.c.o:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_matadd_front.c.o
-.PHONY : libft/ft_matadd_front.c.o
-
-libft/ft_matadd_front.i: libft/ft_matadd_front.c.i
-
-.PHONY : libft/ft_matadd_front.i
-
-# target to preprocess a source file
-libft/ft_matadd_front.c.i:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_matadd_front.c.i
-.PHONY : libft/ft_matadd_front.c.i
-
-libft/ft_matadd_front.s: libft/ft_matadd_front.c.s
-
-.PHONY : libft/ft_matadd_front.s
-
-# target to generate assembly for a file
-libft/ft_matadd_front.c.s:
-	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_matadd_front.c.s
-.PHONY : libft/ft_matadd_front.c.s
-
 libft/ft_matdup.o: libft/ft_matdup.c.o
 
 .PHONY : libft/ft_matdup.o
@@ -1675,6 +1648,33 @@ srcs/env.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/env.c.s
 .PHONY : srcs/env.c.s
 
+srcs/equal.o: srcs/equal.c.o
+
+.PHONY : srcs/equal.o
+
+# target to build an object file
+srcs/equal.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/equal.c.o
+.PHONY : srcs/equal.c.o
+
+srcs/equal.i: srcs/equal.c.i
+
+.PHONY : srcs/equal.i
+
+# target to preprocess a source file
+srcs/equal.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/equal.c.i
+.PHONY : srcs/equal.c.i
+
+srcs/equal.s: srcs/equal.c.s
+
+.PHONY : srcs/equal.s
+
+# target to generate assembly for a file
+srcs/equal.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/equal.c.s
+.PHONY : srcs/equal.c.s
+
 srcs/exit.o: srcs/exit.c.o
 
 .PHONY : srcs/exit.o
@@ -2107,32 +2107,32 @@ srcs/redirect.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/redirect.c.s
 .PHONY : srcs/redirect.c.s
 
-srcs/row.o: srcs/row.c.o
+srcs/rows.o: srcs/rows.c.o
 
-.PHONY : srcs/row.o
+.PHONY : srcs/rows.o
 
 # target to build an object file
-srcs/row.c.o:
-	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/row.c.o
-.PHONY : srcs/row.c.o
+srcs/rows.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/rows.c.o
+.PHONY : srcs/rows.c.o
 
-srcs/row.i: srcs/row.c.i
+srcs/rows.i: srcs/rows.c.i
 
-.PHONY : srcs/row.i
+.PHONY : srcs/rows.i
 
 # target to preprocess a source file
-srcs/row.c.i:
-	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/row.c.i
-.PHONY : srcs/row.c.i
+srcs/rows.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/rows.c.i
+.PHONY : srcs/rows.c.i
 
-srcs/row.s: srcs/row.c.s
+srcs/rows.s: srcs/rows.c.s
 
-.PHONY : srcs/row.s
+.PHONY : srcs/rows.s
 
 # target to generate assembly for a file
-srcs/row.c.s:
-	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/row.c.s
-.PHONY : srcs/row.c.s
+srcs/rows.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/rows.c.s
+.PHONY : srcs/rows.c.s
 
 srcs/show.o: srcs/show.c.o
 
@@ -2242,32 +2242,32 @@ srcs/validate.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/validate.c.s
 .PHONY : srcs/validate.c.s
 
-srcs/write.o: srcs/write.c.o
+srcs/write2.o: srcs/write2.c.o
 
-.PHONY : srcs/write.o
+.PHONY : srcs/write2.o
 
 # target to build an object file
-srcs/write.c.o:
-	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/write.c.o
-.PHONY : srcs/write.c.o
+srcs/write2.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/write2.c.o
+.PHONY : srcs/write2.c.o
 
-srcs/write.i: srcs/write.c.i
+srcs/write2.i: srcs/write2.c.i
 
-.PHONY : srcs/write.i
+.PHONY : srcs/write2.i
 
 # target to preprocess a source file
-srcs/write.c.i:
-	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/write.c.i
-.PHONY : srcs/write.c.i
+srcs/write2.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/write2.c.i
+.PHONY : srcs/write2.c.i
 
-srcs/write.s: srcs/write.c.s
+srcs/write2.s: srcs/write2.c.s
 
-.PHONY : srcs/write.s
+.PHONY : srcs/write2.s
 
 # target to generate assembly for a file
-srcs/write.c.s:
-	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/write.c.s
-.PHONY : srcs/write.c.s
+srcs/write2.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/write2.c.s
+.PHONY : srcs/write2.c.s
 
 # Help Target
 help:
@@ -2342,9 +2342,6 @@ help:
 	@echo "... libft/ft_lstsize.o"
 	@echo "... libft/ft_lstsize.i"
 	@echo "... libft/ft_lstsize.s"
-	@echo "... libft/ft_matadd_front.o"
-	@echo "... libft/ft_matadd_front.i"
-	@echo "... libft/ft_matadd_front.s"
 	@echo "... libft/ft_matdup.o"
 	@echo "... libft/ft_matdup.i"
 	@echo "... libft/ft_matdup.s"
@@ -2450,6 +2447,9 @@ help:
 	@echo "... srcs/env.o"
 	@echo "... srcs/env.i"
 	@echo "... srcs/env.s"
+	@echo "... srcs/equal.o"
+	@echo "... srcs/equal.i"
+	@echo "... srcs/equal.s"
 	@echo "... srcs/exit.o"
 	@echo "... srcs/exit.i"
 	@echo "... srcs/exit.s"
@@ -2498,9 +2498,9 @@ help:
 	@echo "... srcs/redirect.o"
 	@echo "... srcs/redirect.i"
 	@echo "... srcs/redirect.s"
-	@echo "... srcs/row.o"
-	@echo "... srcs/row.i"
-	@echo "... srcs/row.s"
+	@echo "... srcs/rows.o"
+	@echo "... srcs/rows.i"
+	@echo "... srcs/rows.s"
 	@echo "... srcs/show.o"
 	@echo "... srcs/show.i"
 	@echo "... srcs/show.s"
@@ -2513,9 +2513,9 @@ help:
 	@echo "... srcs/validate.o"
 	@echo "... srcs/validate.i"
 	@echo "... srcs/validate.s"
-	@echo "... srcs/write.o"
-	@echo "... srcs/write.i"
-	@echo "... srcs/write.s"
+	@echo "... srcs/write2.o"
+	@echo "... srcs/write2.i"
+	@echo "... srcs/write2.s"
 .PHONY : help
 
 

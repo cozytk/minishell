@@ -5,6 +5,10 @@ CMakeFiles/minishell.dir/srcs/chdir.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/chdir.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/chdir.c.o: ../srcs/chdir.c
 
+CMakeFiles/minishell.dir/srcs/cmd.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/cmd.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/cmd.c.o: ../srcs/cmd.c
+
 CMakeFiles/minishell.dir/srcs/echo.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/echo.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/echo.c.o: ../srcs/echo.c
@@ -12,6 +16,10 @@ CMakeFiles/minishell.dir/srcs/echo.c.o: ../srcs/echo.c
 CMakeFiles/minishell.dir/srcs/env.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/env.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/env.c.o: ../srcs/env.c
+
+CMakeFiles/minishell.dir/srcs/equal.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/equal.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/equal.c.o: ../srcs/equal.c
 
 CMakeFiles/minishell.dir/srcs/exit.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/exit.c.o: ../libft/libft.h
@@ -77,6 +85,10 @@ CMakeFiles/minishell.dir/srcs/redirect.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/redirect.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/redirect.c.o: ../srcs/redirect.c
 
+CMakeFiles/minishell.dir/srcs/rows.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/rows.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/rows.c.o: ../srcs/rows.c
+
 CMakeFiles/minishell.dir/srcs/show.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/show.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/show.c.o: ../srcs/show.c
@@ -92,4 +104,8 @@ CMakeFiles/minishell.dir/srcs/utils.c.o: ../srcs/utils.c
 CMakeFiles/minishell.dir/srcs/validate.c.o: ../inc/minishell.h
 CMakeFiles/minishell.dir/srcs/validate.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/validate.c.o: ../srcs/validate.c
+
+CMakeFiles/minishell.dir/srcs/write2.c.o: ../inc/minishell.h
+CMakeFiles/minishell.dir/srcs/write2.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/write2.c.o: ../srcs/write2.c
 

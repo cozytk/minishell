@@ -38,9 +38,7 @@ unistd.h
 stdlib.h
 -
 
-/home/taekkim/minishell/srcs/main.c
+/home/taekkim/minishell/srcs/equal.c
 ../inc/minishell.h
 /home/taekkim/minishell/inc/minishell.h
-string.h
--
 

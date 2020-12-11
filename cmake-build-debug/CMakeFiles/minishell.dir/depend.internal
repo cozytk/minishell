@@ -5,6 +5,10 @@ CMakeFiles/minishell.dir/srcs/chdir.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
  /home/taekkim/minishell/srcs/chdir.c
+CMakeFiles/minishell.dir/srcs/cmd.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/cmd.c
 CMakeFiles/minishell.dir/srcs/echo.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
@@ -13,6 +17,10 @@ CMakeFiles/minishell.dir/srcs/env.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
  /home/taekkim/minishell/srcs/env.c
+CMakeFiles/minishell.dir/srcs/equal.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/equal.c
 CMakeFiles/minishell.dir/srcs/exit.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
@@ -77,6 +85,10 @@ CMakeFiles/minishell.dir/srcs/redirect.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
  /home/taekkim/minishell/srcs/redirect.c
+CMakeFiles/minishell.dir/srcs/rows.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/rows.c
 CMakeFiles/minishell.dir/srcs/show.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
@@ -93,3 +105,7 @@ CMakeFiles/minishell.dir/srcs/validate.c.o
  /home/taekkim/minishell/inc/minishell.h
  /home/taekkim/minishell/libft/libft.h
  /home/taekkim/minishell/srcs/validate.c
+CMakeFiles/minishell.dir/srcs/write2.c.o
+ /home/taekkim/minishell/inc/minishell.h
+ /home/taekkim/minishell/libft/libft.h
+ /home/taekkim/minishell/srcs/write2.c

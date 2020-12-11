@@ -6,17 +6,3 @@
 
 #IncludeRegexTransform: 
 
-/home/taekkim/minishell/libft/ft_free.c
-libft.h
-/home/taekkim/minishell/libft/libft.h
-
-/home/taekkim/minishell/libft/libft.h
-string.h
--
-stdio.h
--
-unistd.h
--
-stdlib.h
--
-

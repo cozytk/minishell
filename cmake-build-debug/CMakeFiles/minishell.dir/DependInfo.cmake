@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/taekkim/minishell/srcs/cmd.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/cmd.c.o"
   "/home/taekkim/minishell/srcs/echo.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/echo.c.o"
   "/home/taekkim/minishell/srcs/env.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/env.c.o"
+  "/home/taekkim/minishell/srcs/equal.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/equal.c.o"
   "/home/taekkim/minishell/srcs/exit.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/exit.c.o"
   "/home/taekkim/minishell/srcs/export.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/export.c.o"
   "/home/taekkim/minishell/srcs/free.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/free.c.o"
@@ -24,12 +25,12 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/taekkim/minishell/srcs/pipe.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/pipe.c.o"
   "/home/taekkim/minishell/srcs/pwd.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/pwd.c.o"
   "/home/taekkim/minishell/srcs/redirect.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/redirect.c.o"
-  "/home/taekkim/minishell/srcs/row.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/row.c.o"
+  "/home/taekkim/minishell/srcs/rows.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/rows.c.o"
   "/home/taekkim/minishell/srcs/show.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/show.c.o"
   "/home/taekkim/minishell/srcs/unset.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/unset.c.o"
   "/home/taekkim/minishell/srcs/utils.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/utils.c.o"
   "/home/taekkim/minishell/srcs/validate.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/validate.c.o"
-  "/home/taekkim/minishell/srcs/write.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/write.c.o"
+  "/home/taekkim/minishell/srcs/write2.c" "/home/taekkim/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/write2.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

@@ -16,12 +16,11 @@ int		update_end(t_all *a)
 {
 	if (!a->cmd)
 		return (0);
-	if (a->p.end == 1)
+	if (cmd_itself(a->cmd, "$?"))
 	{
 		ft_putnbr_fd(g_end, 2);
 		ft_putendl_fd(": command not found", 2);
 		g_end = 127;
-		a->p.end = 0;
 		return (0);
 	}
 	g_end = -1;
@@ -112,28 +111,57 @@ int		main_loop(t_all *a)
 
 int		main(int argc, char *argv[], char *envp[])
 {
-	t_all	*a;
+	t_all	a;
 
-	a = malloc(sizeof(t_all));
 	signal(SIGINT, sig_handle);
 	signal(SIGQUIT, sig_handle);
-	init_struct(a);
-	init_env(envp, a);
-	while (show_prompt() && get_next_line(0, &(a->line)) > 0)
+	init_struct(&a);
+	init_env(envp, &a);
+	while (show_prompt() && get_next_line(0, &(a.line)) > 0)
 	{
-		if (!a->line[0])
+		if (!a.line[0])
 		{
-			ft_free(a->line);
+			ft_free(a.line);
 			g_end = 127;
 			continue;
 		}
-		init(a);
-		main_loop(a);
-		free_com_arg(a);
-		if (a->redirect)
-			dup2(a->fd_tmp, a->fileno);
-		ft_free(a->line);
+		init(&a);
+		main_loop(&a);
+		free_com_arg(&a);
+		if (a.redirect)
+			dup2(a.fd_tmp, a.fileno);
+		ft_free(a.line);
 	}
+	free_all(&a);
 	ft_putendl_fd("exit", 2);
 	return ((int)(argc || argv));
 }
+//
+//int		main(int argc, char *argv[], char *envp[])
+//{
+//	t_all	*a;
+//
+//	a = malloc(sizeof(t_all));
+//	signal(SIGINT, sig_handle);
+//	signal(SIGQUIT, sig_handle);
+//	init_struct(a);
+//	init_env(envp, a);
+//	while (show_prompt() && get_next_line(0, &(a->line)) > 0)
+//	{
+//		if (!a->line[0])
+//		{
+//			ft_free(a->line);
+//			g_end = 127;
+//			continue;
+//		}
+//		init(a);
+//		main_loop(a);
+//		free_com_arg(a);
+//		if (a->redirect)
+//			dup2(a->fd_tmp, a->fileno);
+//		ft_free(a->line);
+//	}
+//	free_all(a);
+//	ft_putendl_fd("exit", 2);
+//	return ((int)(argc || argv));
+//}
