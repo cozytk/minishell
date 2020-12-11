@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 20:08:53 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/12 04:23:06 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/12 04:34:08 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ int		update_end(t_all *a)
 void	sig_handle(int signo)
 {
 	int state;
-	int res;
 
-	if ((res = wait(&state)) > 0)
+	if (wait(&state) > 0)
 	{
 		if (signo == SIGINT)
 		{
@@ -44,9 +43,8 @@ void	sig_handle(int signo)
 			ft_putendl_fd("Quit :3", 1);
 			g_end = 131;
 		}
-		return ;
 	}
-	if (signo == SIGINT)
+	else if (signo == SIGINT)
 	{
 		ft_erase();
 		ft_putchar_fd('\n', 1);
