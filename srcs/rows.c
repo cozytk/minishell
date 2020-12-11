@@ -67,7 +67,7 @@ int		find_row(char **mat, char *s)
 	return (-1);
 }
 
-char	*ft_delete_row(char **mat, int del)
+char	**ft_delete_row(char **mat, int del)
 {
 	char	**tmp;
 	int		row;
