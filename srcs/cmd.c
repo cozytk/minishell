@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: taekkim <taekkim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/11 19:45:13 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/11 19:45:59 by taekkim          ###   ########.fr       */
+/*   Created: 2020/12/11 20:32:59 by taekkim           #+#    #+#             */
+/*   Updated: 2020/12/11 20:34:46 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	run_execve(t_all *a, char **arg)
 	int		i;
 	char	**mat;
 	char	*cmd;
-	char 	*path;
+	char	*path;
 
 	if (a->cmd[0] == '/')
 		execve(a->cmd, arg, a->env);
@@ -46,7 +46,7 @@ void	run_execve(t_all *a, char **arg)
 	}
 }
 
-int 	cmd_exec(t_all *a)
+int		cmd_exec(t_all *a)
 {
 	char	**lines;
 	int		state;
@@ -74,7 +74,7 @@ int 	cmd_exec(t_all *a)
 	return (0);
 }
 
-int     cmd_builtin(t_all *a)
+int		cmd_builtin(t_all *a)
 {
 	if (ft_exit(a))
 		return (1);
