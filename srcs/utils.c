@@ -12,51 +12,33 @@
 
 #include "../inc/minishell.h"
 
-int 	write_error(char *cmd, char *str, char *err, int exit)
+void swap_str(char **s1, char **s2)
 {
-	ft_putstr_fd("bash: ", 2);
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd(": `", 2);
-	ft_putstr_fd(str, 2);
-	ft_putchar_fd('\'', 2);
-	ft_putendl_fd(err, 2);
-	g_end = exit;
-	return (g_end);
+	char *temp;
+
+	temp = ft_strdup(*s1);
+	free(*s1);
+	*s1 = ft_strdup(*s2);
+	free(*s2);
+	*s2 = ft_strdup(temp);
+	free(temp);
 }
 
-int		has_digit(char *str)
+void sort_mat(char **mat)
 {
-	int i;
+	int		i;
+	int 	j;
 
-	i = 0;
-	while (str[i])
+	i = -1;
+	while (mat[++i])
 	{
-		if (ft_isdigit(str[i]))
-			return (1);
-		i++;
+		j = i;
+		while (mat[++j])
+		{
+			if (ft_strccmp(mat[i], mat[j], '=') > 0)
+				swap_str(&mat[i], &mat[j]);
+		}
 	}
-	return (0);
-}
-
-int		has_identifier(char *str)
-{
-	int i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	if (ft_isdigit(*str))
-		return (1);
-	while (str[i])
-	{
-		if ((str[i] > 21 && str[i] < 48) || \
-			(str[i] > 57 && str[i] < 65) || \
-			(str[i] > 90 && str[i] < 97) || \
-			(str[i] > 122 && str[i] < 127))
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 int same_key(char *s1, char *s2)
@@ -84,99 +66,6 @@ int same_key(char *s1, char *s2)
 	free(tmp1);
 	free(tmp2);
 	return (ret);
-}
-
-char	**add_row(char **mat, char *arg)
-{
-	int		argsize;
-	int		i;
-	char	**new_mat;
-
-	argsize = ft_matrow(mat);
-	new_mat = malloc(sizeof(char *) * (argsize + 2));
-	i = 0;
-	if (mat)
-	{
-		while (mat[i])
-		{
-			new_mat[i] = ft_strdup(mat[i]);
-			i++;
-		}
-		ft_free_mat(mat);
-	}
-	new_mat[i] = arg;
-	new_mat[i + 1] = NULL;
-	return (new_mat);
-}
-
-int 	find_row(char **mat, char *s)
-{
-	int i;
-
-	if (!mat)
-		return (-1);
-	i = 0;
-	while (mat[i])
-	{
-		if (!ft_strncmp(mat[i], s, ft_strlen(s)))
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int		find_exact_row(char **mat, char *s)
-{
-	int i;
-
-	if (!mat)
-		return (-1);
-	i = 0;
-	while (mat[i])
-	{
-		if (!ft_strncmp(mat[i], s, ft_strlen(s) + 1))
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-void	bash_cmd_error(char *cmd, char *msg, int exit_code)
-{
-	ft_putstr_fd("bash: ", 2);
-	ft_putstr_fd(cmd, 2);
-	ft_putendl_fd(msg, 2);
-	exit(exit_code);
-}
-
-int		keycmp(char *src, char *key)
-{
-	int i;
-
-	i = 0;
-	while (key[i])
-	{
-		if (src[i] != key[i])
-			return (1);
-		i++;
-	}
-	if (src[i] == '=')
-		return (0);
-	return (1);
-}
-
-char	*get_arg(char *str)
-{
-	int i;
-
-	i = 0;
-	if (!str)
-		return ((void *)0);
-	while (str[i] && str[i] == ' ')
-		i++;
-	if (i == (int)ft_strlen(str))
-		exit(1);
-	return (str + i);
 }
 
 int		cmd_itself(char *cmd, char *str)

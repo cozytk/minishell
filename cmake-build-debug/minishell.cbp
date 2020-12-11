@@ -203,6 +203,9 @@
 		<Unit filename="/home/taekkim/minishell/libft/ft_lstsize.c">
 			<Option target="ft"/>
 		</Unit>
+		<Unit filename="/home/taekkim/minishell/libft/ft_matadd_front.c">
+			<Option target="ft"/>
+		</Unit>
 		<Unit filename="/home/taekkim/minishell/libft/ft_matdup.c">
 			<Option target="ft"/>
 		</Unit>
@@ -302,6 +305,9 @@
 		<Unit filename="/home/taekkim/minishell/srcs/chdir.c">
 			<Option target="minishell"/>
 		</Unit>
+		<Unit filename="/home/taekkim/minishell/srcs/cmd.c">
+			<Option target="minishell"/>
+		</Unit>
 		<Unit filename="/home/taekkim/minishell/srcs/echo.c">
 			<Option target="minishell"/>
 		</Unit>
@@ -356,6 +362,9 @@
 		<Unit filename="/home/taekkim/minishell/srcs/redirect.c">
 			<Option target="minishell"/>
 		</Unit>
+		<Unit filename="/home/taekkim/minishell/srcs/row.c">
+			<Option target="minishell"/>
+		</Unit>
 		<Unit filename="/home/taekkim/minishell/srcs/show.c">
 			<Option target="minishell"/>
 		</Unit>
@@ -366,6 +375,9 @@
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/home/taekkim/minishell/srcs/validate.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/taekkim/minishell/srcs/write.c">
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/home/taekkim/minishell/CMakeLists.txt">

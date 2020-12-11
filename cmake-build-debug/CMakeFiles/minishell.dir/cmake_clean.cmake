@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/minishell.dir/srcs/chdir.c.o"
+  "CMakeFiles/minishell.dir/srcs/cmd.c.o"
   "CMakeFiles/minishell.dir/srcs/echo.c.o"
   "CMakeFiles/minishell.dir/srcs/env.c.o"
   "CMakeFiles/minishell.dir/srcs/exit.c.o"
@@ -18,10 +19,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell.dir/srcs/pipe.c.o"
   "CMakeFiles/minishell.dir/srcs/pwd.c.o"
   "CMakeFiles/minishell.dir/srcs/redirect.c.o"
+  "CMakeFiles/minishell.dir/srcs/row.c.o"
   "CMakeFiles/minishell.dir/srcs/show.c.o"
   "CMakeFiles/minishell.dir/srcs/unset.c.o"
   "CMakeFiles/minishell.dir/srcs/utils.c.o"
   "CMakeFiles/minishell.dir/srcs/validate.c.o"
+  "CMakeFiles/minishell.dir/srcs/write.c.o"
   "minishell"
   "minishell.pdb"
 )

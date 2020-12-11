@@ -16,12 +16,9 @@ void	equal_process(t_all *a)
 	int		i;
 
 	env = NULL;
-	i = 0;
-	while (a->p.candidate[i] != '=')
-	{
+	i = -1;
+	while (a->p.candidate[++i] != '=')
 		env = ft_strcjoin(env, a->p.candidate[i]);
-		i++;
-	}
 	if (((i = find_exact_row(a->env, env)) != -1) ||
 			((env = ft_strcjoin(env, a->p.candidate[i]))
 				&& (i = find_row(a->env, env) != -1)))

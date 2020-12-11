@@ -55,118 +55,7 @@ void sig_handle(int signo)
 		g_end = 130;
 	}
 	else if (signo == SIGQUIT)
-	{
-		ft_putchar_fd(8, 1);
-		ft_putchar_fd(8, 1);
-		ft_putchar_fd(' ', 1);
-		ft_putchar_fd(' ', 1);
-		ft_putchar_fd(8, 1);
-		ft_putchar_fd(8, 1);
-		//ft_putchar_fd('\n', 1);
-		//ft_putstr_fd(INIT, 1);
-		g_end = 127;
-	}
-}
-
-char	*get_cmd(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == ' ')
-			break ;
-		i++;
-	}
-	if (i > 0)
-		return (strndup(str, i));
-	return (ft_strdup(""));
-}
-
-void	run_execve(t_all *a, char **arg)
-{
-	int		i;
-	char	**mat;
-	char	*cmd;
-	char 	*path;
-
-	if (a->cmd[0] == '/')
-		execve(a->cmd, arg, a->env);
-	else if ((i = find_row(a->env, "PATH=")) != -1)
-	{
-		mat = ft_split(a->env[i] + 5, ':');
-		cmd = ft_strjoin("/", a->cmd);
-		i = 0;
-		while (mat[i])
-		{
-			path = ft_strjoin(mat[i], cmd);
-			execve(path, arg, a->env);
-			free(path);
-			i++;
-		}
-		free(cmd);
-		ft_free_mat(mat);
-		ft_putstr_fd(a->cmd, 2);
-		ft_putendl_fd(": command not found", 2);
-	}
-	else if (i == -1)
-	{
-		ft_putstr_fd("bash: ", 2);
-		ft_putstr_fd(a->cmd, 2);
-		ft_putendl_fd(": No such file or directory", 2);
-	}
-}
-
-int 	cmd_exec(t_all *a)
-{
-	char	**lines;
-	char	**tmp;
-	int		state;
-	pid_t	pid;
-
-	if (g_end != -1)
-		return (1);
-	pid = fork();
-	if (pid == 0)
-	{
-		tmp = malloc(sizeof(char *) * 2);
-		tmp[0] = ft_strdup(a->cmd);
-		tmp[1] = (void *)0;
-		lines = ft_matjoin(tmp, a->arg);
-		run_execve(a, lines);
-		ft_free_mat(tmp);
-		ft_free_mat(lines);
-	}
-	else if (pid == -1)
-	{
-		ft_putendl_fd(strerror(errno), 2);
-		exit(1);
-	}
-	wait(&state);
-	if (state == 0)
-	{
-		g_end = 127;
-		a->p.end = 1;
-	}
-	if (pid == 0)
-		exit(0);
-	return (0);
-}
-
-int     cmd_builtin(t_all *a)
-{
-	if (ft_exit(a))
-		return (1);
-    if (export(a) || cd(a) || pwd(a) || env(a) || unset(a) || echo(a))
-	{
-    	if (g_end == -1)
-		{
-			g_end = 0;
-			return (1);
-		}
-	}
-    return (0);
+		ft_erase();
 }
 
 void 	update_pwd(t_all *a)
@@ -180,7 +69,7 @@ void 	update_pwd(t_all *a)
 	i = find_row(a->env, "OLDPWD");
 	if ((j = find_row(a->env, "PWD")) == -1)
 	{
-		if (!ft_strncmp(a->env[i], "OLDPWD", 6) && (ft_strlen(a->env[i]) == 6))
+		if (cmd_itself(a->env[i], "OLDPWD"))
 		{
 			free(a->env[i]);
 			a->env[i] = ft_strdup("OLDPWD");
@@ -223,27 +112,10 @@ int 	main_loop(t_all *a)
 	return (g_end);
 }
 
-void 	init_struct(t_all *a)
-{
-	g_end = 0;
-	a->cd = 0;
-	a->fd_tmp = 0;
-	a->redirect = 0;
-	a->fileno = 0;
-	a->cmd = 0;
-	a->line = 0;
-	a->env = 0;
-	a->ept = 0;
-	a->sub_env = 0;
-	a->init_home = 0;
-}
-
 int main(int argc, char *argv[], char *envp[])
 {
 	t_all *a;
 	char *tmp;
-	(void)argc;
-	(void)argv;
 
 	a = malloc(sizeof(t_all));
 	signal(SIGINT, sig_handle);
@@ -258,17 +130,14 @@ int main(int argc, char *argv[], char *envp[])
 			g_end = 127;
 			continue;
 		}
-		tmp = a->line;
 		init(a);
 		init_index(a);
 		main_loop(a);
 		free_com_arg(a);
 		if (a->redirect)
 			dup2(a->fd_tmp, a->fileno);
-		free(tmp);
-		tmp = (void *)0;
 		//system("leaks minishell > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	}
 	ft_putendl_fd("exit", 2);
-	return (0);
+	return (int(argc || argv));
 }

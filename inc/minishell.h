@@ -52,6 +52,9 @@ typedef struct		s_all
 
 int		g_end;
 
+void		ft_erase(void);
+int			cmd_itself(char *cmd, char *str);
+void		init_struct(t_all *a)
 int			has_digit(char *str);
 int			has_identifier(char *str);
 int			write_error(char *cmd, char *str, char *err, int exit);
@@ -77,6 +80,7 @@ void		after_enter(char **str, int spot);
 char		*gnl_strjoin(char *s1, char *s2);
 void		init_env(char **env, t_all *a);
 void		init_export(t_all *all, char **env);
+void		init_struct(t_all *a);
 void		sort_mat(char **env);
 int			ft_pipe(t_all *a);
 int			redirect(t_all *a);

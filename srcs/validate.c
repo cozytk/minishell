@@ -1,5 +1,46 @@
 #include "../inc/minishell.h"
 
+int		has_identifier(char *str)
+{
+	int i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	if (ft_isdigit(*str))
+		return (1);
+	while (str[i])
+	{
+		if ((str[i] > 21 && str[i] < 48) || \
+			(str[i] > 57 && str[i] < 65) || \
+			(str[i] > 90 && str[i] < 97) || \
+			(str[i] > 122 && str[i] < 127))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+char	**check_identifier(char **mat)
+{
+	int i;
+
+	i = -1;
+	while (mat && mat[++i])
+	{
+		if (has_identifier(mat[i]))
+		{
+			if ((ft_strchr(mat[i], '=') || ft_strchr(mat[i], '$')) && \
+				!(mat[i][0] == '=' || mat[i][0] == '$'))
+				continue ;
+			write_error("export", mat[i], ": not a valid identifier", 1);
+			mat = ft_delete_row(mat, i);
+			i = -1;
+		}
+	}
+	return (mat);
+}
+
 int		validate(t_all *a)
 {
 	char	*temp;

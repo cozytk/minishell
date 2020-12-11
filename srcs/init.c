@@ -12,7 +12,7 @@
 
 #include "../inc/minishell.h"
 
-void init_env(char **env, t_all *a)
+void	init_env(char **env, t_all *a)
 {
 	int row;
 	int i;
@@ -24,15 +24,13 @@ void init_env(char **env, t_all *a)
 	{
 		if (!ft_strncmp(env[i], "HOME", 4))
 			a->init_home = ft_strdup(ft_strchr(env[i], '/'));
-//		if (!ft_strncmp(env[i], "OLDPWD", 6))
-//			a->env[i++] = ft_strdup("OLDPWD");
 		a->env[i] = ft_strdup(env[i]);
 	}
 	a->env[row] = (void *)0;
 	write(1, WELCOME_MSG, ft_strlen(WELCOME_MSG));
 }
 
-void init_export(t_all *a, char **env)
+void	init_export(t_all *a, char **env)
 {
 	if (a->ept)
 		ft_free_mat(a->ept);
@@ -52,20 +50,27 @@ void	parse_init(t_all *a)
 	a->p.start = a->p.i;
 }
 
-void    init(t_all *a)
+void	init(t_all *a)
 {
 	a->redirect = 0;
 	a->cmd = NULL;
 	a->arg = NULL;
-}
-
-void	init_index(t_all *a)
-{
 	a->p.i = 0;
 	a->p.pipe = 0;
 	a->p.s_colon = 0;
 }
-//
-// Created by Taekyun Kim on 11/25/20.
-//
 
+void 	init_struct(t_all *a)
+{
+	g_end = 0;
+	a->cd = 0;
+	a->fd_tmp = 0;
+	a->redirect = 0;
+	a->fileno = 0;
+	a->cmd = 0;
+	a->line = 0;
+	a->env = 0;
+	a->ept = 0;
+	a->sub_env = 0;
+	a->init_home = 0;
+}

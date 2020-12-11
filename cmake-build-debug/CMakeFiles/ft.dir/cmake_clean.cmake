@@ -20,6 +20,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ft.dir/libft/ft_lstmap.c.o"
   "CMakeFiles/ft.dir/libft/ft_lstnew.c.o"
   "CMakeFiles/ft.dir/libft/ft_lstsize.c.o"
+  "CMakeFiles/ft.dir/libft/ft_matadd_front.c.o"
   "CMakeFiles/ft.dir/libft/ft_matdup.c.o"
   "CMakeFiles/ft.dir/libft/ft_matjoin.c.o"
   "CMakeFiles/ft.dir/libft/ft_matrow.c.o"

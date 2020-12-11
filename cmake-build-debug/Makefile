@@ -703,6 +703,33 @@ libft/ft_lstsize.c.s:
 	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_lstsize.c.s
 .PHONY : libft/ft_lstsize.c.s
 
+libft/ft_matadd_front.o: libft/ft_matadd_front.c.o
+
+.PHONY : libft/ft_matadd_front.o
+
+# target to build an object file
+libft/ft_matadd_front.c.o:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_matadd_front.c.o
+.PHONY : libft/ft_matadd_front.c.o
+
+libft/ft_matadd_front.i: libft/ft_matadd_front.c.i
+
+.PHONY : libft/ft_matadd_front.i
+
+# target to preprocess a source file
+libft/ft_matadd_front.c.i:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_matadd_front.c.i
+.PHONY : libft/ft_matadd_front.c.i
+
+libft/ft_matadd_front.s: libft/ft_matadd_front.c.s
+
+.PHONY : libft/ft_matadd_front.s
+
+# target to generate assembly for a file
+libft/ft_matadd_front.c.s:
+	$(MAKE) -f CMakeFiles/ft.dir/build.make CMakeFiles/ft.dir/libft/ft_matadd_front.c.s
+.PHONY : libft/ft_matadd_front.c.s
+
 libft/ft_matdup.o: libft/ft_matdup.c.o
 
 .PHONY : libft/ft_matdup.o
@@ -1567,6 +1594,33 @@ srcs/chdir.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/chdir.c.s
 .PHONY : srcs/chdir.c.s
 
+srcs/cmd.o: srcs/cmd.c.o
+
+.PHONY : srcs/cmd.o
+
+# target to build an object file
+srcs/cmd.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/cmd.c.o
+.PHONY : srcs/cmd.c.o
+
+srcs/cmd.i: srcs/cmd.c.i
+
+.PHONY : srcs/cmd.i
+
+# target to preprocess a source file
+srcs/cmd.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/cmd.c.i
+.PHONY : srcs/cmd.c.i
+
+srcs/cmd.s: srcs/cmd.c.s
+
+.PHONY : srcs/cmd.s
+
+# target to generate assembly for a file
+srcs/cmd.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/cmd.c.s
+.PHONY : srcs/cmd.c.s
+
 srcs/echo.o: srcs/echo.c.o
 
 .PHONY : srcs/echo.o
@@ -2053,6 +2107,33 @@ srcs/redirect.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/redirect.c.s
 .PHONY : srcs/redirect.c.s
 
+srcs/row.o: srcs/row.c.o
+
+.PHONY : srcs/row.o
+
+# target to build an object file
+srcs/row.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/row.c.o
+.PHONY : srcs/row.c.o
+
+srcs/row.i: srcs/row.c.i
+
+.PHONY : srcs/row.i
+
+# target to preprocess a source file
+srcs/row.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/row.c.i
+.PHONY : srcs/row.c.i
+
+srcs/row.s: srcs/row.c.s
+
+.PHONY : srcs/row.s
+
+# target to generate assembly for a file
+srcs/row.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/row.c.s
+.PHONY : srcs/row.c.s
+
 srcs/show.o: srcs/show.c.o
 
 .PHONY : srcs/show.o
@@ -2161,6 +2242,33 @@ srcs/validate.c.s:
 	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/validate.c.s
 .PHONY : srcs/validate.c.s
 
+srcs/write.o: srcs/write.c.o
+
+.PHONY : srcs/write.o
+
+# target to build an object file
+srcs/write.c.o:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/write.c.o
+.PHONY : srcs/write.c.o
+
+srcs/write.i: srcs/write.c.i
+
+.PHONY : srcs/write.i
+
+# target to preprocess a source file
+srcs/write.c.i:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/write.c.i
+.PHONY : srcs/write.c.i
+
+srcs/write.s: srcs/write.c.s
+
+.PHONY : srcs/write.s
+
+# target to generate assembly for a file
+srcs/write.c.s:
+	$(MAKE) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/write.c.s
+.PHONY : srcs/write.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2234,6 +2342,9 @@ help:
 	@echo "... libft/ft_lstsize.o"
 	@echo "... libft/ft_lstsize.i"
 	@echo "... libft/ft_lstsize.s"
+	@echo "... libft/ft_matadd_front.o"
+	@echo "... libft/ft_matadd_front.i"
+	@echo "... libft/ft_matadd_front.s"
 	@echo "... libft/ft_matdup.o"
 	@echo "... libft/ft_matdup.i"
 	@echo "... libft/ft_matdup.s"
@@ -2330,6 +2441,9 @@ help:
 	@echo "... srcs/chdir.o"
 	@echo "... srcs/chdir.i"
 	@echo "... srcs/chdir.s"
+	@echo "... srcs/cmd.o"
+	@echo "... srcs/cmd.i"
+	@echo "... srcs/cmd.s"
 	@echo "... srcs/echo.o"
 	@echo "... srcs/echo.i"
 	@echo "... srcs/echo.s"
@@ -2384,6 +2498,9 @@ help:
 	@echo "... srcs/redirect.o"
 	@echo "... srcs/redirect.i"
 	@echo "... srcs/redirect.s"
+	@echo "... srcs/row.o"
+	@echo "... srcs/row.i"
+	@echo "... srcs/row.s"
 	@echo "... srcs/show.o"
 	@echo "... srcs/show.i"
 	@echo "... srcs/show.s"
@@ -2396,6 +2513,9 @@ help:
 	@echo "... srcs/validate.o"
 	@echo "... srcs/validate.i"
 	@echo "... srcs/validate.s"
+	@echo "... srcs/write.o"
+	@echo "... srcs/write.i"
+	@echo "... srcs/write.s"
 .PHONY : help
 
 

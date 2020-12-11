@@ -48,6 +48,7 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 int					ft_matrow(char **mat);
+char				**ft_matadd_front(t_all *a);
 int					ft_matncpy(char **src, char **dest, int size);
 char				**ft_matdup(char **mat);
 char				**ft_matjoin(char **m1, char **m2);
