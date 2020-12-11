@@ -12,17 +12,6 @@
 
 #include "../inc/minishell.h"
 
-void	free_all(t_all *a)
-{
-	ft_free_mat(a->arg);
-	ft_free_mat(a->ept);
-	ft_free_mat(a->env);
-	if (a->line)
-		free(a->line);
-	if (a->cmd)
-		free(a->cmd);
-}
-
 void	free_com_arg(t_all *a)
 {
 	ft_free_mat(a->arg);

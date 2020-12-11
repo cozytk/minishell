@@ -132,7 +132,7 @@ int		main(int argc, char *argv[], char *envp[])
 			dup2(a.fd_tmp, a.fileno);
 		ft_free(a.line);
 	}
-	free_all(&a);
 	ft_putendl_fd("exit", 2);
-	return ((int)(argc || argv));
+	exit(0);
+	return ((int)(argc && argv));
 }
