@@ -132,6 +132,7 @@ int		main(int argc, char *argv[], char *envp[])
 		free_com_arg(a);
 		if (a->redirect)
 			dup2(a->fd_tmp, a->fileno);
+		ft_free(a->line);
 	}
 	ft_putendl_fd("exit", 2);
 	return ((int)(argc || argv));

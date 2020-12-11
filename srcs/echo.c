@@ -21,7 +21,7 @@ void	write_echo(t_all *a)
 	i = 0;
 	enter = 1;
 	size = ft_matrow(a->arg) - 1;
-	while (!ft_strncmp(a->arg[i], "-n", 2))
+	if (!ft_strncmp(a->arg[i], "-n", 2))
 	{
 		enter = 0;
 		i++;
