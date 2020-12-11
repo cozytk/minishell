@@ -39,7 +39,7 @@ void	show_arg(t_all *a)
 		write(1, &"\n", 1);
 		i++;
 	}
-	printf("!!!!!!!!!!!argument end!!!!!!!!!!!!\n");
+	write(1, &"!!!!!!!!!!argument_end!!!!!!!!!!\n", 33);
 }
 
 int		show_prompt(void)
@@ -58,4 +58,24 @@ int		show_prompt(void)
 	free(prompt);
 	prompt = NULL;
 	return (1);
+}
+
+void	show_sub_env(t_all *a)
+{
+	int		i;
+
+	if (!a->sub_env)
+		return ;
+	write(1, &"!!!!!!!!!!sub_env!!!!!!!!!!\n", 28);
+	i = 0;
+	while (a->sub_env[i])
+	{
+		printf("helllo\n");
+		write(1, &"[", 1);
+		write(1, a->sub_env[i], ft_strlen(a->sub_env[i]));
+		write(1, &"]", 1);
+		write(1, &"\n", 1);
+		i++;
+	}
+	write(1, &"!!!!!!!!!!sub_env_end!!!!!!!!!!\n", 32);
 }
