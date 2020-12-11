@@ -25,7 +25,7 @@ char	**overwrite_env(char **mat, t_all *a)
 		j = -1;
 		while (a->env[++j])
 		{
-			if (!ft_strccmp(mat[i], a->env[j], '='))
+			if (same_key(mat[i], a->env[j]))
 			{
 				free(a->env[j]);
 				a->env[j] = (void *)0;
