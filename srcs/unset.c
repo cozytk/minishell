@@ -12,7 +12,7 @@
 
 #include "../inc/minishell.h"
 
-void 	delete_env(char **mat, t_all *a)
+void	delete_env(char **mat, t_all *a)
 {
 	int i;
 	int j;
