@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   row.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehkim <taehkim@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/11 20:48:41 by taehkim           #+#    #+#             */
+/*   Updated: 2020/12/11 20:48:41 by taehkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/minishell.h"
 
 char	**add_row(char **mat, char *arg)
@@ -25,7 +37,7 @@ char	**add_row(char **mat, char *arg)
 
 int		find_exact_row(char **mat, char *s)
 {
-	int i;
+	int		i;
 
 	if (!mat)
 		return (-1);
@@ -38,9 +50,10 @@ int		find_exact_row(char **mat, char *s)
 	}
 	return (-1);
 }
+
 int 	find_row(char **mat, char *s)
 {
-	int i;
+	int		i;
 
 	if (!mat)
 		return (-1);
@@ -53,12 +66,12 @@ int 	find_row(char **mat, char *s)
 	}
 	return (-1);
 }
-char **ft_delete_row(char **mat, int del)
+char	**ft_delete_row(char **mat, int del)
 {
-	char **tmp;
-	int row;
-	int i;
-	int j;
+	char	**tmp;
+	int		row;
+	int		i;
+	int		j;
 
 	i = -1;
 	j = -1;
