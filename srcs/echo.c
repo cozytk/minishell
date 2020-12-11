@@ -12,7 +12,7 @@
 
 #include "../inc/minishell.h"
 
-void 	write_echo(t_all *a)
+void	write_echo(t_all *a)
 {
 	int i;
 	int	size;
@@ -31,13 +31,13 @@ void 	write_echo(t_all *a)
 		ft_putstr_fd(a->arg[i], 1);
 		if (i != size)
 			ft_putchar_fd(' ', 1);
-        i++;
+		i++;
 	}
 	if (enter)
 		ft_putchar_fd('\n', 1);
 }
 
-int 	echo(t_all *a)
+int		echo(t_all *a)
 {
 	if (!ft_strncmp(a->cmd, "echo\0", 5))
 	{
