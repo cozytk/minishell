@@ -46,9 +46,9 @@ void	run_execve(t_all *a, char **arg)
 		free(cmd);
 		ft_free_mat(mat);
 		write_exec_err(a, 0);
+		return ;
 	}
-	else if (i == -1)
-		write_exec_err(a, 1);
+	write_exec_err(a, 1);
 }
 
 int		cmd_exec(t_all *a)
@@ -65,17 +65,18 @@ int		cmd_exec(t_all *a)
 		lines = ft_matadd_front(a);
 		run_execve(a, lines);
 		ft_free_mat(lines);
+		exit(1);
 	}
 	else if (pid == -1)
 		exit(1);
-	wait(&state);
-	if (state == 0)
+	if (pid > 0)
 	{
-		g_end = 127;
-		a->p.end = 1;
+		wait(&state);
+		if (WEXITSTATUS(state))
+			g_end = 127;
+		else
+			g_end = 0;
 	}
-	if (pid == 0)
-		exit(0);
 	return (0);
 }
 

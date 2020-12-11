@@ -49,8 +49,8 @@ void	sig_handle(int signo)
 	}
 	if (signo == SIGINT)
 	{
-		ft_putchar_fd('\n', 1);
-		ft_putstr_fd(INIT, 1);
+		ft_putchar_fd('\n', 2);
+		show_prompt();
 		g_end = 130;
 	}
 	else if (signo == SIGQUIT)
