@@ -46,6 +46,7 @@ void	parse_init(t_all *a)
 	a->p.s_colon = 0;
 	a->p.candidate = NULL;
 	a->p.parsing = 0;
+	a->p.end = 0;
 	while (ft_iswhite(a->line[a->p.i]))
 		a->p.i++;
 	a->p.start = a->p.i;

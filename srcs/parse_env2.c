@@ -12,7 +12,7 @@
 
 #include "../inc/minishell.h"
 
-char	*get_env_by_arg3(char *arg, int *count, int i)
+char	*get_env_by_arg3(t_all *a, char *arg, int *count, int i)
 {
 	if (arg[i] == '$' && arg[i + 1] == '\0')
 	{
@@ -27,17 +27,18 @@ char	*get_env_by_arg3(char *arg, int *count, int i)
 	else if (arg[i] == '$' && arg[i + 1] == '?')
 	{
 		*count = 1;
+		a->p.end = 1;
 		return (ft_itoa(g_end));
 	}
 	return (NULL);
 }
 
-char	*get_env_by_arg2(char *arg, int *count, int i)
+char	*get_env_by_arg2(t_all *a, char *arg, int *count, int i)
 {
 	int		start;
 	char	*temp;
 
-	if ((temp = get_env_by_arg3(arg, count, i)) != NULL)
+	if ((temp = get_env_by_arg3(a, arg, count, i)) != NULL)
 		return (temp);
 	if (arg[i] == '$' && arg[i + 1] == '{')
 	{
@@ -60,7 +61,7 @@ char	*get_env_by_arg2(char *arg, int *count, int i)
 	return (NULL);
 }
 
-char	*get_env_by_arg(char *arg, int *count)
+char	*get_env_by_arg(t_all *a, char *arg, int *count)
 {
 	int		i;
 	char	*env;
@@ -68,7 +69,7 @@ char	*get_env_by_arg(char *arg, int *count)
 	i = 0;
 	while (arg[i])
 	{
-		env = get_env_by_arg2(arg, count, i);
+		env = get_env_by_arg2(a, arg, count, i);
 		if (env)
 			return (env);
 		i++;

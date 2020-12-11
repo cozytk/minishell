@@ -81,7 +81,7 @@ char	*env_appending(t_all *a, char *arg, int count, int i)
 		else
 		{
 			a->p.tmp = result;
-			env = get_env_by_arg(&arg[i], &count);
+			env = get_env_by_arg(a, &arg[i], &count);
 			a->p.tmp2 = find_env_result(a, env, 0, 0);
 			result = ft_strjoin(result, a->p.tmp2);
 			free(a->p.tmp);

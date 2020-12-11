@@ -17,15 +17,14 @@ int		update_end(t_all *a)
 {
 	if (!a->cmd)
 		return (0);
-	/*
-	if (!ft_strncmp(a->cmd, "$?", 2))
+	if (a->p.end == 1)
 	{
 		ft_putnbr_fd(g_end, 2);
 		ft_putendl_fd(": command not found", 2);
 		g_end = 127;
+		a->p.end = 0;
 		return (0);
 	}
-	*/
 	g_end = -1;
 	return (1);
 }
@@ -145,8 +144,11 @@ int 	cmd_exec(t_all *a)
 		exit(1);
 	}
 	wait(&state);
-	if (state > 0)
+	if (state == 0)
+	{
 		g_end = 127;
+		a->p.end = 1;
+	}
 	if (pid == 0)
 		exit(0);
 	return (0);
