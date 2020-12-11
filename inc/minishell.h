@@ -6,7 +6,7 @@
 /*   By: taehkim <taehkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 21:08:26 by taehkim           #+#    #+#             */
-/*   Updated: 2020/12/11 21:12:53 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/12/12 05:15:00 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,10 @@
 # include <sys/wait.h>
 # include <sys/stat.h>
 # include <sys/errno.h>
-# define PROMPT_MSG " $"
+# define PROMPT_MSG "$ "
 # define WELCOME_MSG " welcome.\n"
 # define PT_COLOR_LEFT "\e[42;1;37m"
 # define PT_COLOR_RIGHT "\e[0m"
-
-# define INIT "bash-3.2$ "
 
 typedef struct	s_parse
 {

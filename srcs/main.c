@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 20:08:53 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/12 04:34:08 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/12 05:04:16 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,18 @@ void	update_pwd(t_all *a)
 	int		i;
 	int		j;
 
-	if (!a->cd)
-		return ;
 	i = find_row(a->env, "OLDPWD");
 	if ((j = find_row(a->env, "PWD")) == -1)
 	{
-		if (cmd_itself(a->env[i], "OLDPWD"))
+		if (!cmd_itself(a->env[i], "OLDPWD"))
 		{
 			free(a->env[i]);
 			a->env[i] = ft_strdup("OLDPWD");
 		}
 		return ;
 	}
+	if (!a->cd)
+		return ;
 	ft_free(a->env[i]);
 	a->env[i] = ft_strjoin("OLD", a->env[j]);
 	ft_free(a->env[j]);
