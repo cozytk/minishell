@@ -102,4 +102,3 @@ int		export(t_all *a)
 	}
 	return (0);
 }
-
