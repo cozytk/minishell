@@ -77,6 +77,7 @@ int		cmd_exec(t_all *a)
 		else
 			g_end = 0;
 	}
+	waitpid(pid, 0, 0);
 	return (0);
 }
 
