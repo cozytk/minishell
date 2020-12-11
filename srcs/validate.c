@@ -60,7 +60,7 @@ char	*validate2(t_all *a, char *message)
 
 	if (is_pipe_or_scolon(a->cmd[0]))
 		message = ft_strcjoin(message, a->cmd[0]);
-	else if (a->cmd && a->arg)
+	else if (a->cmd && a->arg && is_sep_char(a->cmd[0]))
 	{
 		i = 0;
 		while (a->arg[0][i] && is_sep_char(a->arg[0][i]))
@@ -81,10 +81,14 @@ char	*validate2(t_all *a, char *message)
 int		validate(t_all *a)
 {
 	char	*message;
+	int		size;
 
 	if (!a->cmd)
 		return (0);
-	if (!(is_sep_char(a->cmd[0]) || is_pipe_or_scolon(a->cmd[0])))
+	size = ft_matrow(a->arg);
+	if (!(is_sep_char(a->cmd[0]) || is_pipe_or_scolon(a->cmd[0]) ||
+					(!is_sep_char(a->cmd[0]) && size == 1 &&
+					 is_sep_char(a->arg[0][0]))))
 		return (1);
 	message = ft_strdup("bash: syntax error near unexpected token `");
 	message = validate2(a, message);
