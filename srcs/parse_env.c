@@ -45,7 +45,7 @@ char	*find_env_result(t_all *a, char *env, int i, int j)
 	int		start;
 	char	*temp;
 
-	if (!ft_strncmp(env, "$\0", 2) || ft_isdigit(env[0]))
+	if (!ft_strncmp(env, "$\0", 2) || ft_isdigit(env[0]) || env[0] == '-')
 		return (env);
 	env = ft_strcjoin(env, '=');
 	while (a->env[i])

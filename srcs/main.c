@@ -17,6 +17,7 @@ int		update_end(t_all *a)
 {
 	if (!a->cmd)
 		return (0);
+	/*
 	if (!ft_strncmp(a->cmd, "$?", 2))
 	{
 		ft_putnbr_fd(g_end, 2);
@@ -24,6 +25,7 @@ int		update_end(t_all *a)
 		g_end = 127;
 		return (0);
 	}
+	*/
 	g_end = -1;
 	return (1);
 }
