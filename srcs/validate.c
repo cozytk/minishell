@@ -88,7 +88,7 @@ int		validate(t_all *a)
 	size = ft_matrow(a->arg);
 	if (!(is_sep_char(a->cmd[0]) || is_pipe_or_scolon(a->cmd[0]) ||
 					(!is_sep_char(a->cmd[0]) && size == 1 &&
-					 is_sep_char(a->arg[0][0]))))
+					is_sep_char(a->arg[0][0]))))
 		return (1);
 	message = ft_strdup("bash: syntax error near unexpected token `");
 	message = validate2(a, message);

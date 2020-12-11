@@ -24,7 +24,7 @@ void	s_quote_process(t_all *a)
 			{
 			}
 		}
-		if (a->line[a->p.i] == '\\')
+		if (a->line[a->p.i] == '\\' && !ft_isdigit(a->line[a->p.i + 1]))
 			a->p.i++;
 		a->p.candidate = ft_strcjoin(a->p.candidate, a->line[a->p.i]);
 		a->p.i++;
@@ -47,7 +47,7 @@ void	d_quote_process(t_all *a)
 			{
 			}
 		}
-		if (a->line[a->p.i] == '\\')
+		if (a->line[a->p.i] == '\\' && !ft_isdigit(a->line[a->p.i + 1]))
 			a->p.i++;
 		a->p.candidate = ft_strcjoin(a->p.candidate, a->line[a->p.i]);
 		a->p.i++;
