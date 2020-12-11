@@ -35,14 +35,15 @@ void	run_cmd(t_all *a, int flag)
 		free_com_arg(a);
 		main_loop(a);
 		free_com_arg(a);
-		exit(0);
+		exit(g_end);
 	}
 }
 
 int		ft_pipe(t_all *a)
 {
-	pid_t pid;
-	pid_t pid2;
+	pid_t	pid;
+	pid_t	pid2;
+	int		state;
 
 	if (pipe(a->fd) == -1)
 		bash_cmd_error("pipe", "pipe < 0", 1);
@@ -58,6 +59,7 @@ int		ft_pipe(t_all *a)
 		run_cmd(a, 0);
 	close(a->fd[0]);
 	close(a->fd[1]);
-	waitpid(pid2, 0, 0);
+	waitpid(pid2, &state, 0);
+	g_end = WEXITSTATUS(state);
 	return (0);
 }

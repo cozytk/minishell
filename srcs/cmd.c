@@ -70,13 +70,12 @@ int		cmd_exec(t_all *a)
 		exit(1);
 	if (pid > 0)
 	{
-		wait(&state);
+		waitpid(pid, &state, 0);
 		if (WEXITSTATUS(state))
 			g_end = 127;
 		else
 			g_end = 0;
 	}
-	waitpid(pid, 0, 0);
 	return (0);
 }
 
