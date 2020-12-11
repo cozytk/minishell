@@ -41,7 +41,7 @@ SRCS	=	./srcs/chdir.c \
 			./srcs/utils.c \
 			./srcs/write2.c \
 			./srcs/cmd.c \
-			./srcs/row.c
+			./srcs/rows.c
 
 OBJS	=	$(SRCS:%.c=%.o)
 
