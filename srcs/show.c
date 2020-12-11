@@ -6,7 +6,7 @@
 /*   By: taehkim <taehkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 18:08:22 by taehkim           #+#    #+#             */
-/*   Updated: 2020/12/11 18:08:24 by taehkim          ###   ########.fr       */
+/*   Updated: 2020/12/12 04:07:38 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	show_sub_env(t_all *a)
 	i = 0;
 	while (a->sub_env[i])
 	{
-		printf("helllo\n");
+		ft_putendl_fd("hello", 1);
 		write(1, &"[", 1);
 		write(1, a->sub_env[i], ft_strlen(a->sub_env[i]));
 		write(1, &"]", 1);
