@@ -67,14 +67,12 @@ char	*find_env_result(t_all *a, char *env, int i, int j)
 	return (find_env_result2(a, env, 0, 0));
 }
 
-char	*env_appending(t_all *a, char *arg, int count)
+char	*env_appending(t_all *a, char *arg, int count, int i)
 {
 	char	*env;
 	char	*result;
-	int		i;
 
 	result = NULL;
-	i = 0;
 	while (arg[i])
 	{
 		if (arg[i] != '$')
@@ -83,6 +81,7 @@ char	*env_appending(t_all *a, char *arg, int count)
 		{
 			a->p.tmp = result;
 			env = get_env_by_arg(&arg[i], &count);
+			env = ft_strcjoin(env, '=');
 			a->p.tmp2 = find_env_result(a, env, 0, 0);
 			result = ft_strjoin(result, a->p.tmp2);
 			free(a->p.tmp);
@@ -102,7 +101,7 @@ char	*process_env(t_all *a, char *arg)
 
 	if (!arg)
 		return NULL;
-	result = env_appending(a, arg, 0);
+	result = env_appending(a, arg, 0, 0);
 	return (result);
 	/*
 	size = ft_matrow(a->arg) - 1;
