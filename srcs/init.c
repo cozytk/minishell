@@ -3,12 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: taekkim <taekkim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 17:18:37 by taekkim           #+#    #+#             */
-/*   Updated: 2020/11/25 17:18:38 by taekkim          ###   ########.fr       */
+/*   Created: 2020/12/11 20:44:06 by taekkim           #+#    #+#             */
+/*   Updated: 2020/12/11 20:44:28 by taekkim          ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************* */
+/* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
@@ -60,7 +60,7 @@ void	init(t_all *a)
 	a->p.s_colon = 0;
 }
 
-void 	init_struct(t_all *a)
+void	init_struct(t_all *a)
 {
 	g_end = 0;
 	a->cd = 0;

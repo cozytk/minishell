@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 20:08:53 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/11 20:50:25 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/11 20:49:04 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	sig_handle(int signo)
 
 void	update_pwd(t_all *a)
 {
-	char	tmp[1024];
-	int		i;
-	int		j;
+	char		tmp[1024];
+	int			i;
+	int			j;
 
 	if (!a->cd)
 		return ;
@@ -110,9 +110,9 @@ int		main_loop(t_all *a)
 	return (g_end);
 }
 
-int		main(int argc, char *argv[], char *envp[])
+int	main(int argc, char *argv[], char *envp[])
 {
-	t_all	*a;
+	t_all *a;
 
 	a = malloc(sizeof(t_all));
 	signal(SIGINT, sig_handle);

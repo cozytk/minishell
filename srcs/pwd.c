@@ -6,13 +6,13 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 00:29:26 by taekkim           #+#    #+#             */
-/*   Updated: 2020/11/30 00:29:27 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/11 20:51:54 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-int 	pwd(t_all *a)
+int		pwd(t_all *a)
 {
 	char tmp[1024];
 

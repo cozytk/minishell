@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipe.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taekkim <taekkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/11 20:50:53 by taekkim           #+#    #+#             */
+/*   Updated: 2020/12/11 20:51:16 by taekkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/minishell.h"
 
 void	run_cmd(t_all *a, int flag)
@@ -27,7 +39,7 @@ void	run_cmd(t_all *a, int flag)
 	}
 }
 
-int 	ft_pipe(t_all *a)
+int		ft_pipe(t_all *a)
 {
 	pid_t pid;
 	pid_t pid2;

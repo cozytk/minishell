@@ -6,13 +6,13 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 00:23:02 by taekkim           #+#    #+#             */
-/*   Updated: 2020/11/30 00:23:03 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/11 20:43:00 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void 	write_env(t_all *a)
+void	write_env(t_all *a)
 {
 	int i;
 
@@ -24,7 +24,7 @@ void 	write_env(t_all *a)
 	}
 }
 
-int 	env(t_all *a)
+int		env(t_all *a)
 {
 	if (!ft_strncmp(a->cmd, "env\0", 4))
 	{
