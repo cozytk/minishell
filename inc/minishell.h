@@ -105,6 +105,7 @@ char			**ft_matadd_front(t_all *a);
 void			add_argument(t_all *a, char *arg);
 void			show_arg(t_all *a);
 void			show_com(t_all *a);
+void			show_sub_env(t_all *a);
 void			free_com_arg(t_all *a);
 int				parsing(t_all *a);
 int				is_sep_char(char c);
