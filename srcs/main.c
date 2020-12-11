@@ -6,7 +6,7 @@
 /*   By: taekkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 20:08:53 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/12 05:04:16 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/12 05:46:12 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ int		main_loop(t_all *a)
 	if (a->p.s_colon)
 	{
 		free_com_arg(a);
+		if (a->redirect)
+			dup2(a->fd_tmp, a->fileno);
 		main_loop(a);
 	}
 	return (g_end);
