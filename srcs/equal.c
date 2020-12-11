@@ -1,24 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   equal.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehkim <taehkim@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/11 18:38:31 by taehkim           #+#    #+#             */
+/*   Updated: 2020/12/11 18:38:32 by taehkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/minishell.h"
 
-void	equal_process2(t_all *a, char *env)
+char	*equal_process2(t_all *a, char *env)
 {
 	int		i;
 
-	i = 0;
-	if ((i = find_row(a->sub_env, env)) != -1)
-		a->sub_env = ft_delete_row(a->sub_env, i);
-	a->sub_env = add_row(a->sub_env, a->p.candidate);
-}
-
-void	equal_process(t_all *a)
-{
-	char	*env;
-	int		i;
-
-	env = NULL;
-	i = -1;
-	while (a->p.candidate[++i] != '=')
-		env = ft_strcjoin(env, a->p.candidate[i]);
 	if (((i = find_exact_row(a->env, env)) != -1) ||
 			((env = ft_strcjoin(env, a->p.candidate[i]))
 				&& (i = find_row(a->env, env) != -1)))
@@ -32,7 +29,29 @@ void	equal_process(t_all *a)
 		a->arg = NULL;
 	}
 	else
-		equal_process2(a, env);
+	{
+		if ((i = find_row(a->sub_env, env)) != -1)
+			a->sub_env = ft_delete_row(a->sub_env, i);
+		a->sub_env = add_row(a->sub_env, a->p.candidate);
+	}
+	return (env);
+}
+
+void	equal_process(t_all *a)
+{
+	char	*env;
+	int		i;
+
+	env = NULL;
+	i = -1;
+	while (a->p.candidate[++i] != '=')
+		env = ft_strcjoin(env, a->p.candidate[i]);
+		i++;
+	}
+	env = equal_process2(a, env);
 	if (env)
+	{
 		free(env);
+		env = NULL;
+	}
 }

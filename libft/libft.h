@@ -26,8 +26,8 @@ typedef struct		s_list
 
 int					ft_write(char *str);
 int					ft_atoi(const char *nptr);
-void 				ft_free(void *ptr);
-void 				ft_free_mat(char **mat);
+void				ft_free(void *ptr);
+void				ft_free_mat(char **mat);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 size_t				ft_strlen(const char *s);

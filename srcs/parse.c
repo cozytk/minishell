@@ -73,6 +73,30 @@ void	parse_backslash(t_all *a)
 	a->p.candidate = ft_strcjoin(a->p.candidate, a->line[a->p.i]);
 }
 
+void	parsing2(t_all *a)
+{
+	if (!ft_iswhite(a->line[a->p.i]) && a->line[a->p.i] != '\\'
+			&& !is_quote(a->line[a->p.i]) && !is_sep_char(a->line[a->p.i]))
+	{
+		if (a->p.parsing == 0)
+		{
+			a->p.parsing = 1;
+			a->p.start = a->p.i;
+		}
+		a->p.candidate = ft_strcjoin(a->p.candidate, a->line[a->p.i]);
+	}
+	if (a->line[a->p.i] == '\\')
+		parse_backslash(a);
+	else if (is_sep_char(a->line[a->p.i]))
+		parse_redirect(a);
+	else if (is_quote(a->line[a->p.i]))
+		parse_quote(a);
+	else if (ft_iswhite(a->line[a->p.i])
+			|| is_pipe_or_scolon(a->line[a->p.i + 1])
+			|| is_sep_char(a->line[a->p.i + 1]))
+		parse_one(a);
+}
+
 int		parsing(t_all *a)
 {
 	parse_init(a);
@@ -80,26 +104,7 @@ int		parsing(t_all *a)
 	{
 		if (is_pipe_or_scolon(a->line[a->p.i]) && a->cmd)
 			return (parse_pipe_scolon(a));
-		if (!ft_iswhite(a->line[a->p.i]) && a->line[a->p.i] != '\\'
-				&& !is_quote(a->line[a->p.i]) && !is_sep_char(a->line[a->p.i]))
-		{
-			if (a->p.parsing == 0)
-			{
-				a->p.parsing = 1;
-				a->p.start = a->p.i;
-			}
-			a->p.candidate = ft_strcjoin(a->p.candidate, a->line[a->p.i]);
-		}
-		if (a->line[a->p.i] == '\\')
-			parse_backslash(a);
-		else if (is_sep_char(a->line[a->p.i]))
-			parse_redirect(a);
-		else if (is_quote(a->line[a->p.i]))
-			parse_quote(a);
-		else if (ft_iswhite(a->line[a->p.i])
-				|| is_pipe_or_scolon(a->line[a->p.i + 1])
-				|| is_sep_char(a->line[a->p.i + 1]))
-			parse_one(a);
+		parsing2(a);
 		if (a->line[a->p.i + 1] == '\0')
 			return (parse_last(a));
 		a->p.i++;

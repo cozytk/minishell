@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void 	ft_free_mat(char **mat)
+void	ft_free_mat(char **mat)
 {
 	int i;
 
@@ -26,5 +26,4 @@ void 	ft_free_mat(char **mat)
 		i++;
 	}
 	free(mat);
-	//mat = (void *)0;
 }
