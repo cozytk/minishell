@@ -71,10 +71,7 @@ int		cmd_exec(t_all *a)
 	if (pid > 0)
 	{
 		waitpid(pid, &state, 0);
-		if (WEXITSTATUS(state))
-			g_end = 127;
-		else
-			g_end = 0;
+		g_end = WEXITSTATUS(state);
 	}
 	return (0);
 }
