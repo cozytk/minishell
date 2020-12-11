@@ -12,9 +12,9 @@
 
 #include "../inc/minishell.h"
 
-int 	pwd(t_all *a)
+int		pwd(t_all *a)
 {
-	char tmp[1024];
+	char	tmp[1024];
 
 	if (!ft_strncmp(a->cmd, "pwd\0", 4))
 	{
