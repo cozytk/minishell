@@ -41,8 +41,8 @@ int cd_home(t_all *a, char flag)
 			return (-1);
 	}
 	if (chdir(a->env[i] + 5) == -1)
-		return (write_cd_error(a->env[i] + 5
-						 ": No such file or directory", a, 127));
+		return (write_cd_error(a->env[i] + 5,
+					": No such file or directory", a, 127));
 	else
 		g_end = 0;
 	return (0);
