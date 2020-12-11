@@ -52,6 +52,7 @@ int		ft_exit(t_all *a)
 			if (a->arg[1])
 			{
 				write_exit_error(a, 0);
+				g_end = 1;
 				return (1);
 			}
 			ft_putendl_fd("exit", 2);
