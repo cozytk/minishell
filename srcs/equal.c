@@ -45,6 +45,7 @@ void	equal_process(t_all *a)
 	env = NULL;
 	i = -1;
 	while (a->p.candidate[++i] != '=')
+	{
 		env = ft_strcjoin(env, a->p.candidate[i]);
 		i++;
 	}

@@ -131,7 +131,6 @@ int main(int argc, char *argv[], char *envp[])
 			continue;
 		}
 		init(a);
-		init_index(a);
 		main_loop(a);
 		free_com_arg(a);
 		if (a->redirect)
@@ -139,5 +138,5 @@ int main(int argc, char *argv[], char *envp[])
 		//system("leaks minishell > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	}
 	ft_putendl_fd("exit", 2);
-	return (int(argc || argv));
+	return ((int)(argc || argv));
 }

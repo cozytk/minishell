@@ -22,7 +22,6 @@ typedef struct		s_parse
 {
 	int		i;
 	int		start;
-	int		back_flag;
 	int		pipe;
 	int		s_colon;
 	int		parsing;
@@ -46,31 +45,27 @@ typedef struct		s_all
 	int 	redirect;
 	int 	fd_tmp;
 	int 	cd;
-	int		end;
 	t_parse	p;
 }					t_all;
 
 int		g_end;
 
+char		**check_identifier(char **mat);
 void		ft_erase(void);
 int			cmd_itself(char *cmd, char *str);
-void		init_struct(t_all *a)
-int			has_digit(char *str);
+void		init_struct(t_all *a);
 int			has_identifier(char *str);
 int			write_error(char *cmd, char *str, char *err, int exit);
 void		init(t_all *a);
-void		init_index(t_all *a);
 int			cmd_exec(t_all *a);
 int			cmd_builtin(t_all *a);
 void		bash_cmd_error(char *cmd, char *msg, int exit_code);
 int			export(t_all *a);
 int 		cd(t_all *a);
-char		*get_arg(char *str);
 int			echo(t_all *a);
 int			cmd_itself(char *cmd, char *str);
 int 		pwd(t_all *a);
 int		 	env(t_all *a);
-int			keycmp(char *src, char *key);
 int			unset(t_all *a);
 char		**check_overlap(char **mat);
 char		**ft_delete_row(char **mat, int del);
@@ -88,6 +83,7 @@ int			main_loop(t_all *a);
 int			ft_exit(t_all *a);
 int 		find_row(char **mat, char *s);
 int 		find_exact_row(char **mat, char *s);
+char	 	**ft_matadd_front(t_all *a);
 
 
 /*
@@ -124,5 +120,6 @@ int		show_prompt(void);
 void		equal_process(t_all *a);
 char		**add_row(char **mat, char *arg);
 int			same_key(char *s1, char *s2);
+void		write_quote(char *str);
 
 #endif

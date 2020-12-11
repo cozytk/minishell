@@ -1,22 +1,4 @@
-#include "../inc/minishell"
-
-void write_quote(char *str)
-{
-	int i;
-
-	i = -1;
-	while (str[++i] && str[i] != '=')
-		ft_putchar_fd(str[i], 1);
-	if (!ft_strrchr(str, '='))
-	{
-		ft_putchar_fd('\n', 1);
-		return ;
-	}
-	ft_write("=\"");
-	while (str[++i])
-		ft_putchar_fd(str[i], 1);
-	ft_write("\"\n");
-}
+#include "../inc/minishell.h"
 
 void write_quote(char *str)
 {

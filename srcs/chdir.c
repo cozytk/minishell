@@ -9,6 +9,7 @@
 /*   Updated: 2020/11/30 16:19:28 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../inc/minishell.h"
 
 int 	write_cd_error(char *str, char *err, t_all *a, int exit)

@@ -45,7 +45,7 @@ int 	cmd_exec(t_all *a)
 	pid = fork();
 	if (pid == 0)
 	{
-		ft_matadd_front(a);
+		lines = ft_matadd_front(a);
 		run_execve(a, lines);
 		ft_free_mat(lines);
 	}
