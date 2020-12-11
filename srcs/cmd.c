@@ -6,7 +6,7 @@
 /*   By: taekkim <taekkim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 20:32:59 by taekkim           #+#    #+#             */
-/*   Updated: 2020/12/11 20:53:57 by taekkim          ###   ########.fr       */
+/*   Updated: 2020/12/11 23:24:06 by taekkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	write_exec_err(t_all *a, int flag)
 		ft_putendl_fd(": command not found", 2);
 	else
 		ft_putendl_fd(": No such file or directory", 2);
+	exit(1);
 }
 
 void	run_execve(t_all *a, char **arg)
@@ -46,7 +47,6 @@ void	run_execve(t_all *a, char **arg)
 		free(cmd);
 		ft_free_mat(mat);
 		write_exec_err(a, 0);
-		return ;
 	}
 	write_exec_err(a, 1);
 }
@@ -65,7 +65,6 @@ int		cmd_exec(t_all *a)
 		lines = ft_matadd_front(a);
 		run_execve(a, lines);
 		ft_free_mat(lines);
-		exit(1);
 	}
 	else if (pid == -1)
 		exit(1);
