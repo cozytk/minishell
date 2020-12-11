@@ -39,7 +39,7 @@ SRCS	=	./srcs/chdir.c \
 			./srcs/redirect.c \
 			./srcs/unset.c \
 			./srcs/utils.c \
-			./srcs/write.c \
+			./srcs/write2.c \
 			./srcs/cmd.c \
 			./srcs/row.c
 

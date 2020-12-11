@@ -101,7 +101,9 @@ int		main_loop(t_all *a)
 	}
 	redirect(a);
 	cmd_builtin(a);
+	//printf("hello2\n");
 	cmd_exec(a);
+	//printf("hello\n");
 	if (a->p.s_colon)
 	{
 		free_com_arg(a);
