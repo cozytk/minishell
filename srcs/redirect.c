@@ -22,8 +22,8 @@ void	bash_error(char *cmd)
 
 int		exec_redirect(t_all *a, int i, int opt, int fileno)
 {
-    int			file_fd;
-    struct stat	st;
+	int			file_fd;
+	struct stat	st;
 
 	a->fileno = fileno;
 	a->arg = ft_delete_row(a->arg, i);
