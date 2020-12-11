@@ -61,7 +61,7 @@ int		cd_oldpwd(t_all *a)
 	}
 	if (chdir(a->env[i] + 7) == -1)
 		return (write_cd_error(a->env[i] + 7,
-						 ": No such file or direcotry", a, 127));
+						 ": No such file or directory", a, 127));
 	return (1);
 }
 
@@ -78,7 +78,7 @@ int		cd(t_all *a)
 			cd_oldpwd(a);
 		else if (chdir(a->arg[0]) == -1)
 			return (write_cd_error(a->arg[0],
-						  ": No such file or direcotry", a, 127));
+						  ": No such file or directory", a, 127));
 		return (1);
 	}
 	return (0);

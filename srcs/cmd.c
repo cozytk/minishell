@@ -64,6 +64,8 @@ int 	cmd_exec(t_all *a)
 
 int     cmd_builtin(t_all *a)
 {
+	if (!a->cmd)
+		return (0);
 	if (ft_exit(a))
 		return (1);
 	if (export(a) || cd(a) || pwd(a) || env(a) || unset(a) || echo(a))

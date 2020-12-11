@@ -18,6 +18,7 @@ int exec_redirect(t_all *a, int i, int opt, int fileno)
 	if (fileno == STDIN_FILENO && (stat(a->arg[i], &st) == -1))
 	{
 		bash_error(a->arg[i]);
+		free_com_arg(a);
 		return (0);
 	}
 	file_fd = open(a->arg[i], opt, 00777);
