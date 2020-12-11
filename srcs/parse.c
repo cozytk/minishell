@@ -87,7 +87,8 @@ void	parsing2(t_all *a)
 	}
 	if (a->line[a->p.i] == '\\')
 		parse_backslash(a);
-	else if (is_sep_char(a->line[a->p.i]))
+	else if (is_sep_char(a->line[a->p.i])
+			&& a->p.i > 0 && a->line[a->p.i - 1] != '$')
 		parse_redirect(a);
 	else if (is_quote(a->line[a->p.i]))
 		parse_quote(a);
