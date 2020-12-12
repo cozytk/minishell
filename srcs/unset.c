@@ -26,7 +26,7 @@ void	delete_env(char **mat, t_all *a, int i, int j)
 			}
 		}
 		j = -1;
-		while (a->env[++j])
+		while (a->sub_env && a->sub_env[++j])
 		{
 			if (same_key(a->sub_env[j], mat[i]))
 			{
