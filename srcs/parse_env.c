@@ -12,13 +12,19 @@
 
 #include "../inc/minishell.h"
 
+char	*env_not_found(char *env)
+{
+	free(env);
+	return (NULL);
+}
+
 char	*find_env_result2(t_all *a, char *env, int i, int j)
 {
 	int		start;
 	char	*temp;
 
 	if (!a->sub_env)
-		return (NULL);
+		return (env_not_found(env));
 	while (a->sub_env[i])
 	{
 		if (!ft_strncmp(a->sub_env[i], env, ft_strlen(env)))
