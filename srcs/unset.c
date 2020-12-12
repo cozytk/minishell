@@ -12,12 +12,8 @@
 
 #include "../inc/minishell.h"
 
-void	delete_env(char **mat, t_all *a)
+void	delete_env(char **mat, t_all *a, int i, int j)
 {
-	int i;
-	int j;
-
-	i = -1;
 	while (mat[++i])
 	{
 		j = -1;
@@ -29,6 +25,15 @@ void	delete_env(char **mat, t_all *a)
 				break ;
 			}
 		}
+		j = -1;
+		while (a->env[++j])
+		{
+			if (same_key(a->sub_env[j], mat[i]))
+			{
+				a->sub_env = ft_delete_row(a->sub_env, j);
+				break ;
+			}
+		}
 		if (!a->env[j] && has_identifier(mat[i]))
 			write_error("unset", mat[i], ": not a valid identifier", 1);
 	}
@@ -37,7 +42,7 @@ void	delete_env(char **mat, t_all *a)
 void	parse_unset(t_all *a)
 {
 	a->arg = check_overlap(a->arg);
-	delete_env(a->arg, a);
+	delete_env(a->arg, a, -1, -1);
 	ft_free_mat(a->arg);
 	a->arg = NULL;
 }

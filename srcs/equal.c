@@ -12,14 +12,16 @@
 
 #include "../inc/minishell.h"
 
-char	*equal_process2(t_all *a, char *env)
+char	*equal_process2(t_all *a, char *env, int equal_index)
 {
 	int		i;
 
 	if (((i = find_exact_row(a->env, env)) != -1) ||
-			((env = ft_strcjoin(env, a->p.candidate[i]))
+			((env = ft_strcjoin(env, a->p.candidate[equal_index]))
 				&& (i = find_row(a->env, env) != -1)))
 	{
+		if ((i = find_row(a->sub_env, env)) != -1)
+			a->sub_env = ft_delete_row(a->sub_env, i);
 		a->cmd = ft_strdup("export");
 		add_argument(a, a->p.candidate);
 		export(a);
@@ -49,7 +51,7 @@ void	equal_process(t_all *a)
 		env = ft_strcjoin(env, a->p.candidate[i]);
 		i++;
 	}
-	env = equal_process2(a, env);
+	env = equal_process2(a, env, i);
 	if (env)
 	{
 		free(env);
