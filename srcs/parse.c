@@ -93,7 +93,8 @@ void	parsing2(t_all *a)
 		parse_quote(a);
 	else if ((ft_iswhite(a->line[a->p.i])
 			|| is_pipe_or_scolon(a->line[a->p.i + 1])
-			|| is_sep_char(a->line[a->p.i + 1])) && a->line[a->p.i] != '$')
+			|| is_sep_char(a->line[a->p.i + 1])
+			|| is_quote(a->line[a->p.i + 1])) && a->line[a->p.i] != '$')
 		parse_one(a);
 }
 

@@ -66,14 +66,16 @@ void	quote_join2(t_all *a, int size)
 	char	*temp2;
 	char	*temp3;
 
-	if (a->line[a->p.start - 1] != ' ' && size == 1)
+	if (a->line[a->p.start - 1] != ' ' &&
+			!is_quote(a->line[a->p.start - 2]) && size == 1)
 	{
 		temp = a->cmd;
 		a->cmd = ft_strjoin(a->cmd, a->arg[0]);
 		free(temp);
 		a->arg = ft_delete_row(a->arg, 0);
 	}
-	else if (a->line[a->p.start - 1] != ' ' && size > 1)
+	else if (a->line[a->p.start - 1] != ' ' &&
+			!is_quote(a->line[a->p.start - 2]) &&  size > 1)
 	{
 		temp = a->arg[size - 2];
 		temp2 = a->arg[size - 1];
