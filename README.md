@@ -20,6 +20,3 @@
     - signal
     
 ### 시연영상 
-
-https://user-images.githubusercontent.com/59143479/144385146-12c4fa36-9658-472c-a02f-14e6f4db4380.mov
-
